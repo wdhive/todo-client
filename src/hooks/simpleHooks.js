@@ -1,16 +1,16 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
 export const useOnMount = callback => {
-  useEffect(() => callback(), [])
-}
+  useEffect(() => callback(), []);
+};
 
 export const useOnMountAsync = (callback, cleanUp) => {
   useEffect(() => {
-    callback()
-    return cleanUp
-  }, [])
-}
+    callback();
+    return cleanUp;
+  }, []);
+};
 
 export const useOnUnmount = callback => {
-  useEffect(() => callback, [])
-}
+  useEffect(() => callback, []);
+};

@@ -1,13 +1,13 @@
-const postcssPresetEnv = require('postcss-preset-env')
-const isDevMode = process.env.NODE_ENV === 'development'
+const postcssPresetEnv = require('postcss-preset-env');
+const isDevMode = process.env.NODE_ENV === 'development';
 
-const plugins = []
+const plugins = [];
 
 isDevMode ||
   plugins.push(
     postcssPresetEnv({
       stage: 0,
     })
-  )
+  );
 
-module.exports = { plugins }
+module.exports = { plugins };

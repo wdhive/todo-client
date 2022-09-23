@@ -21,8 +21,7 @@
     "@vitejs/plugin-react": "latest",
     "postcss-preset-env": "latest",
     "sass": "latest",
-    "vite": "latest",
-    "vite-plugin-pwa": "latest"
+    "vite": "latest"
   },
   "engines": {
     "node": ">=16.0.0"
