@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 const MainPage = react.lazy(() => import('./pages/Main'));
 const LandingPage = react.lazy(() => import('./pages/LandingPage'));
-const NotFound = react.lazy(() => import('./pages/NotFound'));
 const AboutUs = react.lazy(() => import('./pages/AboutUs'));
 const HelpSupport = react.lazy(() => import('./pages/HelpSupport'));
+import NotFound from './pages/NotFound';
 
 const Login = react.lazy(() => './pages/Login');
 const Signup = react.lazy(() => import('./pages/Signup'));
