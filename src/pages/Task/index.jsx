@@ -1,17 +1,16 @@
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import TaskRoot from './Root';
 import TaskNew from './TaskNew';
 import TaskUpdate from './TaskUpdate';
 
 const Task = () => {
   return (
     <>
-      <h1>Task Root</h1>;
+      <TaskRoot />
       <Routes>
-        <Route path="/" element={<Outlet />}>
-          <Route path="new" element={<TaskNew />} />
-          <Route path=":taskId" element={<TaskUpdate />} />
-          <Route path="*" element={<Navigate to="/tasks" />} />
-        </Route>
+        <Route path="new" element={<TaskNew />} />
+        <Route path=":taskId" element={<TaskUpdate />} />
+        <Route path=":notInUse/*" element={<Navigate to="/tasks" />} />
       </Routes>
     </>
   );
