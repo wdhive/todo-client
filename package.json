@@ -13,7 +13,8 @@
     "react": "latest",
     "react-dom": "latest",
     "react-redux": "latest",
-    "react-router-dom": "latest"
+    "react-router-dom": "latest",
+    "socket.io-client": "^4.5.2"
   },
   "devDependencies": {
     "@types/react": "latest",
