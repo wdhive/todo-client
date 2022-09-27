@@ -12,6 +12,3 @@ root.render(
     <App />
   </Provider>
 );
-
-
-import "./api/socket"

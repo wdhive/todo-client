@@ -8,7 +8,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@honkhonk/vite-plugin-svgr": "latest",
     "@reduxjs/toolkit": "latest",
     "react": "latest",
     "react-dom": "latest",
@@ -20,6 +19,7 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
+    "@honkhonk/vite-plugin-svgr": "latest",
     "postcss-preset-env": "latest",
     "sass": "latest",
     "vite": "latest"
