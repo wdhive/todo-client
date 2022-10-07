@@ -1,0 +1,23 @@
+@forward "../styles/utils/";
+@use "../styles/abstracts/index";
+
+.logo a {
+  @include index.dflex(center, stretch);
+  gap: 1rem;
+}
+.logo img {
+  width: 3rem;
+  height: 3rem;
+}
+.logo span {
+  font-size: 3rem;
+  font-weight: 700;
+  color: index.$accent;
+}
+@include index.responsive(767.98px) {
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

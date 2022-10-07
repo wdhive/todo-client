@@ -1,64 +1,34 @@
-import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
-import css from './InitialApp.module.scss'
-
-const Home = () => {
-  return (
-    <div>
-      <p className={css.paragraph}>This is home page...</p>
-
-      <Link className={css.link} to="/about">
-        About
-      </Link>
-    </div>
-  )
-}
-
-const About = () => {
-  return (
-    <div>
-      <p className={css.paragraph}>This is about page...</p>
-
-      <Link className={css.link} to="/">
-        Home
-      </Link>
-    </div>
-  )
-}
-
-const Error = () => {
-  return (
-    <div>
-      <p className={css.paragraph}>This is isn't created yet...</p>
-
-      <Link className={css.link} to="/">
-        Home
-      </Link>
-      <Link className={css.link} to="/about">
-        About
-      </Link>
-    </div>
-  )
-}
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "../pages/Home";
+import LandingPage from "../pages/LandingPage";
+import Signup from "../pages/Signup";
+import Login from "../pages/Login";
+import ChangePassword from "../pages/ChangePassword";
+import EmailVerify from "../pages/EmailVerify";
+import CreateTask from "../pages/CreateTask";
+import Profile from "../pages/Profile";
+import Notification from "../pages/Notification";
+import NotFound from "../pages/NotFound";
 
 const InitialApp = () => {
   return (
     <>
-      <h1 className={css.heading}>Hello world!</h1>
-
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/404" element={<Error />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/*" element={<Navigate to="404" />} />
+          <Route path="landing" element={<LandingPage />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="login" element={<Login />} />
+          <Route path="change-password" element={<ChangePassword />} />
+          <Route path="email-verify" element={<EmailVerify />} />
+          <Route path="create-task" element={<CreateTask />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="notification" element={<Notification />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-
-        <Link className={`${css.link} ${css.random}`} to={'/random'}>
-          Random
-        </Link>
       </BrowserRouter>
     </>
-  )
-}
+  );
+};
 
-export default InitialApp
+export default InitialApp;

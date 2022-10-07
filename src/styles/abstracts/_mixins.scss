@@ -1,0 +1,51 @@
+@use "./variables";
+@mixin dflex($alignItems, $jusContent) {
+  display: flex;
+  align-items: $alignItems;
+  justify-content: $jusContent;
+}
+
+@mixin dgrid($alignItems, $column, $gap) {
+  display: grid;
+  grid-template-columns: $column;
+  align-items: $alignItems;
+  gap: $gap;
+}
+@mixin flexColumn($alignItems, $jusContent) {
+  display: flex;
+  align-items: ($alignItems);
+  justify-content: ($jusContent);
+  flex-direction: column;
+}
+@mixin content-display {
+  content: "";
+  display: block;
+}
+@mixin responsive($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+@mixin bgImg($url) {
+  background: linear-gradient(#132039e0, #132039e0), url($url) center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin formStyle($minHeight) {
+  min-height: ($minHeight);
+  padding: 3rem;
+  box-shadow: 0px 5px 25px 0px #1320394d;
+}
+@mixin circle($w, $h, $p) {
+  width: $w;
+  height: $h;
+  padding: $p;
+  border-radius: 100%;
+}
+@mixin line($scale) {
+  display: block;
+  content: "";
+  border-bottom: 2px solid variables.$gray-300;
+  transform: $scale;
+}

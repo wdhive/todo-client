@@ -1,0 +1,172 @@
+.-- {
+  width: 100%;
+  max-width: 144rem;
+  margin-inline: auto;
+}
+
+.col-1 {
+  width: 8.3333333333%;
+}
+
+@media screen and (max-width: 767.98px) {
+  .col-1 {
+    width: 100%;
+  }
+}
+.col-2 {
+  width: 16.6666666667%;
+}
+
+@media screen and (max-width: 767.98px) {
+  .col-2 {
+    width: 100%;
+  }
+}
+.col-3 {
+  width: 25%;
+}
+
+@media screen and (max-width: 767.98px) {
+  .col-3 {
+    width: 100%;
+  }
+}
+.col-4 {
+  width: 33.3333333333%;
+}
+
+@media screen and (max-width: 767.98px) {
+  .col-4 {
+    width: 100%;
+  }
+}
+.col-5 {
+  width: 41.6666666667%;
+}
+
+@media screen and (max-width: 767.98px) {
+  .col-5 {
+    width: 100%;
+  }
+}
+.col-6 {
+  width: 50%;
+}
+
+@media screen and (max-width: 767.98px) {
+  .col-6 {
+    width: 100%;
+  }
+}
+.col-7 {
+  width: 58.3333333333%;
+}
+
+@media screen and (max-width: 767.98px) {
+  .col-7 {
+    width: 100%;
+  }
+}
+.col-8 {
+  width: 66.6666666667%;
+}
+
+@media screen and (max-width: 767.98px) {
+  .col-8 {
+    width: 100%;
+  }
+}
+.col-9 {
+  width: 75%;
+}
+
+@media screen and (max-width: 767.98px) {
+  .col-9 {
+    width: 100%;
+  }
+}
+.col-10 {
+  width: 83.3333333333%;
+}
+
+@media screen and (max-width: 767.98px) {
+  .col-10 {
+    width: 100%;
+  }
+}
+.col-11 {
+  width: 91.6666666667%;
+}
+
+@media screen and (max-width: 767.98px) {
+  .col-11 {
+    width: 100%;
+  }
+}
+.col-12 {
+  width: 100%;
+}
+
+@media screen and (max-width: 767.98px) {
+  .col-12 {
+    width: 100%;
+  }
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 2rem;
+  margin: auto;
+}
+
+.btnGroup button:first-child {
+  margin-right: 2rem;
+}
+
+.btn1 {
+  background-color: #D9E1F2;
+  color: #264073;
+}
+
+.btn2 {
+  background-color: #406BBF;
+  color: #ECF0F9;
+}
+
+.flexSpace {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexVertical {
+  display: flex;
+  align-items: center;
+}
+
+.p3 {
+  padding: 3rem 0;
+}
+
+.lendingText {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #264073;
+}
+
+@media screen and (max-width: 991.98px) {
+  .btnGroup button:first-child {
+    margin-right: 1rem;
+  }
+}/*# sourceMappingURL=index.css.map */

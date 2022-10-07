@@ -1,0 +1,100 @@
+@use "../styles/abstracts/index";
+
+.task {
+  padding: 2rem;
+  background-color: index.$gray-200;
+  border-radius: 0.25rem;
+  margin: 2rem 0;
+}
+.taskName {
+  @include index.dflex(center, space-between);
+}
+.taskName h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: index.$foreground;
+}
+.taskDesc p {
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding: 0.75rem 0;
+}
+.task .time {
+  color: index.$gray-500;
+  padding: 0.75rem 0;
+  @include index.dgrid(center, 1.5rem 1fr 1fr, 0);
+}
+.task .time p {
+  color: index.$gray-500;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.task .time .images {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.task .time .images img {
+  @include index.circle(2rem, 2rem, 0rem);
+  border: 2px solid index.$background;
+  margin-right: -0.5rem;
+}
+.task .line::after {
+  @include index.line(scale(1));
+}
+
+// .formControl {
+//   display: block;
+//   position: relative;
+//   font-size: 1.375rem;
+//   -webkit-user-select: none;
+//   -moz-user-select: none;
+//   -ms-user-select: none;
+//   user-select: none;
+// }
+
+// /* Hide the browser's default checkbox */
+// .formControl input {
+//   position: absolute;
+//   opacity: 0;
+//   cursor: pointer;
+//   height: 0;
+//   width: 0;
+// }
+
+// /* Create a custom checkbox */
+// .checkmark {
+//   position: absolute;
+//   top: -0.75rem;
+//   right: 0.625rem;
+//   height: 1.5rem;
+//   width: 1.5rem;
+//   background-color: index.$background;
+//   border: 2px solid index.$accent;
+//   border-radius: 0.5rem;
+//   cursor: pointer;
+// }
+// /* When the checkbox is checked, add a blue background */
+// .formControl input:checked ~ .checkmark {
+//   background-color: index.$accent;
+// }
+
+// /* Show the checkmark when checked */
+// .formControl input:checked ~ .checkmark:after {
+//   display: block;
+// }
+
+// /* Style the checkmark/indicator */
+// .formControl .checkmark:after {
+//   content: "";
+//   position: absolute;
+//   display: none;
+//   left: 9px;
+//   top: 5px;
+//   width: 5px;
+//   height: 10px;
+//   border: solid white;
+//   border-width: 0 3px 3px 0;
+//   -webkit-transform: rotate(45deg);
+//   -ms-transform: rotate(45deg);
+//   transform: rotate(45deg);
+// }

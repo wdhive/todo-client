@@ -1,0 +1,32 @@
+@use "../styles/abstracts/index";
+
+.inputField {
+  background-color: index.$gray-100;
+  border: 1px solid index.$gray-100;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 1rem 0 2rem 0;
+}
+.inputField input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 1rem;
+  background-color: index.$gray-100;
+  border-radius: 0.5rem;
+}
+.inputField input::placeholder {
+  font-size: 1.4rem;
+  color: index.$gray-500;
+  font-weight: 400;
+}
+.inputField img {
+  margin-right: 1rem;
+  width: 1.4rem;
+  height: 1.2rem;
+}
+.labelBold {
+  font-weight: 700;
+}

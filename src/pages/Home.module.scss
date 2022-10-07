@@ -1,0 +1,139 @@
+@forward "../styles/utils/";
+@use "../styles/abstracts/index";
+
+.home {
+  box-shadow: 0px 5px 25px 0px #1320394d;
+}
+.homeHeader {
+  background-color: index.$gray-200;
+  padding: 4.2rem 4.2rem 0;
+}
+.topArea {
+  @include index.dflex(center, space-between);
+  gap: 2rem;
+}
+.topArea .user {
+  @include index.dgrid(center, repeat(2, auto), 1rem);
+}
+.user > img {
+  @include index.circle(6rem, 6rem, 0);
+  border: 2px solid index.$accent;
+}
+.userInfo p,
+.dueTask p {
+  color: index.$gray-500;
+  font-size: 1.4rem;
+}
+.userInfo h4,
+.dueTask h4 {
+  color: index.$accent;
+  font-size: 2rem;
+}
+
+/* ========= Nav ======== */
+
+.nav {
+  padding-top: 3rem;
+  ul {
+    @include index.dgrid(center, repeat(3, 1fr), 2rem);
+    justify-items: center;
+    li.navItem {
+      list-style-type: none;
+      text-align: center;
+      .navLink {
+        text-decoration: none;
+        color: index.$foreground;
+        padding: 2.5rem;
+        font-size: 1.4rem;
+      }
+    }
+    li.navItem::after {
+      display: block;
+      content: "";
+      border-bottom: 0.25rem solid index.$accent;
+      transform: scaleX(0);
+      transition: transform 0.3s ease-in-out;
+    }
+    li.navItem:hover::after {
+      transform: scaleX(1);
+    }
+    li.navItem:active::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.content {
+  padding: 2rem 4.2rem 4.2rem;
+  background-color: index.$background;
+}
+
+// =============== filter ===============
+.filter {
+  @include index.dgrid(center, repeat(2, 1fr), 2rem);
+  p {
+    font-size: 1.2rem;
+  }
+}
+.filterBy {
+  @include index.dflex(center, center);
+  gap: 2rem;
+}
+.type {
+  position: relative;
+}
+.type p {
+  color: index.$gray-500;
+}
+.filterArrow {
+  display: flex;
+  gap: 1rem;
+  padding: 0.25rem;
+  border-bottom: 2px solid index.$accent;
+  border-radius: 0.25rem 0.25rem 0 0;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  color: index.$gray-500;
+}
+.filterArrow:hover {
+  background-color: index.$gray-100;
+}
+.filterArrow:active {
+  background-color: index.$gray-100;
+}
+.filterArrow img {
+  width: 2rem;
+  height: 2rem;
+}
+.filterBy .cate {
+  position: absolute;
+  top: 3.5rem;
+  right: 0;
+  width: 13rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 2;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background-color: index.$gray-100;
+  display: none;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: 0.5s;
+  z-index: 99;
+}
+.type:hover .cate {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+.filterBy .cate input[type="radio"] {
+  margin-right: 1rem;
+  accent-color: index.$accent;
+}
+@include index.responsive(991.98px) {
+  .filterBy {
+    gap: 1rem;
+  }
+}

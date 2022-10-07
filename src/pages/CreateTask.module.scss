@@ -1,0 +1,46 @@
+@use "../styles/abstracts/index";
+@forward "../styles/utils/";
+
+.createTask {
+  border-radius: 1rem;
+  box-shadow: 0px 0px 15px 5px rgba(102, 137, 204, 0.3);
+}
+.heading {
+  @include index.dflex(center, space-between);
+  background-color: index.$gray-200;
+  padding: 2.4rem 4.2rem;
+}
+.form {
+  padding: 2.4rem 4.2rem 5rem;
+}
+.label {
+  font-weight: 700;
+}
+.inputGroup {
+  @include index.dgrid(center, repeat(2, auto), 3rem);
+}
+.participantsTitle {
+  @include index.dflex(center, space-between);
+  margin: 2rem 0;
+}
+.participantsTitle img {
+  width: 2rem;
+  height: 2rem;
+}
+
+// textarea styling
+#textarea {
+  min-height: 12rem;
+  margin: 1rem 0 2rem;
+  @extend .textarea;
+  padding: 1rem;
+}
+// select tag styling
+.select select {
+  @extend .textarea;
+  padding: 1rem;
+  color: index.$accent;
+}
+.categories {
+  @include index.dgrid(center, (8rem auto), 3rem);
+}

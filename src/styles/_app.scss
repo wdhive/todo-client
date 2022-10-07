@@ -1,12 +1,21 @@
+@use "./abstracts/index";
+
 html {
   scroll-behavior: smooth;
   // user-select: none;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Montserrat", sans-serif;
+  color: index.$foreground;
+  background-color: index.$background;
 }
 
 #Root {
   min-height: 100vh;
+}
+
+.fullWidthBtn {
+  width: 100%;
+  margin-top: 2rem;
 }

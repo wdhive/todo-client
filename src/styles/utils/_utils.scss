@@ -1,0 +1,40 @@
+@use "../abstracts/index";
+
+.container {
+  max-width: 1200px;
+  padding: 2rem;
+  margin: auto;
+}
+
+.btn1 {
+  background-color: index.$gray-100;
+  color: index.$gray-500;
+}
+.btn2 {
+  background-color: index.$accent;
+  color: index.$background;
+}
+
+.p3 {
+  padding: 3rem 0;
+}
+.p5 {
+  padding: 5rem 0;
+}
+.lendingText {
+  font-size: 2rem;
+  font-weight: 500;
+  color: index.$gray-500;
+}
+// style for textarea and select tag
+.textarea {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid index.$gray-200;
+  background-color: index.$gray-100;
+  outline: none;
+  &::placeholder {
+    font-size: 1.4rem;
+    color: index.$gray-500;
+  }
+}

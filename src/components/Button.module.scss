@@ -1,0 +1,14 @@
+@use "../styles/abstracts/index";
+.btn {
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+  border-radius: 0.625rem;
+  font-weight: 700;
+  border: none;
+}
+
+@include index.responsive(991.98px) {
+  .btn {
+    padding: 1rem 0.9rem;
+  }
+}

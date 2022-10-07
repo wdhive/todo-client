@@ -1,0 +1,19 @@
+@use "../styles/abstracts/index";
+@forward "../styles/utils/";
+
+// .createTask {
+//   border-radius: 1rem;
+//   box-shadow: 0px 0px 15px 5px rgba(102, 137, 204, 0.3);
+// }
+.notification {
+  background-color: index.$background;
+  box-shadow: 0px 5px 25px 0px #1320394d;
+}
+.notificationHeading {
+  @include index.dflex(center, space-between);
+  background-color: index.$gray-200;
+  padding: 2.4rem 4.2rem;
+}
+.allNotifications {
+  min-height: 80rem;
+}

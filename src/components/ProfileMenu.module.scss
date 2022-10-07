@@ -1,0 +1,20 @@
+@use "../styles/abstracts/index";
+
+.profileMenu {
+  @include index.dgrid(center, 3rem 1fr 4rem, 1rem);
+  background-color: index.$gray-100;
+  padding: 2.4rem;
+  border: 1px solid index.$gray-200;
+  transition: 0.3s;
+  & img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  & label {
+    font-weight: 700;
+  }
+  &:hover {
+    background-color: index.$gray-200;
+    border: 1px solid index.$gray-200;
+  }
+}

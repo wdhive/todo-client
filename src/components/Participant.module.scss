@@ -1,0 +1,34 @@
+@use "../styles/abstracts/index";
+@forward "../styles/utils/";
+
+.participants {
+  background-color: index.$gray-100;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  @include index.dgrid(center, 3fr 13rem 4rem, 2rem);
+  margin-bottom: 2rem;
+}
+.participants .user {
+  @include index.dflex(center, stretch);
+  gap: 2rem;
+}
+.participants .user img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 100%;
+  border: 2px solid index.$gray-500;
+}
+.label {
+  font-weight: 700;
+}
+.userOption select {
+  @extend .textarea;
+  border: none;
+  background-color: index.$background;
+  padding: 1rem;
+}
+.participants .editIcon {
+  background-color: index.$background;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}

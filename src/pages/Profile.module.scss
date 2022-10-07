@@ -1,0 +1,52 @@
+@use "../styles/abstracts/index";
+
+.profile {
+  background-color: index.$background;
+  box-shadow: 0px 5px 25px 0px #1320394d;
+}
+.profileInfo {
+  background-color: index.$gray-200;
+  padding: 4.2rem;
+  display: grid;
+  place-items: center;
+}
+.profileInfo > img {
+  @include index.circle(8rem, 8rem, 0);
+  border: 2px solid index.$accent;
+}
+.profileInfo .profileName {
+  color: index.$accent;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+.profileInfo .profileEmail {
+  font-size: 1.4rem;
+  color: index.$gray-500;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+.profileInfo .copy {
+  background-color: index.$background;
+  padding: 0.5rem 1rem;
+  border-radius: 10rem;
+  font-size: 1.4rem;
+  color: index.$accent;
+  @include index.dflex(center, center);
+  gap: 1rem;
+  cursor: pointer;
+}
+.profileMenus {
+  padding: 1rem 5rem 5rem;
+}
+.profileMenus p {
+  font-weight: 700;
+  margin: 3rem 0 1rem;
+}
+
+.borderRadiusTop {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.borderRadiusBottom {
+  border-radius: 0 0 0.5rem 0.5rem;
+}

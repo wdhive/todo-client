@@ -1,0 +1,36 @@
+@use "../styles/abstracts/index";
+@forward "../styles/utils/";
+
+.imgContainer {
+  @include index.bgImg("../assests/signupBg.png");
+  @include index.formStyle(77rem);
+  border-radius: 1rem 0 0 1rem;
+}
+.imgContainerContent {
+  @include index.flexColumn(stretch, space-between);
+  min-height: 60rem;
+}
+.imgContainer .title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: index.$background;
+  padding: 3rem 0;
+}
+.footerMenu {
+  @include index.dflex(center, space-between);
+  gap: 0.7rem;
+  font-size: 1.4rem;
+}
+.footerMenu .navLink {
+  color: index.$background;
+}
+@include index.responsive(767.98px) {
+  .imgContainer {
+    border-radius: 0rem;
+  }
+}
+@include index.responsive(575.98px) {
+  .imgContainer {
+    padding: 3rem;
+  }
+}

@@ -1,0 +1,74 @@
+@use "../styles/abstracts/index";
+@forward "../styles/utils/";
+
+.signupForm {
+  background-color: index.$background;
+  @include index.formStyle(77rem);
+  border-radius: 0 1rem 1rem 0;
+}
+.signupForm h2 {
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: index.$accent;
+  margin-bottom: 2rem;
+}
+.signupForm .form {
+  margin-top: 5rem;
+}
+.camera {
+  @include index.dflex(center, center);
+  height: 8rem;
+  width: 8rem;
+  background-color: index.$gray-300;
+  border-radius: 100%;
+  margin: auto;
+}
+.camera img {
+  width: 3rem;
+  height: 2.25rem;
+}
+
+.inputGroup {
+  @include index.dflex(center, space-between);
+  gap: 1rem;
+}
+.msg {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  & a {
+    color: index.$accent;
+    text-decoration: underline;
+  }
+}
+.msg span {
+  font-weight: 500;
+}
+//  Login form css
+.forgotPwd {
+  margin: -1rem 0 2rem;
+  & a {
+    color: index.$accent;
+    font-size: 1.4rem;
+  }
+}
+// css for PasswordChangeForm
+.heading {
+  @include index.dflex(center, space-between);
+}
+// css for EmailVerifyFrom
+.code {
+  @include index.dflex(center, space-between);
+  gap: 2rem;
+}
+
+@include index.responsive(767.98px) {
+  .signupForm {
+    border-radius: 0rem;
+  }
+}
+@include index.responsive(575.98px) {
+  .signupForm {
+    padding: 3rem;
+  }
+}
