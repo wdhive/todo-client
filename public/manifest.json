@@ -1,6 +1,6 @@
 {
-  "name": "Web App",
-  "short_name": "WebApp",
+  "name": "Web Todo",
+  "short_name": "Todo",
   "description": "An app to get accurate time for Salah from all over the world",
   "start_url": "/",
   "orientation": "any",
@@ -9,10 +9,49 @@
   "background_color": "#ffffff",
   "icons": [
     {
-      "src": "/icon.png",
+      "src": "/logo/png/moderate-1_1024x1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo/png/moderate-1_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo/png/moderate-1_144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+
+    {
+      "src": "/logo/png/full-1_1024x1024.png",
       "sizes": "1024x1024",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "maskable"
+    },
+    {
+      "src": "/logo/png/full-1_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/logo/png/full-1_144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+
+    {
+      "src": "/logo/svg/moderate-1.svg",
+      "sizes": "any"
+    },
+
+    {
+      "src": "/logo/svg/full-1.svg",
+      "sizes": "any",
+      "purpose": "maskable"
     }
   ]
 }

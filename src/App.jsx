@@ -15,7 +15,7 @@ const Search = react.lazy(() => import('./pages/Main/Search'));
 const Notifications = react.lazy(() => import('./pages/Main/Notifications'));
 
 const App = () => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   return (
     <main>
