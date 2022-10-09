@@ -16,10 +16,10 @@
     "socket.io-client": "^4.5.2"
   },
   "devDependencies": {
+    "@honkhonk/vite-plugin-svgr": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
-    "@honkhonk/vite-plugin-svgr": "latest",
     "postcss-preset-env": "latest",
     "sass": "latest",
     "vite": "latest"
