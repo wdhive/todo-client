@@ -1,5 +1,6 @@
 {
   "name": "web-app",
+  "main": "src/index.jsx",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

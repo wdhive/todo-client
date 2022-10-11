@@ -1,0 +1,14 @@
+{
+  "path-autocomplete.pathMappings": {
+    "@src": "${folder}/src",
+    "@com": "${folder}/src/components",
+    "@lay": "${folder}/src/layouts",
+    "@pages": "${folder}/pages"
+  },
+  "path-intellisense.pathMappings": {
+    "@src": "${workspaceFolder}/src",
+    "@com": "${workspaceFolder}/src/components",
+    "@lay": "${workspaceFolder}/src/layouts",
+    "@pages": "${workspaceFolder}/pages"
+  }
+}
