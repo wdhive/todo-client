@@ -1,0 +1,19 @@
+:root {
+  --hue: 220;
+  --sat: 50;
+  --l1: 95;
+  --l2: 90;
+  --l3: 85;
+  --l4: 75;
+  --l5: 60;
+  --l6: 45;
+  --l7: 50;
+  --l8: 30;
+  --l9: 15;
+}
+
+html {
+  --background: hsl(var(--hue), var(--sat), var(--l1));
+  --foreground: hsl(var(--hue), var(--sat), var(--l9));
+  --accent: hsl(var(--hue), var(--sat), var(--l7));
+}

@@ -9,7 +9,7 @@ const config = {
 };
 
 const server = {
-  port: 80,
+  port: 5000,
 };
 
 const build = {
