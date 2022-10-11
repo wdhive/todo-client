@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from '@honkhonk/vite-plugin-svgr';
+import path from 'path';
 const isDevMode = process.env.NODE_ENV === 'development';
 
 const config = {
@@ -35,4 +36,19 @@ const css = {
   },
 };
 
-export default defineConfig({ server, build, plugins, css });
+const resolve = {
+  alias: {
+    '@src': path.resolve(__dirname, './src'),
+    '@com': path.resolve(__dirname, './src/components'),
+    '@lay': path.resolve(__dirname, './src/layouts'),
+    '@pages': path.resolve(__dirname, './src/pages'),
+  },
+};
+
+export default defineConfig({
+  resolve,
+  server,
+  build,
+  plugins,
+  css,
+});
