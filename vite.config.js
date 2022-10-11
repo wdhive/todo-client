@@ -1,7 +1,7 @@
+import path from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from '@honkhonk/vite-plugin-svgr';
-import path from 'path';
 const isDevMode = process.env.NODE_ENV === 'development';
 
 const config = {

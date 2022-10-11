@@ -1,6 +1,5 @@
 {
   "name": "web-app",
-  "main": "src/index.jsx",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -9,21 +8,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-redux": "latest",
-    "react-router-dom": "latest",
+    "@reduxjs/toolkit": "^1.8.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.4",
+    "react-router-dom": "^6.4.2",
     "socket.io-client": "^4.5.2"
   },
   "devDependencies": {
-    "@honkhonk/vite-plugin-svgr": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "@vitejs/plugin-react": "latest",
-    "postcss-preset-env": "latest",
-    "sass": "latest",
-    "vite": "latest"
+    "@honkhonk/vite-plugin-svgr": "^1.1.0",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "postcss-preset-env": "^7.8.2",
+    "sass": "^1.55.0",
+    "vite": "^2.9.15"
   },
   "engines": {
     "node": ">=16.0.0"
