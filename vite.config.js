@@ -41,6 +41,7 @@ const resolve = {
     '@src': path.resolve(__dirname, './src'),
     '@com': path.resolve(__dirname, './src/components'),
     '@lay': path.resolve(__dirname, './src/layouts'),
+    '@ass': path.resolve(__dirname, './src/assests'),
     '@pages': path.resolve(__dirname, './src/pages'),
   },
 };

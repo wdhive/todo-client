@@ -3,12 +3,14 @@
     "@src": "${folder}/src",
     "@com": "${folder}/src/components",
     "@lay": "${folder}/src/layouts",
+    "@ass": "${folder}/src/assests",
     "@pages": "${folder}/pages"
   },
   "path-intellisense.pathMappings": {
     "@src": "${workspaceFolder}/src",
     "@com": "${workspaceFolder}/src/components",
     "@lay": "${workspaceFolder}/src/layouts",
+    "@ass": "${workspaceFolder}/src/assests",
     "@pages": "${workspaceFolder}/pages"
   }
 }

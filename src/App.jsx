@@ -1,6 +1,6 @@
 import react, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-
+import Loading from './components/Loading';
 import NotFound from './pages/NotFound';
 const LandingPage = react.lazy(() => import('./pages/LandingPage'));
 const HelpSupport = react.lazy(() => import('./pages/HelpSupport'));
@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <main>
-      <Suspense fallback={<h1>Loading...</h1>}>
+      <Suspense fallback={<Loading />}>
         <BrowserRouter>
           <Routes>
             {isLoggedIn ? (
@@ -38,7 +38,7 @@ const App = () => {
             ) : (
               <>
                 <Route path="/" element={<LandingPage />} />
-                <Route path="login" element={<Signin />} />
+                <Route path="login" element={<Navigate to="/signin" />} />
                 <Route path="signin" element={<Signin />} />
                 <Route path="signup" element={<Signup />} />
                 <Route path="register" element={<Signup />} />
