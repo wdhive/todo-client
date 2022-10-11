@@ -12,5 +12,6 @@
     "@lay": "${workspaceFolder}/src/layouts",
     "@ass": "${workspaceFolder}/src/assests",
     "@pages": "${workspaceFolder}/pages"
-  }
+  },
+  "gitdoc.enabled": true
 }
