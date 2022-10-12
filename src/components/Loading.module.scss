@@ -1,15 +1,17 @@
 .loading {
+  --gap: clamp(5.5rem, 16vw, 12rem);
+  --logoSize: clamp(5rem, 12vw, 10rem);
   background: var(--background);
   position: fixed;
   inset: 0;
   display: grid;
+  gap: var(--gap);
   place-content: center;
   justify-items: center;
-  gap: 12rem;
 
   svg {
-    width: 10rem;
-    height: 10rem;
+    height: var(--logoSize);
+    width: var(--logoSize);
   }
 }
 
@@ -17,10 +19,11 @@
 
 .loader {
   --color: hsl(var(--hue), var(--sat), var(--l4));
+  --size: clamp(var(--s0), 1.5vw, var(--s2));
 
   color: var(--color);
   position: relative;
-  font-size: 1.2rem;
+  font-size: var(--size);
   background: var(--color);
   animation: escaleY 1s infinite ease-in-out;
   width: 1em;

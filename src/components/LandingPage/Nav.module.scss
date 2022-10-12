@@ -1,9 +1,10 @@
 .logo {
   display: flex;
 
-  svg{
-    width: 100px;
-    height: 100px;
+  svg {
+    --size: clamp(3.5rem, 10vw, 5rem);
+    height: var(--size);
+    width: var(--size);
   }
 }
 
