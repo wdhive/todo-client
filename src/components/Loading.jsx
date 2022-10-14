@@ -1,6 +1,6 @@
 import css from './Loading.module.scss';
 import Logo from '@ass/logo/moderate-1.svg?component';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 let initial = true;
 
 const Loading = () => {
@@ -17,4 +17,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default memo(Loading);

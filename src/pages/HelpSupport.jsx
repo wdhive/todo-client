@@ -1,7 +1,5 @@
-import Loading from '../components/Loading';
-
 const HelpSupport = () => {
-  return <Loading/>;
+  return <h1>Hello</h1>;
 };
 
 export default HelpSupport;

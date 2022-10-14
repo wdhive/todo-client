@@ -24,7 +24,7 @@ const Nav = () => {
 
       <div className={css.listContainer}>
         <ul className={css.linkList}>
-          <LinkItem to={'/'}>Home</LinkItem>
+          <LinkItem to="/">Home</LinkItem>
         </ul>
 
         <ul className={css.ctaLinkList}></ul>
