@@ -8,11 +8,9 @@ const LinkItem = ({ to, children }) => {
     `${css.navLink} ${navData.isActive ? css.active || '' : ''}`
 
   return (
-    <li>
-      <NavLink to={to} className={getClassName}>
-        {children}
-      </NavLink>
-    </li>
+    <NavLink to={to} className={getClassName}>
+      {children}
+    </NavLink>
   )
 }
 
@@ -40,24 +38,20 @@ const Nav = () => {
       <div className={css.listBackdrop} onClick={handleCloseNav} />
 
       <div className={css.listContainer}>
-        <ul className={`${css.linkList} ${css.linkList__primary}`}>
+        <div className={`${css.linkList} ${css.linkList__primary}`}>
           <LinkItem to="/">Home</LinkItem>{' '}
           <LinkItem to="/about-us">About</LinkItem>
           <LinkItem to="/help-support">Help & Support</LinkItem>
-        </ul>
+        </div>
 
-        <ul className={`${css.linkList} ${css.linkList__cta}`}>
-          <li>
-            <button className={`${css.navButton} ${css.navButton__primary}`}>
-              Login
-            </button>
-          </li>
-          <li>
-            <button className={`${css.navButton} ${css.navButton__secondary}`}>
-              Start For Free
-            </button>
-          </li>
-        </ul>
+        <div className={`${css.linkList} ${css.linkList__cta}`}>
+          <button className={`${css.navButton} ${css.navButton__primary}`}>
+            Login
+          </button>
+          <button className={`${css.navButton} ${css.navButton__secondary}`}>
+            Start For Free
+          </button>
+        </div>
       </div>
     </nav>
   )
