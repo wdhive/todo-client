@@ -1,4 +1,5 @@
-@use '../../styles/abstracts/break' as *;
+@use 'test.scss' as *;
+@use '@abs/break' as *;
 
 .nav,
 .logo,
@@ -37,7 +38,6 @@
 
   @include break-down($lg) {
     flex-direction: column;
-    flex-grow: 0;
   }
 }
 
@@ -59,7 +59,7 @@ nav.navActive {
     z-index: 200;
 
     width: 33rem;
-    height: 100vh;
+    height: 100%;
 
     background-color: var(--background);
   }
@@ -97,10 +97,6 @@ nav.navActive {
   font-weight: bold;
   color: var(--foreground);
   border-radius: var(--s8);
-
-  @include break-down($lg) {
-    flex-grow: 1;
-  }
 }
 
 .navLink {

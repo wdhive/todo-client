@@ -43,7 +43,6 @@ const resolve = {
     '@lay': path.join(__dirname, './src/layouts'),
     '@ass': path.join(__dirname, './src/assests'),
     '@abs': path.join(__dirname, './src/styles/abstracts'),
-    '@break': path.join(__dirname, './src/styles/abstracts/_break.scss'),
     '@pages': path.join(__dirname, './src/pages'),
   },
 }
