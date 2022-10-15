@@ -1,4 +1,4 @@
-@use '@abs/break' as *;
+@use '@break' as *;
 
 .nav,
 .logo,
@@ -40,8 +40,14 @@
   }
 }
 
-nav.navActive .listContainer {
-  right: 0;
+nav.navActive {
+  .listContainer {
+    right: 0;
+  }
+  .listBackdrop {
+    opacity: 0.95;
+    pointer-events: all;
+  }
 }
 
 .listContainer {
@@ -54,8 +60,13 @@ nav.navActive .listContainer {
 }
 
 .listBackdrop {
-  position: absolute;
-  width: 33rem;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background-color: var(--c800);
+  background-blend-mode: multiply;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .linkList {
@@ -129,9 +140,9 @@ nav.navActive .listContainer {
 }
 
 .linkToggle {
-  display: none;
   position: relative;
   z-index: 300;
+  display: none;
 
   @include break-down($lg) {
     display: block;
