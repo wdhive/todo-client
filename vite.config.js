@@ -36,15 +36,47 @@ const css = {
   },
 }
 
+const aliases = (() => {
+  const output = []
+  const root = {
+    '@src': './src',
+    '@com': './src/components',
+    '@lay': './src/layouts',
+    '@ass': './src/assests',
+    '@abs': './src/styles/abstracts',
+    '@pages': './src/pages',
+  }
+
+  Object.entries(root).map(([key, value]) => {
+    const a = {
+      find: new RegExp('^' + key),
+      replacement: path.resolve(__dirname, value),
+    }
+
+    output.push(a)
+  })
+
+  return output
+})()
+
+console.log(aliases)
+
 const resolve = {
-  alias: {
-    '@src': path.join(__dirname, './src'),
-    '@com': path.join(__dirname, './src/components'),
-    '@lay': path.join(__dirname, './src/layouts'),
-    '@ass': path.join(__dirname, './src/assests'),
-    '@abs': path.join(__dirname, './src/styles/abstracts'),
-    '@pages': path.join(__dirname, './src/pages'),
-  },
+  alias: [
+    // {
+    //   '@src': path.resolve(__dirname, './src'),
+    //   '@com': path.resolve(__dirname, './src/components'),
+    //   '@lay': path.resolve(__dirname, './src/layouts'),
+    //   '@ass': path.resolve(__dirname, './src/assests'),
+    //   '@abs': path.resolve(__dirname, './src/styles/abstracts'),
+    //   '@pages': path.resolve(__dirname, './src/pages'),
+    // },
+    ...aliases,
+    {
+      find: /^@sass/,
+      replacement: `${path.resolve(__dirname, 'src')}/styles/abstracts`,
+    },
+  ],
 }
 
 export default defineConfig({
