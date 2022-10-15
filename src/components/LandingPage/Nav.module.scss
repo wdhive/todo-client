@@ -55,6 +55,7 @@ nav.navActive .listContainer {
 
 .listBackdrop {
   position: absolute;
+  width: 33rem;
 }
 
 .linkList {
@@ -64,11 +65,13 @@ nav.navActive .listContainer {
   &__primary {
     justify-content: center;
   }
-}
 
-.linkList{
   @include break-down($lg) {
-    flex-direction: column-reverse;
+    align-items: flex-start;
+
+    &__cta {
+      flex-direction: column-reverse;
+    }
   }
 }
 
