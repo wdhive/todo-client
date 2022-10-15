@@ -1,6 +1,6 @@
 {
   "framework": "vite",
-  "buildCommand": "npm run build",
+  "buildCommand": "yarn build",
   "outputDirectory": "dist",
   "rewrites":  [
     {"source": "/(.*)", "destination": "/"}
