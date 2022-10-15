@@ -59,8 +59,6 @@ const aliases = (() => {
   return output
 })()
 
-console.log(aliases)
-
 const resolve = {
   alias: [
     // {
@@ -73,7 +71,7 @@ const resolve = {
     // },
     ...aliases,
     {
-      find: /^@sass/,
+      find: /^~sass/,
       replacement: `${path.resolve(__dirname, 'src')}/styles/abstracts`,
     },
   ],
