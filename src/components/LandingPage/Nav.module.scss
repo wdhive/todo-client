@@ -58,9 +58,10 @@ nav.navActive {
     right: -100vw;
     z-index: 200;
 
-    width: 33rem;
-    height: 100%;
-    padding-block-start: var(--s92);
+    width: min(33rem, 100%);
+    min-height: 100vh;
+    padding-block-start: min(var(--s92), 10vmax);
+    padding-inline: var(--s24);
 
     background-color: var(--background);
   }
