@@ -38,13 +38,13 @@ const css = {
 
 const resolve = {
   alias: {
-    '@src': path.resolve(__dirname, './src'),
-    '@com': path.resolve(__dirname, './src/components'),
-    '@lay': path.resolve(__dirname, './src/layouts'),
-    '@ass': path.resolve(__dirname, './src/assests'),
-    '@abs': path.resolve(__dirname, './src/styles/abstracts'),
-    '@break': path.resolve(__dirname, './src/styles/abstracts/_break.scss'),
-    '@pages': path.resolve(__dirname, './src/pages'),
+    '@src': path.join(__dirname, './src'),
+    '@com': path.join(__dirname, './src/components'),
+    '@lay': path.join(__dirname, './src/layouts'),
+    '@ass': path.join(__dirname, './src/assests'),
+    '@abs': path.join(__dirname, './src/styles/abstracts'),
+    '@break': path.join(__dirname, './src/styles/abstracts/_break.scss'),
+    '@pages': path.join(__dirname, './src/pages'),
   },
 }
 

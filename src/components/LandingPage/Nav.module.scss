@@ -1,4 +1,4 @@
-@use '@break' as *;
+@use '../../styles/abstracts/break' as *;
 
 .nav,
 .logo,
@@ -37,6 +37,7 @@
 
   @include break-down($lg) {
     flex-direction: column;
+    flex-grow: 0;
   }
 }
 
@@ -56,6 +57,11 @@ nav.navActive {
     top: 0;
     right: -100vw;
     z-index: 200;
+
+    width: 33rem;
+    height: 100vh;
+
+    background-color: var(--background);
   }
 }
 
@@ -91,6 +97,10 @@ nav.navActive {
   font-weight: bold;
   color: var(--foreground);
   border-radius: var(--s8);
+
+  @include break-down($lg) {
+    flex-grow: 1;
+  }
 }
 
 .navLink {
