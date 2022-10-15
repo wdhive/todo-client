@@ -38,6 +38,7 @@
 
   @include break-down($lg) {
     flex-direction: column;
+    flex-grow: 0;
   }
 }
 
@@ -78,6 +79,7 @@ nav.navActive {
 .linkList {
   list-style: none;
   align-items: center;
+  background: red;
 
   &__primary {
     justify-content: center;
@@ -97,6 +99,7 @@ nav.navActive {
   font-weight: bold;
   color: var(--foreground);
   border-radius: var(--s8);
+
 }
 
 .navLink {
