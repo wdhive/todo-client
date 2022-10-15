@@ -88,7 +88,6 @@ nav.navActive {
 
   @include break-down($lg) {
     align-items: flex-start;
-    background: red;
 
     &__cta {
       flex-direction: column-reverse;
