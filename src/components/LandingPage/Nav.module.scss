@@ -62,6 +62,7 @@ nav.navActive {
     min-height: 100vh;
     padding-block-start: min(var(--s92), 10vmax);
     padding-inline: var(--s24);
+    gap: var(--s48);
 
     background-color: var(--background);
   }
@@ -87,6 +88,7 @@ nav.navActive {
 
   @include break-down($lg) {
     align-items: flex-start;
+    background: red;
 
     &__cta {
       flex-direction: column-reverse;
@@ -99,9 +101,14 @@ nav.navActive {
   font-weight: bold;
   color: var(--foreground);
   border-radius: var(--s8);
+
+  @include break-down($lg) {
+    width: 100%;
+  }
 }
 
 .navLink {
+  display: inline-block;
   text-decoration: none;
   font-size: var(--s16);
   padding: 1em 1.75em;
