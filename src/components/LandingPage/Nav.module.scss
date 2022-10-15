@@ -1,4 +1,3 @@
-@use 'test.scss' as *;
 @use '@abs/break' as *;
 
 .nav,
@@ -99,7 +98,6 @@ nav.navActive {
   font-weight: bold;
   color: var(--foreground);
   border-radius: var(--s8);
-
 }
 
 .navLink {
