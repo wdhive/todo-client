@@ -4,6 +4,7 @@
     "@com": "${folder}/src/components",
     "@lay": "${folder}/src/layouts",
     "@ass": "${folder}/src/assests",
+    "@abs": "${folder}/src/styles/abstracts",
     "@pages": "${folder}/pages"
   },
   "path-intellisense.pathMappings": {

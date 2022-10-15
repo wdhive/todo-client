@@ -12,10 +12,21 @@
   --l9: 15%;
 }
 
-html {
-  --background: hsl(var(--hue), var(--sat), var(--l1));
-  --foreground: hsl(var(--hue), var(--sat), var(--l9));
-  --accent: hsl(var(--hue), var(--sat), var(--l7));
+:root {
+  // shades
+  --c000: hsl(var(--hue), var(--sat), var(--l1));
+  --c100: hsl(var(--hue), var(--sat), var(--l2));
+  --c200: hsl(var(--hue), var(--sat), var(--l3));
+  --c300: hsl(var(--hue), var(--sat), var(--l4));
+  --c400: hsl(var(--hue), var(--sat), var(--l5));
+  --c500: hsl(var(--hue), var(--sat), var(--l6));
+  --c600: hsl(var(--hue), var(--sat), var(--l7));
+  --c700: hsl(var(--hue), var(--sat), var(--l8));
+  --c800: hsl(var(--hue), var(--sat), var(--l9));
+
+  --background: var(--c000);
+  --foreground: var(--c800);
+  --accent: var(--c600);
 
   // logo
   --logo-bg: var(--accent);

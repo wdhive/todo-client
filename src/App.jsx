@@ -1,21 +1,23 @@
-import react, { Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Loading from './components/Loading';
-import NotFound from './pages/NotFound';
-const LandingPage = react.lazy(() => import('./pages/LandingPage'));
-const HelpSupport = react.lazy(() => import('./pages/HelpSupport'));
-const AboutUs = react.lazy(() => import('./pages/AboutUs'));
-const Signin = react.lazy(() => import('./pages/Signin'));
-const Signup = react.lazy(() => import('./pages/Signup'));
+import react, { Suspense } from 'react'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Loading from './components/Loading'
+import NotFound from './pages/NotFound'
+const Redirect = to => <Navigate replace to={to} />
 
-const MainPage = react.lazy(() => import('./pages/Main'));
-const Task = react.lazy(() => import('./pages/Task'));
-const Profile = react.lazy(() => import('./pages/Profile'));
-const Search = react.lazy(() => import('./pages/Main/Search'));
-const Notifications = react.lazy(() => import('./pages/Main/Notifications'));
+const LandingPage = react.lazy(() => import('./pages/LandingPage'))
+const HelpSupport = react.lazy(() => import('./pages/HelpSupport'))
+const AboutUs = react.lazy(() => import('./pages/AboutUs'))
+const Signin = react.lazy(() => import('./pages/Signin'))
+const Signup = react.lazy(() => import('./pages/Signup'))
+
+const MainPage = react.lazy(() => import('./pages/Main'))
+const Task = react.lazy(() => import('./pages/Task'))
+const Profile = react.lazy(() => import('./pages/Profile'))
+const Search = react.lazy(() => import('./pages/Main/Search'))
+const Notifications = react.lazy(() => import('./pages/Main/Notifications'))
 
 const App = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = false
 
   return (
     <main>
@@ -24,31 +26,31 @@ const App = () => {
           <Routes>
             {isLoggedIn ? (
               <Route path="/" element={<MainPage />}>
-                <Route index element={<Navigate to="/tasks" />} />
+                <Route index element={<Redirect to="/tasks" />} />
                 <Route path="tasks/*" element={<Task />} />
                 <Route path="profile/*" element={<Profile />} />
                 <Route path="search" element={<Search />} />
                 <Route path="notifications" element={<Notifications />} />
 
-                <Route path="login/*" element={<Navigate to="/profile" />} />
-                <Route path="signin/*" element={<Navigate to="/profile" />} />
-                <Route path="signup/*" element={<Navigate to="/profile" />} />
-                <Route path="register/*" element={<Navigate to="/profile" />} />
+                <Route path="login/*" element={<Redirect to="/profile" />} />
+                <Route path="signin/*" element={<Redirect to="/profile" />} />
+                <Route path="signup/*" element={<Redirect to="/profile" />} />
+                <Route path="register/*" element={<Redirect to="/profile" />} />
               </Route>
             ) : (
               <>
                 <Route path="/" element={<LandingPage />} />
-                <Route path="login" element={<Navigate to="/signin" />} />
+                <Route path="login" element={<Redirect to="/signin" />} />
                 <Route path="signin" element={<Signin />} />
                 <Route path="signup" element={<Signup />} />
                 <Route path="register" element={<Signup />} />
 
-                <Route path="tasks/*" element={<Navigate to="/login" />} />
-                <Route path="profile/*" element={<Navigate to="/login" />} />
-                <Route path="search/*" element={<Navigate to="/login" />} />
+                <Route path="tasks/*" element={<Redirect to="/login" />} />
+                <Route path="profile/*" element={<Redirect to="/login" />} />
+                <Route path="search/*" element={<Redirect to="/login" />} />
                 <Route
                   path="notifications/*"
-                  element={<Navigate to="/login" />}
+                  element={<Redirect to="/login" />}
                 />
               </>
             )}
@@ -56,12 +58,12 @@ const App = () => {
             <Route path="about-us" element={<AboutUs />} />
             <Route path="help-support" element={<HelpSupport />} />
             <Route path="404" element={<NotFound />} />
-            <Route path="*" element={<Navigate to="/404" />} />
+            <Route path="*" element={<Redirect to="/404" />} />
           </Routes>
         </BrowserRouter>
       </Suspense>
     </main>
-  );
-};
+  )
+}
 
-export default App;
+export default App

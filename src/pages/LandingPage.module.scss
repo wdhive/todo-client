@@ -1,9 +1,14 @@
-.landingContainer {
+.landingPage {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--background);
 
   & > *:last-child {
     flex: 1;
+  }
+
+  :global(.--) {
+    padding-inline: 3rem;
   }
 }

@@ -1,6 +1,6 @@
 .loading {
-  --gap: clamp(5.5rem, 16vw, 12rem);
-  --logoSize: clamp(5rem, 12vw, 10rem);
+  --gap: clamp(var(--s56), 16vw, var(--s120));
+  --logoSize: clamp(var(--s52), 12vw, var(--s96));
   background: var(--background);
   position: fixed;
   inset: 0;
@@ -15,11 +15,11 @@
   }
 }
 
-// ............................................................................
+// .............................................
 
 .loader {
   --color: hsl(var(--hue), var(--sat), var(--l4));
-  --size: clamp(var(--s0), 1.5vw, var(--s2));
+  --size: clamp(var(--s4), 1.5vw, var(--s12));
 
   color: var(--color);
   position: relative;

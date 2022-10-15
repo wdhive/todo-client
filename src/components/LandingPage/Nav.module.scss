@@ -1,14 +1,136 @@
-.logo {
+@use '@abs/break' as *;
+
+.nav,
+.logo,
+.listContainer,
+.linkList {
   display: flex;
+}
+
+.logo,
+.linkList {
+  gap: clamp(var(--s8), 1vw, var(--s12));
+}
+
+.nav {
+  justify-content: space-between;
+}
+
+.logo {
+  --size: clamp(var(--s36), 11vw, var(--s52));
+  align-items: center;
 
   svg {
-    --size: clamp(3.5rem, 10vw, 5rem);
     height: var(--size);
     width: var(--size);
   }
+
+  h1 {
+    color: var(--accent);
+    font-size: calc(var(--size) - 0.4rem);
+  }
 }
 
-.active {
-  pointer-events: none;
-  cursor: not-allowed;
+.listContainer,
+.linkList__primary {
+  flex-grow: 1;
+
+  @include break-down($lg) {
+    flex-direction: column;
+  }
+}
+
+nav.navActive .listContainer {
+  right: 0;
+}
+
+.listContainer {
+  @include break-down($lg) {
+    position: absolute;
+    top: 0;
+    right: -100vw;
+    z-index: 200;
+  }
+}
+
+.listBackdrop {
+  position: absolute;
+}
+
+.linkList {
+  list-style: none;
+  align-items: center;
+
+  &__primary {
+    justify-content: center;
+  }
+}
+
+.linkList{
+  @include break-down($lg) {
+    flex-direction: column-reverse;
+  }
+}
+
+.navLink,
+.navButton {
+  font-weight: bold;
+  color: var(--foreground);
+  border-radius: var(--s8);
+}
+
+.navLink {
+  text-decoration: none;
+  font-size: var(--s16);
+  padding: 1em 1.75em;
+
+  &:hover {
+    background-color: var(--c100);
+  }
+  &:active {
+    background-color: var(--c200);
+  }
+
+  &.active {
+    color: var(--accent);
+  }
+}
+
+.navButton {
+  font-size: clamp(var(--s16), 2vw, var(--s20));
+  padding: 0.5em 1.3em;
+  border: 0;
+
+  &__primary {
+    background-color: var(--c100);
+
+    &:hover {
+      background-color: var(--c200);
+    }
+    &:active {
+      background-color: var(--c300);
+    }
+  }
+
+  &__secondary {
+    color: var(--c000);
+    background-color: var(--accent);
+
+    &:hover {
+      background-color: var(--c500);
+    }
+    &:active {
+      background-color: var(--c700);
+    }
+  }
+}
+
+.linkToggle {
+  display: none;
+  position: relative;
+  z-index: 300;
+
+  @include break-down($lg) {
+    display: block;
+  }
 }
