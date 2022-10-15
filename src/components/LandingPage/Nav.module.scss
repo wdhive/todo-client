@@ -60,6 +60,7 @@ nav.navActive {
 
     width: 33rem;
     height: 100%;
+    padding-block-start: var(--s92);
 
     background-color: var(--background);
   }
@@ -78,7 +79,6 @@ nav.navActive {
 .linkList {
   list-style: none;
   align-items: center;
-  background: red;
 
   &__primary {
     justify-content: center;
