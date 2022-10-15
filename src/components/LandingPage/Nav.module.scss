@@ -45,6 +45,7 @@ nav.navActive {
   .listContainer {
     right: 0;
   }
+
   .listBackdrop {
     opacity: 0.95;
     pointer-events: all;
@@ -115,12 +116,17 @@ nav.navActive {
   &:hover {
     background-color: var(--c100);
   }
+
   &:active {
     background-color: var(--c200);
   }
 
   &.active {
     color: var(--accent);
+
+    @include break-down($lg) {
+      background-color: var(--c200);
+    }
   }
 }
 
@@ -135,6 +141,7 @@ nav.navActive {
     &:hover {
       background-color: var(--c200);
     }
+
     &:active {
       background-color: var(--c300);
     }
@@ -147,6 +154,7 @@ nav.navActive {
     &:hover {
       background-color: var(--c500);
     }
+
     &:active {
       background-color: var(--c700);
     }
