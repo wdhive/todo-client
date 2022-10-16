@@ -12,7 +12,7 @@
     "@com": "${workspaceFolder}/src/components",
     "@lay": "${workspaceFolder}/src/layouts",
     "@ass": "${workspaceFolder}/src/assests",
+    "@abs": "${workspaceFolder}/src/styles/abstracts",
     "@pages": "${workspaceFolder}/pages"
-  },
-  "gitdoc.enabled": true
+  }
 }
