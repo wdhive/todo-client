@@ -1,26 +1,36 @@
-import react, { Suspense } from 'react'
+import react, { Suspense, useRef } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Loading from './components/Loading'
-import NotFound from './pages/NotFound'
+import Loading from '@com/Loading'
+import NotFound from '@pages/NotFound'
+import * as utils from '@src/utils/utils'
 const Redirect = to => <Navigate replace to={to} />
 
-const LandingPage = react.lazy(() => import('./pages/LandingPage'))
-const HelpSupport = react.lazy(() => import('./pages/HelpSupport'))
-const AboutUs = react.lazy(() => import('./pages/AboutUs'))
-const Signin = react.lazy(() => import('./pages/Signin'))
-const Signup = react.lazy(() => import('./pages/Signup'))
+const LandingPage = react.lazy(() => import('@pages/LandingPage'))
+const HelpSupport = react.lazy(() => import('@pages/HelpSupport'))
+const AboutUs = react.lazy(() => import('@pages/AboutUs'))
+const Signin = react.lazy(() => import('@pages/Signin'))
+const Signup = react.lazy(() => import('@pages/Signup'))
 
-const MainPage = react.lazy(() => import('./pages/Main'))
-const Task = react.lazy(() => import('./pages/Task'))
-const Profile = react.lazy(() => import('./pages/Profile'))
-const Search = react.lazy(() => import('./pages/Main/Search'))
-const Notifications = react.lazy(() => import('./pages/Main/Notifications'))
+const MainPage = react.lazy(() => import('@pages/Main'))
+const Task = react.lazy(() => import('@pages/Task'))
+const Profile = react.lazy(() => import('@pages/Profile'))
+const Search = react.lazy(() => import('@pages/Main/Search'))
+const Notifications = react.lazy(() => import('@pages/Main/Notifications'))
 
 const App = () => {
   const isLoggedIn = false
+  const randomHue = useRef(utils.randomNumber(360))
 
   return (
     <main>
+      {/* {isLoggedIn || (
+        <style>
+          {`:root {
+        --hue: ${randomHue.current};
+         }`}
+        </style>
+      )} */}
+
       <Suspense fallback={<Loading />}>
         <BrowserRouter>
           <Routes>

@@ -28,14 +28,6 @@ const build = {
 
 const plugins = [react(), svgr.default()]
 
-const css = {
-  modules: {
-    generateScopedName: isDevMode
-      ? '[local]___[name]--[hash:base64:5]'
-      : '[hash:base64]',
-  },
-}
-
 const resolve = {
   alias: {
     '@src': path.resolve(__dirname, './src'),
@@ -52,5 +44,11 @@ export default defineConfig({
   server,
   build,
   plugins,
-  css,
+  css: {
+    modules: {
+      generateScopedName: isDevMode
+        ? '[local]___[name]--[hash:base64:5]'
+        : '[hash:base64]',
+    },
+  },
 })

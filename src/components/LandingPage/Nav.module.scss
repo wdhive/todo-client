@@ -1,4 +1,4 @@
-@use '@abs/break' as *;
+@use '@abs/core' as *;
 
 .nav,
 .logo,
@@ -9,25 +9,26 @@
 
 .logo,
 .linkList {
-  gap: clamp(var(--s8), 1vw, var(--s12));
+  gap: clamp($s8, 1vw, $s8);
 }
 
 .nav {
   justify-content: space-between;
+  padding-block: $s24;
 }
 
 .logo {
-  --size: clamp(var(--s36), 11vw, var(--s52));
+  $size: clamp($s32, 11vw, $s44);
   align-items: center;
 
   svg {
-    height: var(--size);
-    width: var(--size);
+    height: $size;
+    width: $size;
   }
 
   h1 {
     color: var(--accent);
-    font-size: calc(var(--size) - 0.4rem);
+    font-size: calc($size - 0.4rem);
   }
 }
 
@@ -42,28 +43,30 @@
 }
 
 nav.navActive {
-  .listContainer {
-    right: 0;
-  }
+  @include break-down($lg) {
+    .listContainer {
+      right: 0;
+    }
 
-  .listBackdrop {
-    opacity: 0.95;
-    pointer-events: all;
+    .listBackdrop {
+      opacity: 0.95;
+      pointer-events: all;
+    }
   }
 }
 
 .listContainer {
   @include break-down($lg) {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: -100vw;
     z-index: 200;
 
     width: min(33rem, 100%);
     min-height: 100vh;
-    padding-block-start: min(var(--s92), 10vmax);
-    padding-inline: var(--s24);
-    gap: var(--s48);
+    padding-block-start: min($s84, 10vmax);
+    padding-inline: $s20;
+    gap: $s40;
 
     background-color: var(--background);
   }
@@ -100,7 +103,7 @@ nav.navActive {
 .navButton {
   font-weight: bold;
   color: var(--foreground);
-  border-radius: var(--s8);
+  border-radius: $s8;
 
   @include break-down($lg) {
     width: 100%;
@@ -108,10 +111,11 @@ nav.navActive {
 }
 
 .navLink {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  font-size: var(--s16);
-  padding: 1em 1.75em;
+  font-size: $s16;
+  padding: 0.5em 1.5em;
 
   &:hover {
     background-color: var(--c100);
@@ -122,16 +126,22 @@ nav.navActive {
   }
 
   &.active {
+    pointer-events: none;
     color: var(--accent);
 
     @include break-down($lg) {
       background-color: var(--c200);
     }
   }
+
+  svg {
+    width: 1em;
+    margin-right: 0.8em;
+  }
 }
 
 .navButton {
-  font-size: clamp(var(--s16), 2vw, var(--s20));
+  font-size: $s16;
   padding: 0.5em 1.3em;
   border: 0;
 

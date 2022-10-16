@@ -1,3 +1,5 @@
+@use '@abs/core' as *;
+
 .hero {
   position: relative;
   background-image: linear-gradient(
@@ -12,20 +14,20 @@
 
   &__content {
     height: inherit;
-    width: 50%;
+    width: 47.5%;
   }
 
   &__title {
-    padding-block: var(--s44) var(--s24);
-    font-size: 5rem;
+    padding-block: $s40 $s24;
+    font-size: fluid($s40, $s64);
     line-height: 1.2;
   }
 
   &__description {
-    margin-bottom: var(--s48);
+    margin-bottom: $s48;
   }
 
   &__buttons {
-    margin-bottom: var(--s16);
+    margin-bottom: $s16;
   }
 }

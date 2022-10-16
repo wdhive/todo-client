@@ -1,7 +1,10 @@
+import { useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import css from './Nav.module.scss'
 import Logo from '@ass/logo/moderate-1.svg?component'
-import { useRef } from 'react'
+import HomeIcon from '@ass/icons/home.svg?component'
+import AboutIcon from '@ass/icons/about-us.svg?component'
+import HelpSupportIcon from '@ass/icons/help-&-support.svg?component'
 
 const LinkItem = ({ to, children }) => {
   const getClassName = navData =>
@@ -39,9 +42,18 @@ const Nav = () => {
 
       <div className={css.listContainer}>
         <div className={`${css.linkList} ${css.linkList__primary}`}>
-          <LinkItem to="/">Home</LinkItem>{' '}
-          <LinkItem to="/about-us">About</LinkItem>
-          <LinkItem to="/help-support">Help & Support</LinkItem>
+          <LinkItem to="/">
+            <HomeIcon />
+            <span>Home</span>
+          </LinkItem>
+          <LinkItem to="/about-us">
+            <AboutIcon />
+            <span>About</span>
+          </LinkItem>
+          <LinkItem to="/help-support">
+            <HelpSupportIcon />
+            <span>Help & Support</span>
+          </LinkItem>
         </div>
 
         <div className={`${css.linkList} ${css.linkList__cta}`}>

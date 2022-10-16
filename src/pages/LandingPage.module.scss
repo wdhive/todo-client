@@ -1,3 +1,5 @@
+@use '@abs/core' as *;
+
 .landingPage {
   min-height: 100vh;
   display: flex;
@@ -9,6 +11,6 @@
   }
 
   :global(.--) {
-    padding-inline: 3rem;
+    padding-inline: $s64;
   }
 }

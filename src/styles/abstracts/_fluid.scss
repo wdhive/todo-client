@@ -1,0 +1,32 @@
+@use 'sass:math';
+$REM: 10;
+
+@function px-to-rem($px) {
+  $rems: math.div($px, $REM) * 1rem;
+  @return $rems;
+}
+
+@function formatParam($value) {
+  $noUnit: math.div($value, ($value * 0 + 1));
+  @return $noUnit * $REM;
+}
+
+@function fluid($min-size, $max-size) {
+  $min-size: formatParam($min-size);
+  $max-size: formatParam($max-size);
+
+  $max-breakpoint: 1920;
+  $min-breakpoint: 400;
+  $unit: vw;
+
+  $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
+  $slope-to-unit: $slope * 100;
+  $intercept-rem: px-to-rem($min-size - $slope * $min-breakpoint);
+  $min-size-rem: px-to-rem($min-size);
+  $max-size-rem: px-to-rem($max-size);
+  @return clamp(
+    #{$min-size-rem},
+    #{$slope-to-unit}#{$unit} + #{$intercept-rem},
+    #{$max-size-rem}
+  );
+}
