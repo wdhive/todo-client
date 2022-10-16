@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Loading from '@com/Loading'
 import NotFound from '@pages/NotFound'
 import * as utils from '@src/utils/utils'
-const Redirect = to => <Navigate replace to={to} />
 
 const LandingPage = react.lazy(() => import('@pages/LandingPage'))
 const HelpSupport = react.lazy(() => import('@pages/HelpSupport'))
@@ -23,52 +22,77 @@ const App = () => {
 
   return (
     <main>
-      {/* {isLoggedIn || (
+      {isLoggedIn || (
         <style>
           {`:root {
         --hue: ${randomHue.current};
          }`}
         </style>
-      )} */}
+      )}
 
       <Suspense fallback={<Loading />}>
         <BrowserRouter>
           <Routes>
+            <Route path="about-us" element={<AboutUs />} />
+            <Route path="help-support" element={<HelpSupport />} />
+            <Route path="404" element={<NotFound />} />
+
             {isLoggedIn ? (
               <Route path="/" element={<MainPage />}>
-                <Route index element={<Redirect to="/tasks" />} />
+                <Route index element={<Navigate replace to="/tasks" />} />
                 <Route path="tasks/*" element={<Task />} />
                 <Route path="profile/*" element={<Profile />} />
                 <Route path="search" element={<Search />} />
                 <Route path="notifications" element={<Notifications />} />
 
-                <Route path="login/*" element={<Redirect to="/profile" />} />
-                <Route path="signin/*" element={<Redirect to="/profile" />} />
-                <Route path="signup/*" element={<Redirect to="/profile" />} />
-                <Route path="register/*" element={<Redirect to="/profile" />} />
+                <Route
+                  path="login/*"
+                  element={<Navigate replace to="/profile" />}
+                />
+                <Route
+                  path="signin/*"
+                  element={<Navigate replace to="/profile" />}
+                />
+                <Route
+                  path="signup/*"
+                  element={<Navigate replace to="/profile" />}
+                />
+                <Route
+                  path="register/*"
+                  element={<Navigate replace to="/profile" />}
+                />
               </Route>
             ) : (
               <>
                 <Route path="/" element={<LandingPage />} />
-                <Route path="login" element={<Redirect to="/signin" />} />
+                <Route
+                  path="login"
+                  element={<Navigate replace to="/signin" />}
+                />
                 <Route path="signin" element={<Signin />} />
                 <Route path="signup" element={<Signup />} />
                 <Route path="register" element={<Signup />} />
 
-                <Route path="tasks/*" element={<Redirect to="/login" />} />
-                <Route path="profile/*" element={<Redirect to="/login" />} />
-                <Route path="search/*" element={<Redirect to="/login" />} />
+                <Route
+                  path="tasks/*"
+                  element={<Navigate replace to="/login" />}
+                />
+                <Route
+                  path="profile/*"
+                  element={<Navigate replace to="/login" />}
+                />
+                <Route
+                  path="search/*"
+                  element={<Navigate replace to="/login" />}
+                />
                 <Route
                   path="notifications/*"
-                  element={<Redirect to="/login" />}
+                  element={<Navigate replace to="/login" />}
                 />
               </>
             )}
 
-            <Route path="about-us" element={<AboutUs />} />
-            <Route path="help-support" element={<HelpSupport />} />
-            <Route path="404" element={<NotFound />} />
-            <Route path="*" element={<Redirect to="/404" />} />
+            <Route path="*" element={<Navigate replace to="/404" />} />
           </Routes>
         </BrowserRouter>
       </Suspense>

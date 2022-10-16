@@ -28,16 +28,11 @@ const userSlice = createSlice({
     },
 
     logout(state) {
-      state.isLoggedIn = false
-      state.isGuestUser = false
-      state.user = null
+      Object.assign(state, initialState)
     },
 
     updateProfile(state, { payload }) {
-      for (let key in payload) {
-        const value = payload[key]
-        state.user[key] = value
-      }
+      Object.assign(state, payload)
     },
   },
 })

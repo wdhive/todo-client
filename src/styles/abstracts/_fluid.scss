@@ -11,13 +11,10 @@ $REM: 10;
   @return $noUnit * $REM;
 }
 
-@function fluid($min-size, $max-size) {
+@function fluid($min-size, $max-size, $max-breakpoint: 1920) {
+  $min-breakpoint: 300;
   $min-size: formatParam($min-size);
   $max-size: formatParam($max-size);
-
-  $max-breakpoint: 1920;
-  $min-breakpoint: 400;
-  $unit: vw;
 
   $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
   $slope-to-unit: $slope * 100;
@@ -26,7 +23,7 @@ $REM: 10;
   $max-size-rem: px-to-rem($max-size);
   @return clamp(
     #{$min-size-rem},
-    #{$slope-to-unit}#{$unit} + #{$intercept-rem},
+    #{$slope-to-unit}vw + #{$intercept-rem},
     #{$max-size-rem}
   );
 }

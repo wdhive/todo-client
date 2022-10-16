@@ -1,3 +1,7 @@
 @forward './sizes';
 @forward './fluid';
 @forward './break';
+
+@function v($name) {
+  @return var(--#{$name});
+}

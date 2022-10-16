@@ -1,16 +1,14 @@
-@use '@abs/core' as *;
-
 .landingPage {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--background);
+  background-color: v(background);
 
   & > *:last-child {
     flex: 1;
   }
 
   :global(.--) {
-    padding-inline: $s64;
+    padding-inline: fluid($s12, $s72, 1000);
   }
 }

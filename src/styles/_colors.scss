@@ -13,7 +13,6 @@
 }
 
 :root {
-  // shades
   --c000: hsl(var(--hue), var(--sat), var(--l1));
   --c100: hsl(var(--hue), var(--sat), var(--l2));
   --c200: hsl(var(--hue), var(--sat), var(--l3));
@@ -28,7 +27,6 @@
   --foreground: var(--c800);
   --accent: var(--c600);
 
-  // logo
   --logo-bg: var(--accent);
   --logo-c1: hsl(var(--hue), var(--sat), var(--l2));
   --logo-c2: hsl(var(--hue), var(--sat), var(--l4));

@@ -1,0 +1,41 @@
+%common {
+  display: block;
+  width: 100%;
+  outline: 1px solid v(c200);
+  border: none;
+  border-radius: $s4;
+  padding: $s6 $s12;
+}
+
+.inputGroup {
+  display: flex;
+  gap: $s12;
+  padding-block: $s8;
+
+  .inputGroup {
+    margin-top: 0;
+  }
+
+  & > * {
+    flex: 1;
+  }
+
+  p {
+    margin-bottom: $s4;
+    font-size: $s14;
+    font-weight: 500;
+  }
+
+  input {
+    color: v(c500);
+    background: v(c100);
+    @extend %common;
+  }
+}
+
+.button {
+  @extend %common;
+  background: v(c500);
+  color: v(background);
+  margin-top: $s14;
+}

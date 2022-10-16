@@ -1,0 +1,21 @@
+.form {
+  &__title {
+    font-size: $s32;
+    margin-bottom: 0.7em;
+    color: v(accent);
+  }
+
+  input {
+    width: 100%;
+  }
+
+  a {
+    color: v(accent);
+  }
+}
+
+.statusLabel {
+  font-size: 1.5rem;
+  margin-top: $s10;
+  text-align: center;
+}

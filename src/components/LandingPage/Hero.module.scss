@@ -1,33 +1,134 @@
-@use '@abs/core' as *;
-
 .hero {
-  position: relative;
+  overflow: hidden; // apatoto
   background-image: linear-gradient(
       90deg,
-      var(--background) 0%,
-      var(--background) 100%
+      v(background) 0%,
+      v(background) 100%
     ),
     url(@ass/bg-left.png);
   background-repeat: no-repeat;
   background-position: bottom left;
   background-blend-mode: hue;
 
+  :global(.--) {
+    padding-block: $s32;
+    display: flex;
+    gap: $s64;
+
+    @include break-down($md) {
+      flex-direction: column;
+    }
+
+    & > * {
+      flex: 1;
+    }
+  }
+
   &__content {
-    height: inherit;
-    width: 47.5%;
+    @include break-down($md);
+    padding-top: $s44;
+  }
+
+  &__quote {
+    width: 85%;
+    margin-block-end: $s56;
+
+    @include break-down($lg) {
+      width: 100%;
+    }
   }
 
   &__title {
-    padding-block: $s40 $s24;
-    font-size: fluid($s40, $s64);
+    font-size: fluid($s36, $s48);
     line-height: 1.2;
+    letter-spacing: 0.03em;
+    color: v(foreground);
+    margin-block-end: fluid($s16, $s20);
   }
 
   &__description {
-    margin-bottom: $s48;
+    font-size: $s16;
   }
 
   &__buttons {
-    margin-bottom: $s16;
+    display: flex;
+    gap: $s12;
+    margin-block-end: $s12;
+
+    button {
+      font-size: $s16;
+    }
+
+    @include break-down($md) {
+      justify-content: center;
+    }
+  }
+
+  &__status {
+    font-size: fluid($s12, $s16);
+  }
+
+  &__description,
+  &__status {
+    letter-spacing: 0.05em;
+
+    @include break-down($md) {
+      letter-spacing: 0.025em;
+    }
+  }
+
+  .showOffContainer {
+    background: red;
+  }
+
+  .showOff {
+    position: relative;
+
+    &__eye {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      background-color: v(c300);
+      width: $s92;
+      height: $s84;
+
+      border-radius: 200vw 200vw 0 0;
+    }
+
+    &__desktop {
+      position: absolute;
+      top: 8rem;
+
+      aspect-ratio: 18 / 9;
+      height: 360px;
+
+      background-color: v(c200);
+      border-radius: $s12;
+    }
+
+    &__eye,
+    &__desktop {
+      @include break-down($md) {
+        display: none;
+      }
+    }
+
+    &__mobile {
+      position: absolute;
+      top: 15rem;
+      left: 8rem;
+
+      aspect-ratio: 1 / 2;
+      height: 380px;
+
+      background-color: v(c400);
+      border-radius: $s8;
+
+      @include break-down($md) {
+        top: 0;
+        left: 0;
+      }
+    }
   }
 }

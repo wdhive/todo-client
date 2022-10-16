@@ -1,8 +1,6 @@
-@use '@abs/core' as *;
-
 .loading {
   $gap: clamp($s56, 16vw, $s120);
-  background: var(--background);
+  background: v(background);
   position: fixed;
   inset: 0;
   display: grid;
@@ -20,7 +18,7 @@
 // .............................................
 
 .loader {
-  color: hsl(var(--hue), var(--sat), var(--l4));
+  color: hsl(v(hue), v(sat), v(l4));
   position: relative;
   font-size: clamp($s4, 1.5vw, $s12);
   background: currentColor;

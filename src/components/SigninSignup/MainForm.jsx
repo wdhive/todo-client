@@ -1,0 +1,27 @@
+import { Link } from 'react-router-dom'
+import css from './MainForm.module.scss'
+import { SubmitBtn } from './FormUtils'
+
+const MainForm = ({ type, children, className, ...props }) => {
+  const loginMode = type === 'signin'
+  const title = loginMode ? 'Log in' : 'Sign up'
+  const linkLabel = !loginMode ? 'Log in' : 'Sign up'
+  const linkUrl = loginMode ? '/signup' : '/signin'
+  const statusLabel = loginMode ? "Don't" : 'Already'
+
+  return (
+    <form {...props} className={`${className || ''} ${css.form}`}>
+      <p className={css.form__title}>{title}</p>
+
+      {children}
+
+      <SubmitBtn>{title}</SubmitBtn>
+
+      <p className={css.statusLabel}>
+        {statusLabel} have an account? <Link to={linkUrl}>{linkLabel}</Link>
+      </p>
+    </form>
+  )
+}
+
+export default MainForm

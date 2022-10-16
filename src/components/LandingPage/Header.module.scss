@@ -1,5 +1,3 @@
-@use '@abs/core' as *;
-
 .nav,
 .logo,
 .listContainer,
@@ -9,7 +7,7 @@
 
 .logo,
 .linkList {
-  gap: clamp($s8, 1vw, $s8);
+  gap: fluid($s8, $s12);
 }
 
 .nav {
@@ -18,7 +16,7 @@
 }
 
 .logo {
-  $size: clamp($s32, 11vw, $s44);
+  $size: fluid($s32, $s36);
   align-items: center;
 
   svg {
@@ -27,7 +25,7 @@
   }
 
   h1 {
-    color: var(--accent);
+    color: v(accent);
     font-size: calc($size - 0.4rem);
   }
 }
@@ -68,7 +66,7 @@ nav.navActive {
     padding-inline: $s20;
     gap: $s40;
 
-    background-color: var(--background);
+    background-color: v(background);
   }
 }
 
@@ -76,7 +74,7 @@ nav.navActive {
   position: fixed;
   inset: 0;
   z-index: 200;
-  background-color: var(--c800);
+  background-color: v(c800);
   background-blend-mode: multiply;
   opacity: 0;
   pointer-events: none;
@@ -102,7 +100,7 @@ nav.navActive {
 .navLink,
 .navButton {
   font-weight: bold;
-  color: var(--foreground);
+  color: v(foreground);
   border-radius: $s8;
 
   @include break-down($lg) {
@@ -118,25 +116,28 @@ nav.navActive {
   padding: 0.5em 1.5em;
 
   &:hover {
-    background-color: var(--c100);
+    background-color: v(c100);
   }
 
   &:active {
-    background-color: var(--c200);
+    background-color: v(c200);
   }
 
   &.active {
     pointer-events: none;
-    color: var(--accent);
+    color: v(accent);
 
     @include break-down($lg) {
-      background-color: var(--c200);
+      background-color: v(c200);
     }
   }
 
   svg {
     width: 1em;
     margin-right: 0.8em;
+    path {
+      fill: currentColor;
+    }
   }
 }
 
@@ -146,27 +147,27 @@ nav.navActive {
   border: 0;
 
   &__primary {
-    background-color: var(--c100);
+    background-color: v(c100);
 
     &:hover {
-      background-color: var(--c200);
+      background-color: v(c200);
     }
 
     &:active {
-      background-color: var(--c300);
+      background-color: v(c300);
     }
   }
 
   &__secondary {
-    color: var(--c000);
-    background-color: var(--accent);
+    color: v(c000);
+    background-color: v(accent);
 
     &:hover {
-      background-color: var(--c500);
+      background-color: v(c500);
     }
 
     &:active {
-      background-color: var(--c700);
+      background-color: v(c700);
     }
   }
 }

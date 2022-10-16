@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "template": "node ./create-component.cjs"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",

@@ -1,16 +1,11 @@
 import css from './LandingPage.module.scss'
-import Nav from '@com/LandingPage/Nav'
+import Header from '@com/LandingPage/Header'
 import Hero from '@com/LandingPage/Hero'
 
 const LandingPage = () => {
   return (
     <div className={css.landingPage}>
-      <header>
-        <div className="--">
-          <Nav />
-        </div>
-      </header>
-
+      <Header />
       <Hero />
     </div>
   )

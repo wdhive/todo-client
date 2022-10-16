@@ -1,0 +1,69 @@
+.main {
+  min-height: 100vh;
+  background-color: v(c400);
+  padding: fluid($s12, $s64) fluid($s12, $s120);
+  display: grid;
+
+  @include break-down($xs) {
+    padding: fluid($s4, $s120);
+  }
+
+  @include break-down($xxs) {
+    padding: 0;
+  }
+
+  :global(.--) {
+    background-color: v(background);
+    display: flex;
+    border-radius: $s8;
+    overflow: hidden;
+    max-width: 100rem;
+
+    @include break-down($md) {
+      max-width: 50rem;
+      width: 100%;
+    }
+
+    @include break-down($xxs) {
+      border-radius: 0;
+    }
+
+    & > * {
+      flex: 1;
+      padding: fluid($s24, $s48);
+
+      @include break-down($xxs) {
+        padding: fluid($s14, $s48);
+      }
+    }
+  }
+}
+
+.hero {
+  background-image: linear-gradient(90deg, v(foreground) 0%, v(foreground) 100%),
+    url(@ass/login-signup-hero.png);
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: v(c100);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include break-down($md) {
+    display: none;
+  }
+
+  &__logo {
+    color: v(c300);
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+  }
+
+  &__title {
+  }
+
+  &__links {
+  }
+}
