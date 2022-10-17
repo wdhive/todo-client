@@ -1,7 +1,9 @@
 import react, { Suspense } from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import ErrorBoundary from '@src/ErrorBoundary'
 import Loading from '@com/Loading'
+import ErrorHandler from '@com/ErrorHandler'
 import NotFound from '@pages/NotFound'
 
 const LandingPage = react.lazy(() => import('@pages/LandingPage'))
@@ -30,86 +32,91 @@ const App = () => {
         </style>
       )}
 
-      <Suspense fallback={<Loading />}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="about-us" element={<AboutUs />} />
-            <Route path="help-support" element={<HelpSupport />} />
+      <BrowserRouter>
+        <Suspense fallback={<Loading />}>
+          <ErrorBoundary element={<ErrorHandler />}>
+            <Routes>
+              <Route path="about-us" element={<AboutUs />} />
+              <Route path="help-support" element={<HelpSupport />} />
 
-            <Route path="about" element={<Navigate replace to="/about-us" />} />
-            <Route path="us" element={<Navigate replace to="/about-us" />} />
-            <Route
-              path="help"
-              element={<Navigate replace to="/help-support" />}
-            />
-            <Route
-              path="support"
-              element={<Navigate replace to="/help-support" />}
-            />
+              <Route
+                path="about"
+                element={<Navigate replace to="/about-us" />}
+              />
+              <Route path="us" element={<Navigate replace to="/about-us" />} />
+              <Route
+                path="help"
+                element={<Navigate replace to="/help-support" />}
+              />
+              <Route
+                path="support"
+                element={<Navigate replace to="/help-support" />}
+              />
 
-            {isLoggedIn ? (
-              <Route path="/" element={<MainPage />}>
-                <Route index element={<Navigate replace to="/tasks" />} />
-                <Route path="tasks/*" element={<Task />} />
-                <Route path="profile/*" element={<Profile />} />
-                <Route path="search" element={<Search />} />
-                <Route path="notifications" element={<Notifications />} />
+              {isLoggedIn ? (
+                <Route path="/" element={<MainPage />}>
+                  <Route index element={<Navigate replace to="/tasks" />} />
+                  <Route path="tasks/*" element={<Task />} />
+                  <Route path="profile/*" element={<Profile />} />
+                  <Route path="search" element={<Search />} />
+                  <Route path="notifications" element={<Notifications />} />
 
-                <Route
-                  path="login/*"
-                  element={<Navigate replace to="/profile" />}
-                />
-                <Route
-                  path="signin/*"
-                  element={<Navigate replace to="/profile" />}
-                />
-                <Route
-                  path="signup/*"
-                  element={<Navigate replace to="/profile" />}
-                />
-                <Route
-                  path="register/*"
-                  element={<Navigate replace to="/profile" />}
-                />
-              </Route>
-            ) : (
-              <>
-                <Route path="/" element={<LandingPage />} />
-                <Route
-                  path="login"
-                  element={<Navigate replace to="/signin" />}
-                />
-                <Route
-                  path="register"
-                  element={<Navigate replace to="/signup" />}
-                />
+                  <Route
+                    path="login/*"
+                    element={<Navigate replace to="/profile" />}
+                  />
+                  <Route
+                    path="signin/*"
+                    element={<Navigate replace to="/profile" />}
+                  />
+                  <Route
+                    path="signup/*"
+                    element={<Navigate replace to="/profile" />}
+                  />
+                  <Route
+                    path="register/*"
+                    element={<Navigate replace to="/profile" />}
+                  />
+                </Route>
+              ) : (
+                <>
+                  <Route path="/" element={<LandingPage />} />
+                  <Route
+                    path="login"
+                    element={<Navigate replace to="/signin" />}
+                  />
+                  <Route
+                    path="register"
+                    element={<Navigate replace to="/signup" />}
+                  />
 
-                <Route path="signin" element={<Signin />} />
-                <Route path="signup" element={<Signup />} />
+                  <Route path="signin" element={<Signin />} />
+                  <Route path="signup" element={<Signup />} />
 
-                <Route
-                  path="tasks/*"
-                  element={<Navigate replace to="/login" />}
-                />
-                <Route
-                  path="profile/*"
-                  element={<Navigate replace to="/login" />}
-                />
-                <Route
-                  path="search/*"
-                  element={<Navigate replace to="/login" />}
-                />
-                <Route
-                  path="notifications/*"
-                  element={<Navigate replace to="/login" />}
-                />
-              </>
-            )}
+                  <Route
+                    path="tasks/*"
+                    element={<Navigate replace to="/login" />}
+                  />
+                  <Route
+                    path="profile/*"
+                    element={<Navigate replace to="/login" />}
+                  />
+                  <Route
+                    path="search/*"
+                    element={<Navigate replace to="/login" />}
+                  />
+                  <Route
+                    path="notifications/*"
+                    element={<Navigate replace to="/login" />}
+                  />
+                </>
+              )}
 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </Suspense>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </ErrorBoundary>
+        </Suspense>
+      </BrowserRouter>
     </main>
   )
 }

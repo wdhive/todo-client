@@ -1,5 +1,5 @@
 import css from './Hero.module.scss'
-import LoginBtn from './LoginBtn'
+import SignupBtn from './SignupBtn'
 import ProximityEffect from './ProximityEffect'
 
 const Hero = () => {
@@ -20,7 +20,7 @@ const Hero = () => {
 
           <div className={css.hero__cta}>
             <div className={css.hero__buttons}>
-              <LoginBtn label="Signup" />
+              <SignupBtn label="Signup" />
               <button>Continue anyways</button>
             </div>
             <p className={css.hero__status}>
