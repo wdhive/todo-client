@@ -1,5 +1,6 @@
 import css from './Hero.module.scss'
 import LoginBtn from './LoginBtn'
+import ProximityEffect from './ProximityEffect'
 
 const Hero = () => {
   return (
@@ -29,7 +30,9 @@ const Hero = () => {
         </div>
 
         <div className={css.showOff}>
-          <div className={css.showOff__eye}></div>
+          <div className={css.showOff__eye}>
+            <ProximityEffect />
+          </div>
           <div className={css.showOff__desktop}></div>
           <div className={css.showOff__mobile}></div>
         </div>

@@ -22,13 +22,13 @@ const App = () => {
 
   return (
     <main>
-      {isLoggedIn || (
+      {/* {isLoggedIn || (
         <style>
           {`:root {
         --hue: ${randomHue.current};
          }`}
         </style>
-      )}
+      )} */}
 
       <Suspense fallback={<Loading />}>
         <BrowserRouter>

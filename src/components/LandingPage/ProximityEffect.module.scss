@@ -1,0 +1,37 @@
+.face {
+  background-color: v(c300);
+  border-radius: 200vw 200vw 0 0;
+  height: 100%;
+  box-shadow: 0 0 $s28 v(c300);
+  position: relative;
+}
+
+.eyeBox {
+  width: 83%;
+  display: flex;
+  gap: 8.5%;
+  position: absolute;
+  top: 30%;
+  left: -10%;
+}
+
+.eye {
+  background: v(background);
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  &::before {
+    $size: 35%;
+    $position: 16%;
+    content: '';
+    display: block;
+    width: $size;
+    height: $size;
+    position: absolute;
+    top: $position;
+    left: $position;
+    background: v(foreground);
+    border-radius: 50%;
+  }
+}
