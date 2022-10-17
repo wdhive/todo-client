@@ -25,15 +25,14 @@ const App = () => {
       {themeHue && !isLoggedIn && (
         <style>
           {`:root {
-        --hue: ${themeHue};
-         }`}
+              --hue: ${themeHue};
+            }`}
         </style>
       )}
 
       <Suspense fallback={<Loading />}>
         <BrowserRouter>
           <Routes>
-            <Route path="404" element={<NotFound />} />
             <Route path="about-us" element={<AboutUs />} />
             <Route path="help-support" element={<HelpSupport />} />
 
@@ -107,7 +106,7 @@ const App = () => {
               </>
             )}
 
-            <Route path="*" element={<Navigate replace to="/404" />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </Suspense>
