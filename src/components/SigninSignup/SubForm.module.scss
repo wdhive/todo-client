@@ -1,1 +1,9 @@
-
+.form {
+  &__header {
+    color: v(accent);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $s44;
+  }
+}

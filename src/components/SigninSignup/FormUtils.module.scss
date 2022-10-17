@@ -16,6 +16,11 @@
     margin-top: 0;
   }
 
+  &__input {
+    display: flex;
+    gap: $s10;
+  }
+
   & > * {
     flex: 1;
   }
@@ -38,4 +43,5 @@
   background: v(c500);
   color: v(background);
   margin-top: $s14;
+  font-size: fluid($s14, $s16);
 }

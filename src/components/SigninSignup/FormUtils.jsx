@@ -4,16 +4,16 @@ export const SubmitBtn = ({ children }) => {
   return <button className={css.button}>{children}</button>
 }
 
-export const InputGroup = ({ label, children }) => {
+export const Group = ({ label, children }) => {
   return (
     <div className={css.inputGroup}>
       {label ? (
         <div>
           <p>{label}</p>
-          {children}
+          <div className={css.inputGroup__input}>{children}</div>
         </div>
       ) : (
-        children
+        <div className={css.inputGroup__input}>{children}</div>
       )}
     </div>
   )

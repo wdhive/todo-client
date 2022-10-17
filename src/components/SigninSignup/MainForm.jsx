@@ -2,7 +2,18 @@ import { Link } from 'react-router-dom'
 import css from './MainForm.module.scss'
 import { SubmitBtn } from './FormUtils'
 
-const MainForm = ({ type, children, className, ...props }) => {
+const MainForm = ({
+  type,
+  children,
+  className,
+  onSubmit = () => {},
+  ...props
+}) => {
+  const handleSubmit = e => {
+    e.preventDefault()
+    onSubmit(e)
+  }
+
   const loginMode = type === 'signin'
   const title = loginMode ? 'Log in' : 'Sign up'
   const linkLabel = !loginMode ? 'Log in' : 'Sign up'
@@ -10,7 +21,11 @@ const MainForm = ({ type, children, className, ...props }) => {
   const statusLabel = loginMode ? "Don't" : 'Already'
 
   return (
-    <form {...props} className={`${className || ''} ${css.form}`}>
+    <form
+      {...props}
+      onSubmit={handleSubmit}
+      className={`${className || ''} ${css.form}`}
+    >
       <p className={css.form__title}>{title}</p>
 
       {children}

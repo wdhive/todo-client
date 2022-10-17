@@ -1,25 +1,14 @@
-import { Link } from 'react-router-dom'
-import css from './Signin.module.scss'
 import SigninSignup from '@lay/SigninSignup'
-import MainForm from '@com/SigninSignup/MainForm'
-import { InputGroup as Group } from '@com/SigninSignup/FormUtils'
+import SigninForm from '@com/SigninSignup/Signin'
+import ResetPassword from '@com/SigninSignup/ResetPassword'
+import EmailVerify from '@com/SigninSignup/EmailVerify'
 
 const Signin = () => {
   return (
     <SigninSignup>
-      <MainForm type="signin">
-        <Group label="Email or Username">
-          <input type="text" />
-        </Group>
-
-        <Group label="Password">
-          <input type="password" />
-        </Group>
-
-        <Link style={{ fontSize: '1.5rem' }} to="/forget-password">
-          Forget password?
-        </Link>
-      </MainForm>
+      {/* <SigninForm /> */}
+      {/* <ResetPassword /> */}
+      <EmailVerify />
     </SigninSignup>
   )
 }

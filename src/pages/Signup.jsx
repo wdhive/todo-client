@@ -1,32 +1,12 @@
-import css from './Signup.module.scss'
 import SigninSignup from '@lay/SigninSignup'
-import MainForm from '@com/SigninSignup/MainForm'
-import { InputGroup as Group } from '@com/SigninSignup/FormUtils'
+import SignupForm from '@com/SigninSignup/Signup'
+import EmailVerify from '@com/SigninSignup/EmailVerify'
 
 const Signup = () => {
   return (
     <SigninSignup>
-      <MainForm type="signup">
-        {/* <div className={css.imageGroup}>
-          <input type="file" name="" id="" />
-        </div> */}
-
-        <Group label="Full Name*">
-          <input type="text" />
-        </Group>
-
-        <Group label="Username*">
-          <input type="text" />
-        </Group>
-
-        <Group label="Password*">
-          <input type="text" />
-        </Group>
-
-        <Group label="Confirm Password*">
-          <input type="text" />
-        </Group>
-      </MainForm>
+      <SignupForm />
+      <EmailVerify />
     </SigninSignup>
   )
 }
