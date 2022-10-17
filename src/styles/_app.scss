@@ -13,3 +13,8 @@ body {
 #Root {
   min-height: 100vh;
 }
+
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}

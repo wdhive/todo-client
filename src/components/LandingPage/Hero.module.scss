@@ -45,13 +45,17 @@
   &__title {
     font-size: fluid($s36, $s48);
     line-height: 1.2;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.015em;
     color: v(foreground);
     margin-block-end: fluid($s16, $s20);
     font-family: 'Montserrat', sans-serif;
 
     @include break-down($md) {
       margin-bottom: $s20;
+    }
+
+    @include break-down($sm) {
+      letter-spacing: 0;
     }
   }
 
@@ -135,7 +139,6 @@
         position: relative;
         top: 4rem;
         left: 4rem;
-        margin-bottom: 4rem;
       }
 
       @include break-down($sm) {
@@ -145,6 +148,7 @@
         height: unset;
         width: calc(25rem + 15vw);
         max-width: 90%;
+        margin-bottom: -$s120;
       }
     }
   }
