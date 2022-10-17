@@ -9,7 +9,6 @@ const HelpSupport = react.lazy(() => import('@pages/HelpSupport'))
 const AboutUs = react.lazy(() => import('@pages/AboutUs'))
 const Signin = react.lazy(() => import('@pages/Signin'))
 const Signup = react.lazy(() => import('@pages/Signup'))
-const ForgetPassword = react.lazy(() => import('@pages/ForgetPassword'))
 
 const MainPage = react.lazy(() => import('@pages/Main'))
 const Task = react.lazy(() => import('@pages/Task'))
