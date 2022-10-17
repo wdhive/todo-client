@@ -1,6 +1,7 @@
 {
   "path-autocomplete.pathMappings": {
     "@src": "${folder}/src",
+    "@store": "${folder}/src/store",
     "@com": "${folder}/src/components",
     "@lay": "${folder}/src/layouts",
     "@ass": "${folder}/src/assests",
@@ -9,6 +10,7 @@
   },
   "path-intellisense.pathMappings": {
     "@src": "${workspaceFolder}/src",
+    "@store": "${workspaceFolder}/src/store",
     "@com": "${workspaceFolder}/src/components",
     "@lay": "${workspaceFolder}/src/layouts",
     "@ass": "${workspaceFolder}/src/assests",

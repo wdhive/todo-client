@@ -4,6 +4,7 @@
   height: 100%;
   box-shadow: 0 0 $s28 v(c300);
   position: relative;
+  cursor: pointer;
 }
 
 .eyeBox {
@@ -23,7 +24,7 @@
 
   &::before {
     $size: 35%;
-    $position: 16%;
+    $position: 15%;
     content: '';
     display: block;
     width: $size;

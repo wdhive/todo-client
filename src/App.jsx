@@ -1,8 +1,8 @@
-import react, { Suspense, useRef } from 'react'
+import { useSelector } from 'react-redux'
+import react, { Suspense, useRef, useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Loading from '@com/Loading'
 import NotFound from '@pages/NotFound'
-import * as utils from '@src/utils/utils'
 
 const LandingPage = react.lazy(() => import('@pages/LandingPage'))
 const HelpSupport = react.lazy(() => import('@pages/HelpSupport'))
@@ -18,17 +18,17 @@ const Notifications = react.lazy(() => import('@pages/Main/Notifications'))
 
 const App = () => {
   const isLoggedIn = false
-  const randomHue = useRef(utils.randomNumber(360))
+  const themeHue = useSelector(state => state.settings.hue)
 
   return (
     <main>
-      {/* {isLoggedIn || (
+      {isLoggedIn || (
         <style>
           {`:root {
-        --hue: ${randomHue.current};
+        --hue: ${themeHue};
          }`}
         </style>
-      )} */}
+      )}
 
       <Suspense fallback={<Loading />}>
         <BrowserRouter>
