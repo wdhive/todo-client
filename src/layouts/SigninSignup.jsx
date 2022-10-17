@@ -19,6 +19,7 @@ const SigninSignup = ({ children }) => {
 
           <div className={css.hero__links}>Link</div>
         </div>
+
         <div className={css.form}>{children}</div>
       </div>
     </main>

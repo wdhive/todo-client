@@ -21,6 +21,7 @@
     border-radius: $s8;
     overflow: hidden;
     max-width: 105rem;
+    min-height: 53rem;
 
     @include break-down($md) {
       max-width: 50rem;
@@ -34,7 +35,7 @@
 
     & > * {
       flex: 1;
-      padding: fluid($s24, $s48);
+      padding: fluid($s24, $s48) fluid($s28, $s52);
 
       @include break-down($xxs) {
         padding: fluid($s14, $s48);
@@ -70,4 +71,8 @@
 
   &__links {
   }
+}
+
+.form {
+  margin-bottom: $s8;
 }
