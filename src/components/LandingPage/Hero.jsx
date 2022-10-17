@@ -1,6 +1,5 @@
 import css from './Hero.module.scss'
 import LoginBtn from './LoginBtn'
-import SignupBtn from './SignupBtn'
 
 const Hero = () => {
   return (

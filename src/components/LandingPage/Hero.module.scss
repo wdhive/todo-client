@@ -107,7 +107,7 @@
 
     &__eye,
     &__desktop {
-      @include break-down($md) {
+      @include break-down($sm) {
         display: none;
       }
     }
@@ -124,9 +124,19 @@
       border-radius: $s8;
 
       @include break-down($md) {
-        // position: unset;
+        position: relative;
+        top: 4rem;
+        left: 4rem;
+        margin-bottom: 4rem;
+      }
+
+      @include break-down($sm) {
         top: 0;
         left: 0;
+        margin-inline: auto;
+        height: unset;
+        width: calc(25rem + 15vw);
+        max-width: 90%;
       }
     }
   }
