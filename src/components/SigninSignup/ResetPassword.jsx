@@ -2,9 +2,9 @@ import css from './ResetPassword.module.scss'
 import SubForm from './SubForm'
 import { Group } from './FormUtils'
 
-const ForgetPassword = props => {
+const ResetPassword = props => {
   return (
-    <SubForm props={props} buttonLabel="Change Password">
+    <SubForm {...props} buttonLabel="Change Password">
       <Group label="New Password">
         <input type="password" name="" id="" />
       </Group>
@@ -16,4 +16,4 @@ const ForgetPassword = props => {
   )
 }
 
-export default ForgetPassword
+export default ResetPassword

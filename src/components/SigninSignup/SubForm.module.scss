@@ -5,5 +5,35 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: $s44;
+    font-size: $s20;
+
+    button,
+    p {
+      padding: $s6;
+    }
+
+    button {
+      background: none;
+      border: none;
+      border-radius: 50%;
+
+      svg {
+        height: $s24;
+        width: $s24;
+
+        path {
+          fill: currentColor;
+        }
+      }
+    }
+
+    p {
+    }
   }
+}
+
+.statusText {
+  margin-top: $s8;
+  font-size: fluid($s14, $s16);
+  text-align: center;
 }

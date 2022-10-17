@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom'
 import { Group } from './FormUtils'
 import MainForm from './MainForm'
 
-const Signin = props => {
+const Signin = ({ onForgetPass = () => {}, ...props }) => {
   return (
     <MainForm {...props} type="signin">
       <Group label="Email or Username">
@@ -13,12 +12,22 @@ const Signin = props => {
         <input type="password" />
       </Group>
 
-      <Link style={{ fontSize: '1.5rem' }} to="/forget-password">
+      <button
+        onClick={onForgetPass}
+        type="button"
+        style={{
+          color: 'var(--accent)',
+          fontSize: '1.5rem',
+          textDecoration: 'underline',
+          cursor: 'pointer',
+          background: 'none',
+          border: 'none',
+        }}
+      >
         Forget password?
-      </Link>
+      </button>
     </MainForm>
   )
 }
 
 export default Signin
-

@@ -1,0 +1,37 @@
+.image {
+  $size: 8rem;
+  border-radius: 50%;
+  height: $size;
+  width: $size;
+  margin-inline: auto;
+  background-color: v(c300);
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+
+  svg {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    path {
+      fill: v(c400);
+    }
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  input[type='file'] {
+    position: absolute;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+  }
+}

@@ -1,12 +1,13 @@
 import css from './SubForm.module.scss'
 import { SubmitBtn } from './FormUtils'
-import { Link } from 'react-router-dom'
+import BackIcon from '@ass/icons/back.svg?component'
 
 const MainForm = ({
   children,
   className,
   statusText,
   buttonLabel = 'Submit',
+  onBack = () => {},
   onSubmit = () => {},
   ...props
 }) => {
@@ -22,8 +23,10 @@ const MainForm = ({
       className={`${className || ''} ${css.form}`}
     >
       <div className={css.form__header}>
-        <button>Hell</button>
-        <button>Go Back</button>
+        <button type="button" onClick={onBack}>
+          <BackIcon />
+        </button>
+        <p>Go Back</p>
       </div>
 
       {children}

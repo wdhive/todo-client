@@ -6,7 +6,7 @@ const Signup = () => {
   return (
     <SigninSignup>
       <SignupForm />
-      <EmailVerify />
+      {/* <EmailVerify resendTime="hello world" /> */}
     </SigninSignup>
   )
 }

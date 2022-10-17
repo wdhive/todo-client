@@ -17,7 +17,7 @@
     display: flex;
     border-radius: $s8;
     overflow: hidden;
-    max-width: 100rem;
+    max-width: 90rem;
 
     @include break-down($md) {
       max-width: 50rem;
