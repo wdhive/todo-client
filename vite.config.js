@@ -1,14 +1,37 @@
 import path from 'path'
 import { defineConfig } from 'vite'
+import { VitePWA } from 'vite-plugin-pwa'
 import react from '@vitejs/plugin-react'
 import svgr from '@honkhonk/vite-plugin-svgr'
 const isDevMode = process.env.NODE_ENV === 'development'
-
 const config = {
-  assestPath: 'assets',
+  static: 'static',
 }
 
+const plugins = [react(), svgr.default()]
+isDevMode ||
+  plugins.push(
+    VitePWA({
+      manifest: false,
+      workbox: {
+        globPatterns: ['/'],
+        runtimeCaching: [
+          {
+            handler: 'CacheFirst',
+            urlPattern: ({ sameOrigin }) => sameOrigin,
+          },
+        ],
+      },
+    })
+  )
+
 export default defineConfig({
+  plugins,
+
+  server: {
+    port: 3000,
+  },
+
   resolve: {
     alias: {
       '@src': path.resolve(__dirname, './src'),
@@ -20,23 +43,7 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, './src/pages'),
     },
   },
-  server: {
-    port: 3000,
-  },
-  build: {
-    rollupOptions: {
-      output: {
-        assetFileNames: file => {
-          const ext = file.name.split('.').at(-1)
-          const outputFolder = ext === 'css' || ext === 'js' ? '' : 'files/'
-          return `${config.assestPath}/${outputFolder}[name]-[hash][extname]`
-        },
-        chunkFileNames: `${config.assestPath}/chunk-[name]-[hash].js`,
-        entryFileNames: `${config.assestPath}/[name]-[hash].js`,
-      },
-    },
-  },
-  plugins: [react(), svgr.default()],
+
   css: {
     modules: {
       generateScopedName: isDevMode
@@ -47,6 +54,20 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `@use '@abs/core' as *;\n`,
+      },
+    },
+  },
+
+  build: {
+    rollupOptions: {
+      output: {
+        assetFileNames: file => {
+          const ext = file.name.split('.').at(-1)
+          const outputFolder = ext === 'css' || ext === 'js' ? '' : 'assests/'
+          return `${config.static}/${outputFolder}[name]-[hash][extname]`
+        },
+        chunkFileNames: `${config.static}/chunk-[name]-[hash].js`,
+        entryFileNames: `${config.static}/[name]-[hash].js`,
       },
     },
   },
