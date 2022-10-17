@@ -22,17 +22,23 @@
 
   &__content {
     padding-top: $s44;
+
     @include break-down($md) {
+      padding-top: $s12;
       text-align: center;
     }
   }
 
   &__quote {
     width: 85%;
-    margin-block-end: $s56;
+    margin-bottom: $s56;
 
     @include break-down($lg) {
       width: 100%;
+    }
+
+    @include break-down($md) {
+      margin-bottom: $s52;
     }
   }
 
@@ -42,16 +48,22 @@
     letter-spacing: 0.03em;
     color: v(foreground);
     margin-block-end: fluid($s16, $s20);
+    font-family: 'Montserrat', sans-serif;
+
+    @include break-down($md) {
+      margin-bottom: $s20;
+    }
   }
 
   &__description {
-    font-size: $s16;
+    font-size: fluid($s14, $s16);
+    opacity: 0.9;
   }
 
   &__buttons {
     display: flex;
     gap: $s12;
-    margin-block-end: $s12;
+    margin-bottom: $s12;
 
     button {
       font-size: $s16;

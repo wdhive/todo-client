@@ -7,7 +7,7 @@ const getRandomHue = () => {
 
 const initialState = {
   theme: 'light',
-  hue: getRandomHue(),
+  hue: false,
 }
 
 const settingsSlice = createSlice({

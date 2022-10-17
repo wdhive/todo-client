@@ -5,6 +5,10 @@
   box-shadow: 0 0 $s28 v(c300);
   position: relative;
   cursor: pointer;
+
+  &:hover .eyeBox::before {
+    bottom: 0;
+  }
 }
 
 .eyesContainer {
@@ -15,10 +19,6 @@
   top: 30%;
   left: -10%;
   border-radius: 100vmax;
-
-  &:hover .eyeBox::before {
-    bottom: 0;
-  }
 }
 
 .eyeBox {
@@ -37,7 +37,7 @@
     inset: 0;
     bottom: 100%;
     background: v(c500);
-    transition: bottom 0.3s $timingFn;
+    transition: bottom 0.25s $timingFn;
   }
 }
 

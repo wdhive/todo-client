@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <main>
-      {isLoggedIn || (
+      {themeHue && !isLoggedIn && (
         <style>
           {`:root {
         --hue: ${themeHue};

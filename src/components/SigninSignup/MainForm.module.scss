@@ -1,6 +1,7 @@
 .form {
   &__title {
     font-size: $s32;
+    line-height: 1.2;
     margin-bottom: 0.7em;
     color: v(accent);
   }
