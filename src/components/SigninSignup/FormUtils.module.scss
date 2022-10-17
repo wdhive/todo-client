@@ -1,10 +1,10 @@
 %common {
   display: block;
   width: 100%;
-  outline: 1px solid v(c200);
-  border: none;
+  border: 1px solid v(c200);
   border-radius: $s4;
   padding: $s6 $s12;
+  outline-color: v(c300);
 }
 
 .inputGroup {

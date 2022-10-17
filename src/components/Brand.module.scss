@@ -1,0 +1,16 @@
+.logo {
+  $size: fluid($s32, $s36);
+  display: flex;
+  gap: fluid($s8, $s12);
+  align-items: center;
+
+  svg {
+    height: $size;
+    width: $size;
+  }
+
+  h1 {
+    color: v(accent);
+    font-size: calc($size - 0.4rem);
+  }
+}

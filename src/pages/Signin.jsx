@@ -8,7 +8,7 @@ const Signin = () => {
   const [step, setStep] = useState(1)
   const [forgetEmailSent, setForgetEmailSent] = useState(false)
   const handleForgetPassword = () => setStep(2)
-  const handleBack = () => setStep(curr => --curr)
+  const handleBack = () => setStep(1)
 
   const handleSigninSubmit = () => {
     console.log('Signin')

@@ -5,6 +5,7 @@ import Logo from '@ass/logo/moderate-1.svg?component'
 import HomeIcon from '@ass/icons/home.svg?component'
 import AboutIcon from '@ass/icons/about-us.svg?component'
 import HelpSupportIcon from '@ass/icons/help-&-support.svg?component'
+import Brand from '@com/Brand'
 import LoginBtn from './LoginBtn'
 import SignupBtn from './SignupBtn'
 
@@ -33,10 +34,7 @@ const Nav = () => {
     <header>
       <div className="wrapper">
         <nav ref={navRef} className={css.nav}>
-          <div className={css.logo}>
-            <Logo />
-            <h1>todo</h1>
-          </div>
+          <Brand />
 
           <button className={css.linkToggle} onClick={handleToggleNav}>
             Toggle

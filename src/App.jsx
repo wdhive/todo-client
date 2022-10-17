@@ -1,5 +1,5 @@
+import react, { Suspense } from 'react'
 import { useSelector } from 'react-redux'
-import react, { Suspense, useRef, useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Loading from '@com/Loading'
 import NotFound from '@pages/NotFound'
@@ -33,9 +33,20 @@ const App = () => {
       <Suspense fallback={<Loading />}>
         <BrowserRouter>
           <Routes>
+            <Route path="404" element={<NotFound />} />
             <Route path="about-us" element={<AboutUs />} />
             <Route path="help-support" element={<HelpSupport />} />
-            <Route path="404" element={<NotFound />} />
+
+            <Route path="about" element={<Navigate replace to="/about-us" />} />
+            <Route path="us" element={<Navigate replace to="/about-us" />} />
+            <Route
+              path="help"
+              element={<Navigate replace to="/help-support" />}
+            />
+            <Route
+              path="support"
+              element={<Navigate replace to="/help-support" />}
+            />
 
             {isLoggedIn ? (
               <Route path="/" element={<MainPage />}>

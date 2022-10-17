@@ -20,7 +20,7 @@
     display: flex;
     border-radius: $s8;
     overflow: hidden;
-    max-width: 105rem;
+    max-width: 110rem;
     min-height: 53rem;
 
     @include break-down($md) {
@@ -35,7 +35,7 @@
 
     & > * {
       flex: 1;
-      padding: fluid($s24, $s48) fluid($s28, $s52);
+      padding: fluid($s24, $s72);
 
       @include break-down($xxs) {
         padding: fluid($s14, $s48);
@@ -45,31 +45,80 @@
 }
 
 .hero {
-  background-image: linear-gradient(90deg, v(foreground) 0%, v(foreground) 100%),
-    url(@ass/login-signup-hero.png);
-  background-position: center;
-  background-size: cover;
-  background-blend-mode: multiply;
-  color: v(c100);
+  // Skip this section if we don't have enough time
+  --background-image: url(@ass/login-signup-hero.png);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: v(c100);
+  position: relative;
+  isolation: isolate;
+  background-image: linear-gradient(90deg, v(c100) 0%, v(c100) 100%),
+    v(background-image);
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+
+  &::before {
+    z-index: -1;
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        90deg,
+        v(foreground) 0%,
+        v(foreground) 100%
+      ),
+      v(background-image);
+    background-position: inherit;
+    background-size: inherit;
+    background-blend-mode: inherit;
+    opacity: 0.9;
+  }
 
   @include break-down($md) {
     display: none;
   }
 
   &__logo {
-    color: v(c300);
-    display: flex;
-    align-items: center;
-    gap: 0.7em;
+    margin-bottom: $s32;
+
+    h1 {
+      color: v(c300) !important;
+    }
   }
 
   &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: $s40;
+    font-weight: 700;
   }
 
   &__links {
+    display: flex;
+    align-items: center;
+    gap: $s24;
+
+    a {
+      font-size: $s14;
+      color: v(background);
+      text-decoration: none;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .githubLink {
+      margin-left: auto;
+
+      svg {
+        height: $s20;
+
+        path {
+          fill: currentColor;
+        }
+      }
+    }
   }
 }
 
