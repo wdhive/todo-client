@@ -44,9 +44,13 @@ const ProximityEffect = () => {
 
   return (
     <div className={css.face} onClick={handleRandomTheme}>
-      <div ref={anchorRef} className={css.eyeBox}>
-        <div className={css.eye} style={style} />
-        <div className={css.eye} style={style} />
+      <div ref={anchorRef} className={css.eyesContainer}>
+        <div className={css.eyeBox}>
+          <div className={css.eye} style={style} />
+        </div>
+        <div className={css.eyeBox}>
+          <div className={css.eye} style={style} />
+        </div>
       </div>
     </div>
   )

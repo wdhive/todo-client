@@ -7,7 +7,7 @@
   cursor: pointer;
 }
 
-.eyeBox {
+.eyesContainer {
   width: 83%;
   display: flex;
   gap: 8.5%;
@@ -15,13 +15,34 @@
   top: 30%;
   left: -10%;
   border-radius: 100vmax;
+
+  &:hover .eyeBox::before {
+    bottom: 0;
+  }
+}
+
+.eyeBox {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: v(background);
+  border-radius: 50%;
+
+  &::before {
+    $timingFn: cubic-bezier(0.11, 0, 0.5, 0);
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    bottom: 100%;
+    background: v(c500);
+    transition: bottom 0.3s $timingFn;
+  }
 }
 
 .eye {
-  background: v(background);
-  width: 100%;
   aspect-ratio: 1;
-  border-radius: 50%;
 
   &::before {
     $size: 35%;
