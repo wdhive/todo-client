@@ -6,7 +6,7 @@ import settingsSlice from '@store/slice/settings'
 const ProximityEffect = () => {
   const dispatch = useDispatch()
   const anchorRef = useRef()
-  const [rotateDeg, setRotateDeg] = useState(90)
+  const [rotateDeg, setRotateDeg] = useState(25)
 
   const handleRandomTheme = () => {
     dispatch(settingsSlice.setRandomHue())
