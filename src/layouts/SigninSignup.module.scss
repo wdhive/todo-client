@@ -3,6 +3,8 @@
   background-color: v(c400);
   padding: fluid($s12, $s64) fluid($s12, $s120);
   display: grid;
+  place-items: center;
+  height: fit-content;
 
   @include break-down($xs) {
     padding: fluid($s4, $s120);
@@ -10,6 +12,7 @@
 
   @include break-down($xxs) {
     padding: 0;
+    display: block;
   }
 
   :global(.wrapper) {
@@ -17,7 +20,7 @@
     display: flex;
     border-radius: $s8;
     overflow: hidden;
-    max-width: 90rem;
+    max-width: 105rem;
 
     @include break-down($md) {
       max-width: 50rem;
@@ -26,6 +29,7 @@
 
     @include break-down($xxs) {
       border-radius: 0;
+      min-height: 100vh;
     }
 
     & > * {
