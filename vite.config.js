@@ -19,6 +19,7 @@ isDevMode ||
           {
             handler: 'CacheFirst',
             urlPattern: ({ sameOrigin }) => sameOrigin,
+            options: { cacheName: 'static-files' },
           },
         ],
       },
