@@ -31,7 +31,7 @@ const Nav = () => {
 
   return (
     <header>
-      <div className="--">
+      <div className="wrapper">
         <nav ref={navRef} className={css.nav}>
           <div className={css.logo}>
             <Logo />

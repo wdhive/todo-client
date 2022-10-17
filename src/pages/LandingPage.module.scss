@@ -8,7 +8,7 @@
     flex: 1;
   }
 
-  :global(.--) {
+  :global(.wrapper) {
     padding-inline: fluid($s12, $s72, 1000);
   }
 }

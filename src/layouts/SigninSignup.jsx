@@ -4,7 +4,7 @@ import Logo from '@ass/logo/moderate-1.svg?component'
 const SigninSignup = ({ children }) => {
   return (
     <main className={css.main}>
-      <div className="--">
+      <div className="wrapper">
         <div className={css.hero}>
           <div className={css.hero__top}>
             <div className={css.hero__logo}>

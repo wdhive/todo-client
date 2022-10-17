@@ -10,7 +10,7 @@
   background-position: bottom left;
   background-blend-mode: hue;
 
-  :global(.--) {
+  :global(.wrapper) {
     padding-block: $s32;
     display: flex;
     gap: $s64;

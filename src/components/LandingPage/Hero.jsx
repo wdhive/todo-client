@@ -5,7 +5,7 @@ import SignupBtn from './SignupBtn'
 const Hero = () => {
   return (
     <div className={css.hero}>
-      <div className="--">
+      <div className="wrapper">
         <div className={css.hero__content}>
           <div className={css.hero__quote}>
             <h2 className={css.hero__title}>
