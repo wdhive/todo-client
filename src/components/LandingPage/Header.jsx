@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import css from './Header.module.scss'
 import Logo from '@ass/logo/moderate-1.svg?component'
 import HomeIcon from '@ass/icons/home.svg?component'
+import HamburgerIcon from '@ass/icons/hamburger.svg?component'
 import AboutIcon from '@ass/icons/about-us.svg?component'
 import HelpSupportIcon from '@ass/icons/help-&-support.svg?component'
 import Brand from '@com/Brand'
@@ -11,7 +12,7 @@ import SignupBtn from './SignupBtn'
 
 const LinkItem = ({ to, children }) => {
   const getClassName = navData =>
-    `${css.navLink} ${navData.isActive ? css.active || '' : ''}`
+    `button ${css.navLink} ${navData.isActive ? css.active || '' : ''}`
 
   return (
     <NavLink to={to} className={getClassName}>
@@ -37,7 +38,7 @@ const Nav = () => {
           <Brand />
 
           <button className={css.linkToggle} onClick={handleToggleNav}>
-            Toggle
+            <HamburgerIcon />
           </button>
 
           <div className={css.listBackdrop} onClick={handleCloseNav} />

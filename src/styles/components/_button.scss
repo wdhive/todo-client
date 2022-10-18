@@ -1,6 +1,32 @@
+@use '@abs/core' as *;
+
 .button {
+  font-weight: bold;
+  padding: 0.5em 1.5em;
+  border-radius: 0.5em;
+
+  @include animate('background-color');
+
   &__primary {
+    background-color: v(accent);
+    color: v(c000);
+
+    &:hover {
+      background-color: v(c450);
+    }
+    &:active {
+      background-color: v(c500);
+    }
   }
   &__secondary {
+    background-color: v(c100);
+    color: v(foreground);
+
+    &:hover {
+      background-color: v(c200);
+    }
+    &:active {
+      background-color: v(c300);
+    }
   }
 }

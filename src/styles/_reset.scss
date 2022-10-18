@@ -1,3 +1,5 @@
+@use '@abs/core' as *;
+
 *,
 *::after,
 *::before {
@@ -38,10 +40,36 @@ input[type='button'] {
 
 input,
 button,
+.button,
+.focus,
 textarea,
 select {
   font: inherit;
   color: inherit;
+  outline-width: 0;
+  outline-color: var(--accent);
+  outline-style: solid;
+  @include animate('outline', fast);
+  border: 0;
+}
+
+input,
+textarea,
+select {
+  &:focus {
+    outline-width: 0.15em;
+  }
+}
+
+button,
+.button,
+.focus {
+  &:focus-visible {
+    --size: 0.2em;
+    outline-width: var(--size);
+    outline-style: dotted;
+    outline-offset: var(--size);
+  }
 }
 
 img,

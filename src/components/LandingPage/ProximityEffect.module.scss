@@ -1,3 +1,5 @@
+@use '@abs/core' as *;
+
 .face {
   background-color: v(c300);
   border-radius: 200vw 200vw 0 0;
@@ -5,9 +7,15 @@
   box-shadow: 0 0 $s28 v(c300);
   position: relative;
   cursor: pointer;
+  top: 0;
+  @include animate("top");
 
-  &:hover .eyeBox::before {
-    bottom: 0;
+  &:hover {
+    top: 1rem;
+
+    .eyeBox::before {
+      bottom: 0;
+    }
   }
 }
 

@@ -1,0 +1,11 @@
+:root {
+  --fast: 100ms;
+  --moderate: 300ms;
+  --slow: 500ms;
+
+  @media (prefers-reduced-motion: reduce) {
+    --fast: 50ms;
+    --moderate: 100ms;
+    --slow: 150ms;
+  }
+}
