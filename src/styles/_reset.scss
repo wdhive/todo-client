@@ -49,7 +49,7 @@ select {
   outline-width: 0;
   outline-color: var(--accent);
   outline-style: solid;
-  @include animate('outline', fast);
+  @include transition('outline', fast);
   border: 0;
 }
 

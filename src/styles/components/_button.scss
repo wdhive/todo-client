@@ -5,7 +5,7 @@
   padding: 0.5em 1.5em;
   border-radius: 0.5em;
 
-  @include animate('background-color');
+  @include transition('background-color');
 
   &__primary {
     background-color: v(accent);

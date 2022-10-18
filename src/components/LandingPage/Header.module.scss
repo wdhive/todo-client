@@ -93,7 +93,7 @@
     padding: $s20;
     gap: $s40;
     background-color: v(background);
-    @include animate('right', slow);
+    @include transition('right', slow);
   }
 }
 
@@ -105,7 +105,7 @@
   background-blend-mode: multiply;
   opacity: 0;
   pointer-events: none;
-  @include animate('opacity', slow);
+  @include transition('opacity', slow);
 }
 
 .linkList {
@@ -120,7 +120,7 @@
     align-items: flex-start;
 
     &__cta {
-      flex-direction: column-reverse;
+      flex-direction: column;
     }
   }
 }
@@ -175,8 +175,8 @@
   @include break-down($lg) {
     display: block;
   }
-  
-  svg{
+
+  svg {
     height: 100%;
     width: 100%;
   }

@@ -99,6 +99,13 @@
   .showOff {
     position: relative;
 
+    &__eye,
+    &__desktop {
+      @include break-down($sm) {
+        display: none;
+      }
+    }
+
     &__eye {
       position: absolute;
       top: 0;
@@ -107,34 +114,34 @@
       height: $s84;
     }
 
+    &__mobile,
     &__desktop {
+      --box-shadow: #000;
+      background-position: center;
+      background-size: cover;
+      background-color: var(--box-shadow);
+      box-shadow: 0 0 $s8 v(box-shadow);
+    }
+
+    &__desktop {
+      --box-shadow: #{v(c200)};
       position: absolute;
       top: 8rem;
-
       aspect-ratio: 18 / 9;
       height: 36rem;
-
-      background-color: v(c200);
       border-radius: $s12;
     }
 
-    &__eye,
-    &__desktop {
-      @include break-down($sm) {
-        display: none;
-      }
-    }
-
     &__mobile {
+      --box-shadow: #{v(c300)};
       position: absolute;
       top: 15rem;
       left: 8rem;
-
       aspect-ratio: 1 / 2;
       height: 38rem;
-
-      background-color: v(c400);
       border-radius: $s8;
+      border: fluid($s2, $s4) solid v(foreground);
+      border-block-width: $s6;
 
       @include break-down($md) {
         position: relative;

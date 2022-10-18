@@ -8,7 +8,7 @@
   position: relative;
   cursor: pointer;
   top: 0;
-  @include animate('top');
+  @include transition('top');
 
   &:hover,
   &.hide {
@@ -45,7 +45,7 @@
     z-index: 1;
     inset: 0;
     bottom: 100%;
-    background: v(c500);
+    background: v(c450);
     transition: bottom 0.25s $timingFn;
   }
 }

@@ -18,6 +18,10 @@ const settingsSlice = createSlice({
       state.hue = getRandomHue()
     },
 
+    async setHue(state) {
+      state.hue = getRandomHue()
+    },
+
     updateSettigns(state, { payload }) {
       Object.assign(state, payload)
     },

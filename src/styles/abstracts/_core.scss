@@ -7,7 +7,7 @@
   @return var(--#{$name});
 }
 
-@mixin animate($props, $duration: moderate, $timing: ease) {
+@mixin transition($props, $duration: moderate, $timing: ease) {
   transition-property: string.unquote($props);
   transition-duration: var(--#{$duration});
   transition-timing-function: $timing;

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import css from './Header.module.scss'
 import HomeIcon from '@ass/icons/home.svg?component'
@@ -23,15 +23,23 @@ const LinkItem = ({ to, children }) => {
 
 const Nav = () => {
   const dialougeRef = useRef()
+  const [mobileMode, setMobileMode] = useState(false)
   const handleCloseDialog = () => dialougeRef.current.close()
   const handleShowDialog = () => dialougeRef.current.showModal()
 
   useEffect(() => {
-    // DANGER: Sync this with css
+    // DANGER: Sync this with css ($lg)
     const media = matchMedia('(max-width: 62em)')
     const handleMediaChange = ({ matches }) => {
-      matches || handleCloseDialog()
+      if (matches) {
+        setMobileMode(true)
+      } else {
+        handleCloseDialog()
+        setMobileMode(false)
+      }
     }
+
+    handleMediaChange(media)
     media.addEventListener('change', handleMediaChange)
     return () => media.removeEventListener('change', handleMediaChange)
   }, [])
@@ -70,8 +78,17 @@ const Nav = () => {
               </div>
 
               <div className={`${css.linkList} ${css.linkList__cta}`}>
-                <LoginBtn label="Login" />
-                <SignupBtn label="Start for free" />
+                {mobileMode ? (
+                  <>
+                    <SignupBtn label="Start for free" />
+                    <LoginBtn label="Login" />
+                  </>
+                ) : (
+                  <>
+                    <LoginBtn label="Login" />
+                    <SignupBtn label="Start for free" />
+                  </>
+                )}
               </div>
             </div>
           </dialog>

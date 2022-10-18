@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import css from './LoginBtn.module.scss'
 
 const LoginBtn = ({ label = 'Login' }) => {
   const navigate = useNavigate()
