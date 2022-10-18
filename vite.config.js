@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import react from '@vitejs/plugin-react'
 import svgr from '@honkhonk/vite-plugin-svgr'
-const isDevMode = process.env.NODE_ENV === 'development'
+const isDevMode = process.env.NODE_ENV !== 'production'
 const config = {
   static: 'static',
 }
@@ -30,19 +30,20 @@ export default defineConfig({
   plugins,
 
   server: {
+    host: 'localhost',
     port: 3000,
   },
 
   resolve: {
     alias: {
-      '@src': path.resolve(__dirname, './src'),
-      '@hooks': path.resolve(__dirname, './src/hooks'),
-      '@store': path.resolve(__dirname, './src/store'),
-      '@com': path.resolve(__dirname, './src/components'),
-      '@lay': path.resolve(__dirname, './src/layouts'),
-      '@ass': path.resolve(__dirname, './src/assests'),
-      '@abs': path.resolve(__dirname, './src/styles/abstracts'),
-      '@pages': path.resolve(__dirname, './src/pages'),
+      '@src': path.resolve('./src'),
+      '@hooks': path.resolve('./src/hooks'),
+      '@store': path.resolve('./src/store'),
+      '@com': path.resolve('./src/components'),
+      '@lay': path.resolve('./src/layouts'),
+      '@ass': path.resolve('./src/assests'),
+      '@abs': path.resolve('./src/styles/abstracts'),
+      '@pages': path.resolve('./src/pages'),
     },
   },
 

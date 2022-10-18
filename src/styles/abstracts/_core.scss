@@ -1,7 +1,14 @@
+@use 'sass:string';
 @forward './sizes';
 @forward './fluid';
 @forward './break';
 
 @function v($name) {
   @return var(--#{$name});
+}
+
+@mixin animate($props, $duration: fast, $timing: ease) {
+  transition-property: string.unquote($props);
+  transition-duration: var(--#{$duration});
+  transition-timing-function: $timing;
 }
