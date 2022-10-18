@@ -11,6 +11,7 @@
 }
 
 .nav {
+  align-items: center;
   justify-content: space-between;
   padding-block: fluid($s16, $s24);
 }
@@ -40,34 +41,59 @@
   }
 }
 
-nav.navActive {
-  @include break-down($lg) {
-    .listContainer {
-      right: 0;
-    }
+.dialog {
+  flex: 1;
+  background: none;
+  border: none;
+  position: relative;
+  z-index: 1;
 
-    .listBackdrop {
-      opacity: 0.95;
-      pointer-events: all;
+  &:not([open]) {
+    display: block;
+  }
+
+  &::backdrop {
+    display: none;
+  }
+
+  @include break-down($lg) {
+    position: fixed;
+    inset: 0;
+    transition: visibility 0s ease var(--slow);
+
+    &:not([open]) {
+      visibility: hidden;
+    }
+  }
+
+  &[open] {
+    @include break-down($lg) {
+      transition: none;
+
+      .listContainer {
+        right: 0;
+      }
+
+      .listBackdrop {
+        opacity: 0.95;
+        pointer-events: all;
+      }
     }
   }
 }
 
 .listContainer {
-  @include animate('right', slow);
   @include break-down($lg) {
     position: fixed;
     top: 0;
     right: -100vw;
     z-index: 200;
-
     width: min(33rem, 100%);
     min-height: 100vh;
-    padding-block-start: min($s84, 10vmax);
-    padding-inline: $s20;
+    padding: $s20;
     gap: $s40;
-
     background-color: v(background);
+    @include animate('right', slow);
   }
 }
 
@@ -139,13 +165,29 @@ nav.navActive {
   }
 }
 
-.linkToggle {
-  position: relative;
-  z-index: 300;
-  background: transparent;
+.showDialog,
+.closeDialog {
+  background: none;
   display: none;
+  width: 3rem;
+  height: 3rem;
 
   @include break-down($lg) {
     display: block;
   }
+  
+  svg{
+    height: 100%;
+    width: 100%;
+  }
+
+  path {
+    stroke: v(accent);
+  }
+}
+
+.closeDialog {
+  padding: 0.5rem;
+  margin-right: 1rem;
+  align-self: end;
 }

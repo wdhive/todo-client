@@ -1,9 +1,9 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import css from './Header.module.scss'
-import Logo from '@ass/logo/moderate-1.svg?component'
 import HomeIcon from '@ass/icons/home.svg?component'
 import HamburgerIcon from '@ass/icons/hamburger.svg?component'
+import CrossIcon from '@ass/icons/cross.svg?component'
 import AboutIcon from '@ass/icons/about-us.svg?component'
 import HelpSupportIcon from '@ass/icons/help-&-support.svg?component'
 import Brand from '@com/Brand'
@@ -22,48 +22,59 @@ const LinkItem = ({ to, children }) => {
 }
 
 const Nav = () => {
-  const navRef = useRef()
-  const handleToggleNav = () => {
-    navRef.current.classList.toggle(css.navActive)
-  }
+  const dialougeRef = useRef()
+  const handleCloseDialog = () => dialougeRef.current.close()
+  const handleShowDialog = () => dialougeRef.current.showModal()
 
-  const handleCloseNav = () => {
-    navRef.current.classList.remove(css.navActive)
-  }
+  useEffect(() => {
+    // DANGER: Sync this with css
+    const media = matchMedia('(max-width: 62em)')
+    const handleMediaChange = ({ matches }) => {
+      matches || handleCloseDialog()
+    }
+    media.addEventListener('change', handleMediaChange)
+    return () => media.removeEventListener('change', handleMediaChange)
+  }, [])
 
   return (
     <header>
       <div className="wrapper">
-        <nav ref={navRef} className={css.nav}>
+        <nav className={css.nav}>
           <Brand />
 
-          <button className={css.linkToggle} onClick={handleToggleNav}>
+          <button className={css.showDialog} onClick={handleShowDialog}>
             <HamburgerIcon />
           </button>
 
-          <div className={css.listBackdrop} onClick={handleCloseNav} />
+          <dialog className={css.dialog} ref={dialougeRef}>
+            <div className={css.listBackdrop} onClick={handleCloseDialog} />
 
-          <div className={css.listContainer}>
-            <div className={`${css.linkList} ${css.linkList__primary}`}>
-              <LinkItem to="/">
-                <HomeIcon />
-                <span>Home</span>
-              </LinkItem>
-              <LinkItem to="/about-us">
-                <AboutIcon />
-                <span>About</span>
-              </LinkItem>
-              <LinkItem to="/help-support">
-                <HelpSupportIcon />
-                <span>Help & Support</span>
-              </LinkItem>
-            </div>
+            <div className={css.listContainer}>
+              <button className={css.closeDialog} onClick={handleCloseDialog}>
+                <CrossIcon />
+              </button>
 
-            <div className={`${css.linkList} ${css.linkList__cta}`}>
-              <LoginBtn label="Login" />
-              <SignupBtn label="Start for free" />
+              <div className={`${css.linkList} ${css.linkList__primary}`}>
+                <LinkItem to="/">
+                  <HomeIcon />
+                  <span>Home</span>
+                </LinkItem>
+                <LinkItem to="/about-us">
+                  <AboutIcon />
+                  <span>About</span>
+                </LinkItem>
+                <LinkItem to="/help-support">
+                  <HelpSupportIcon />
+                  <span>Help & Support</span>
+                </LinkItem>
+              </div>
+
+              <div className={`${css.linkList} ${css.linkList__cta}`}>
+                <LoginBtn label="Login" />
+                <SignupBtn label="Start for free" />
+              </div>
             </div>
-          </div>
+          </dialog>
         </nav>
       </div>
     </header>
