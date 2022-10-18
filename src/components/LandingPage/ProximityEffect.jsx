@@ -7,6 +7,7 @@ const ProximityEffect = () => {
   const dispatch = useDispatch()
   const anchorRef = useRef()
   const [rotateDeg, setRotateDeg] = useState(25)
+  const [showEffect, setShowEffect] = useState(false)
 
   const handleRandomTheme = () => {
     dispatch(settingsSlice.setRandomHue())
@@ -14,16 +15,12 @@ const ProximityEffect = () => {
 
   useEffect(() => {
     const anchor = anchorRef.current
+    let rect, anchorX, anchorY
 
-    const listnenMouseMove = e => {
-      const rect = anchor.getBoundingClientRect()
-      const anchorX = rect.left + rect.width / 2
-      const anchorY = rect.top + rect.height / 2
-
-      const mouseX = e.clientX
-      const mouseY = e.clientY
-      const deg = angle(mouseX, mouseY, anchorX, anchorY)
-      setRotateDeg(deg)
+    const getInfo = () => {
+      rect = anchor.getBoundingClientRect()
+      anchorX = rect.left + rect.width / 2
+      anchorY = rect.top + rect.height / 2
     }
 
     const angle = (cx, cy, ex, ey) => {
@@ -34,8 +31,27 @@ const ProximityEffect = () => {
       return deg
     }
 
+    const listnenMouseMove = e => {
+      const mouseX = e.clientX
+      const mouseY = e.clientY
+      const deg = angle(mouseX, mouseY, anchorX, anchorY)
+      setRotateDeg(deg)
+    }
+
+    const listnerMouseEnter = () => setShowEffect(true)
+    const listnerMouseLeave = () => setShowEffect(false)
+
+    getInfo()
+    window.addEventListener('resize', getInfo)
     document.addEventListener('mousemove', listnenMouseMove)
-    return () => document.removeEventListener('mousemove', listnenMouseMove)
+    document.addEventListener('mouseenter', listnerMouseEnter)
+    document.addEventListener('mouseleave', listnerMouseLeave)
+    return () => {
+      window.removeEventListener('resize', getInfo)
+      document.removeEventListener('mousemove', listnenMouseMove)
+      document.removeEventListener('mouseenter', listnerMouseEnter)
+      document.removeEventListener('mouseleave', listnerMouseLeave)
+    }
   }, [])
 
   const style = {
@@ -43,7 +59,10 @@ const ProximityEffect = () => {
   }
 
   return (
-    <div className={css.face} onClick={handleRandomTheme}>
+    <div
+      className={`${css.face} ${showEffect ? '' : css.hide}`}
+      onClick={handleRandomTheme}
+    >
       <div ref={anchorRef} className={css.eyesContainer}>
         <div className={css.eyeBox}>
           <div className={css.eye} style={style} />

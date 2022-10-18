@@ -8,9 +8,10 @@
   position: relative;
   cursor: pointer;
   top: 0;
-  @include animate("top");
+  @include animate('top');
 
-  &:hover {
+  &:hover,
+  &.hide {
     top: 1rem;
 
     .eyeBox::before {
