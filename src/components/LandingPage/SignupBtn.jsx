@@ -9,7 +9,7 @@ const SignupBtn = ({ label = 'Signup' }) => {
   }
 
   return (
-    <button className={`hello world`} onClick={handleClick}>
+    <button className={`button button__primary`} onClick={handleClick}>
       {label}
     </button>
   )

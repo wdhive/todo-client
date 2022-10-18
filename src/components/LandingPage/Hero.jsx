@@ -9,7 +9,7 @@ const Hero = () => {
         <div className={css.hero__content}>
           <div className={css.hero__quote}>
             <h2 className={css.hero__title}>
-              Smash all of your ideas into one place
+              Smash all your ideas into one place
             </h2>
             <p className={css.hero__description}>
               <strong>Collaborate</strong> with your <strong>friends</strong> to
@@ -21,7 +21,9 @@ const Hero = () => {
           <div className={css.hero__cta}>
             <div className={css.hero__buttons}>
               <SignupBtn label="Signup" />
-              <button>Continue anyways</button>
+              <button className="button button__secondary">
+                Continue anyways
+              </button>
             </div>
             <p className={css.hero__status}>
               <strong>99</strong> people are already enjoying our app

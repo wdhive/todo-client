@@ -1,1 +1,23 @@
-{"path-autocomplete.pathMappings":{"@src":"${folder}/src","@store":"${folder}/src/store","@com":"${folder}/src/components","@lay":"${folder}/src/layouts","@ass":"${folder}/src/assests","@abs":"${folder}/src/styles/abstracts","@pages":"${folder}/src/pages","@hooks":"${folder}/src/hooks"},"path-intellisense.pathMappings":{"@src":"${workspaceFolder}/src","@store":"${workspaceFolder}/src/store","@com":"${workspaceFolder}/src/components","@lay":"${workspaceFolder}/src/layouts","@ass":"${workspaceFolder}/src/assests","@abs":"${workspaceFolder}/src/styles/abstracts","@pages":"${workspaceFolder}/src/pages","@hooks":"${workspaceFolder}/src/hooks"}}
+{
+  "path-autocomplete.pathMappings": {
+    "@src": "${folder}/src",
+    "@store": "${folder}/src/store",
+    "@com": "${folder}/src/components",
+    "@lay": "${folder}/src/layouts",
+    "@ass": "${folder}/src/assests",
+    "@abs": "${folder}/src/styles/abstracts",
+    "@pages": "${folder}/src/pages",
+    "@hooks": "${folder}/src/hooks"
+  },
+  "path-intellisense.pathMappings": {
+    "@src": "${workspaceFolder}/src",
+    "@store": "${workspaceFolder}/src/store",
+    "@com": "${workspaceFolder}/src/components",
+    "@lay": "${workspaceFolder}/src/layouts",
+    "@ass": "${workspaceFolder}/src/assests",
+    "@abs": "${workspaceFolder}/src/styles/abstracts",
+    "@pages": "${workspaceFolder}/src/pages",
+    "@hooks": "${workspaceFolder}/src/hooks"
+  },
+  "gitdoc.enabled": true
+}

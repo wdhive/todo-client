@@ -12,7 +12,7 @@
 
 .nav {
   justify-content: space-between;
-  padding-block: $s24;
+  padding-block: fluid($s16, $s24);
 }
 
 .logo {
@@ -54,6 +54,7 @@ nav.navActive {
 }
 
 .listContainer {
+  @include animate('right', slow);
   @include break-down($lg) {
     position: fixed;
     top: 0;
@@ -78,6 +79,7 @@ nav.navActive {
   background-blend-mode: multiply;
   opacity: 0;
   pointer-events: none;
+  @include animate('opacity', slow);
 }
 
 .linkList {
@@ -98,10 +100,8 @@ nav.navActive {
 }
 
 .navLink,
-.navButton {
-  font-weight: bold;
-  color: v(foreground);
-  border-radius: $s8;
+.linkList__cta button {
+  font-size: fluid($s14, $s16);
 
   @include break-down($lg) {
     width: 100%;
@@ -109,11 +109,10 @@ nav.navActive {
 }
 
 .navLink {
+  color: v(foreground);
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-size: $s16;
-  padding: 0.5em 1.5em;
 
   &:hover {
     background-color: v(c100);
@@ -124,7 +123,6 @@ nav.navActive {
   }
 
   &.active {
-    pointer-events: none;
     color: v(accent);
 
     @include break-down($lg) {
@@ -141,40 +139,10 @@ nav.navActive {
   }
 }
 
-.navButton {
-  font-size: $s16;
-  padding: 0.5em 1.3em;
-  border: 0;
-
-  &__primary {
-    background-color: v(c100);
-
-    &:hover {
-      background-color: v(c200);
-    }
-
-    &:active {
-      background-color: v(c300);
-    }
-  }
-
-  &__secondary {
-    color: v(c000);
-    background-color: v(accent);
-
-    &:hover {
-      background-color: v(c500);
-    }
-
-    &:active {
-      background-color: v(c700);
-    }
-  }
-}
-
 .linkToggle {
   position: relative;
   z-index: 300;
+  background: transparent;
   display: none;
 
   @include break-down($lg) {

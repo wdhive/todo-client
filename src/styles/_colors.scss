@@ -6,10 +6,11 @@
   --l3: 85%;
   --l4: 75%;
   --l5: 60%;
-  --l6: 45%;
-  --l7: 50%;
-  --l8: 30%;
-  --l9: 15%;
+  --l6: 55%;
+  --l7: 45%;
+  --l8: 50%;
+  --l9: 30%;
+  --l10: 15%;
 }
 
 :root {
@@ -18,10 +19,11 @@
   --c200: hsl(var(--hue), var(--sat), var(--l3));
   --c300: hsl(var(--hue), var(--sat), var(--l4));
   --c400: hsl(var(--hue), var(--sat), var(--l5));
-  --c500: hsl(var(--hue), var(--sat), var(--l6));
-  --c600: hsl(var(--hue), var(--sat), var(--l7));
-  --c700: hsl(var(--hue), var(--sat), var(--l8));
-  --c800: hsl(var(--hue), var(--sat), var(--l9));
+  --c450: hsl(var(--hue), var(--sat), var(--l6));
+  --c500: hsl(var(--hue), var(--sat), var(--l7));
+  --c600: hsl(var(--hue), var(--sat), var(--l8));
+  --c700: hsl(var(--hue), var(--sat), var(--l9));
+  --c800: hsl(var(--hue), var(--sat), var(--l10));
 
   --background: var(--c000);
   --foreground: var(--c800);

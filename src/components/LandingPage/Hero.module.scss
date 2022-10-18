@@ -7,7 +7,7 @@
   background-blend-mode: hue;
 
   :global(.wrapper) {
-    padding-block: $s32;
+    padding-block: fluid($s8, $s48);
     display: flex;
     gap: $s64;
 
@@ -21,11 +21,12 @@
   }
 
   &__content {
-    padding-top: $s44;
+    padding-top: fluid($s4, $s48);
 
     @include break-down($md) {
-      padding-top: $s12;
+      max-width: fluid(48rem, 32rem);
       text-align: center;
+      align-self: center;
     }
   }
 
@@ -70,7 +71,7 @@
     margin-bottom: $s12;
 
     button {
-      font-size: $s16;
+      font-size: fluid($s16, $s18);
     }
 
     @include break-down($md) {
