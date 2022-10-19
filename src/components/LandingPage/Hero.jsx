@@ -8,9 +8,9 @@ const Hero = () => {
       <div className="wrapper">
         <div className={css.hero__content}>
           <div className={css.hero__quote}>
-            <h2 className={css.hero__title}>
+            <h1 className={css.hero__title}>
               Smash all your ideas into one place
-            </h2>
+            </h1>
             <p className={css.hero__description}>
               <strong>Collaborate</strong> with your <strong>friends</strong> to
               help you make your journey of bringing them to live a bit more

@@ -11,7 +11,7 @@ $REM: 10;
   @return $noUnit * $REM;
 }
 
-@function fluid($min-size, $max-size, $max-breakpoint: 1920) {
+@function fluid($min-size, $max-size, $max-breakpoint: 2000) {
   $min-breakpoint: 300;
   $min-size: formatParam($min-size);
   $max-size: formatParam($max-size);

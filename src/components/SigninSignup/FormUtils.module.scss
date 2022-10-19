@@ -2,15 +2,16 @@
   display: block;
   width: 100%;
   border: 1px solid v(c200);
-  border-radius: $s-4;
-  padding: $s-6 $s-12;
+  border-radius: 0.4rem;
+  padding: 0.6rem 1.2rem;
   outline-color: v(c300);
+  @include font('bd1');
 }
 
 .inputGroup {
   display: flex;
-  gap: $s-12;
-  padding-block: $s-8;
+  gap: 1.2rem;
+  padding-block: 0.8rem;
 
   & {
     margin-top: 0;
@@ -25,13 +26,13 @@
 
   &__input {
     display: flex;
-    gap: $s-10;
+    gap: 1rem;
   }
 
   p {
-    margin-bottom: $s-4;
-    font-size: $s-14;
+    margin-bottom: 0.4rem;
     font-weight: 500;
+    @include font('bd2');
   }
 
   input {
@@ -45,6 +46,6 @@
   @extend %common;
   background: v(c500);
   color: v(background);
-  margin-top: $s-14;
-  font-size: fluid($s-14, $s-16);
+  margin-top: 1.4rem;
+  @include font('btn1');
 }

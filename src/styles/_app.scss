@@ -1,3 +1,5 @@
+@use './abstracts/core' as *;
+
 html {
   scroll-behavior: smooth;
   // user-select: none;
@@ -5,9 +7,41 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
+  @include font('bd1');
   background: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+h1 {
+  @include font('h1');
+}
+h2 {
+  @include font('h2');
+}
+h3 {
+  @include font('h3');
+}
+h4 {
+  @include font('h4');
+}
+h5 {
+  @include font('h5');
+}
+h6 {
+  @include font('h6');
+}
+
+button {
+  @include font(btn1);
 }
 
 #Root {

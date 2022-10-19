@@ -5,7 +5,7 @@ const Brand = () => {
   return (
     <div className={css.logo}>
       <Logo />
-      <h1>todo</h1>
+      <h4>todo</h4>
     </div>
   )
 }

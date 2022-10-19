@@ -1,28 +1,94 @@
-$s-0: 0rem;
-$s-2: 0.2rem;
-$s-4: 0.4rem;
-$s-6: 0.6rem;
-$s-8: 0.8rem;
-$s-10: 1rem;
-$s-12: 1.2rem;
-$s-14: 1.4rem;
-$s-16: 1.6rem;
-$s-18: 1.8rem;
-$s-20: 2rem;
-$s-24: 2.4rem;
-$s-28: 2.8rem;
-$s-32: 3.2rem;
-$s-36: 3.6rem;
-$s-40: 4rem;
-$s-44: 4.4rem;
-$s-48: 4.8rem;
-$s-52: 5.2rem;
-$s-56: 5.6rem;
-$s-60: 6rem;
-$s-64: 6.4rem;
-$s-72: 7.2rem;
-$s-80: 8rem;
-$s-84: 8.4rem;
-$s-92: 9.2rem;
-$s-96: 9.6rem;
-$s-120: 12rem;
+@use 'sass:map';
+@use './fluid' as *;
+
+$fluid-size-97: fluid(9.2rem, 10.2rem);
+$fluid-size-61: fluid(5.75rem, 6.45rem);
+$fluid-size-48: fluid(4.5rem, 5.1rem);
+$fluid-size-34: fluid(3.15rem, 3.55rem);
+$fluid-size-24: fluid(2.2rem, 2.6rem);
+$fluid-size-20: fluid(1.85rem, 2.15rem);
+$fluid-size-16: fluid(1.5rem, 1.7rem);
+$fluid-size-15: fluid(1.4rem, 1.6rem);
+$fluid-size-14: fluid(1.3rem, 1.5rem);
+$fluid-size-13: fluid(1.2rem, 1.4rem);
+$fluid-size-12: fluid(1.1rem, 1.3rem);
+
+$font-config-list: (
+  h1: (
+    font-size: $fluid-size-97,
+    letter-spacing: -0.15rem,
+    font-weight: 500,
+  ),
+  h2: (
+    font-size: $fluid-size-61,
+    letter-spacing: -0.05rem,
+    font-weight: 500,
+  ),
+  h3: (
+    font-size: $fluid-size-48,
+    letter-spacing: 0,
+    font-weight: 500,
+  ),
+  h4: (
+    font-size: $fluid-size-34,
+    letter-spacing: 0.025rem,
+    font-weight: 500,
+  ),
+  h5: (
+    font-size: $fluid-size-24,
+    letter-spacing: 0,
+    font-weight: 500,
+  ),
+  h6: (
+    font-size: $fluid-size-20,
+    letter-spacing: 0.015rem,
+    font-weight: 500,
+  ),
+  st1: (
+    font-size: $fluid-size-16,
+    letter-spacing: 0.015rem,
+    font-weight: 500,
+  ),
+  st2: (
+    font-size: $fluid-size-14,
+    letter-spacing: 0.01rem,
+    font-weight: 500,
+  ),
+  bd1: (
+    font-size: $fluid-size-16,
+    letter-spacing: 0.05rem,
+  ),
+  bd2: (
+    font-size: $fluid-size-15,
+    letter-spacing: 0.037rem,
+  ),
+  bd3: (
+    font-size: $fluid-size-14,
+    letter-spacing: 0.025rem,
+  ),
+  btn1: (
+    font-size: $fluid-size-15,
+    letter-spacing: 0.055rem,
+    font-weight: 500,
+  ),
+  btn2: (
+    font-size: $fluid-size-14,
+    letter-spacing: 0.045rem,
+    font-weight: 500,
+  ),
+  c: (
+    font-size: $fluid-size-13,
+    letter-spacing: 0.15rem,
+  ),
+  ol: (
+    font-size: $fluid-size-12,
+    letter-spacing: 0.04rem,
+  ),
+);
+
+@mixin font($type) {
+  $font-config: map.get($font-config-list, $type);
+  @each $key, $value in $font-config {
+    #{$key}: $value;
+  }
+}

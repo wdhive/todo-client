@@ -4,12 +4,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: $s-44;
-    font-size: $s-20;
+    margin-bottom: 4.4rem;
 
     button,
     p {
-      padding: $s-6;
+      padding: 0.6rem;
     }
 
     button {
@@ -18,22 +17,19 @@
       border-radius: 50%;
 
       svg {
-        height: $s-24;
-        width: $s-24;
+        height: 2.4rem;
+        width: 2.4rem;
 
         path {
           fill: currentColor;
         }
       }
     }
-
-    p {
-    }
   }
 }
 
 .statusText {
-  margin-top: $s-8;
-  font-size: fluid($s-14, $s-16);
+  margin-top: 0.8rem;
+  @include font(bd2);
   text-align: center;
 }

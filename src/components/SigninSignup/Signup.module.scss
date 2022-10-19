@@ -1,5 +1,5 @@
 .image {
-  $size: $s-84;
+  $size: 8.4rem;
   border-radius: 50%;
   height: $size;
   width: $size;
@@ -10,7 +10,7 @@
   overflow: hidden;
 
   svg {
-    $size: $s-32;
+    $size: 3.2rem;
     position: absolute;
     width: $size;
     height: $size;

@@ -1,5 +1,5 @@
 .loading {
-  $gap: clamp($s-56, 16vw, $s-120);
+  $gap: clamp(5.6rem, 16vw, 12rem);
   background: v(background);
   position: fixed;
   inset: 0;
@@ -9,7 +9,7 @@
   justify-items: center;
 
   svg {
-    $logoSize: clamp($s-52, 12vw, $s-96);
+    $logoSize: clamp(5.2rem, 12vw, 9.6rem);
     height: $logoSize;
     width: $logoSize;
   }
@@ -20,7 +20,7 @@
 .loader {
   color: hsl(v(hue), v(sat), v(l4));
   position: relative;
-  font-size: clamp($s-4, 1.5vw, $s-12);
+  font-size: clamp(0.4rem, 1.5vw, 1.2rem);
   background: currentColor;
   animation: escaleY 1s infinite ease-in-out;
   width: 1em;

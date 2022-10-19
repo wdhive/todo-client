@@ -22,6 +22,7 @@ const Signin = ({ onForgetPass = () => {}, ...props }) => {
           cursor: 'pointer',
           background: 'none',
           border: 'none',
+          fontWeight: 400,
         }}
       >
         Forget password?

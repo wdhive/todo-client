@@ -7,7 +7,7 @@
 .nav {
   align-items: center;
   justify-content: space-between;
-  padding-block: fluid($s-16, $s-24);
+  padding-block: fluid(1.6rem, 2.4rem);
 }
 
 .listContainer,
@@ -69,8 +69,8 @@
     z-index: 200;
     width: min(33rem, 100%);
     min-height: 100vh;
-    padding: $s-20;
-    gap: $s-40;
+    padding: 2rem;
+    gap: 4rem;
     background-color: v(background);
     @include transition('right', slow);
   }
@@ -90,7 +90,7 @@
 .linkList {
   list-style: none;
   align-items: center;
-  gap: fluid($s-8, $s-12);
+  gap: fluid(0.8rem, 1.2rem);
 
   &__primary {
     justify-content: center;
@@ -107,8 +107,6 @@
 
 .navLink,
 .linkList__cta button {
-  font-size: fluid($s-14, $s-16);
-
   @include break-down($lg) {
     width: 100%;
   }
@@ -147,7 +145,7 @@
 
 .showDialog,
 .closeDialog {
-  $size: fluid($s-28, $s-32);
+  $size: fluid(2.8rem, 3.2rem);
   background: none;
   display: none;
   width: $size;
@@ -168,7 +166,7 @@
 }
 
 .closeDialog {
-  padding: fluid($s-4, $s-6);
-  margin-right: $s-10;
+  padding: fluid(0.4rem, 0.6rem);
+  margin-right: 1rem;
   align-self: end;
 }

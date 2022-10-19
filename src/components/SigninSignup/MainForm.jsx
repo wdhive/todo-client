@@ -26,7 +26,7 @@ const MainForm = ({
       onSubmit={handleSubmit}
       className={`${className || ''} ${css.form}`}
     >
-      <p className={css.form__title}>{title}</p>
+      <h4 className={css.form__title}>{title}</h4>
 
       {children}
 

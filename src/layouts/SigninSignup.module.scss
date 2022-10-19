@@ -1,13 +1,13 @@
 .main {
   min-height: 100vh;
   background-color: v(c400);
-  padding: fluid($s-12, $s-64) fluid($s-12, $s-120);
+  padding: fluid(1.2rem, 6.4rem) fluid(1.2rem, 12rem);
   display: grid;
   place-items: center;
   height: fit-content;
 
   @include break-down($xs) {
-    padding: fluid($s-4, $s-120);
+    padding: fluid(0.4rem, 12rem);
   }
 
   @include break-down($xxs) {
@@ -18,7 +18,7 @@
   :global(.wrapper) {
     background-color: v(background);
     display: flex;
-    border-radius: $s-8;
+    border-radius: 0.8rem;
     overflow: hidden;
     max-width: 110rem;
     min-height: 53rem;
@@ -35,10 +35,10 @@
 
     & > * {
       flex: 1;
-      padding: fluid($s-24, $s-72);
+      padding: fluid(2.4rem, 7.2rem);
 
       @include break-down($xxs) {
-        padding: fluid($s-14, $s-48);
+        padding: fluid(1.4rem, 4.8rem);
       }
     }
   }
@@ -82,26 +82,26 @@
   }
 
   &__logo {
-    margin-bottom: $s-32;
+    margin-bottom: 3.2rem;
 
-    h1 {
+    h4 {
       color: v(c300) !important;
     }
   }
 
   &__title {
     font-family: 'Montserrat', sans-serif;
-    font-size: $s-40;
+    font-size: 4rem;
     font-weight: 700;
   }
 
   &__links {
     display: flex;
     align-items: center;
-    gap: $s-24;
+    gap: 2.4rem;
 
     a {
-      font-size: $s-14;
+      @include font(btn1);
       color: v(background);
       text-decoration: none;
       line-height: 1.25;
@@ -112,7 +112,7 @@
       margin-left: auto;
 
       svg {
-        height: $s-20;
+        height: 2rem;
 
         path {
           fill: currentColor;
@@ -123,5 +123,5 @@
 }
 
 .form {
-  margin-bottom: $s-8;
+  margin-bottom: 0.8rem;
 }

@@ -26,7 +26,7 @@ const MainForm = ({
         <button type="button" onClick={onBack}>
           <BackIcon />
         </button>
-        <p>Go Back</p>
+        <h6>Go Back</h6>
       </div>
 
       {children}

@@ -1,9 +1,9 @@
 .form {
   &__title {
-    font-size: $s-32;
     line-height: 1.2;
     margin-bottom: 0.7em;
     color: v(accent);
+    font-weight: normal;
   }
 
   input {
@@ -16,7 +16,7 @@
 }
 
 .statusLabel {
-  font-size: fluid($s-14, $s-16);
-  margin-top: $s-10;
+  margin-top: 1rem;
   text-align: center;
+  @include font(bd2);
 }
