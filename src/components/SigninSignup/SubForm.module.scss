@@ -4,12 +4,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: $s44;
-    font-size: $s20;
+    margin-bottom: $s-44;
+    font-size: $s-20;
 
     button,
     p {
-      padding: $s6;
+      padding: $s-6;
     }
 
     button {
@@ -18,8 +18,8 @@
       border-radius: 50%;
 
       svg {
-        height: $s24;
-        width: $s24;
+        height: $s-24;
+        width: $s-24;
 
         path {
           fill: currentColor;
@@ -33,7 +33,7 @@
 }
 
 .statusText {
-  margin-top: $s8;
-  font-size: fluid($s14, $s16);
+  margin-top: $s-8;
+  font-size: fluid($s-14, $s-16);
   text-align: center;
 }

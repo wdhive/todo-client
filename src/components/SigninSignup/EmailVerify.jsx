@@ -1,4 +1,3 @@
-import css from './EmailVerify.module.scss'
 import SubForm from './SubForm'
 import { Group } from './FormUtils'
 
@@ -16,7 +15,7 @@ const EmailVerify = ({ showCodeInput = false, resendTime, ...props }) => {
       {showCodeInput && (
         <Group label="Code">
           <input
-            className={css.codeInput}
+            style={{ textAlign: 'center' }}
             // pattern="[a-zA-Z0-9]"
             maxLength="6"
             type="text"

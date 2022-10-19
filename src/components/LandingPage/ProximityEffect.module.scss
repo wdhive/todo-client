@@ -4,7 +4,7 @@
   background-color: v(c300);
   border-radius: 200vw 200vw 0 0;
   height: 100%;
-  box-shadow: 0 0 $s28 v(c300);
+  box-shadow: 0 0 $s-28 v(c300);
   position: relative;
   cursor: pointer;
   top: 0;
@@ -12,7 +12,7 @@
 
   &:hover,
   &.hide {
-    top: 1rem;
+    top: $s-10;
 
     .eyeBox::before {
       bottom: 0;

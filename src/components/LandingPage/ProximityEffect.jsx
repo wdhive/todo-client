@@ -42,11 +42,13 @@ const ProximityEffect = () => {
     const listnerMouseLeave = () => setShowEffect(false)
 
     getInfo()
+    window.addEventListener('scroll', getInfo)
     window.addEventListener('resize', getInfo)
     document.addEventListener('mousemove', listnenMouseMove)
     document.addEventListener('mouseenter', listnerMouseEnter)
     document.addEventListener('mouseleave', listnerMouseLeave)
     return () => {
+      window.removeEventListener('scroll', getInfo)
       window.removeEventListener('resize', getInfo)
       document.removeEventListener('mousemove', listnenMouseMove)
       document.removeEventListener('mouseenter', listnerMouseEnter)

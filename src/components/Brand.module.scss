@@ -1,7 +1,7 @@
 .logo {
-  $size: fluid($s32, $s36);
+  $size: fluid($s-32, $s-36);
   display: flex;
-  gap: fluid($s8, $s12);
+  gap: fluid($s-8, $s-12);
   align-items: center;
 
   svg {
@@ -11,6 +11,6 @@
 
   h1 {
     color: v(accent);
-    font-size: calc($size - 0.4rem);
+    font-size: calc($size - $s-4);
   }
 }

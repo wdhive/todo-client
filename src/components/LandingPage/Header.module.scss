@@ -1,34 +1,13 @@
 .nav,
-.logo,
 .listContainer,
 .linkList {
   display: flex;
 }
 
-.logo,
-.linkList {
-  gap: fluid($s8, $s12);
-}
-
 .nav {
   align-items: center;
   justify-content: space-between;
-  padding-block: fluid($s16, $s24);
-}
-
-.logo {
-  $size: fluid($s32, $s36);
-  align-items: center;
-
-  svg {
-    height: $size;
-    width: $size;
-  }
-
-  h1 {
-    color: v(accent);
-    font-size: calc($size - 0.4rem);
-  }
+  padding-block: fluid($s-16, $s-24);
 }
 
 .listContainer,
@@ -90,8 +69,8 @@
     z-index: 200;
     width: min(33rem, 100%);
     min-height: 100vh;
-    padding: $s20;
-    gap: $s40;
+    padding: $s-20;
+    gap: $s-40;
     background-color: v(background);
     @include transition('right', slow);
   }
@@ -111,6 +90,7 @@
 .linkList {
   list-style: none;
   align-items: center;
+  gap: fluid($s-8, $s-12);
 
   &__primary {
     justify-content: center;
@@ -127,7 +107,7 @@
 
 .navLink,
 .linkList__cta button {
-  font-size: fluid($s14, $s16);
+  font-size: fluid($s-14, $s-16);
 
   @include break-down($lg) {
     width: 100%;
@@ -167,10 +147,11 @@
 
 .showDialog,
 .closeDialog {
+  $size: fluid($s-28, $s-32);
   background: none;
   display: none;
-  width: 3rem;
-  height: 3rem;
+  width: $size;
+  height: $size;
 
   @include break-down($lg) {
     display: block;
@@ -187,7 +168,7 @@
 }
 
 .closeDialog {
-  padding: 0.5rem;
-  margin-right: 1rem;
+  padding: fluid($s-4, $s-6);
+  margin-right: $s-10;
   align-self: end;
 }

@@ -1,6 +1,6 @@
 .form {
   &__title {
-    font-size: $s32;
+    font-size: $s-32;
     line-height: 1.2;
     margin-bottom: 0.7em;
     color: v(accent);
@@ -16,7 +16,7 @@
 }
 
 .statusLabel {
-  font-size: 1.5rem;
-  margin-top: $s10;
+  font-size: fluid($s-14, $s-16);
+  margin-top: $s-10;
   text-align: center;
 }

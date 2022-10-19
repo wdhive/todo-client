@@ -7,9 +7,9 @@
   background-blend-mode: hue;
 
   :global(.wrapper) {
-    padding-block: fluid($s8, $s48);
+    padding-block: fluid($s-8, $s-48);
     display: flex;
-    gap: $s64;
+    gap: $s-64;
 
     @include break-down($md) {
       flex-direction: column;
@@ -21,7 +21,7 @@
   }
 
   &__content {
-    padding-top: fluid($s4, $s48);
+    padding-top: fluid($s-4, $s-48);
 
     @include break-down($md) {
       max-width: fluid(48rem, 32rem);
@@ -32,27 +32,27 @@
 
   &__quote {
     width: 85%;
-    margin-bottom: $s56;
+    margin-bottom: $s-56;
 
     @include break-down($lg) {
       width: 100%;
     }
 
     @include break-down($md) {
-      margin-bottom: $s52;
+      margin-bottom: $s-52;
     }
   }
 
   &__title {
-    font-size: fluid($s36, $s48);
+    font-size: fluid($s-36, $s-48);
     line-height: 1.2;
     letter-spacing: 0.015em;
     color: v(foreground);
-    margin-block-end: fluid($s16, $s20);
+    margin-block-end: fluid($s-16, $s-20);
     font-family: 'Montserrat', sans-serif;
 
     @include break-down($md) {
-      margin-bottom: $s20;
+      margin-bottom: $s-20;
     }
 
     @include break-down($sm) {
@@ -61,17 +61,17 @@
   }
 
   &__description {
-    font-size: fluid($s14, $s16);
+    font-size: fluid($s-14, $s-16);
     opacity: 0.9;
   }
 
   &__buttons {
     display: flex;
-    gap: $s12;
-    margin-bottom: $s12;
+    gap: $s-12;
+    margin-bottom: $s-12;
 
     button {
-      font-size: fluid($s16, $s18);
+      font-size: fluid($s-16, $s-18);
     }
 
     @include break-down($md) {
@@ -80,7 +80,7 @@
   }
 
   &__status {
-    font-size: fluid($s12, $s16);
+    font-size: fluid($s-12, $s-16);
   }
 
   &__description,
@@ -110,8 +110,8 @@
       position: absolute;
       top: 0;
       right: 0;
-      width: $s92;
-      height: $s84;
+      width: $s-92;
+      height: $s-84;
     }
 
     &__mobile,
@@ -120,7 +120,7 @@
       background-position: center;
       background-size: cover;
       background-color: var(--box-shadow);
-      box-shadow: 0 0 $s8 v(box-shadow);
+      box-shadow: 0 0 $s-8 v(box-shadow);
     }
 
     &__desktop {
@@ -129,7 +129,7 @@
       top: 8rem;
       aspect-ratio: 18 / 9;
       height: 36rem;
-      border-radius: $s12;
+      border-radius: $s-12;
     }
 
     &__mobile {
@@ -139,9 +139,9 @@
       left: 8rem;
       aspect-ratio: 1 / 2;
       height: 38rem;
-      border-radius: $s8;
-      border: fluid($s2, $s4) solid v(foreground);
-      border-block-width: $s6;
+      border-radius: $s-8;
+      border: fluid($s-2, $s-4) solid v(foreground);
+      border-block-width: $s-6;
 
       @include break-down($md) {
         position: relative;
@@ -156,7 +156,7 @@
         height: unset;
         width: calc(25rem + 15vw);
         max-width: 90%;
-        margin-bottom: -$s120;
+        margin-bottom: -$s-120;
       }
     }
   }
