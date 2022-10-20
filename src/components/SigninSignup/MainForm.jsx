@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import css from './MainForm.module.scss'
-import { SubmitBtn } from './FormUtils'
+import { SubmitBtn, getInputs } from './FormUtils'
+import { useRef } from 'react'
 
 const MainForm = ({
   type,
@@ -9,9 +10,10 @@ const MainForm = ({
   onSubmit = () => {},
   ...props
 }) => {
+  const formRef = useRef()
   const handleSubmit = e => {
     e.preventDefault()
-    onSubmit(e)
+    onSubmit(...getInputs(formRef.current))
   }
 
   const loginMode = type === 'signin'
@@ -23,6 +25,7 @@ const MainForm = ({
   return (
     <form
       {...props}
+      ref={formRef}
       onSubmit={handleSubmit}
       className={`${className || ''} ${css.form}`}
     >
@@ -31,7 +34,6 @@ const MainForm = ({
       {children}
 
       <SubmitBtn>{title}</SubmitBtn>
-
       <p className={css.statusLabel}>
         {statusLabel} have an account? <Link to={linkUrl}>{linkLabel}</Link>
       </p>

@@ -21,31 +21,32 @@ const Signup = props => {
   return (
     <MainForm {...props} type="signup">
       <div className={css.image} onClick={clickPickImage}>
-        {previewImageSrc ? <img src={previewImageSrc} /> : <CameraIcon />}
-
         <input
           onChange={handlePickImage}
           ref={inputFileRef}
           type="file"
-          name=""
-          id=""
+          name="avatar"
         />
+
+        <div className={css.image__preview}>
+          {previewImageSrc ? <img src={previewImageSrc} /> : <CameraIcon />}
+        </div>
       </div>
 
       <Group label="Full Name*">
-        <input type="text" />
+        <input type="text" name="name" required />
       </Group>
 
       <Group label="Username*">
-        <input type="text" />
+        <input type="text" name="username" required />
       </Group>
 
       <Group label="Password*">
-        <input type="text" />
+        <input type="text" name="password" required />
       </Group>
 
       <Group label="Confirm Password*">
-        <input type="text" />
+        <input type="text" name="confirmPassword" required />
       </Group>
     </MainForm>
   )

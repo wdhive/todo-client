@@ -7,7 +7,7 @@
   background-blend-mode: hue;
 
   :global(.wrapper) {
-    padding-block: fluid(0.8rem, 4.8rem);
+    padding-block: fluid(2rem, 4.8rem);
     display: flex;
     gap: 6.4rem;
 
@@ -21,7 +21,7 @@
   }
 
   &__content {
-    padding-top: fluid(0.4rem, 4.8rem);
+    padding-top: fluid(0.4rem, 4rem);
 
     @include break-down($md) {
       max-width: fluid(48rem, 32rem);
@@ -36,10 +36,6 @@
 
     @include break-down($lg) {
       width: 100%;
-    }
-
-    @include break-down($md) {
-      margin-bottom: 5.2rem;
     }
   }
 
@@ -120,7 +116,7 @@
     }
 
     &__desktop {
-      --box-shadow: #{v(c200)};
+      --box-shadow: #{v(c100)};
       position: absolute;
       top: 8rem;
       aspect-ratio: 18 / 9;
@@ -129,7 +125,7 @@
     }
 
     &__mobile {
-      --box-shadow: #{v(c300)};
+      --box-shadow: #{v(background)};
       position: absolute;
       top: 15rem;
       left: 8rem;

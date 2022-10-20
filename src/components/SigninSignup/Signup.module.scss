@@ -1,19 +1,24 @@
 .image {
   $size: 8.4rem;
-  border-radius: 50%;
   height: $size;
   width: $size;
   margin-inline: auto;
-  background-color: v(c300);
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
+
+  &__preview {
+    height: 100%;
+    background-color: v(c300);
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+  }
 
   svg {
     $size: 3.2rem;
-    position: absolute;
     width: $size;
     height: $size;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -35,5 +40,11 @@
     width: 0;
     overflow: hidden;
     opacity: 0;
+  }
+
+  input[type='file']:focus + &__preview {
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: var(--c600);
   }
 }

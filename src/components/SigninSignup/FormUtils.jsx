@@ -18,3 +18,25 @@ export const Group = ({ label, children }) => {
     </div>
   )
 }
+
+export const getInputs = form => {
+  const inputs = [
+    ...form.querySelectorAll('input[name]'),
+    ...form.querySelectorAll('textarea[name]'),
+  ]
+  const values = {}
+  const elements = {}
+
+  inputs.forEach(input => {
+    const name = input.name
+    if (!name) return
+
+    let value = input.value
+    if (input.type === 'file') value = input.files
+
+    values[name] = value
+    elements[name] = input
+  })
+
+  return [values, elements]
+}

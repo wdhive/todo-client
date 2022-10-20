@@ -1,12 +1,12 @@
-import css from './Loading.module.scss';
-import Logo from '@ass/logo/moderate-1.svg?component';
-import { memo, useEffect } from 'react';
-let initial = true;
+import css from './Loading.module.scss'
+import Logo from '@ass/logo/moderate-1.svg?component'
+import { memo, useEffect } from 'react'
+let initial = true
 
 const Loading = () => {
   useEffect(() => {
-    initial = false;
-  }, []);
+    initial = false
+  }, [])
 
   return (
     <div className={css.loading}>
@@ -14,7 +14,7 @@ const Loading = () => {
 
       <span className={css.loader}></span>
     </div>
-  );
-};
+  )
+}
 
-export default memo(Loading);
+export default memo(Loading)

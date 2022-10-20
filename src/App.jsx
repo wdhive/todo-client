@@ -18,8 +18,10 @@ const Profile = react.lazy(() => import('@pages/Profile'))
 const Search = react.lazy(() => import('@pages/Main/Search'))
 const Notifications = react.lazy(() => import('@pages/Main/Notifications'))
 
+useSelector
+
 const App = () => {
-  const isLoggedIn = false
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
   const themeHue = useSelector(state => state.settings.hue)
 
   return (
@@ -34,7 +36,7 @@ const App = () => {
 
       <BrowserRouter>
         <Suspense fallback={<Loading />}>
-          <ErrorBoundary element={<ErrorHandler />}>
+          {/* <ErrorBoundary element={<ErrorHandler />}> */}
             <Routes>
               <Route path="about-us" element={<AboutUs />} />
               <Route path="help-support" element={<HelpSupport />} />
@@ -61,21 +63,18 @@ const App = () => {
                   <Route path="search" element={<Search />} />
                   <Route path="notifications" element={<Notifications />} />
 
-                  <Route
-                    path="login/*"
-                    element={<Navigate replace to="/profile" />}
-                  />
+                  <Route path="login/*" element={<Navigate replace to="/" />} />
                   <Route
                     path="signin/*"
-                    element={<Navigate replace to="/profile" />}
+                    element={<Navigate replace to="/" />}
                   />
                   <Route
                     path="signup/*"
-                    element={<Navigate replace to="/profile" />}
+                    element={<Navigate replace to="/" />}
                   />
                   <Route
                     path="register/*"
-                    element={<Navigate replace to="/profile" />}
+                    element={<Navigate replace to="/" />}
                   />
                 </Route>
               ) : (
@@ -114,7 +113,7 @@ const App = () => {
 
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </ErrorBoundary>
+          {/* </ErrorBoundary> */}
         </Suspense>
       </BrowserRouter>
     </main>

@@ -1,6 +1,7 @@
 import css from './SubForm.module.scss'
-import { SubmitBtn } from './FormUtils'
+import { SubmitBtn, getInputs } from './FormUtils'
 import BackIcon from '@ass/icons/back.svg?component'
+import { useRef } from 'react'
 
 const MainForm = ({
   children,
@@ -11,14 +12,16 @@ const MainForm = ({
   onSubmit = () => {},
   ...props
 }) => {
+  const formRef = useRef()
   const handleSubmit = e => {
     e.preventDefault()
-    onSubmit(e)
+    onSubmit(...getInputs(formRef.current))
   }
 
   return (
     <form
       {...props}
+      ref={formRef}
       onSubmit={handleSubmit}
       className={`${className || ''} ${css.form}`}
     >

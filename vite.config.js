@@ -44,6 +44,7 @@ export default defineConfig({
       '@ass': path.resolve('./src/assests'),
       '@abs': path.resolve('./src/styles/abstracts'),
       '@pages': path.resolve('./src/pages'),
+      '@api': path.resolve('./src/api'),
     },
   },
 
@@ -69,7 +70,7 @@ export default defineConfig({
           const outputFolder = ext === 'css' || ext === 'js' ? '' : 'assests/'
           return `${config.static}/${outputFolder}[name]-[hash][extname]`
         },
-        chunkFileNames: `${config.static}/chunk-[name]-[hash].js`,
+        chunkFileNames: `${config.static}/[name]-chunk-[hash].js`,
         entryFileNames: `${config.static}/[name]-[hash].js`,
       },
     },

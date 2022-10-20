@@ -1,7 +1,7 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import TaskRoot from './Root';
-import TaskNew from './TaskNew';
-import TaskUpdate from './TaskUpdate';
+import { Routes, Route, Navigate } from 'react-router-dom'
+import TaskRoot from './Root'
+import TaskNew from './TaskNew'
+import TaskUpdate from './TaskUpdate'
 
 const Task = () => {
   return (
@@ -13,7 +13,7 @@ const Task = () => {
         <Route path=":notInUse/*" element={<Navigate to="/tasks" />} />
       </Routes>
     </>
-  );
-};
+  )
+}
 
-export default Task;
+export default Task
