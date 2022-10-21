@@ -1,29 +1,15 @@
 import path from 'path'
 import { defineConfig } from 'vite'
-import { VitePWA } from 'vite-plugin-pwa'
 import react from '@vitejs/plugin-react'
 import svgr from '@honkhonk/vite-plugin-svgr'
+import runtimeCaching from './plugin/runtime-caching'
+
 const isDevMode = process.env.NODE_ENV !== 'production'
 const config = {
   static: 'static',
 }
 
-const plugins = [react(), svgr.default()]
-isDevMode ||
-  plugins.push(
-    VitePWA({
-      manifest: false,
-      workbox: {
-        globPatterns: ['/'],
-        runtimeCaching: [
-          {
-            handler: 'CacheFirst',
-            urlPattern: ({ sameOrigin }) => sameOrigin,
-          },
-        ],
-      },
-    })
-  )
+const plugins = [react(), svgr.default(), runtimeCaching()]
 
 export default defineConfig({
   plugins,
