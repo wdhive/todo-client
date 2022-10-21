@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview",
+    "serve": "node ./serve.cjs",
     "line": "node ./line.cjs",
     "template": "node ./create-component.cjs"
   },
@@ -17,10 +17,11 @@
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.2",
     "socket.io-client": "^4.5.2",
+    "@honkhonk/vite-plugin-svgr": "^1.1.0",
     "vite-basic-cache": "^1.1.3"
   },
   "devDependencies": {
-    "@honkhonk/vite-plugin-svgr": "^1.1.0",
+    "express": "^4.18.2",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
