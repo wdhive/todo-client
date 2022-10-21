@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from '@honkhonk/vite-plugin-svgr'
 import viteBasicCache from 'vite-basic-cache'
+// import viteBasicCache from './vite-basic-cache/package/index.mjs'
 
 const isDevMode = process.env.NODE_ENV !== 'production'
 const config = {

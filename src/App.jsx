@@ -36,7 +36,7 @@ const App = () => {
 
       <BrowserRouter>
         <Suspense fallback={<Loading />}>
-          {/* <ErrorBoundary element={<ErrorHandler />}> */}
+          <ErrorBoundary element={<ErrorHandler />}>
             <Routes>
               <Route path="about-us" element={<AboutUs />} />
               <Route path="help-support" element={<HelpSupport />} />
@@ -113,7 +113,7 @@ const App = () => {
 
               <Route path="*" element={<NotFound />} />
             </Routes>
-          {/* </ErrorBoundary> */}
+          </ErrorBoundary>
         </Suspense>
       </BrowserRouter>
     </main>
