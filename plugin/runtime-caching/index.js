@@ -26,9 +26,12 @@ export default function runtimeCaching() {
     writeBundle(a) {
       fs.writeFileSync(
         a.dir + '/' + swJsOutput,
-        fs
-          .readFileSync(swJsInput, 'utf8')
-          .replace(/(^\/\/ RANDOM: ).*/m, `// RANDOM: ${Math.random()}`)
+        fs.readFileSync(swJsInput, 'utf8') +
+          `\n// RANDOM: ${
+            Math.random() * Math.random() +
+            Math.random() -
+            Math.random() / Math.random()
+          }\n`
       )
     },
   }
