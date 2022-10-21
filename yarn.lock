@@ -1623,10 +1623,10 @@ util-deprecate@^1.0.2:
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
 
-vite-basic-cache@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/vite-basic-cache/-/vite-basic-cache-1.1.1.tgz#0a5f7241746accbe6c5d5fea41ae9afb00df3357"
-  integrity sha512-JKG6hC20tlu14O30A0wtE2IQpRIXKVH4r6pD65Rctb2WdB5LmNWads2UrfD7YOAs544FeD00wdxY60mingRDPQ==
+vite-basic-cache@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/vite-basic-cache/-/vite-basic-cache-1.1.3.tgz#980e2d789b6913b36642a9e5a1fb156665456253"
+  integrity sha512-54QxHgqqPHEVnpLj8EEcPlADi8LT4RptFSlMIAbmDhYprRB8LEU+NDnUKzgzRsBeu3KwDLgWev2d6P5K93fQlg==
 
 vite@^3.1.7:
   version "3.1.7"

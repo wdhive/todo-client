@@ -2,14 +2,20 @@ import path from 'path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from '@honkhonk/vite-plugin-svgr'
-import runtimeCaching from 'vite-basic-cache'
+import viteBasicCache from 'vite-basic-cache'
 
 const isDevMode = process.env.NODE_ENV !== 'production'
 const config = {
   static: 'static',
 }
 
-const plugins = [react(), svgr.default(), runtimeCaching()]
+const plugins = [
+  react(),
+  svgr.default(),
+  viteBasicCache({
+    preCacheFiles: ['/manifest.json'],
+  }),
+]
 
 export default defineConfig({
   plugins,
