@@ -2,8 +2,7 @@ import fs from 'fs'
 
 export default function runtimeCaching() {
   const name = 'PWA-runtime-caching'
-  const isProdMode = process.env.NODE_ENV === 'production'
-  if (!isProdMode) return { name }
+  if (process.env.NODE_ENV !== 'production') return { name }
 
   const rootFile = /src\/index\.jsx$/
   const swJsInput = new URL('./sw.js', import.meta.url)
