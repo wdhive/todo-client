@@ -2006,7 +2006,7 @@ vite-basic-cache@^1.1.4:
   resolved "https://registry.yarnpkg.com/vite-basic-cache/-/vite-basic-cache-1.1.4.tgz#9d014d0bc88f27a97c1685972e96d3bffb11cefa"
   integrity sha512-WBSRRiuDOX6KFGrL8naMNm+JryEC8AQMj88+jnUIQ4zjE7kIrdSJ/TCkD6lYto+2gVk1Wkd/9aNTnWktxoxpuA==
 
-vite@^3.1.7:
+vite@^3.1.8:
   version "3.1.8"
   resolved "https://registry.yarnpkg.com/vite/-/vite-3.1.8.tgz#fa29144167d19b773baffd65b3972ea4c12359c9"
   integrity sha512-m7jJe3nufUbuOfotkntGFupinL/fmuTNuQmiVE7cH2IZMuf4UbfbGYMUT3jVWgGYuRVLY9j8NnrRqgw5rr5QTg==

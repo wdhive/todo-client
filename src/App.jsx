@@ -18,8 +18,6 @@ const Profile = react.lazy(() => import('@pages/Profile'))
 const Search = react.lazy(() => import('@pages/Main/Search'))
 const Notifications = react.lazy(() => import('@pages/Main/Notifications'))
 
-useSelector
-
 const App = () => {
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
   const themeHue = useSelector(state => state.settings.hue)
