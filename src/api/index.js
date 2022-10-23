@@ -1,6 +1,4 @@
 import axios from 'axios'
-import store from '@store'
-console.log(store)
 
 const instance = axios.create({
   baseURL: 'https://young-coders-todo-app.herokuapp.com/v1',
