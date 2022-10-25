@@ -2,8 +2,8 @@ import path from 'path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from '@honkhonk/vite-plugin-svgr'
-import viteBasicCache from 'vite-basic-cache'
-// import viteBasicCache from './vite-basic-cache/package/index.mjs'
+import vitePwa from 'vite-pwa'
+// import viteBasicCache from './vite-pwa/package/index.mjs'
 
 const isDevMode = process.env.NODE_ENV !== 'production'
 const config = {
@@ -13,8 +13,9 @@ const config = {
 const plugins = [
   react(),
   svgr.default(),
-  viteBasicCache({
+  vitePwa({
     preCacheFiles: ['/manifest.json'],
+    map: true,
   }),
 ]
 
