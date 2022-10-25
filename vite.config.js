@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from '@honkhonk/vite-plugin-svgr'
 import vitePwa from 'vite-pwa'
-// import viteBasicCache from './vite-pwa/package/index.mjs'
+// import vitePwa from './vite-pwa/package/index.mjs'
 
 const isDevMode = process.env.NODE_ENV !== 'production'
 const config = {
@@ -14,7 +14,7 @@ const plugins = [
   react(),
   svgr.default(),
   vitePwa({
-    preCacheFiles: ['/manifest.json'],
+    preCacheFiles: ['/', '/manifest.json'],
     map: true,
   }),
 ]
@@ -58,7 +58,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        assetFileNames: file => {
+        assetFileNames: (file) => {
           const ext = file.name.split('.').at(-1)
           const outputFolder = ext === 'css' || ext === 'js' ? '' : 'assests/'
           return `${config.static}/${outputFolder}[name]-[hash][extname]`
