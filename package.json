@@ -18,7 +18,8 @@
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.2",
     "socket.io-client": "^4.5.2",
-    "vite-basic-cache": "^1.1.4"
+    "vite-basic-cache": "^1.1.5",
+    "vite-plugin-generate-exports": "^0.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.21",
