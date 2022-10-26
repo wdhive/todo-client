@@ -19,8 +19,8 @@ const Search = react.lazy(() => import('@pages/Main/Search'))
 const Notifications = react.lazy(() => import('@pages/Main/Notifications'))
 
 const App = () => {
-  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
-  const themeHue = useSelector(state => state.settings.hue)
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
+  const themeHue = useSelector((state) => state.settings.hue)
 
   return (
     <main>

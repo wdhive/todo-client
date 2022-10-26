@@ -1,37 +1,20 @@
 console.clear()
 const fs = require('fs')
-const runCommand = command => {
-  return new Promise(resolve => {
-    require('child_process').exec(command, (err, stdout) => {
-      resolve(stdout)
-    })
-  })
-}
+const path = require('path')
+const { default: ls } = require('node-ls-files')
 
-let fileCount = 0
-const includeFileRegex = /(js|jsx|scss|cjs|rc|html|json|toml)$/i
+const excludedFiles = ['yarn.lock']
+const excludeFolder = ['node_modules', '.git', 'dist', 'public', '.vscode']
 
-;(async () => {
-  const gitFiles = await runCommand('git ls-files')
+const files = ls.sync(path.resolve('.'), {
+  excludeFolder,
+  filter: (file) => !excludedFiles.includes(file.base),
+})
 
-  const files = gitFiles.split('\n').map(file => {
-    return file.replace('\r', '')
-  })
+const linesArray = files.map((file) => {
+  const data = fs.readFileSync(file, 'utf-8')
+  return data.match(/\n/gim)?.length || 1
+})
 
-  const fileLineCount = files.map(file => {
-    if (!file || file === 'yarn.lock' || !includeFileRegex.test(file)) {
-      return 0
-    }
-
-    fileCount++
-    const filePath = __dirname + '/' + file
-    const fileData = fs.readFileSync(filePath, 'utf-8')
-    return fileData.split('\n').length
-  })
-
-  const lineCount = fileLineCount.reduce((acc, current) => {
-    return acc + current
-  }, 0)
-
-  console.log('Total', lineCount, 'lines of code in', fileCount, 'files.')
-})()
+const linesCount = linesArray.reduce((acc, curr) => acc + curr)
+console.log('Total', linesCount, 'lines of code in', files.length, 'files.')

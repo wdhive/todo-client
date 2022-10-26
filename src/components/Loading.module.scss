@@ -1,11 +1,16 @@
-.loading {
-  $gap: clamp(5.6rem, 16vw, 12rem);
-  background: v(background);
+:global #Root-Loading {
+  pointer-events: none;
   position: fixed;
   inset: 0;
+}
+
+.loading {
+  position: absolute;
+  inset: 0;
+  background: v(background);
   display: grid;
-  gap: $gap;
-  place-content: center;
+  gap: clamp(5.6rem, 16vw, 12rem);
+  align-content: center;
   justify-items: center;
 
   svg {

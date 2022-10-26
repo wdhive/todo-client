@@ -38,6 +38,7 @@ export default defineConfig({
       '@abs': path.resolve('./src/styles/abstracts'),
       '@pages': path.resolve('./src/pages'),
       '@api': path.resolve('./src/api'),
+      '@utils': path.resolve('./src/utils'),
     },
   },
 

@@ -7,6 +7,7 @@
     "build": "vite build",
     "serve": "node ./serve.cjs",
     "line": "node ./line.cjs",
+    "path": "node ./intellipath.js",
     "template": "node ./create-component.cjs"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
     "express": "^4.18.2",
+    "node-ls-files": "^0.0.1",
     "postcss-preset-env": "^7.8.2",
     "sass": "^1.55.0",
     "vite": "^3.1.8",

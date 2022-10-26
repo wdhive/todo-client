@@ -5,7 +5,13 @@ const Signin = ({ onForgetPass = () => {}, ...props }) => {
   return (
     <MainForm {...props} type="signin">
       <Group label="Email or Username">
-        <input type="text" name="login" required />
+        <input
+          required
+          pattern="[a-z]"
+          type="text"
+          name="login"
+          title="Please enter a valid email or username Hello sunte paitecho?"
+        />
       </Group>
 
       <Group label="Password">
