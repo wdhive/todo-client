@@ -30,22 +30,23 @@
   }
 
   p {
+    @include font('bd2');
     margin-bottom: 0.4rem;
     font-weight: 500;
-    @include font('bd2');
   }
 
   input {
+    @extend %common;
     color: v(c500);
     background: v(c100);
-    @extend %common;
   }
 }
 
 .button {
   @extend %common;
+  @include font('btn1');
+  position: relative;
   background: v(c500);
   color: v(background);
   margin-top: 1.4rem;
-  @include font('btn1');
 }
