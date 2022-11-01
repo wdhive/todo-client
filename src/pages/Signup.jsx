@@ -12,7 +12,7 @@ const Signup = () => {
   const [step, setStep] = useState(0)
   const [emailSent, setEmailSent] = useState(false)
 
-  const handleSignupSubmit = values => {
+  const handleSignupSubmit = (values) => {
     if (values.password !== values.confirmPassword) {
       return alert('Please enter a password')
     }

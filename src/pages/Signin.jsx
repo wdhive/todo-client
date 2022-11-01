@@ -12,9 +12,9 @@ const Signin = () => {
   const formData = useRef({})
   const [step, setStep] = useState(0)
   const [emailSent, setEmailSent] = useState(false)
-  const handleBack = () => setStep(prev => --prev)
+  const handleBack = () => setStep((prev) => --prev)
 
-  const handleSigninSubmit = async values => {
+  const handleSigninSubmit = async (values) => {
     const [err, data] = await api.post('/account/login', values)
     dispatch(user.addJwt(data.token))
   }
@@ -30,7 +30,7 @@ const Signin = () => {
     setStep(2)
   }
 
-  const handleResetPassSubmit = async body => {
+  const handleResetPassSubmit = async (body) => {
     const [err, data] = await api.post('/account/password-reset', {
       ...body,
       ...formData.current,

@@ -12,9 +12,10 @@ const AboutUs = react.lazy(() => import('@pages/AboutUs'))
 const Signin = react.lazy(() => import('@pages/Signin'))
 const Signup = react.lazy(() => import('@pages/Signup'))
 
-const MainPage = react.lazy(() => import('@pages/Main'))
+const MainLayout = react.lazy(() => import('@pages/Main/Layout'))
+const TaskLayout = react.lazy(() => import('@pages/Task/Layout'))
 const Task = react.lazy(() => import('@pages/Task'))
-const Profile = react.lazy(() => import('@pages/Profile'))
+const ProfileLayout = react.lazy(() => import('@pages/Profile/Layout'))
 const Search = react.lazy(() => import('@pages/Main/Search'))
 const Notifications = react.lazy(() => import('@pages/Main/Notifications'))
 
@@ -54,10 +55,10 @@ const App = () => {
               />
 
               {isLoggedIn ? (
-                <Route path="/" element={<MainPage />}>
-                  <Route index element={<Navigate replace to="/tasks" />} />
-                  <Route path="tasks/*" element={<Task />} />
-                  <Route path="profile/*" element={<Profile />} />
+                <Route path="/" element={<MainLayout />}>
+                  <Route index element={<Task />} />
+                  <Route path="tasks/*" element={<TaskLayout />} />
+                  <Route path="profile/*" element={<ProfileLayout />} />
                   <Route path="search" element={<Search />} />
                   <Route path="notifications" element={<Notifications />} />
 

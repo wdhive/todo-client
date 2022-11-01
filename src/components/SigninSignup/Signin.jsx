@@ -7,7 +7,6 @@ const Signin = ({ onForgetPass = () => {}, ...props }) => {
       <Group label="Email or Username">
         <input
           required
-          pattern="[a-z]"
           type="text"
           name="login"
           title="Please enter a valid email or username Hello sunte paitecho?"

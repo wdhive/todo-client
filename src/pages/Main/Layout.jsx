@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
 
-const Main = () => {
-  const user = useSelector(state => state.user)
+const MainLayout = () => {
+  const user = useSelector((state) => state.user)
   console.log({ user })
 
   return (
@@ -14,4 +14,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default MainLayout
