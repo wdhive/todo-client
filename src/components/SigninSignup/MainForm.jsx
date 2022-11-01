@@ -7,12 +7,15 @@ const MainForm = ({
   type,
   children,
   className,
+  loading,
+  error,
   onSubmit = () => {},
   ...props
 }) => {
   const formRef = useRef()
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault()
+    if (loading) return
     onSubmit(...getInputs(formRef.current))
   }
 
@@ -33,7 +36,10 @@ const MainForm = ({
 
       {children}
 
-      <SubmitBtn>{title}</SubmitBtn>
+      <SubmitBtn loading={loading} error={error}>
+        {title}
+      </SubmitBtn>
+
       <p className={css.statusLabel}>
         {statusLabel} have an account? <Link to={linkUrl}>{linkLabel}</Link>
       </p>

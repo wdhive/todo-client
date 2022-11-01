@@ -4,20 +4,20 @@ import css from './Loading.module.scss'
 import Logo from '@ass/logo/moderate-1.svg?component'
 let initial = true
 
-const Loading = ({ global = true }) => {
+const Loading = ({ scoped = false }) => {
   useEffect(() => {
     initial = false
   }, [])
 
   const html = (
-    <div className={css.loading}>
-      {initial && <Logo />}
+    <div className={cn(css.loading, scoped && css.scoped)}>
+      {/* {initial && <Logo />} */}
 
       <span className={css.loader}></span>
     </div>
   )
 
-  if (!global) return html
+  if (scoped) return html
   return createPortal(html, document.getElementById('Root-Loading'))
 }
 

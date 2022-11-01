@@ -42,11 +42,25 @@
   }
 }
 
+.buttonContainer {
+  margin-top: 1rem;
+}
+
+.error {
+  color: v(error);
+  text-align: center;
+  @include font('bd1');
+}
+
 .button {
   @extend %common;
   @include font('btn1');
   position: relative;
   background: v(c500);
   color: v(background);
-  margin-top: 1.4rem;
+  margin-top: 0.4rem;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
 }

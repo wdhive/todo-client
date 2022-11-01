@@ -4,6 +4,7 @@ import { Group } from './FormUtils'
 const EmailVerify = ({
   length = 6,
   showCodeInput = false,
+  onResend,
   resendTime,
   ...props
 }) => {
@@ -23,13 +24,30 @@ const EmailVerify = ({
             name="code"
             required
             style={{ textAlign: 'center' }}
-            // pattern="[a-zA-Z0-9]"
             minLength={length}
             maxLength={length}
             type="text"
             title="Code only caontain letter and numbers"
           />
         </Group>
+      )}
+
+      {showCodeInput && !props.loading && (
+        <button
+          type="button"
+          onClick={onResend}
+          style={{
+            color: 'var(--accent)',
+            fontSize: '1.5rem',
+            textDecoration: 'underline',
+            cursor: 'pointer',
+            background: 'none',
+            border: 'none',
+            fontWeight: 400,
+          }}
+        >
+          Send code again
+        </button>
       )}
     </SubForm>
   )

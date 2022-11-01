@@ -8,13 +8,16 @@ const MainForm = ({
   className,
   statusText,
   buttonLabel = 'Submit',
+  loading,
+  error,
   onBack = () => {},
   onSubmit = () => {},
   ...props
 }) => {
   const formRef = useRef()
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault()
+    if (loading) return
     onSubmit(...getInputs(formRef.current))
   }
 
@@ -23,7 +26,7 @@ const MainForm = ({
       {...props}
       ref={formRef}
       onSubmit={handleSubmit}
-      className={`${className || ''} ${css.form}`}
+      className={cn(css.form, className)}
     >
       <div className={css.form__header}>
         <button type="button" onClick={onBack}>
@@ -34,7 +37,9 @@ const MainForm = ({
 
       {children}
 
-      <SubmitBtn>{buttonLabel}</SubmitBtn>
+      <SubmitBtn loading={loading} error={error}>
+        {buttonLabel}
+      </SubmitBtn>
       {statusText && <p className={css.statusText}>{statusText}</p>}
     </form>
   )

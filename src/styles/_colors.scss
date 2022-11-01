@@ -28,6 +28,7 @@
   --background: var(--c000);
   --foreground: var(--c800);
   --accent: var(--c600);
+  --error: hsl(0, var(--sat), var(--l8));
 
   --logo-bg: var(--accent);
   --logo-c1: hsl(var(--hue), var(--sat), var(--l2));

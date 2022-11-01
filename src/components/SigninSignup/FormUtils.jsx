@@ -1,7 +1,18 @@
 import css from './FormUtils.module.scss'
+import Loading from '@com/Loading'
 
-export const SubmitBtn = ({ children }) => {
-  return <button className={css.button}>{children}</button>
+export const SubmitBtn = ({ children, loading = false, error }) => {
+  console.log(error)
+
+  return (
+    <div className={css.buttonContainer}>
+      {error && <p className={css.error}>{error}</p>}
+
+      <button className={css.button} disabled={loading}>
+        {loading ? <Loading scoped={true} /> : children}
+      </button>
+    </div>
+  )
 }
 
 export const Group = ({ label, children }) => {
@@ -19,7 +30,7 @@ export const Group = ({ label, children }) => {
   )
 }
 
-export const getInputs = form => {
+export const getInputs = (form) => {
   const inputs = [
     ...form.querySelectorAll('input[name]'),
     ...form.querySelectorAll('textarea[name]'),
@@ -27,7 +38,7 @@ export const getInputs = form => {
   const values = {}
   const elements = {}
 
-  inputs.forEach(input => {
+  inputs.forEach((input) => {
     const name = input.name
     if (!name) return
 

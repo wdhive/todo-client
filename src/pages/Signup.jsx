@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
+import useStatus from '@hooks/useStatus'
 import { useDispatch } from 'react-redux'
 import api from '@api'
 import user from '@store/slice/user'
@@ -11,21 +12,31 @@ const Signup = () => {
   const formData = useRef({})
   const [step, setStep] = useState(0)
   const [emailSent, setEmailSent] = useState(false)
+  const [hasError, isLoading, setStatus] = useStatus()
+  const handleBack = () => {
+    setStatus()
+    setStep(0)
+  }
 
   const handleSignupSubmit = (values) => {
     if (values.password !== values.confirmPassword) {
-      return alert('Please enter a password')
+      return setStatus('Please enter a password')
     }
     formData.current = values
+    setStatus()
     setStep(1)
   }
 
   const handleEmailSubmit = async ({ email }) => {
-    formData.current.email = email
+    if (email) formData.current.email = email
+    else email = formData.current.email
+
+    setStatus('loading')
     const [err, data] = await api.post('/account/request-email-verify', {
       email,
     })
 
+    if (setStatus(err)) return
     setEmailSent(true)
   }
 
@@ -34,7 +45,10 @@ const Signup = () => {
     delete formData.current.avatar
     delete formData.current.confirmPassword
 
+    setStatus('loading')
     const [err, data] = await api.post('/account/signup', formData.current)
+
+    if (setStatus(err)) return
     dispatch(user.addJwt(data.token))
   }
 
@@ -44,13 +58,21 @@ const Signup = () => {
 
   return (
     <SigninSignup>
-      <SignupForm hidden={step !== 0} onSubmit={handleSignupSubmit} />
+      <SignupForm
+        hidden={step !== 0}
+        onSubmit={handleSignupSubmit}
+        loading={isLoading}
+        error={hasError}
+      />
 
       <EmailVerify
         hidden={step !== 1}
-        onBack={() => setStep(0)}
+        onBack={handleBack}
         showCodeInput={emailSent}
+        onResend={handleEmailSubmit}
         onSubmit={emailSent ? handleCodeSubmit : handleEmailSubmit}
+        loading={isLoading}
+        error={hasError}
       />
     </SigninSignup>
   )

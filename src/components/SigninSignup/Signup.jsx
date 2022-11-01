@@ -4,12 +4,12 @@ import MainForm from './MainForm'
 import { Group } from './FormUtils'
 import CameraIcon from '@ass/icons/camera.svg?component'
 
-const Signup = props => {
+const Signup = (props) => {
   const [previewImageSrc, setPreviewImageSrc] = useState(null)
   const inputFileRef = useRef()
   const clickPickImage = () => inputFileRef.current.click()
 
-  const handlePickImage = e => {
+  const handlePickImage = (e) => {
     const file = e.target.files[0]
     if (file) {
       setPreviewImageSrc(URL.createObjectURL(file))
@@ -42,11 +42,11 @@ const Signup = props => {
       </Group>
 
       <Group label="Password*">
-        <input type="text" name="password" required />
+        <input type="password" name="password" required />
       </Group>
 
       <Group label="Confirm Password*">
-        <input type="text" name="confirmPassword" required />
+        <input type="password" name="confirmPassword" required />
       </Group>
     </MainForm>
   )

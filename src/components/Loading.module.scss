@@ -12,6 +12,18 @@
   gap: clamp(5.6rem, 16vw, 12rem);
   align-content: center;
   justify-items: center;
+  font-size: clamp(0.4rem, 1.5vw, 1.2rem);
+
+  &.scoped {
+    position: relative;
+    font-size: 0.1875em;
+    height: 8em;
+    background: none;
+
+    .loader {
+      margin-bottom: -1em;
+    }
+  }
 
   svg {
     $logoSize: clamp(5.2rem, 12vw, 9.6rem);
@@ -25,7 +37,6 @@
 .loader {
   color: hsl(v(hue), v(sat), v(l4));
   position: relative;
-  font-size: clamp(0.4rem, 1.5vw, 1.2rem);
   background: currentColor;
   animation: escaleY 1s infinite ease-in-out;
   width: 1em;

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import useStatus from '@hooks/useStatus'
 import { useDispatch } from 'react-redux'
 import api from '@api'
 import user from '@store/slice/user'
@@ -12,29 +13,48 @@ const Signin = () => {
   const formData = useRef({})
   const [step, setStep] = useState(0)
   const [emailSent, setEmailSent] = useState(false)
-  const handleBack = () => setStep((prev) => --prev)
+  const [hasError, isLoading, setStatus] = useStatus()
+  const handleBack = () => {
+    setStep((prev) => --prev)
+    setStatus()
+  }
+  const handleForgetPass = () => {
+    setStep(1)
+    setStatus()
+  }
 
   const handleSigninSubmit = async (values) => {
+    setStatus('loading')
     const [err, data] = await api.post('/account/login', values)
+
+    if (setStatus(err)) return
     dispatch(user.addJwt(data.token))
   }
 
   const handleEmailSubmit = async ({ email }) => {
-    formData.current.email = email
+    if (email) formData.current.email = email
+    else email = formData.current.email
+    setStatus('loading')
     const [err, data] = await api.post('/account/password-forget', { email })
+
+    if (setStatus(err)) return
     setEmailSent(true)
   }
 
   const handleCodeSubmit = async ({ code }) => {
     formData.current.code = code
+    setStatus()
     setStep(2)
   }
 
   const handleResetPassSubmit = async (body) => {
+    setStatus('loading')
     const [err, data] = await api.post('/account/password-reset', {
       ...body,
       ...formData.current,
     })
+
+    if (setStatus(err)) return
     dispatch(user.addJwt(data.token))
   }
 
@@ -50,7 +70,9 @@ const Signin = () => {
       <SigninForm
         hidden={step !== 0}
         onSubmit={handleSigninSubmit}
-        onForgetPass={() => setStep(1)}
+        onForgetPass={handleForgetPass}
+        loading={isLoading}
+        error={hasError}
       />
 
       <EmailVerify
@@ -59,12 +81,17 @@ const Signin = () => {
         onBack={handleBack}
         showCodeInput={emailSent}
         onSubmit={emailSent ? handleCodeSubmit : handleEmailSubmit}
+        onResend={handleEmailSubmit}
+        loading={isLoading}
+        error={hasError}
       />
 
       <ResetPassword
         hidden={step !== 2}
         onSubmit={handleResetPassSubmit}
         onBack={handleBack}
+        loading={isLoading}
+        error={hasError}
       />
     </SigninSignup>
   )
