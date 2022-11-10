@@ -1,0 +1,64 @@
+.NavProfile {
+  margin-bottom: fluid(1.5rem, 2rem);
+}
+
+.profile {
+  color: v(accent);
+  text-align: center;
+  margin-bottom: 2rem;
+
+  img {
+    width: 7.5rem;
+    border-radius: 50%;
+    margin-inline: auto;
+    outline: solid 0.35rem v(accent);
+    margin-bottom: 1.25rem;
+  }
+
+  p {
+    color: v(c700);
+    @include font(bd2);
+  }
+
+  h6 {
+    font-weight: 700;
+  }
+}
+
+.theme {
+  display: flex;
+  gap: 0.5rem;
+  background: v(c200);
+  padding: 0.33rem;
+
+  &,
+  button {
+    border-radius: 0.5rem;
+  }
+
+  button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 1rem;
+    background: none;
+
+    &.active {
+      background: v(c300);
+    }
+
+    svg {
+      $size: 1.1em;
+      width: $size;
+      max-width: $size;
+      height: $size;
+      min-height: $size;
+    }
+
+    span {
+      font-weight: 500;
+      text-transform: capitalize;
+    }
+  }
+}
