@@ -42,7 +42,6 @@
     }
 
     @include NavCollapse {
-      --icon-size: 1.4em;
       width: fit-content;
       margin-inline: auto;
       padding: 1.25rem;
@@ -69,8 +68,8 @@
     --icon-size: 0.8em;
 
     @include NavCollapse {
-      border-radius: 50%;
       --icon-size: 1.15em;
+      border-radius: 50%;
     }
 
     path {
