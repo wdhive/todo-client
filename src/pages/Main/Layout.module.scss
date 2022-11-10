@@ -1,3 +1,12 @@
 .Layout {
   display: flex;
+  min-height: 100vh;
+
+  @include break-down($lg) {
+    flex-direction: column-reverse;
+
+    & > *:not(:first-child) {
+      flex: 1;
+    }
+  }
 }

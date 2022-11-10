@@ -1,4 +1,10 @@
+@use './index.utils.scss' as *;
+
 .NavProfile {
+  @include break-down($lg) {
+    display: none !important;
+  }
+
   margin-bottom: fluid(1.5rem, 2rem);
 }
 
@@ -13,6 +19,10 @@
     margin-inline: auto;
     outline: solid 0.35rem v(accent);
     margin-bottom: 1.25rem;
+
+    @include NavCollapse {
+      width: 3.5rem;
+    }
   }
 
   p {
@@ -23,6 +33,13 @@
   h6 {
     font-weight: 700;
   }
+
+  p,
+  h6 {
+    @include NavCollapse {
+      display: none;
+    }
+  }
 }
 
 .theme {
@@ -30,6 +47,10 @@
   gap: 0.5rem;
   background: v(c200);
   padding: 0.33rem;
+
+  @include NavCollapse {
+    display: none;
+  }
 
   &,
   button {

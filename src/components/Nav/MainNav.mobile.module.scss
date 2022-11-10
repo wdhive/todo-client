@@ -1,0 +1,84 @@
+.MainNav {
+  position: relative;
+  background: v(c100);
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+  gap: fluid(1rem, 15rem);
+  padding: 0.6rem;
+
+  @include break-down($xxs) {
+    justify-content: space-evenly;
+    padding-inline: 1rem;
+  }
+
+  button {
+    text-align: center;
+    padding-inline: 0;
+    @include font(bd3);
+    color: v(accent);
+
+    &:not(.addBtn) {
+      background: none;
+    }
+
+    & > * {
+      display: block;
+      margin-inline: auto;
+    }
+
+    svg {
+      --icon-size: 1.25em;
+      height: v(icon-size);
+      width: v(icon-size);
+      max-height: v(icon-size);
+      max-width: v(icon-size);
+      margin-bottom: 0.75rem;
+    }
+
+    path {
+      stroke: currentColor;
+    }
+
+    &.homeBtn,
+    &.profileBtn {
+      path {
+        fill: currentColor;
+      }
+    }
+
+    span {
+      font-weight: 400;
+
+      @include break-down($xxs) {
+        display: none;
+      }
+    }
+  }
+
+  .addBtn {
+    --btn-size: 5.25em;
+    width: v(btn-size);
+    height: v(btn-size);
+    border-radius: 50%;
+    margin-top: -2rem;
+    display: grid;
+    place-content: center;
+    outline: 0.65rem solid v(c100);
+
+    @include break-down($xxs) {
+      --btn-size: 4.5em;
+      margin-top: -1.33rem;
+      outline-width: 0.5rem;
+    }
+
+    svg {
+      --icon-size: 2em;
+      margin: 0;
+    }
+
+    path {
+      stroke: v(background);
+    }
+  }
+}

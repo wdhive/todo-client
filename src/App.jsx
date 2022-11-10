@@ -14,7 +14,6 @@ const Signup = react.lazy(() => import('@pages/Signup'))
 
 const MainLayout = react.lazy(() => import('@pages/Main/Layout'))
 const TaskLayout = react.lazy(() => import('@pages/Task/Layout'))
-const Task = react.lazy(() => import('@pages/Task'))
 const ProfileLayout = react.lazy(() => import('@pages/Profile/Layout'))
 const Search = react.lazy(() => import('@pages/Main/Search'))
 const Notifications = react.lazy(() => import('@pages/Main/Notifications'))
@@ -56,8 +55,9 @@ const App = () => {
 
               {isLoggedIn ? (
                 <Route path="/" element={<MainLayout />}>
-                  <Route index element={<Task />} />
+                  <Route index element={<Navigate replace to="/tasks" />} />
                   <Route path="tasks/*" element={<TaskLayout />} />
+
                   <Route path="profile/*" element={<ProfileLayout />} />
                   <Route path="search" element={<Search />} />
                   <Route path="notifications" element={<Notifications />} />

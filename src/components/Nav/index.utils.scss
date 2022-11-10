@@ -1,0 +1,5 @@
+@mixin NavCollapse {
+  nav[main-nav-collapse] & {
+    @content;
+  }
+}

@@ -1,0 +1,84 @@
+@import './index.utils.scss';
+
+.MainNav {
+  display: flex;
+  flex-direction: column;
+
+  @include NavCollapse {
+    width: fit-content;
+    margin-inline: auto;
+  }
+
+  button {
+    $border-radius: 0.5rem;
+    --icon-size: 1.2em;
+    width: 100%;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &:first-child {
+      border-radius: $border-radius $border-radius 0 0;
+    }
+    &:nth-last-child(2) {
+      border-radius: 0 0 $border-radius $border-radius;
+    }
+    &.addBtn,
+    &.logoutBtn {
+      border-radius: $border-radius;
+    }
+    &:not(.addBtn, :nth-last-child(2), .logoutBtn) {
+      border-bottom: 0.15rem solid v(c300);
+    }
+
+    &:not(.addBtn) {
+      background: v(c200);
+      text-align: left;
+
+      &.active {
+        background: v(c300);
+      }
+    }
+
+    @include NavCollapse {
+      --icon-size: 1.4em;
+      width: fit-content;
+      margin-inline: auto;
+      padding: 1.25rem;
+    }
+
+    svg {
+      height: v(icon-size);
+      max-height: v(icon-size);
+      width: v(icon-size);
+      max-width: v(icon-size);
+    }
+
+    span {
+      @include NavCollapse {
+        display: none;
+      }
+    }
+  }
+
+  .addBtn {
+    order: -1;
+    margin-bottom: 3rem;
+    justify-content: center;
+    --icon-size: 0.8em;
+
+    @include NavCollapse {
+      border-radius: 50%;
+      --icon-size: 1.15em;
+    }
+
+    path {
+      stroke: currentColor;
+    }
+  }
+
+  .logoutBtn {
+    margin-top: 2rem;
+  }
+}

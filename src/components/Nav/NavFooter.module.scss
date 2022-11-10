@@ -1,0 +1,53 @@
+@use './index.utils.scss' as *;
+
+.NavFooter {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include NavCollapse {
+    flex-direction: column;
+
+    button {
+      display: block;
+    }
+  }
+
+  @include break-down($lg) {
+    display: none !important;
+  }
+
+  button {
+    background: none;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  svg {
+    width: inherit;
+    height: inherit;
+  }
+}
+
+.icons button {
+  color: v(accent);
+  margin-right: 1.2rem;
+
+  @include NavCollapse {
+    margin-right: 0;
+    margin-bottom: 1.2rem;
+  }
+}
+
+.toggleNav {
+  outline: 1px solid v(accent);
+  outline-offset: 0.5rem;
+  border-radius: 0.25rem;
+
+  transform: rotate(90deg);
+  @include NavCollapse {
+    margin-top: 1rem;
+    transform: rotate(-90deg);
+  }
+}

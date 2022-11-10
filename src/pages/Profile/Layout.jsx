@@ -12,7 +12,7 @@ const ProfileLayout = () => {
         <Route path="theme" element={<Theme />} />
         <Route path="account" element={<Account />} />
         <Route path="categories" element={<TaskCategories />} />
-        <Route path=":notInUse/*" element={<Navigate to="/profile" />} />
+        <Route path=":404/*" element={<Navigate to="/profile" />} />
       </Routes>
     </>
   )

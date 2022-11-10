@@ -1,8 +1,14 @@
-.Nav {
-  background-color: v(c100);
-  min-height: 100vh;
-  padding: fluid(2rem, 3rem);
+@use '@abs/core' as *;
+
+@include break-up($lg) {
+  .Nav {
+    background-color: v(c100);
+    padding: fluid(2rem, 3rem);
+    display: flex;
+    flex-direction: column;
+
+    &[main-nav-collapse] {
+      padding: 1.75rem 1.5rem 2.5rem;
+    }
+  }
 }
-
-
-
