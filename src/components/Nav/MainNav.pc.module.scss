@@ -19,10 +19,10 @@
     align-items: center;
     gap: 1.5rem;
 
-    &:first-child {
+    &.homeBtn {
       border-radius: $border-radius $border-radius 0 0;
     }
-    &:nth-last-child(2) {
+    &.profileBtn {
       border-radius: 0 0 $border-radius $border-radius;
     }
 
@@ -31,7 +31,7 @@
       border-radius: $border-radius;
     }
 
-    &:not(.addBtn, .logoutBtn, :nth-last-child(2)) {
+    &:not(.addBtn, .logoutBtn, .profileBtn) {
       border-bottom: 0.15rem solid v(c300);
     }
 
