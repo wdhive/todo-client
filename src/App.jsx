@@ -6,25 +6,20 @@ import Loading from '@com/Loading'
 import ErrorHandler from '@com/ErrorHandler'
 import NotFound from '@pages/NotFound'
 
+const MainLayout = react.lazy(() => import('@pages/Main/Layout'))
 const LandingPage = react.lazy(() => import('@pages/LandingPage'))
 const HelpSupport = react.lazy(() => import('@pages/HelpSupport'))
 const AboutUs = react.lazy(() => import('@pages/AboutUs'))
 const Signin = react.lazy(() => import('@pages/Signin'))
 const Signup = react.lazy(() => import('@pages/Signup'))
 
-const MainLayout = react.lazy(() => import('@pages/Main/Layout'))
-const TaskLayout = react.lazy(() => import('@pages/Task/Layout'))
-const ProfileLayout = react.lazy(() => import('@pages/Profile/Layout'))
-const Search = react.lazy(() => import('@pages/Main/Search'))
-const Notifications = react.lazy(() => import('@pages/Main/Notifications'))
-
 const App = () => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
   const themeHue = useSelector((state) => state.settings.hue)
 
   return (
-    <main>
-      {themeHue && !isLoggedIn && (
+    <>
+      {themeHue && (
         <style>
           {`:root {
               --hue: ${themeHue};
@@ -33,8 +28,8 @@ const App = () => {
       )}
 
       <BrowserRouter>
-        <Suspense fallback={<Loading />}>
-          <ErrorBoundary element={<ErrorHandler />}>
+        <ErrorBoundary element={<ErrorHandler />}>
+          <Suspense fallback={<Loading />}>
             <Routes>
               <Route path="about-us" element={<AboutUs />} />
               <Route path="help-support" element={<HelpSupport />} />
@@ -54,28 +49,7 @@ const App = () => {
               />
 
               {isLoggedIn ? (
-                <Route path="/" element={<MainLayout />}>
-                  <Route index element={<Navigate replace to="/tasks" />} />
-                  <Route path="tasks/*" element={<TaskLayout />} />
-
-                  <Route path="profile/*" element={<ProfileLayout />} />
-                  <Route path="search" element={<Search />} />
-                  <Route path="notifications" element={<Notifications />} />
-
-                  <Route path="login/*" element={<Navigate replace to="/" />} />
-                  <Route
-                    path="signin/*"
-                    element={<Navigate replace to="/" />}
-                  />
-                  <Route
-                    path="signup/*"
-                    element={<Navigate replace to="/" />}
-                  />
-                  <Route
-                    path="register/*"
-                    element={<Navigate replace to="/" />}
-                  />
-                </Route>
+                <Route path="/*" element={<MainLayout />} />
               ) : (
                 <>
                   <Route path="/" element={<LandingPage />} />
@@ -107,15 +81,14 @@ const App = () => {
                     path="notifications/*"
                     element={<Navigate replace to="/login" />}
                   />
+                  <Route path="*" element={<NotFound />} />
                 </>
               )}
-
-              <Route path="*" element={<NotFound />} />
             </Routes>
-          </ErrorBoundary>
-        </Suspense>
+          </Suspense>
+        </ErrorBoundary>
       </BrowserRouter>
-    </main>
+    </>
   )
 }
 

@@ -8,5 +8,12 @@
     & > *:not(:first-child) {
       flex: 1;
     }
+
+    [main-loading-component] {
+      height: auto;
+      width: auto;
+      min-height: auto;
+      min-width: auto;
+    }
   }
 }

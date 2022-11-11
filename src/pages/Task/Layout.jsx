@@ -10,9 +10,10 @@ const TaskLayout = () => {
       <Task />
 
       <Routes>
+        <Route index element={<></>} />
         <Route path="new" element={<TaskNew />} />
         <Route path=":taskId" element={<TaskUpdate />} />
-        <Route path=":404/*" element={<Navigate replace to="/tasks" />} />
+        <Route path="*" element={<Navigate replace to="/tasks" />} />
       </Routes>
     </>
   )

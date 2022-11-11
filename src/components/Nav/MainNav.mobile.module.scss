@@ -12,7 +12,8 @@
     padding-inline: 1rem;
   }
 
-  button {
+  :global(.button) {
+    text-decoration: none;
     text-align: center;
     padding-inline: 0;
     @include font(bd3);
@@ -40,13 +41,6 @@
       stroke: currentColor;
     }
 
-    &.homeBtn,
-    &.profileBtn {
-      path {
-        fill: currentColor;
-      }
-    }
-
     span {
       font-weight: 400;
 
@@ -54,9 +48,23 @@
         display: none;
       }
     }
+
+    &.homeBtn,
+    &.profileBtn {
+      path {
+        fill: currentColor;
+      }
+    }
+
+    &:global(.active) {
+      // TODO:
+      // Do something with the active
+    }
   }
 
   .addBtn {
+    position: relative;
+    z-index: 1000;
     --btn-size: 5.25em;
     width: v(btn-size);
     height: v(btn-size);

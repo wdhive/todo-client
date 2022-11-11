@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
+import useMediaQuery from '@hooks/useMediaQuery'
 import css from './Header.module.scss'
 import HomeIcon from '@ass/icons/home.svg?component'
 import HamburgerIcon from '@ass/icons/hamburger.svg?component'
@@ -11,7 +12,7 @@ import LoginBtn from './LoginBtn'
 import SignupBtn from './SignupBtn'
 
 const LinkItem = ({ to, children }) => {
-  const getClassName = navData =>
+  const getClassName = (navData) =>
     `button ${css.navLink} ${navData.isActive ? css.active || '' : ''}`
 
   return (
@@ -23,26 +24,15 @@ const LinkItem = ({ to, children }) => {
 
 const Nav = () => {
   const dialougeRef = useRef()
-  const [mobileMode, setMobileMode] = useState(false)
+  const mobileMode = useMediaQuery('(max-width: 62em)')
   const handleCloseDialog = () => dialougeRef.current.close()
   const handleShowDialog = () => dialougeRef.current.showModal()
 
   useEffect(() => {
-    // DANGER: Sync this with css ($lg)
-    const media = matchMedia('(max-width: 62em)')
-    const handleMediaChange = ({ matches }) => {
-      if (matches) {
-        setMobileMode(true)
-      } else {
-        handleCloseDialog()
-        setMobileMode(false)
-      }
+    if (!mobileMode) {
+      handleCloseDialog()
     }
-
-    handleMediaChange(media)
-    media.addEventListener('change', handleMediaChange)
-    return () => media.removeEventListener('change', handleMediaChange)
-  }, [])
+  }, [mobileMode])
 
   return (
     <header>

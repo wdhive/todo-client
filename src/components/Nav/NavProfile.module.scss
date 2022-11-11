@@ -5,7 +5,11 @@
     display: none !important;
   }
 
-  margin-bottom: fluid(1.5rem, 2rem);
+  margin-bottom: 2.25rem;
+
+  @include NavCollapse {
+    margin-bottom: 0.75rem;
+  }
 }
 
 .profile {

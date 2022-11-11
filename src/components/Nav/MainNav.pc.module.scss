@@ -9,7 +9,8 @@
     margin-inline: auto;
   }
 
-  button {
+  :global(.button) {
+    text-decoration: none;
     $border-radius: 0.5rem;
     --icon-size: 1.2em;
     width: 100%;
@@ -24,11 +25,13 @@
     &:nth-last-child(2) {
       border-radius: 0 0 $border-radius $border-radius;
     }
+
     &.addBtn,
     &.logoutBtn {
       border-radius: $border-radius;
     }
-    &:not(.addBtn, :nth-last-child(2), .logoutBtn) {
+
+    &:not(.addBtn, .logoutBtn, :nth-last-child(2)) {
       border-bottom: 0.15rem solid v(c300);
     }
 
@@ -36,8 +39,8 @@
       background: v(c200);
       text-align: left;
 
-      &.active {
-        background: v(c300);
+      &:global(.active) {
+        background-color: v(c300);
       }
     }
 
@@ -62,14 +65,14 @@
   }
 
   .addBtn {
-    order: -1;
-    margin-bottom: 3rem;
+    margin-bottom: 3.25rem;
     justify-content: center;
     --icon-size: 0.8em;
 
     @include NavCollapse {
       --icon-size: 1em;
       border-radius: 50%;
+      margin-bottom: 4rem;
     }
 
     path {
@@ -78,6 +81,6 @@
   }
 
   .logoutBtn {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
   }
 }

@@ -1,16 +1,11 @@
 @include break-up($lg) {
   @import './MainNav.pc.module.scss';
-
-  .labelNotify {
-    display: none !important;
-  }
 }
 
 @include break-down($lg) {
   @import './MainNav.mobile.module.scss';
 
   .logoutBtn,
-  .labelNotification,
   .addBtn span {
     display: none !important;
   }

@@ -5,8 +5,10 @@
 }
 
 .loading {
-  position: absolute;
-  inset: 0;
+  height: inherit;
+  min-height: inherit;
+  width: 100%;
+  position: relative;
   background: v(background);
   display: grid;
   gap: clamp(5.6rem, 16vw, 12rem);
@@ -15,7 +17,6 @@
   font-size: clamp(0.4rem, 1.5vw, 1.2rem);
 
   &.scoped {
-    position: relative;
     font-size: 0.1875em;
     height: 8em;
     background: none;
