@@ -4,15 +4,15 @@ import GithubIcon from '@ass/icons/github.svg?component'
 import AboutIcon from '@ass/icons/about-us.svg?component'
 import BackIcon from '@ass/icons/chev-down.svg?component'
 
-const NavFooter = ({ navExpand, setNavExpand }) => {
+const NavFooter = ({ setNavExpand }) => {
   return (
     <div className={css.NavFooter}>
       <div className={css.icons}>
         <button>
-          <AboutIcon />
+          <HelpIcon />
         </button>
         <button>
-          <HelpIcon />
+          <AboutIcon />
         </button>
         <button>
           <GithubIcon />

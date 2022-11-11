@@ -43,9 +43,9 @@
 }
 
 .toggleNav {
+  border-radius: 0.1rem;
   outline: 1px solid v(accent);
   outline-offset: 0.5rem;
-  border-radius: 0.25rem;
 
   transform: rotate(90deg);
   @include NavCollapse {
