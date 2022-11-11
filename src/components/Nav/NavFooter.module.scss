@@ -3,13 +3,13 @@
 .NavFooter {
   margin-top: auto;
   display: flex;
-  align-items: center;
   justify-content: space-between;
 
   @include NavCollapse {
     flex-direction: column;
+    align-items: center;
 
-    button {
+    a {
       display: block;
     }
   }
@@ -18,11 +18,14 @@
     display: none !important;
   }
 
+  a,
   button {
+    color: v(accent);
     --btn-size: 1.85rem;
     background: none;
     width: v(btn-size);
     height: v(btn-size);
+    text-decoration: none;
   }
 
   svg {
@@ -31,17 +34,19 @@
   }
 }
 
-.icons button {
-  color: v(accent);
-  margin-right: 1.2rem;
+.icons {
+  display: flex;
+  gap: 1.2rem;
 
   @include NavCollapse {
-    --btn-size: 1.7rem;
-    margin-right: 0;
+    flex-direction: column;
     margin-bottom: 1.2rem;
+
+    a {
+      --btn-size: 1.7rem;
+    }
   }
 }
-
 .toggleNav {
   border-radius: 0.1rem;
   outline: 1px solid v(accent);
