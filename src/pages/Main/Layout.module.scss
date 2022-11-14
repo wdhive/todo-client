@@ -3,17 +3,23 @@
   min-height: 100vh;
 
   @include break-down($lg) {
-    flex-direction: column-reverse;
-
-    & > *:not(:first-child) {
-      flex: 1;
-    }
+    flex-direction: column;
 
     [main-loading-component] {
       height: auto;
       width: auto;
       min-height: auto;
       min-width: auto;
+    }
+
+    & > *:not(:last-child) {
+      flex: 1;
+    }
+  }
+
+  @include break-up($lg) {
+    & > *:not(:first-child) {
+      flex: 1;
     }
   }
 }

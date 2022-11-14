@@ -1,0 +1,31 @@
+
+.taskCategories {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+
+  button {
+    padding-block: 0.5rem;
+    background: none;
+    text-transform: capitalize;
+  }
+
+  @for $i from 1 through 10 {
+    button:nth-child(#{$i}).taskActiveCategory ~ .taskActiveCategoryLine {
+      --left: calc(var(--width) * #{$i - 1});
+    }
+  }
+
+  .taskActiveCategoryLine {
+    --width: calc(100% / 3);
+    --left: 0;
+    width: v(width);
+    left: v(left);
+    bottom: 0;
+    position: absolute;
+    height: 0.25rem;
+    background: v(accent);
+    transition: left 0.2s ease-in-out;
+  }
+}

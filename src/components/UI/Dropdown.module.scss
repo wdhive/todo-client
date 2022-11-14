@@ -1,0 +1,61 @@
+.Dropdown {
+  position: relative;
+  @include font(btn2);
+}
+
+.label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  border-bottom: 0.1rem solid v(accent);
+  background: transparent;
+  transition: background 0.1s ease-in-out;
+  color: v(c700);
+
+  svg {
+    $size: 0.85em;
+    width: $size;
+    max-width: $size;
+    height: $size;
+    max-height: $size;
+
+    path {
+      stroke: currentColor;
+    }
+  }
+}
+
+.isOpen .label {
+  background: v(c100);
+}
+
+.body {
+  z-index: 1;
+  position: absolute;
+  top: 100%;
+  background: v(c100);
+  min-width: 100%;
+  width: fit-content;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.5rem;
+
+  input[type='radio'] {
+    border-radius: 50%;
+  }
+}
+
+.Dropdown:not(.isOpen) .body {
+  display: none;
+}
+
+.body.alignRight {
+  right: 0;
+}
+
+.body.alignLeft {
+  left: 0;
+}

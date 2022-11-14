@@ -4,10 +4,10 @@
   margin-top: auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   @include NavCollapse {
     flex-direction: column;
-    align-items: center;
 
     a {
       display: block;
@@ -20,8 +20,8 @@
 
   a,
   button {
-    color: v(accent);
     --btn-size: 1.85rem;
+    color: v(accent);
     background: none;
     width: v(btn-size);
     height: v(btn-size);
@@ -47,14 +47,23 @@
     }
   }
 }
+
 .toggleNav {
-  border-radius: 0.1rem;
-  outline: 1px solid v(accent);
-  outline-offset: 0.5rem;
+  --btn-size: 3rem !important;
+  border-radius: 0.5rem;
+  border: 1px solid v(accent);
+  padding: 0.6rem;
 
   transform: rotate(90deg);
   @include NavCollapse {
     margin-top: 1.5rem;
     transform: rotate(-90deg);
+  }
+
+  svg {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
   }
 }

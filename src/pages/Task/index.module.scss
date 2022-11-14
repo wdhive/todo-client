@@ -1,0 +1,28 @@
+.Task {
+  :global(.wrapper) {
+    max-width: 75rem;
+    padding: fluid(1rem, 5rem);
+
+    @include break-up($lg) {
+      padding-top: 1rem;
+    }
+  }
+}
+
+.header {
+  background: v(c200);
+
+  :global(.wrapper) {
+    padding-bottom: 0;
+  }
+}
+
+.navProfile {
+  display: none;
+
+  @include break-down($lg) {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+  }
+}

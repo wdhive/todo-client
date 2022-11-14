@@ -1,9 +1,9 @@
 @include break-up($lg) {
-  @import './MainNav.pc.module.scss';
+  @import './MainNav.pc.scss';
 }
 
 @include break-down($lg) {
-  @import './MainNav.mobile.module.scss';
+  @import './MainNav.mobile.scss';
 
   .logoutBtn,
   .addBtn span {

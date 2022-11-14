@@ -2,7 +2,7 @@
 
 .NavProfile {
   @include break-down($lg) {
-    display: none !important;
+    display: none;
   }
 
   margin-bottom: 2.25rem;
@@ -17,6 +17,14 @@
   text-align: center;
   margin-bottom: 2rem;
 
+  @include break-down($lg) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    margin-bottom: 0;
+  }
+
   img {
     width: 7.5rem;
     border-radius: 50%;
@@ -26,6 +34,12 @@
 
     @include NavCollapse {
       width: 3.5rem;
+    }
+
+    @include break-down($lg) {
+      margin-bottom: 0;
+      width: 6rem;
+      height: 100%;
     }
   }
 
@@ -52,6 +66,10 @@
   background: v(c200);
   padding: 0.33rem;
 
+  @include break-down($lg) {
+    background: none;
+  }
+
   @include NavCollapse {
     display: none;
   }
@@ -69,6 +87,10 @@
     padding: 0.25rem 1rem;
     background: none;
 
+    @include break-down($lg) {
+      display: none;
+    }
+
     &.active {
       background: v(c300);
     }
@@ -84,6 +106,17 @@
     span {
       font-weight: 500;
       text-transform: capitalize;
+    }
+  }
+
+  .toggleTheme {
+    display: none;
+    
+    @include break-down($lg) {
+      display: block;
+      align-self: center;
+      border-radius: 50%;
+      font-size: 2rem;
     }
   }
 }

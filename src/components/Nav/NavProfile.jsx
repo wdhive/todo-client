@@ -4,13 +4,18 @@ import DarkIcon from '@ass/icons/dark.svg?component'
 import AutoIcon from '@ass/icons/auto.svg?component'
 import AvatarIcon from '@ass/avatar.png'
 
-const NavProfile = () => {
+const NavProfile = ({ className }) => {
   return (
-    <div className={css.NavProfile}>
+    <div className={cn(css.NavProfile, className)}>
       <div className={css.profile}>
-        <img src={AvatarIcon} alt="Profile Picture" />
-        <p>Good Afternoon,</p>
-        <h6>John Doe</h6>
+        <div>
+          <img src={AvatarIcon} alt="Profile Picture" />
+        </div>
+
+        <div>
+          <p>Good Afternoon,</p>
+          <h6>John Doe</h6>
+        </div>
       </div>
 
       <div className={css.theme}>
@@ -27,6 +32,10 @@ const NavProfile = () => {
         <button>
           <AutoIcon />
           <span>auto</span>
+        </button>
+
+        <button className={css.toggleTheme}>
+          <AutoIcon />
         </button>
       </div>
     </div>
