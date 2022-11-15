@@ -9,31 +9,19 @@ const instance = axios.create({
   },
 })
 
-const axiosFactory =
-  method =>
-  async (...args) => {
-    try {
-      const { data } = await instance[method](...args)
-      return [null, data.data || data]
-    } catch (err) {
-      return [err.response?.data?.message || err.message, null]
-    }
-  }
-
-export const updateAuthToken = token => {
+export const updateAuthToken = (token) => {
   instance.defaults.headers.common.authorization = token
   localStorage.setItem('jwt-token', token)
 }
-export const updateSocket = socketId => {
+export const updateSocket = (socketId) => {
   instance.defaults.headers.common['exclude-socket'] = socketId
 }
 
-export default {
-  get: axiosFactory('get'),
-  post: axiosFactory('post'),
-  delete: axiosFactory('delete'),
-  patch: axiosFactory('patch'),
-  put: axiosFactory('put'),
-  updateAuthToken,
-  updateSocket,
+export default async (method, ...args) => {
+  try {
+    const { data } = await instance[method](...args)
+    return [undefined, data.data || data]
+  } catch (err) {
+    return [err.response?.data?.message || err.message, undefined]
+  }
 }

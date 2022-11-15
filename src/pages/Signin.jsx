@@ -1,7 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import useStatus from '@hooks/useStatus'
-import { useDispatch } from 'react-redux'
-import api from '@api'
 import user from '@store/slice/user'
 import SigninSignup from '@lay/SigninSignup'
 import SigninForm from '@com/SigninSignup/Signin'
@@ -9,53 +6,48 @@ import ResetPassword from '@com/SigninSignup/ResetPassword'
 import EmailVerify from '@com/SigninSignup/EmailVerify'
 
 const Signin = () => {
-  const dispatch = useDispatch()
+  const api = useApi()
   const formData = useRef({})
   const [step, setStep] = useState(0)
   const [emailSent, setEmailSent] = useState(false)
-  const [hasError, isLoading, setStatus] = useStatus()
   const handleBack = () => {
     setStep((prev) => --prev)
-    setStatus()
+    api.reset()
   }
   const handleForgetPass = () => {
     setStep(1)
-    setStatus()
+    api.reset()
   }
 
   const handleSigninSubmit = async (values) => {
-    setStatus('loading')
-    const [err, data] = await api.post('/account/login', values)
-
-    if (setStatus(err)) return
-    dispatch(user.addJwt(data.token))
+    const data = await api.post('/account/login', values)
+    if (!data) return
+    $store(user.addJwt(data.token))
   }
 
   const handleEmailSubmit = async ({ email }) => {
     if (email) formData.current.email = email
     else email = formData.current.email
-    setStatus('loading')
-    const [err, data] = await api.post('/account/password-forget', { email })
-
-    if (setStatus(err)) return
+    const data = await api.post('/account/password-forget', {
+      email,
+    })
+    if (!data) return
     setEmailSent(true)
   }
 
   const handleCodeSubmit = async ({ code }) => {
     formData.current.code = code
-    setStatus()
+    api.reset()
     setStep(2)
   }
 
   const handleResetPassSubmit = async (body) => {
-    setStatus('loading')
-    const [err, data] = await api.post('/account/password-reset', {
+    const data = await api.post('/account/password-reset', {
       ...body,
       ...formData.current,
     })
-
-    if (setStatus(err)) return
-    dispatch(user.addJwt(data.token))
+    if (!data) return
+    $store(user.addJwt(data.token))
   }
 
   useEffect(() => {
@@ -71,8 +63,8 @@ const Signin = () => {
         hidden={step !== 0}
         onSubmit={handleSigninSubmit}
         onForgetPass={handleForgetPass}
-        loading={isLoading}
-        error={hasError}
+        loading={api.loading}
+        error={api.error}
       />
 
       <EmailVerify
@@ -82,16 +74,16 @@ const Signin = () => {
         showCodeInput={emailSent}
         onSubmit={emailSent ? handleCodeSubmit : handleEmailSubmit}
         onResend={handleEmailSubmit}
-        loading={isLoading}
-        error={hasError}
+        loading={api.loading}
+        error={api.error}
       />
 
       <ResetPassword
         hidden={step !== 2}
         onSubmit={handleResetPassSubmit}
         onBack={handleBack}
-        loading={isLoading}
-        error={hasError}
+        loading={api.loading}
+        error={api.error}
       />
     </SigninSignup>
   )

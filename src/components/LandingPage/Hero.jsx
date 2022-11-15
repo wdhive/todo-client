@@ -1,17 +1,9 @@
 import css from './Hero.module.scss'
 import SignupBtn from './SignupBtn'
 import ProximityEffect from './ProximityEffect'
-import api from '@api'
-import { useEffect, useState } from 'react'
 
 const Hero = () => {
-  const [usersCount, setUsersCount] = useState(null)
-
-  useEffect(() => {
-    api.get('/extra/users-count').then(([err, data]) => {
-      setUsersCount(data?.count)
-    })
-  }, [])
+  const api = useApiOnce('get', '/extra/users-count')
 
   return (
     <div className={css.hero}>
@@ -36,10 +28,10 @@ const Hero = () => {
               </button>
             </div>
 
-            {usersCount && (
+            {api.data && (
               <p className={css.hero__status}>
-                <strong>{usersCount}</strong> people{' '}
-                {usersCount > 1 ? 'are' : 'is'} already enjoying our app
+                <strong>{api.data.count}</strong> people{' '}
+                {api.data.count > 1 ? 'are' : 'is'} already enjoying our app
               </p>
             )}
           </div>

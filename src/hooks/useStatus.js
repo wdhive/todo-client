@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
 const useStatus = () => {
-  const [status, setStatus] = useState(null)
+  const [status, setStatus] = useState()
 
   const isLoading = status === 'loading'
-  const hasError = !isLoading && status
+  const hasError = isLoading ? undefined : status
 
   return [
     hasError,

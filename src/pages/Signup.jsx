@@ -1,42 +1,35 @@
 import { useRef, useState, useEffect } from 'react'
-import useStatus from '@hooks/useStatus'
-import { useDispatch } from 'react-redux'
-import api from '@api'
 import user from '@store/slice/user'
 import SigninSignup from '@lay/SigninSignup'
 import SignupForm from '@com/SigninSignup/Signup'
 import EmailVerify from '@com/SigninSignup/EmailVerify'
 
 const Signup = () => {
-  const dispatch = useDispatch()
+  const api = useApi()
   const formData = useRef({})
   const [step, setStep] = useState(0)
   const [emailSent, setEmailSent] = useState(false)
-  const [hasError, isLoading, setStatus] = useStatus()
   const handleBack = () => {
-    setStatus()
+    api.reset()
     setStep(0)
   }
 
   const handleSignupSubmit = (values) => {
     if (values.password !== values.confirmPassword) {
-      return setStatus('Please enter a password')
+      return api.setStatus('Please enter a password')
     }
     formData.current = values
-    setStatus()
+    api.reset()
     setStep(1)
   }
 
   const handleEmailSubmit = async ({ email }) => {
     if (email) formData.current.email = email
     else email = formData.current.email
-
-    setStatus('loading')
-    const [err, data] = await api.post('/account/request-email-verify', {
+    const data = await api.post('/account/request-email-verify', {
       email,
     })
-
-    if (setStatus(err)) return
+    if (!data) return
     setEmailSent(true)
   }
 
@@ -44,12 +37,9 @@ const Signup = () => {
     formData.current.code = code
     delete formData.current.avatar
     delete formData.current.confirmPassword
-
-    setStatus('loading')
-    const [err, data] = await api.post('/account/signup', formData.current)
-
-    if (setStatus(err)) return
-    dispatch(user.addJwt(data.token))
+    const data = await api.post('/account/signup', formData.current)
+    if (!data) return
+    $store(user.addJwt(data.token))
   }
 
   useEffect(() => {
@@ -61,8 +51,8 @@ const Signup = () => {
       <SignupForm
         hidden={step !== 0}
         onSubmit={handleSignupSubmit}
-        loading={isLoading}
-        error={hasError}
+        loading={api.loading}
+        error={api.error}
       />
 
       <EmailVerify
@@ -71,8 +61,8 @@ const Signup = () => {
         showCodeInput={emailSent}
         onResend={handleEmailSubmit}
         onSubmit={emailSent ? handleCodeSubmit : handleEmailSubmit}
-        loading={isLoading}
-        error={hasError}
+        loading={api.loading}
+        error={api.error}
       />
     </SigninSignup>
   )

@@ -1,16 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import css from './ProximityEffect.module.scss'
 import settingsSlice from '@store/slice/settings'
 
 const ProximityEffect = () => {
-  const dispatch = useDispatch()
   const anchorRef = useRef()
   const [rotateDeg, setRotateDeg] = useState(25)
   const [showEffect, setShowEffect] = useState(false)
 
   const handleRandomTheme = () => {
-    dispatch(settingsSlice.setRandomHue())
+    $store(settingsSlice.setRandomHue())
   }
 
   useEffect(() => {
