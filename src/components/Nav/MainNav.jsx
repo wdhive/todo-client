@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import useMediaQuery from '@hooks/useMediaQuery'
 import css from './MainNav.module.scss'
@@ -8,6 +7,7 @@ import SearchIcon from '@ass/icons/search.svg?component'
 import NotiIcon from '@ass/icons/bell.svg?component'
 import ProfileIcon from '@ass/icons/account.svg?component'
 import LogoutIcon from '@ass/icons/logout.svg?component'
+import userSlice from '@store/slice/user'
 
 const MainNav = () => {
   const navigate = useNavigate()
@@ -21,6 +21,10 @@ const MainNav = () => {
       <span>Add Task</span> <PlusIcon />
     </button>
   )
+
+  const handleLogout = () => {
+    $store(userSlice.logout())
+  }
 
   return (
     <div className={css.MainNav}>
@@ -49,7 +53,7 @@ const MainNav = () => {
       </NavLink>
 
       {mobileMode || (
-        <button className={cn('button', css.logoutBtn)}>
+        <button className={cn('button', css.logoutBtn)} onClick={handleLogout}>
           <LogoutIcon />
           <span>Logout</span>
         </button>
