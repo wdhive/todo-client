@@ -1,0 +1,159 @@
+.Task {
+  background: v(c300);
+  display: flex;
+}
+
+.Task,
+.main {
+  border-radius: 0.5rem;
+}
+
+.main {
+  --separator-line-color: var(--c300);
+
+  background: v(c100);
+  flex: 1;
+  padding: 1.25rem 2rem;
+}
+
+.top,
+.bottom {
+  display: flex;
+  align-items: center;
+
+  & > *:first-child {
+    flex: 1;
+  }
+
+  h6 {
+    font-weight: 700;
+  }
+}
+
+.top {
+  margin-bottom: 1rem;
+}
+
+.checkBox {
+  position: absolute;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  overflow: hidden;
+  z-index: -999;
+
+  & + div {
+    background: v(background);
+    border-radius: 0.5rem;
+    border: 0.15rem solid v(accent);
+    @include svg-size(1.5rem);
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+
+    svg {
+      display: none;
+      @include svg-size(0.75rem);
+
+      path {
+        stroke: var(--c100);
+      }
+    }
+  }
+
+  &:checked + div {
+    background: v(accent);
+
+    svg {
+      display: block;
+    }
+  }
+
+  &:focus + div {
+    outline: 0.1rem solid v(accent);
+    outline-offset: 0.2rem;
+  }
+}
+
+.bottom {
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid v(separator-line-color);
+  color: v(c700);
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  @include font(bd3);
+
+  svg {
+    @include svg-size(1em);
+
+    path {
+      fill: currentColor;
+    }
+  }
+
+  p {
+    font-size: 1em;
+  }
+}
+
+.users {
+  display: flex;
+  flex-direction: row-reverse;
+
+  img {
+    display: inline-block;
+    width: 2.25rem;
+    margin-left: -0.45rem;
+    border-radius: 50%;
+    border: 0.2rem solid v(background);
+  }
+}
+
+.context {
+  overflow: hidden;
+  width: 0;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  transition: width 0.25s ease-in-out;
+
+  & > * {
+    flex: 1;
+  }
+
+  button {
+    background: none;
+    padding: 1rem;
+    color: v(foreground);
+
+    &:hover {
+      background: v(c400);
+      color: v(background);
+    }
+
+    svg {
+      @include svg-size(1.85rem);
+    }
+
+    &:first-child {
+      svg path {
+        stroke: currentColor;
+      }
+    }
+    &:last-child {
+      svg path {
+        fill: currentColor;
+      }
+    }
+  }
+}
+
+.contextActive .context {
+  visibility: visible;
+  width: 3.85rem;
+}

@@ -1,6 +1,6 @@
 .Task {
   :global(.wrapper) {
-    max-width: 75rem;
+    max-width: 100rem;
     padding: fluid(1rem, 5rem);
 
     @include break-up($lg) {
@@ -24,5 +24,15 @@
     display: flex;
     justify-content: space-between;
     align-self: center;
+  }
+}
+
+.taskList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  & > * {
+    flex-basis: calc(50% - 2rem);
   }
 }

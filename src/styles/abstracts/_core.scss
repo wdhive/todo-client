@@ -12,3 +12,12 @@
   transition-duration: var(--#{$duration});
   transition-timing-function: $timing;
 }
+
+@mixin svg-size($size) {
+  max-width: $size;
+  max-height: $size;
+  min-width: $size;
+  min-height: $size;
+  width: $size;
+  height: $size;
+}

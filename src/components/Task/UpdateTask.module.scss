@@ -1,0 +1,19 @@
+.header {
+  background: v(c200);
+
+  :global(.wrapper) {
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  button {
+    background: none;
+    padding: 0.5rem 0.75rem;
+  }
+
+  svg {
+    @include svg-size(1em);
+  }
+}
