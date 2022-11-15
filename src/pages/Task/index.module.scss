@@ -1,4 +1,8 @@
 .Task {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
   :global(.wrapper) {
     max-width: 100rem;
     padding: fluid(1rem, 5rem);

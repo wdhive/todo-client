@@ -3,3 +3,9 @@
   max-width: 144rem;
   margin-inline: auto;
 }
+
+.scroll-inside-flex {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  height: 0;
+}

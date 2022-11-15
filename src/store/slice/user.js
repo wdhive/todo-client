@@ -1,13 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { updateAuthToken } from '@api'
 const jwtToken = localStorage.getItem('jwt-token')
 
 const initialState = {
-  isLoggedIn: jwtToken ? true : false,
+  isLoggedIn: false,
   isGuestUser: false,
-  jwt: localStorage.getItem('jwt-token'),
+  jwt: null,
+  socketId: null,
   user: null,
 }
+
+const sessionState = {
+  ...initialState,
+  isLoggedIn: jwtToken ? true : false,
+  jwt: jwtToken,
+}
+
 
 const guestUserData = {
   name: 'Guest',
@@ -16,13 +23,12 @@ const guestUserData = {
 
 const userSlice = createSlice({
   name: 'user',
-  initialState,
+  initialState: sessionState,
   reducers: {
-    addJwt(state, { payload }) {
+    login(state, { payload }) {
       state.isLoggedIn = true
       state.isGuestUser = false
       state.jwt = payload
-      updateAuthToken(payload)
     },
 
     loginAsGuest(state) {
@@ -33,7 +39,10 @@ const userSlice = createSlice({
 
     logout(state) {
       Object.assign(state, initialState)
-      updateAuthToken(null)
+    },
+
+    addSocketId(state, { payload }) {
+      state.socketId = payload
     },
 
     updateProfile(state, { payload }) {

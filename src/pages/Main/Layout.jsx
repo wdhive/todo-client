@@ -41,7 +41,7 @@ const MainLayout = () => {
   return (
     <div className={css.Layout}>
       {mobileMode || <Nav />}
-      {mainLayout}
+      <div className={css.root}>{mainLayout}</div>
       {mobileMode && <Nav />}
     </div>
   )

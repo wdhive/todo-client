@@ -10,7 +10,7 @@ const Task = () => {
   const [showTaskCategory, setShowTaskCategory] = useState(false)
   const [sortBy, setSoryBy] = useState(false)
 
-  console.log('Task filter:', showMainCategory, showTaskCategory, sortBy)
+  // console.log('Task filter:', showMainCategory, showTaskCategory, sortBy)
 
   return (
     <div className={css.Task}>
@@ -24,7 +24,7 @@ const Task = () => {
         </div>
       </header>
 
-      <div>
+      <div className="scroll-inside-flex">
         <div className="wrapper">
           <TaskControls
             taskCategories={['Work', 'Person', 'School']}
@@ -33,7 +33,7 @@ const Task = () => {
           />
 
           <div className={css.taskList}>
-            {[0, 1, 2, 3].map((el) => (
+            {[0, 1, 2, 3, 34, 354, 3654, 345, 38, 47, 384, 423, 453, 4243, 64].map((el) => (
               <TaskItem key={el} />
             ))}
           </div>

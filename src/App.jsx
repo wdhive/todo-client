@@ -31,22 +31,9 @@ const App = () => {
         <ErrorBoundary element={<ErrorHandler />}>
           <Suspense fallback={<Loading />}>
             <Routes>
-              <Route path="about-us" element={<AboutUs />} />
-              <Route path="help-support" element={<HelpSupport />} />
-
-              <Route
-                path="about"
-                element={<Navigate replace to="/about-us" />}
-              />
-              <Route path="us" element={<Navigate replace to="/about-us" />} />
-              <Route
-                path="help"
-                element={<Navigate replace to="/help-support" />}
-              />
-              <Route
-                path="support"
-                element={<Navigate replace to="/help-support" />}
-              />
+              <Route path="about" element={<AboutUs />} />
+              <Route path="help" element={<HelpSupport />} />
+              <Route path="support" element={<Navigate replace to="/help" />} />
 
               {isLoggedIn ? (
                 <Route path="/*" element={<MainLayout />} />

@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
-import useStatus from '../hooks/useStatus'
-import api from '.'
+import api from './index'
+import useStatus from '@hooks/useStatus'
 
 const useApi = () => {
   const [hasError, isLoading, setStatus] = useStatus()

@@ -39,7 +39,7 @@ const Signup = () => {
     delete formData.current.confirmPassword
     const data = await api.post('/account/signup', formData.current)
     if (!data) return
-    $store(user.addJwt(data.token))
+    $store(user.login(data.token))
   }
 
   useEffect(() => {
