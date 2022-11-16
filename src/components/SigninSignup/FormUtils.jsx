@@ -2,8 +2,6 @@ import css from './FormUtils.module.scss'
 import Loading from '$components/Loading'
 
 export const SubmitBtn = ({ children, loading = false, error }) => {
-  console.log(error)
-
   return (
     <div className={css.buttonContainer}>
       {error && <p className={css.error}>{error}</p>}

@@ -40,7 +40,11 @@ const userSlice = createSlice({
       Object.assign(state, initialState)
     },
 
-    addSocketId(state, { payload }) {
+    updateJwt(state, { payload }) {
+      state.jwt = payload
+    },
+
+    updateSocketId(state, { payload }) {
       state.socketId = payload
     },
 

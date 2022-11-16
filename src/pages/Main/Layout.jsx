@@ -1,4 +1,4 @@
-import react, { Suspense } from 'react'
+import react, { Suspense, memo } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import css from './Layout.module.scss'
 import useMediaQuery from '$hooks/useMediaQuery'
@@ -16,6 +16,11 @@ const Notifications = react.lazy(() => import('$pages/Main/Notifications'))
 
 const MainLayout = () => {
   const api = useApiOnce('get', '/user?settings')
+
+  useApiOnce('get', '/user/new-token').onLoad(({ token }) => {
+    $store(userSlice.updateJwt(token))
+  })
+
   api.onLoad((data) => {
     $store(userSlice.updateUser(data.user))
     $store(settingsSlice.updateSettigns(data.settings))
@@ -43,7 +48,7 @@ const MainLayout = () => {
     </Suspense>
   )
 
-  if (!api.data) return <Loading />
+  if (!api.loaded) return <Loading />
   return (
     <div className={css.Layout}>
       {mobileMode || <Nav />}
@@ -53,4 +58,4 @@ const MainLayout = () => {
   )
 }
 
-export default MainLayout
+export default memo(MainLayout)

@@ -14,7 +14,6 @@ const Task = ({ tasks }) => {
   // console.log('Task filter:', showMainCategory, showTaskCategory, sortBy)
 
   const tasksList = useMemo(() => {
-    console.log(tasks)
     return tasks.map((el) => <TaskItem key={el} />)
   }, [tasks])
 

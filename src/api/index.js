@@ -2,7 +2,8 @@ import axios from 'axios'
 import subscribe from '$store/subscribe'
 
 const instance = axios.create({
-  baseURL: 'https://young-coders-todo-app.herokuapp.com/v1',
+  baseURL: 'https://baby-todo.onrender.com',
+  // baseURL: 'https://young-coders-todo-app.herokuapp.com',
   headers: {
     common: {
       authorization: undefined,
@@ -12,9 +13,8 @@ const instance = axios.create({
 })
 
 subscribe(
-  (state) => state.user,
-  (user) => {
-    const token = user.jwt
+  (state) => state.user.jwt,
+  (token) => {
     instance.defaults.headers.common.authorization = `Bearer ${token}`
 
     if (token) {
@@ -22,8 +22,12 @@ subscribe(
     } else {
       localStorage.removeItem('jwt-token')
     }
+  }
+)
 
-    const socketId = user.socketId
+subscribe(
+  (state) => state.user.socketId,
+  (socketId) => {
     instance.defaults.headers.common['exclude-socket'] = socketId
   }
 )
@@ -33,6 +37,6 @@ export default async (method, ...args) => {
     const response = await instance[method](...args)
     return [undefined, response.data.data || response.data]
   } catch (err) {
-    return [err.response?.data?.message || err.message, undefined]
+    return [err.response?.data?.message || err.message]
   }
 }

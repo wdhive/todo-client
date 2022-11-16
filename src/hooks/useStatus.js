@@ -1,19 +1,22 @@
 import { useState } from 'react'
+const loadingSymbol = Symbol('Loading')
+const loadedSymbol = Symbol('Loading')
 
 const useStatus = () => {
   const [status, setStatus] = useState()
 
-  const isLoading = status === 'loading'
+  const isLoading = status === loadingSymbol
   const hasError = isLoading ? undefined : status
+  const isLoaded = hasError ? true : status === loadedSymbol
 
-  return [
+  return {
     hasError,
     isLoading,
-    (state) => {
-      setStatus(state)
-      return status !== 'loading' && state
-    },
-  ]
+    isLoaded,
+    loadingSymbol,
+    loadedSymbol,
+    setStatus,
+  }
 }
 
 export default useStatus
