@@ -3,11 +3,11 @@ import { Provider } from 'react-redux'
 import { createRoot } from 'react-dom/client'
 import './styles/index.scss'
 import App from './App'
-import store from '@store'
+import store from '$store'
 
 import className from 'classnames'
-import useApi from '@api/useApi'
-import useApiOnce from '@api/useApiOnce'
+import useApi from '$api/useApi'
+import useApiOnce from '$api/useApiOnce'
 
 window.cn = className
 window.useApi = useApi

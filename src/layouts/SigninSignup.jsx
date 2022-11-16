@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import css from './SigninSignup.module.scss'
-import Brand from '@com/Brand'
-import GithubIcon from '@ass/icons/github.svg?component'
+import Brand from '$components/Brand'
+import GithubIcon from '$assets/icons/github.svg?component'
 
 const SigninSignup = ({ children }) => {
   return (

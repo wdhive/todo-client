@@ -1,16 +1,22 @@
 import { useState } from 'react'
 import css from './index.module.scss'
-import NavProfile from '@com/Nav/NavProfile'
-import TaskMainCategory from '@com/Task/MainCategory'
-import TaskControls from '@com/Task/TaskControls'
-import TaskItem from '@com/Task/Task'
+import NavProfile from '$components/Nav/NavProfile'
+import TaskMainCategory from '$components/Task/MainCategory'
+import TaskControls from '$components/Task/TaskControls'
+import TaskItem from '$components/Task/Task'
+import { useMemo } from 'react'
 
-const Task = () => {
+const Task = ({ tasks }) => {
   const [showMainCategory, setShowMainCategory] = useState('all')
   const [showTaskCategory, setShowTaskCategory] = useState(false)
   const [sortBy, setSoryBy] = useState(false)
 
   // console.log('Task filter:', showMainCategory, showTaskCategory, sortBy)
+
+  const tasksList = useMemo(() => {
+    console.log(tasks)
+    return tasks.map((el) => <TaskItem key={el} />)
+  }, [tasks])
 
   return (
     <div className={css.Task}>
@@ -30,13 +36,10 @@ const Task = () => {
             taskCategories={['Work', 'Person', 'School']}
             setShowTaskCategory={setShowTaskCategory}
             setSoryBy={setSoryBy}
+            taskCount={tasks.length}
           />
 
-          <div className={css.taskList}>
-            {[0, 1, 2, 3, 34, 354, 3654, 345, 38, 47, 384, 423, 453, 4243, 64].map((el) => (
-              <TaskItem key={el} />
-            ))}
-          </div>
+          <div className={css.taskList}>{tasksList}</div>
         </div>
       </div>
     </div>

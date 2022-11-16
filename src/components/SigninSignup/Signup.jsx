@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import css from './Signup.module.scss'
 import MainForm from './MainForm'
 import { Group } from './FormUtils'
-import CameraIcon from '@ass/icons/camera.svg?component'
+import CameraIcon from '$assets/icons/camera.svg?component'
 
 const Signup = (props) => {
   const [previewImageSrc, setPreviewImageSrc] = useState(null)

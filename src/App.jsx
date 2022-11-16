@@ -1,17 +1,17 @@
 import react, { Suspense } from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import ErrorBoundary from '@src/ErrorBoundary'
-import Loading from '@com/Loading'
-import ErrorHandler from '@com/ErrorHandler'
-import NotFound from '@pages/NotFound'
+import ErrorBoundary from '$src/ErrorBoundary'
+import Loading from '$components/Loading'
+import ErrorHandler from '$components/ErrorHandler'
+import NotFound from '$pages/NotFound'
 
-const MainLayout = react.lazy(() => import('@pages/Main/Layout'))
-const LandingPage = react.lazy(() => import('@pages/LandingPage'))
-const HelpSupport = react.lazy(() => import('@pages/HelpSupport'))
-const AboutUs = react.lazy(() => import('@pages/AboutUs'))
-const Signin = react.lazy(() => import('@pages/Signin'))
-const Signup = react.lazy(() => import('@pages/Signup'))
+const MainLayout = react.lazy(() => import('$pages/Main/Layout'))
+const LandingPage = react.lazy(() => import('$pages/LandingPage'))
+const HelpSupport = react.lazy(() => import('$pages/HelpSupport'))
+const AboutUs = react.lazy(() => import('$pages/AboutUs'))
+const Signin = react.lazy(() => import('$pages/Signin'))
+const Signup = react.lazy(() => import('$pages/Signup'))
 
 const App = () => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn)

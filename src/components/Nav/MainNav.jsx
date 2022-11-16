@@ -1,13 +1,13 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import useMediaQuery from '@hooks/useMediaQuery'
+import useMediaQuery from '$hooks/useMediaQuery'
 import css from './MainNav.module.scss'
-import PlusIcon from '@ass/icons/add.svg?component'
-import HomeIcon from '@ass/icons/home.svg?component'
-import SearchIcon from '@ass/icons/search.svg?component'
-import NotiIcon from '@ass/icons/bell.svg?component'
-import ProfileIcon from '@ass/icons/account.svg?component'
-import LogoutIcon from '@ass/icons/logout.svg?component'
-import userSlice from '@store/slice/user'
+import PlusIcon from '$assets/icons/add.svg?component'
+import HomeIcon from '$assets/icons/home.svg?component'
+import SearchIcon from '$assets/icons/search.svg?component'
+import NotiIcon from '$assets/icons/bell.svg?component'
+import ProfileIcon from '$assets/icons/account.svg?component'
+import LogoutIcon from '$assets/icons/logout.svg?component'
+import userSlice from '$slice/user'
 
 const MainNav = () => {
   const navigate = useNavigate()

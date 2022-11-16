@@ -1,8 +1,8 @@
 import css from './NavProfile.module.scss'
-import LightIcon from '@ass/icons/light.svg?component'
-import DarkIcon from '@ass/icons/dark.svg?component'
-import AutoIcon from '@ass/icons/auto.svg?component'
-import AvatarIcon from '@ass/avatar.png'
+import LightIcon from '$assets/icons/light.svg?component'
+import DarkIcon from '$assets/icons/dark.svg?component'
+import AutoIcon from '$assets/icons/auto.svg?component'
+import AvatarIcon from '$assets/avatar.png'
 
 const NavProfile = ({ className }) => {
   return (

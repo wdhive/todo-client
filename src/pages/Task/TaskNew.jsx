@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import css from './TaskNew.module.scss'
-import UpdateTask from '@com/Task/UpdateTask'
+import UpdateTask from '$components/Task/UpdateTask'
 
 const TaskNew = ({ ...props }) => {
   const dialogRef = useRef()

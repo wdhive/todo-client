@@ -1,6 +1,6 @@
 import css from './LandingPage.module.scss'
-import Header from '@com/LandingPage/Header'
-import Hero from '@com/LandingPage/Hero'
+import Header from '$components/LandingPage/Header'
+import Hero from '$components/LandingPage/Hero'
 
 const LandingPage = () => {
   return (

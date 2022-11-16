@@ -1,9 +1,9 @@
 import css from './Task.module.scss'
-import EditIcon from '@ass/icons/edit.svg?component'
-import DeleteIcon from '@ass/icons/delete.svg?component'
-import ClockIcon from '@ass/icons/clock.svg?component'
-import CheckIcon from '@ass/icons/check.svg?component'
-import avatar from '@ass/avatar.png'
+import EditIcon from '$assets/icons/edit.svg?component'
+import DeleteIcon from '$assets/icons/delete.svg?component'
+import ClockIcon from '$assets/icons/clock.svg?component'
+import CheckIcon from '$assets/icons/check.svg?component'
+import avatar from '$assets/avatar.png'
 
 {
   const activeClassName = `.${css.Task}.${css.contextActive}`

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import css from './NavFooter.module.scss'
-import HelpIcon from '@ass/icons/help-&-support.svg?component'
-import GithubIcon from '@ass/icons/github.svg?component'
-import AboutIcon from '@ass/icons/about-us.svg?component'
-import BackIcon from '@ass/icons/chev-down.svg?component'
+import HelpIcon from '$assets/icons/help-&-support.svg?component'
+import GithubIcon from '$assets/icons/github.svg?component'
+import AboutIcon from '$assets/icons/about-us.svg?component'
+import BackIcon from '$assets/icons/chev-down.svg?component'
 
 const NavFooter = ({ setNavExpand }) => {
   return (

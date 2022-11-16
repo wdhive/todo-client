@@ -1,6 +1,6 @@
 import { memo, useEffect } from 'react'
 import css from './Loading.module.scss'
-import Logo from '@ass/logo/moderate-1.svg?component'
+import Logo from '$assets/logo/moderate-1.svg?component'
 let initial = true
 
 const Loading = ({ scoped = false }) => {

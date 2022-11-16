@@ -1,5 +1,5 @@
 import css from './FormUtils.module.scss'
-import Loading from '@com/Loading'
+import Loading from '$components/Loading'
 
 export const SubmitBtn = ({ children, loading = false, error }) => {
   console.log(error)

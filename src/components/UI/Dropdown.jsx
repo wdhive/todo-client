@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import css from './Dropdown.module.scss'
-import DownIcon from '@ass/icons/chev-down.svg?component'
+import DownIcon from '$assets/icons/chev-down.svg?component'
 
 const activeClassName = `.${css.Dropdown}.${css.isOpen}`
 const removeActiveElements = (except) => {

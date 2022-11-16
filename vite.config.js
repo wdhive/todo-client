@@ -1,72 +1,65 @@
+import fs from 'fs'
 import path from 'path'
 import { defineConfig } from 'vite'
+import vitePWA from 'vite-pwa'
 import react from '@vitejs/plugin-react'
 import svgr from '@honkhonk/vite-plugin-svgr'
-import vitePwa from 'vite-pwa'
-// import vitePwa from './vite-pwa/package/index.mjs'
+import intelliPath from './intellipath.js'
 
 const isDevMode = process.env.NODE_ENV !== 'production'
+const srcDir = path.resolve('./src')
 const config = {
   static: 'static',
+  assets: 'assets',
 }
 
-const plugins = [
-  react(),
-  svgr.default(),
-  vitePwa({
-    preCacheFiles: ['/', '/manifest.json'],
-    map: true,
-  }),
-]
+const plugins = [react(), svgr.default(), vitePWA()]
 
-export default defineConfig({
-  plugins,
-
-  server: {
-    host: 'localhost',
-    port: 3000,
+const css = {
+  modules: {
+    generateScopedName: isDevMode
+      ? '[local]___[name]--[hash:base64:5]'
+      : '[hash:base64]',
   },
-
-  resolve: {
-    alias: {
-      '@src': path.resolve('./src'),
-      '@hooks': path.resolve('./src/hooks'),
-      '@store': path.resolve('./src/store'),
-      '@com': path.resolve('./src/components'),
-      '@lay': path.resolve('./src/layouts'),
-      '@ass': path.resolve('./src/assests'),
-      '@abs': path.resolve('./src/styles/abstracts'),
-      '@pages': path.resolve('./src/pages'),
-      '@api': path.resolve('./src/api'),
-      '@utils': path.resolve('./src/utils'),
+  preprocessorOptions: {
+    scss: {
+      additionalData: `@use '$styles/abstracts/core' as *;\n`,
     },
   },
+}
 
-  css: {
-    modules: {
-      generateScopedName: isDevMode
-        ? '[local]___[name]--[hash:base64:5]'
-        : '[hash:base64]',
-    },
+const resolve = {
+  alias: {
+    $src: srcDir,
+    $slice: path.join(srcDir, '/store/slice'),
+    ...Object.fromEntries(
+      fs
+        .readdirSync(srcDir)
+        .filter((t) => fs.lstatSync(path.join(srcDir, t)).isDirectory())
+        .map((t) => [`$${t}`, path.join(srcDir, t)])
+    ),
+  },
+}
 
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@use '@abs/core' as *;\n`,
+const server = {
+  host: 'localhost',
+  port: 3000,
+}
+
+const build = {
+  rollupOptions: {
+    output: {
+      assetFileNames: (file) => {
+        const ext = file.name.split('.').at(-1)
+        const outputFolder =
+          ext === 'css' || ext === 'js' ? '' : config.assets + '/'
+        return `${config.static}/${outputFolder}[name]-[hash][extname]`
       },
+      entryFileNames: `${config.static}/[name]-[hash].js`,
+      chunkFileNames: `${config.static}/chunk-[name]-[hash].js`,
     },
   },
+}
 
-  build: {
-    rollupOptions: {
-      output: {
-        assetFileNames: (file) => {
-          const ext = file.name.split('.').at(-1)
-          const outputFolder = ext === 'css' || ext === 'js' ? '' : 'assests/'
-          return `${config.static}/${outputFolder}[name]-[hash][extname]`
-        },
-        chunkFileNames: `${config.static}/[name]-chunk-[hash].js`,
-        entryFileNames: `${config.static}/[name]-[hash].js`,
-      },
-    },
-  },
-})
+intelliPath(resolve.alias)
+export default defineConfig({ plugins, css, resolve, server, build })

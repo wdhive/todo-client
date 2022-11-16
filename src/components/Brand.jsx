@@ -1,5 +1,5 @@
 import css from './Brand.module.scss'
-import Logo from '@ass/logo/moderate-1.svg?component'
+import Logo from '$assets/logo/moderate-1.svg?component'
 
 const Brand = () => {
   return (

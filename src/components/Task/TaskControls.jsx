@@ -13,7 +13,7 @@ const Group = ({ name, label }) => {
   )
 }
 
-const TaskControls = ({ setShowTaskCategory, setSoryBy, taskCount = 10 }) => {
+const TaskControls = ({ setShowTaskCategory, setSoryBy, taskCount }) => {
   const handleCategoryFormSubmit = ({ currentTarget }) => {
     const value = currentTarget.elements.category.value
     setShowTaskCategory(value)
@@ -26,7 +26,14 @@ const TaskControls = ({ setShowTaskCategory, setSoryBy, taskCount = 10 }) => {
   return (
     <div className={css.TaskControls}>
       <p className={css.taskCount}>
-        <span>{taskCount}</span> tasks found
+        {taskCount > 0 ? (
+          <>
+            <span>{taskCount}</span>
+            {taskCount === 1 ? 'task' : ' tasks' + ' found'}
+          </>
+        ) : (
+          'No tasks found'
+        )}
       </p>
 
       <div className={css.controls}>

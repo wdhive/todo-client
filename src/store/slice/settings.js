@@ -1,17 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { randomNumber } from '@src/utils/utils'
+import { randomNumber } from '$src/utils/utils'
 
 const getRandomHue = () => {
   return randomNumber(0, 360)
 }
 
-const initialState = {
-  theme: 'light',
-  hue: false,
-}
+const initialState = {}
 
 const settingsSlice = createSlice({
-  name: 'user',
+  name: 'settings',
   initialState,
   reducers: {
     setRandomHue(state) {

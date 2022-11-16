@@ -1,5 +1,5 @@
 import css from './UpdateTask.module.scss'
-import CloseIcon from '@ass/icons/cross.svg?component'
+import CloseIcon from '$assets/icons/cross.svg?component'
 
 const UpdateTask = ({ task = {}, close }) => {
   return (

@@ -4,9 +4,9 @@ const jwtToken = localStorage.getItem('jwt-token')
 const initialState = {
   isLoggedIn: false,
   isGuestUser: false,
+  user: {},
   jwt: null,
   socketId: null,
-  user: null,
 }
 
 const sessionState = {
@@ -14,7 +14,6 @@ const sessionState = {
   isLoggedIn: jwtToken ? true : false,
   jwt: jwtToken,
 }
-
 
 const guestUserData = {
   name: 'Guest',
@@ -45,8 +44,8 @@ const userSlice = createSlice({
       state.socketId = payload
     },
 
-    updateProfile(state, { payload }) {
-      Object.assign(state, payload)
+    updateUser(state, { payload }) {
+      Object.assign(state.user, payload)
     },
   },
 })
