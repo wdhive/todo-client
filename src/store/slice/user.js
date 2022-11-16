@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-const jwtToken = localStorage.getItem('jwt-token')
+const jwtToken = localStorage.getItem('jwt-token') || undefined
 
 const initialState = {
   isLoggedIn: false,
@@ -11,7 +11,7 @@ const initialState = {
 
 const sessionState = {
   ...initialState,
-  isLoggedIn: jwtToken ? true : false,
+  isLoggedIn: Boolean(jwtToken),
   jwt: jwtToken,
 }
 

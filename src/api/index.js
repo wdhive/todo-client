@@ -3,7 +3,6 @@ import subscribe from '$store/subscribe'
 
 const instance = axios.create({
   baseURL: 'https://baby-todo.onrender.com',
-  // baseURL: 'https://young-coders-todo-app.herokuapp.com',
   headers: {
     common: {
       authorization: undefined,

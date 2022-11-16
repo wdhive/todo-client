@@ -3,6 +3,7 @@ import user from '$slice/user'
 import SigninSignup from '$layouts/SigninSignup'
 import SignupForm from '$components/SigninSignup/Signup'
 import EmailVerify from '$components/SigninSignup/EmailVerify'
+import { getFormData } from '$utils/utils'
 
 const Signup = () => {
   const api = useApi()
@@ -34,10 +35,16 @@ const Signup = () => {
   }
 
   const handleCodeSubmit = async ({ code }) => {
-    formData.current.code = code
-    delete formData.current.avatar
     delete formData.current.confirmPassword
-    const data = await api.post('/account/signup', formData.current)
+    formData.current.code = code
+    if (formData.current.avatar) {
+      formData.current.avatar = formData.current.avatar[0]
+    }
+
+    const data = await api.post(
+      '/account/signup',
+      getFormData(formData.current)
+    )
     if (!data) return
     $store(user.login(data.token))
   }

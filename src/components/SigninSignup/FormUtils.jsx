@@ -39,13 +39,10 @@ export const getInputs = (form) => {
   inputs.forEach((input) => {
     const name = input.name
     if (!name) return
-
-    let value = input.value
-    if (input.type === 'file') value = input.files
-
+    const value = input.type === 'file' ? input.files : input.value
     values[name] = value
     elements[name] = input
   })
 
-  return [values, elements]
+  return [values, elements, form]
 }
