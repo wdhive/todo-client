@@ -57,11 +57,11 @@ const Nav = () => {
                   <HomeIcon />
                   <span>Home</span>
                 </LinkItem>
-                <LinkItem to="/about-us">
+                <LinkItem to="/about">
                   <AboutIcon />
                   <span>About</span>
                 </LinkItem>
-                <LinkItem to="/help-support">
+                <LinkItem to="/help">
                   <HelpSupportIcon />
                   <span>Help & Support</span>
                 </LinkItem>

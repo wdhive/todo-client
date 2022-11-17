@@ -1,21 +1,44 @@
-import { useState } from 'react'
+import { useMemo, memo, useState } from 'react'
 import css from './index.module.scss'
 import NavProfile from '$components/Nav/NavProfile'
 import TaskMainCategory from '$components/Task/MainCategory'
 import TaskControls from '$components/Task/TaskControls'
-import TaskItem from '$components/Task/Task'
-import { useMemo } from 'react'
+import TaskCard from '$src/components/Task/TaskCard'
+import useTaskCollections from '$hooks/useTaskCollections'
 
 const Task = ({ tasks }) => {
-  const [showMainCategory, setShowMainCategory] = useState('all')
-  const [showTaskCategory, setShowTaskCategory] = useState(false)
-  const [sortBy, setSoryBy] = useState(false)
-
-  // console.log('Task filter:', showMainCategory, showTaskCategory, sortBy)
+  const collections = useTaskCollections()
+  const [sortBy, setSoryBy] = useState('a')
+  const [taskStatus, setTaskStatus] = useState('all')
+  const [taskCollection, setTaskCollection] = useState('none')
 
   const tasksList = useMemo(() => {
-    return tasks.map((el) => <TaskItem key={el} />)
-  }, [tasks])
+    const sortedTasks = [...tasks].sort((a, b) => {
+      const c = new Date(b.startingDate).valueOf()
+      const d = new Date(a.startingDate).valueOf()
+
+      if (sortBy === 'd') return c - d
+      return d - c
+    })
+
+    const finalResults = []
+
+    sortedTasks.forEach((task) => {
+      const passCollection =
+        taskCollection === 'none' || task.collection === taskCollection
+
+      const passStatus =
+        taskStatus === 'all' ||
+        (taskStatus === 'completed' && task.completed) ||
+        (taskStatus === 'incomplete' && !task.completed)
+
+      if (!(passCollection && passStatus)) return
+      const item = <TaskCard key={task._id} task={task} />
+      finalResults.push(item)
+    })
+
+    return finalResults
+  }, [tasks, taskCollection, sortBy, taskStatus])
 
   return (
     <div className={css.Task}>
@@ -23,8 +46,8 @@ const Task = ({ tasks }) => {
         <div className="wrapper">
           <NavProfile className={css.navProfile} />
           <TaskMainCategory
-            showTaskCategory={showMainCategory}
-            setShowTaskCategory={setShowMainCategory}
+            showTaskCategory={taskStatus}
+            setShowTaskCategory={setTaskStatus}
           />
         </div>
       </header>
@@ -32,10 +55,12 @@ const Task = ({ tasks }) => {
       <div className="scroll-inside-flex">
         <div className="wrapper">
           <TaskControls
-            taskCategories={['Work', 'Person', 'School']}
-            setShowTaskCategory={setShowTaskCategory}
+            collections={collections}
+            taskCollection={taskCollection}
+            setTaskCollection={setTaskCollection}
+            sortBy={sortBy}
             setSoryBy={setSoryBy}
-            taskCount={tasks.length}
+            taskCount={tasksList.length}
           />
 
           <div className={css.taskList}>{tasksList}</div>
@@ -45,4 +70,4 @@ const Task = ({ tasks }) => {
   )
 }
 
-export default Task
+export default memo(Task)

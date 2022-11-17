@@ -2,21 +2,35 @@ import { useId } from 'react'
 import Dropdown from '../UI/Dropdown'
 import css from './TaskControls.module.scss'
 
-const Group = ({ name, label }) => {
-  const Id = useId()
+const Group = ({ name, label, value, selected }) => {
+  const id = useId()
 
   return (
-    <div className={css.inputGroup}>
-      <input type="radio" name={name} id={Id} value={label} />
-      <label htmlFor={Id}>{label}</label>
-    </div>
+    <label htmlFor={id} className={css.inputGroup}>
+      <input
+        type="radio"
+        name={name}
+        id={id}
+        value={value}
+        defaultChecked={selected === value}
+      />
+
+      <span>{label}</span>
+    </label>
   )
 }
 
-const TaskControls = ({ setShowTaskCategory, setSoryBy, taskCount }) => {
+const TaskControls = ({
+  collections,
+  taskCollection,
+  setTaskCollection,
+  sortBy,
+  setSoryBy,
+  taskCount,
+}) => {
   const handleCategoryFormSubmit = ({ currentTarget }) => {
     const value = currentTarget.elements.category.value
-    setShowTaskCategory(value)
+    setTaskCollection(value)
   }
   const handleSortFormSubmit = ({ currentTarget }) => {
     const value = currentTarget.elements.sort.value
@@ -29,7 +43,7 @@ const TaskControls = ({ setShowTaskCategory, setSoryBy, taskCount }) => {
         {taskCount > 0 ? (
           <>
             <span>{taskCount}</span>
-            {taskCount === 1 ? 'task' : ' tasks' + ' found'}
+            {(taskCount === 1 ? ' task' : ' tasks') + ' found'}
           </>
         ) : (
           'No tasks found'
@@ -38,16 +52,22 @@ const TaskControls = ({ setShowTaskCategory, setSoryBy, taskCount }) => {
 
       <div className={css.controls}>
         <Dropdown
-          title="Category"
+          title="Collection"
           align="right"
           className={css.dropdown}
           bodyClassName={css.dropdownBody}
           buttonClassName={css.dropdownButton}
           onChange={handleCategoryFormSubmit}
         >
-          <Group name="category" label="Personal" />
-          <Group name="category" label="School" />
-          <Group name="category" label="Work" />
+          {collections?.map(({ _id, name }) => (
+            <Group
+              key={_id}
+              name="category"
+              label={name}
+              value={_id}
+              selected={taskCollection}
+            />
+          ))}
         </Dropdown>
 
         <Dropdown
@@ -58,8 +78,8 @@ const TaskControls = ({ setShowTaskCategory, setSoryBy, taskCount }) => {
           buttonClassName={css.dropdownButton}
           onChange={handleSortFormSubmit}
         >
-          <Group name="sort" label="Accending" />
-          <Group name="sort" label="Deccending" />
+          <Group name="sort" label="Accending" value="a" selected={sortBy} />
+          <Group name="sort" label="Deccending" value="d" selected={sortBy} />
         </Dropdown>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import css from './SubForm.module.scss'
-import { SubmitBtn, getInputs } from './FormUtils'
+import { SubmitBtn } from './FormUtils'
+import { getInputs } from '$src/utils/utils'
 import BackIcon from '$assets/icons/back.svg?component'
 import { useRef } from 'react'
 

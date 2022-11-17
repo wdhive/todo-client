@@ -1,24 +1,8 @@
-import { useRef } from 'react'
+import { memo, useId } from 'react'
+import { useSelector } from 'react-redux'
 import css from './Dropdown.module.scss'
 import DownIcon from '$assets/icons/chev-down.svg?component'
-
-const activeClassName = `.${css.Dropdown}[open]`
-const removeActiveElements = (except) => {
-  const activeElements = document.querySelectorAll(activeClassName)
-  activeElements.forEach((el) => {
-    if (el.isSameNode(except)) return
-    el.removeAttribute('open')
-  })
-}
-document.addEventListener('click', (e) => {
-  const closest = e.target.closest(activeClassName)
-  if (closest) return
-  removeActiveElements()
-})
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'visible') return
-  removeActiveElements()
-})
+import uiSlice from '$slice/ui'
 
 const Dropdown = ({
   title,
@@ -31,18 +15,15 @@ const Dropdown = ({
   br = false,
   ...otherProps
 }) => {
-  const dropdownRef = useRef()
+  const uniqueId = useId()
+  const open = useSelector((state) => {
+    return state.ui.globalActive === uniqueId
+  })
 
   const handleFormSubmit = (e) => e.preventDefault()
-  const handleClick = () => {
-    console.log('Click')
-
-    removeActiveElements(dropdownRef.current)
-    if (dropdownRef.current.hasAttribute('open')) {
-      dropdownRef.current.removeAttribute('open')
-    } else {
-      dropdownRef.current.setAttribute('open', '')
-    }
+  const handleClick = (e) => {
+    e.stopPropagation()
+    $store(uiSlice.setGlobalActive(open || uniqueId))
   }
 
   const content = (
@@ -72,8 +53,8 @@ const Dropdown = ({
 
   const props = {
     ...otherProps,
-    ref: dropdownRef,
     className: cn(css.Dropdown, className),
+    open,
   }
 
   if (form)
@@ -86,4 +67,4 @@ const Dropdown = ({
   return <div {...props}>{content}</div>
 }
 
-export default Dropdown
+export default memo(Dropdown)

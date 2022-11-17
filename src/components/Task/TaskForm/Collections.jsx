@@ -1,11 +1,11 @@
 import { useId } from 'react'
 import css from './Collections.module.scss'
 
-const Collection = ({ collection, index, selectInput }) => {
+const Collection = ({ collection, selectInput }) => {
   const id = useId()
   const handleChange = ({ currentTarget }) => {
     if (currentTarget.checked) {
-      selectInput(index)
+      selectInput(collection._id)
     }
   }
 
@@ -17,7 +17,7 @@ const Collection = ({ collection, index, selectInput }) => {
             id={id}
             type="radio"
             name="collection"
-            value={collection.name}
+            value={collection._id}
             onChange={handleChange}
             className="visually-hidden"
           />

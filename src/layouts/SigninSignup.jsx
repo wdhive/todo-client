@@ -20,8 +20,8 @@ const SigninSignup = ({ children }) => {
 
           <div className={css.hero__links}>
             <Link to="/">Home</Link>
-            <Link to="/about-us">About us</Link>
-            <Link to="/help-support">Help & Support</Link>
+            <Link to="/about">About us</Link>
+            <Link to="/help">Help & Support</Link>
             <a
               className={css.githubLink}
               target="_blank"

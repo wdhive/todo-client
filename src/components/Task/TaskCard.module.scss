@@ -1,11 +1,19 @@
 .Task {
   background: v(c300);
   display: flex;
+  min-width: 30rem;
+  max-width: 40rem;
+  flex: 1;
+
+  @include break-down(25em) {
+    min-width: 100%;
+  }
 }
 
 .Task,
 .main {
   border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .main {
@@ -126,10 +134,15 @@
     flex: 1;
   }
 
-  button {
+  a {
     background: none;
     padding: 1rem;
     color: v(foreground);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s ease-in-out;
+    transition-property: background, color;
 
     &:hover {
       background: v(c400);

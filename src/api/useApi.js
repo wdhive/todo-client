@@ -25,7 +25,7 @@ const useApi = (initialStatus) => {
     }
 
     return data
-  })
+  }, [])
 
   return {
     loaded: isLoaded,

@@ -1,10 +1,9 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, memo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import css from './TaskNew.module.scss'
+import css from './TaskModal.module.scss'
 import TaskForm from '$components/Task/TaskForm'
-// import UpdateTask from '$components/Task/UpdateTask'
 
-const TaskNew = ({ ...props }) => {
+const TaskModal = ({ ...props }) => {
   const dialogRef = useRef()
   const navigate = useNavigate()
 
@@ -19,7 +18,7 @@ const TaskNew = ({ ...props }) => {
     dialogRef.current.classList.add(css.close)
     setTimeout(() => {
       navigate('..')
-    }, 150)
+    }, 200)
   }
 
   return (
@@ -34,4 +33,4 @@ const TaskNew = ({ ...props }) => {
   )
 }
 
-export default TaskNew
+export default memo(TaskModal)

@@ -9,10 +9,10 @@ const NavFooter = ({ setNavExpand }) => {
   return (
     <div className={css.NavFooter}>
       <div className={css.icons}>
-        <Link to="/help-support">
+        <Link to="/help">
           <HelpIcon />
         </Link>
-        <Link to="/about-us">
+        <Link to="/about">
           <AboutIcon />
         </Link>
         <a target="_blank" href="https://github.com/BabyDevs/Todo-App">

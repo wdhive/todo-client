@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import css from './Brand.module.scss'
 import Logo from '$assets/logo/moderate-1.svg?component'
 
@@ -10,4 +11,4 @@ const Brand = () => {
   )
 }
 
-export default Brand
+export default memo(Brand)

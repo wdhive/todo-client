@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import css from './MainCategory.module.scss'
 
-const Task = ({ showTaskCategory, setShowTaskCategory }) => {
+const MainTaskCategory = ({ showTaskCategory, setShowTaskCategory }) => {
   const TaskCategoryButton = ({ children }) => {
     const handleClick = () => {
       setShowTaskCategory(children)
@@ -30,4 +30,4 @@ const Task = ({ showTaskCategory, setShowTaskCategory }) => {
   )
 }
 
-export default memo(Task)
+export default memo(MainTaskCategory)

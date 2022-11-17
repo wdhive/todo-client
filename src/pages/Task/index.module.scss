@@ -4,8 +4,9 @@
   height: 100%;
 
   :global(.wrapper) {
-    max-width: 100rem;
-    padding: fluid(1rem, 5rem);
+    max-width: 128rem;
+    padding: fluid(1rem, 10rem);
+    padding-bottom: 5rem;
 
     @include break-up($lg) {
       padding-top: 1rem;
@@ -33,10 +34,7 @@
 
 .taskList {
   display: flex;
-  flex-wrap: wrap;
   gap: 2rem;
-
-  & > * {
-    flex-basis: calc(50% - 2rem);
-  }
+  flex-wrap: wrap;
+  justify-content: center;
 }

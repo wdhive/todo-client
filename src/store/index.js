@@ -3,6 +3,7 @@ import { userReducers } from './slice/user'
 import { settingsReducers } from './slice/settings'
 import { taskReducers } from './slice/tasks'
 import { extraReducers } from './slice/extra'
+import { uiReducers } from './slice/ui'
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     tasks: taskReducers,
     settings: settingsReducers,
     extra: extraReducers,
+    ui: uiReducers,
   },
 })
 

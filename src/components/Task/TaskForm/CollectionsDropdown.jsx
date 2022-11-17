@@ -1,35 +1,19 @@
-import { useState } from 'react'
+import { useMemo, useState, memo } from 'react'
+import useTaskCollections from '$hooks/useTaskCollections'
 import css from './CollectionsDropdown.module.scss'
 import Dropdown from '$src/components/UI/Dropdown'
 import Collections from './Collections'
 
-const CollectionsDropdown = () => {
-  const [selectedItem, setSelectedItem] = useState(0)
-  const collections = [
-    {
-      name: 'None',
-    },
-    {
-      name: 'Test 0',
-      hue: 20,
-    },
-    {
-      name: 'Test 1',
-      hue: 110,
-    },
-    {
-      name: 'Test 2',
-      hue: 170,
-    },
-    {
-      name: 'Test 3',
-      hue: 150,
-    },
-  ]
+const CollectionsDropdown = ({ collection = 'none' }) => {
+  const [selectedItem, setSelectedItem] = useState(collection)
+  const collections = useTaskCollections()
 
-  const selectedItemElement = (
-    <Collections index={selectedItem} collection={collections[selectedItem]} />
-  )
+  const selectedItemElement = useMemo(() => {
+    const match = collections.find(({ _id }) => _id === selectedItem)
+    if (!match && collection !== 'none') return setSelectedItem('none')
+
+    return <Collections collection={match} />
+  }, [collections, selectedItem])
 
   return (
     <Dropdown
@@ -41,10 +25,9 @@ const CollectionsDropdown = () => {
       bodyClassName={css.collectionDropdownBody}
       br={true}
     >
-      {collections.map((collection, index) => (
+      {collections.map((collection) => (
         <Collections
-          key={index}
-          index={index}
+          key={collection._id}
           collection={collection}
           selectInput={setSelectedItem}
         />
@@ -53,4 +36,4 @@ const CollectionsDropdown = () => {
   )
 }
 
-export default CollectionsDropdown
+export default memo(CollectionsDropdown)
