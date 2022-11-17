@@ -1,5 +1,11 @@
-.UpdateTask :global(.wrapper) {
-  padding: 2rem 3rem;
+.TaskForm {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  :global(.wrapper) {
+    padding: 2rem 3rem;
+  }
 }
 
 .header {
@@ -19,4 +25,8 @@
   svg {
     @include svg-size(1em);
   }
+}
+
+.body {
+  height: auto;
 }

@@ -2,12 +2,12 @@ import { useRef } from 'react'
 import css from './Dropdown.module.scss'
 import DownIcon from '$assets/icons/chev-down.svg?component'
 
-const activeClassName = `.${css.Dropdown}[dropdown-open]`
+const activeClassName = `.${css.Dropdown}[open]`
 const removeActiveElements = (except) => {
   const activeElements = document.querySelectorAll(activeClassName)
   activeElements.forEach((el) => {
     if (el.isSameNode(except)) return
-    el.removeAttribute('dropdown-open')
+    el.removeAttribute('open')
   })
 }
 document.addEventListener('click', (e) => {
@@ -28,17 +28,20 @@ const Dropdown = ({
   bodyClassName,
   buttonClassName,
   form = true,
+  br = false,
   ...otherProps
 }) => {
   const dropdownRef = useRef()
 
   const handleFormSubmit = (e) => e.preventDefault()
   const handleClick = () => {
+    console.log('Click')
+
     removeActiveElements(dropdownRef.current)
-    if (dropdownRef.current.hasAttribute('dropdown-open')) {
-      dropdownRef.current.removeAttribute('dropdown-open')
+    if (dropdownRef.current.hasAttribute('open')) {
+      dropdownRef.current.removeAttribute('open')
     } else {
-      dropdownRef.current.setAttribute('dropdown-open', '')
+      dropdownRef.current.setAttribute('open', '')
     }
   }
 
@@ -46,7 +49,7 @@ const Dropdown = ({
     <>
       <button
         type="button"
-        className={cn(css.label, buttonClassName)}
+        className={cn(css.button, buttonClassName)}
         onClick={handleClick}
       >
         <div>{title}</div>
@@ -57,11 +60,12 @@ const Dropdown = ({
         className={cn(
           css.body,
           align === 'left' && css.alignLeft,
-          align === 'right' && css.alignRight,
-          bodyClassName
+          align === 'right' && css.alignRight
         )}
       >
-        {children}
+        <div className={cn(css.content, bodyClassName)}>{children}</div>
+
+        {br && <br />}
       </div>
     </>
   )

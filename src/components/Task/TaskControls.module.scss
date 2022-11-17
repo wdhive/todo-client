@@ -27,14 +27,19 @@
   }
 }
 
-.dropdown {
+.dropdownBody {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
+.dropdown[open] {
+  .dropdownButton {
+    background-color: v(c100);
+  }
+}
+
 .dropdownButton {
-  --active-bg: var(--c100);
   cursor: pointer;
   display: flex;
   align-items: center;

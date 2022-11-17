@@ -1,8 +1,6 @@
-import { useState } from 'react'
-import css from './TaskForm.module.scss'
+import css from './FormBody.module.scss'
 import AddIcon from '$assets/icons/add.svg?component'
-import Dropdown from '$components/UI/Dropdown'
-import TaskFormCategories from './TaskFormCategories'
+import CollectionsDropdown from './CollectionsDropdown'
 
 const Group = ({ children, label }) => {
   return (
@@ -13,9 +11,7 @@ const Group = ({ children, label }) => {
   )
 }
 
-const TaskForm = () => {
-  const [activeCategory, setActiveCategory] = useState('What Ever')
-
+const FormBody = ({}) => {
   return (
     <div className={css.TaskForm}>
       <Group label="Task Title">
@@ -39,13 +35,9 @@ const TaskForm = () => {
         <textarea name="description" rows="5"></textarea>
       </Group>
 
-      <div className={css.taskCategory}>
-        <Group label="Category">
-          <Dropdown title={activeCategory} form={false} align="right">
-            {[0, 1, 2].map((el) => (
-              <TaskFormCategories category={el} key={el} />
-            ))}
-          </Dropdown>
+      <div className={css.taskCollection}>
+        <Group label="Collection">
+          <CollectionsDropdown />
         </Group>
       </div>
 
@@ -54,8 +46,12 @@ const TaskForm = () => {
           <AddIcon />
         </Group>
       </div>
+
+      <button className={cn('button button__primary', css.submitButton)}>
+        Click Me
+      </button>
     </div>
   )
 }
 
-export default TaskForm
+export default FormBody

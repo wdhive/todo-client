@@ -1,20 +1,35 @@
 .Dropdown {
+  width: 100%;
   position: relative;
   @include font(btn2);
 }
 
-[dropdown-open] .label {
-  background: v(active-bg);
+.Dropdown[open] .button {
+  //
+}
+
+.button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  svg {
+    @include svg-size(1.25em);
+  }
 }
 
 .body {
   z-index: 1;
   position: absolute;
   top: 100%;
-  background: v(c100);
-  min-width: 100%;
-  width: fit-content;
+  min-width: fit-content;
+  width: 100%;
   margin-top: 0.5rem;
+}
+
+.content {
+  background: v(c100);
   border-radius: 0.5rem;
   padding: 0.7rem 1.5rem;
 
@@ -23,7 +38,7 @@
   }
 }
 
-.Dropdown:not([dropdown-open]) .body {
+.Dropdown:not([open]) .body {
   display: none;
 }
 

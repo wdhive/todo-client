@@ -1,0 +1,27 @@
+.collectionDropdown {
+  width: 100%;
+  max-width: 30rem;
+}
+
+.collectionDropdownButton {
+  background: v(c100);
+  padding-right: 1rem;
+  transition: 0.15s ease-in-out;
+  transition-property: outline, background;
+  outline: 0.2rem solid v(c200);
+  border-radius: 0.5rem;
+  gap: 1rem;
+
+  label {
+    margin: 0 !important;
+  }
+}
+
+.collectionDropdown[open] .collectionDropdownButton {
+  background: v(c200);
+  outline-color: v(c300);
+}
+
+.collectionDropdownBody {
+  padding: 0;
+}

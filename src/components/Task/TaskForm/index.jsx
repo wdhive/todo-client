@@ -1,15 +1,15 @@
-import css from './UpdateTask.module.scss'
+import css from './index.module.scss'
 import CloseIcon from '$assets/icons/cross.svg?component'
-import TaskForm from './TaskForm'
+import FormBody from './FormBody'
 
-const UpdateTask = ({ task = {}, close }) => {
+const TaskForm = ({ task = {}, close }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault()
     console.log(e.target.elements)
   }
 
   return (
-    <div className={css.UpdateTask}>
+    <div className={css.TaskForm}>
       <div className={css.header}>
         <div className="wrapper">
           <h6>{task.title ?? 'Create Task'}</h6>
@@ -19,13 +19,13 @@ const UpdateTask = ({ task = {}, close }) => {
         </div>
       </div>
 
-      <form className={css.body} onSubmit={handleFormSubmit}>
+      <form className={cn('scroll-inside-flex', css.body)} onSubmit={handleFormSubmit}>
         <div className="wrapper">
-          <TaskForm />
+          <FormBody />
         </div>
       </form>
     </div>
   )
 }
 
-export default UpdateTask
+export default TaskForm
