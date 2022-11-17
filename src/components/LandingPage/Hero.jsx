@@ -28,7 +28,7 @@ const Hero = () => {
               </button>
             </div>
 
-            {api.data && (
+            {!api.error && api.loaded && (
               <p className={css.hero__status}>
                 <strong>{api.data.count}</strong> people{' '}
                 {api.data.count > 1 ? 'are' : 'is'} already enjoying our app

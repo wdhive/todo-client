@@ -3,33 +3,8 @@
   @include font(btn2);
 }
 
-.label {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.5rem 0.5rem 0 0;
-  border-bottom: 0.1rem solid v(accent);
-  background: transparent;
-  transition: background 0.1s ease-in-out;
-  color: v(c700);
-
-  svg {
-    $size: 0.85em;
-    width: $size;
-    max-width: $size;
-    height: $size;
-    max-height: $size;
-
-    path {
-      stroke: currentColor;
-    }
-  }
-}
-
-.isOpen .label {
-  background: v(c100);
+[dropdown-open] .label {
+  background: v(active-bg);
 }
 
 .body {
@@ -48,7 +23,7 @@
   }
 }
 
-.Dropdown:not(.isOpen) .body {
+.Dropdown:not([dropdown-open]) .body {
   display: none;
 }
 

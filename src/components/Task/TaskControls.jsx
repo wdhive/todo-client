@@ -40,7 +40,8 @@ const TaskControls = ({ setShowTaskCategory, setSoryBy, taskCount }) => {
         <Dropdown
           title="Category"
           align="right"
-          className={css.dropdown}
+          bodyClassName={css.dropdown}
+          buttonClassName={css.dropdownButton}
           onChange={handleCategoryFormSubmit}
         >
           <Group name="category" label="Personal" />
@@ -51,7 +52,8 @@ const TaskControls = ({ setShowTaskCategory, setSoryBy, taskCount }) => {
         <Dropdown
           title="Sort By"
           align="right"
-          className={css.dropdown}
+          bodyClassName={css.dropdown}
+          buttonClassName={css.dropdownButton}
           onChange={handleSortFormSubmit}
         >
           <Group name="sort" label="Accending" />

@@ -1,5 +1,7 @@
 import axios from 'axios'
 import subscribe from '$store/subscribe'
+import extraSlice from '$slice/extra'
+import userSlice from '$slice/user'
 
 const instance = axios.create({
   baseURL: 'https://baby-todo.onrender.com',
@@ -36,6 +38,17 @@ export default async (method, ...args) => {
     const response = await instance[method](...args)
     return [undefined, response.data.data || response.data]
   } catch (err) {
-    return [err.response?.data?.message || err.message]
+    const errorMessage = err.response.data?.message || err.message
+
+    if (err.response.status === 401) {
+      $store(
+        extraSlice.alert({
+          action: userSlice.logout(),
+          message: errorMessage,
+        })
+      )
+    }
+
+    return [errorMessage, undefined]
   }
 }

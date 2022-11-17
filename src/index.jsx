@@ -5,6 +5,9 @@ import './styles/index.scss'
 import App from './App'
 import store from '$store'
 
+import ErrorBoundary from '$src/ErrorBoundary'
+import ErrorHandler from '$components/ErrorHandler'
+
 import className from 'classnames'
 import useApi from '$api/useApi'
 import useApiOnce from '$api/useApiOnce'
@@ -18,9 +21,11 @@ const rootElement = document.getElementById('Root')
 const root = createRoot(rootElement)
 
 root.render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Provider>
+  <ErrorBoundary element={<ErrorHandler />}>
+    <Provider store={store}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Provider>
+  </ErrorBoundary>
 )

@@ -1,8 +1,11 @@
+.UpdateTask :global(.wrapper) {
+  padding: 2rem 3rem;
+}
+
 .header {
   background: v(c200);
 
   :global(.wrapper) {
-    padding: 2rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

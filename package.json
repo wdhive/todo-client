@@ -30,7 +30,8 @@
     "postcss-preset-env": "^7.8.2",
     "sass": "^1.55.0",
     "vite": "^3.1.8",
-    "vite-pwa": "^0.0.6"
+    "vite-pwa": "^0.0.6",
+    "vite-vscode": "^0.0.0"
   },
   "engines": {
     "node": ">=16.0.0"

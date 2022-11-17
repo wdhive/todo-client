@@ -1,7 +1,7 @@
 .hero {
   overflow: hidden; // apatoto
   background-image: linear-gradient(90deg, v(background) 0%, v(background) 100%),
-    url(@ass/bg-left.png);
+    url('$assets/bg-left.png');
   background-repeat: no-repeat;
   background-position: bottom left;
   background-blend-mode: hue;

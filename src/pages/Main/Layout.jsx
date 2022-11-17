@@ -48,10 +48,6 @@ const MainLayout = () => {
     </Suspense>
   )
 
-  console.log('loading:', api.loading)
-  console.log('loaded:', api.loaded)
-  console.log('error:', api.error)
-
   if (!api.loaded) return <Loading />
   return (
     <div className={css.Layout}>

@@ -14,7 +14,8 @@ const TaskLayout = () => {
   api.onLoad((data) => {
     $store(taskSlice.initTasks(data.tasks))
   })
-  if (!api.data) return <Loading />
+
+  if (!api.loaded) return <Loading />
 
   return (
     <>

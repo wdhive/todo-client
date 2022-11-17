@@ -1,0 +1,53 @@
+.TaskForm {
+  input,
+  textarea {
+    width: 100%;
+    background: v(c100);
+    outline-width: 2px;
+    outline-color: v(c200);
+    border-radius: 0.5rem;
+    transition: outline 0.15s ease-in-out;
+    padding: 0.65rem 1rem;
+    color: v(c500);
+    font-weight: normal;
+
+    &:focus {
+      outline-color: v(c400);
+    }
+  }
+
+  & > *:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}
+
+.formGroup {
+  p {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.taskDateGroup {
+  display: flex;
+  gap: 2rem;
+
+  & > * {
+    flex: 1;
+  }
+}
+
+.taskCategory,
+.taskParticipants {
+  .formGroup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.taskParticipants {
+  .formGroup svg {
+    @include svg-size(1.1em);
+  }
+}
