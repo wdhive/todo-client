@@ -51,6 +51,7 @@
   overflow: hidden;
   border-radius: 1rem;
   background: v(background);
+  box-shadow: 0 0 2rem v(c700);
 
   @include break-down($sm) {
     max-height: calc(100vh - 7.5vmin);

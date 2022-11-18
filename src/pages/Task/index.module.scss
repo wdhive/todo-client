@@ -16,6 +16,7 @@
 
 .header {
   background: v(c200);
+  box-shadow: 0 -0.5rem 1.5rem v(c700);
 
   :global(.wrapper) {
     padding-bottom: 0;

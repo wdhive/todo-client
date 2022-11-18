@@ -70,7 +70,7 @@ const FormBody = ({ task }) => {
       </div>
 
       <button className={cn('button button__primary', css.submitButton)}>
-        Click Me
+        Save
       </button>
     </div>
   )

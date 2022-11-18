@@ -30,6 +30,7 @@
 .dropdownBody {
   display: flex;
   flex-direction: column;
+  box-shadow: 0 0 0.85rem -0.25rem v(c700);
 
   .inputGroup {
     padding: 0.5rem 1rem;
