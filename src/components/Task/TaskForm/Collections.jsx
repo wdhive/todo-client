@@ -1,25 +1,25 @@
 import { useId } from 'react'
 import css from './Collections.module.scss'
 
-const Collection = ({ collection, selectInput }) => {
+const Collection = ({ collection, setSelected, selected }) => {
   const id = useId()
-  const handleChange = ({ currentTarget }) => {
-    if (currentTarget.checked) {
-      selectInput(collection._id)
-    }
+
+  const handleChange = () => {
+    setSelected(collection._id)
   }
 
   return (
     <div className={css.collectionGroup}>
       <label htmlFor={id}>
-        {selectInput && (
+        {setSelected && (
           <input
             id={id}
+            className="visually-hidden"
             type="radio"
             name="collection"
-            value={collection._id}
+            checked={selected}
             onChange={handleChange}
-            className="visually-hidden"
+            value={collection._id}
           />
         )}
 

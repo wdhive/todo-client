@@ -9,13 +9,13 @@
 
   &__primary {
     background-color: v(accent);
-    color: v(c000);
+    color: v(background);
 
     &:hover {
-      background-color: v(c450);
+      background-color: v(c500);
     }
     &:active {
-      background-color: v(c500);
+      background-color: v(c600);
     }
   }
   &__secondary {

@@ -8,10 +8,13 @@ import ClockIcon from '$assets/icons/clock.svg?component'
 import CheckIcon from '$assets/icons/check.svg?component'
 import avatar from '$assets/avatar.png'
 import uiSlice from '$slice/ui'
+import useApi from '$src/api/useApi'
+import tasksSlice from '$src/store/slice/tasks'
 
 const TaskCard = ({ task }) => {
   const uniqueId = useId()
   const show = useSelector((state) => state.ui.globalActive === uniqueId)
+  const api = useApi()
 
   const taskStartingTime = new Date(task.startingDate).toDateString()
   const taskEndingTime =
@@ -23,18 +26,35 @@ const TaskCard = ({ task }) => {
     $store(uiSlice.setGlobalActive(show || uniqueId))
   }
 
+  const handleCheckClick = async () => {
+    const url = `/tasks/${task._id}/${
+      task.completed ? 'uncomplete' : 'complete'
+    }`
+
+    const data = await api.patch(url)
+    if (!data) return
+
+    $store(tasksSlice.updateTask(data.task))
+  }
+
   return (
     <div
-      className={cn(css.Task, show && css.contextActive)}
+      className={cn(
+        css.Task,
+        show && css.contextActive,
+        task.completed && css.completed
+      )}
       onContextMenu={handleContextMenu}
     >
       <div className={css.main}>
         <div className={css.top}>
           <h6>{task.title}</h6>
           <input
+            disabled={api.loading}
             type="checkbox"
             className={css.checkBox}
-            defaultChecked={task.completed}
+            onChange={handleCheckClick}
+            checked={task.completed}
           />
 
           <div
@@ -46,7 +66,7 @@ const TaskCard = ({ task }) => {
           </div>
         </div>
 
-        <p>{task.description}</p>
+        <p className={css.middle}>{task.description?.slice(0, 100)}</p>
 
         <div className={css.bottom}>
           <div className={css.time}>

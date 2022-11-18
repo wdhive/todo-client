@@ -10,7 +10,8 @@ export const getFormData = (object) => {
 
 export const getInputs = (form) => {
   const inputs = [
-    ...form.querySelectorAll('input[name]'),
+    ...form.querySelectorAll('input[name]:not([type="radio"])'),
+    ...form.querySelectorAll('input[name][type="radio"]:checked'),
     ...form.querySelectorAll('textarea[name]'),
   ]
   const values = {}
@@ -25,9 +26,25 @@ export const getInputs = (form) => {
         : input.type === 'date'
         ? input.value && new Date(input.value)
         : input.value
+
     values[name] = value
     elements[name] = input
   })
 
   return [values, elements, form]
+}
+
+export const getDiff = (base, data) => {
+  const result = {}
+
+  for (let key in data) {
+    const dataValue = data[key]
+    const baseValue = base[key]
+
+    if (baseValue !== dataValue) {
+      result[key] = dataValue
+    }
+  }
+
+  return result
 }

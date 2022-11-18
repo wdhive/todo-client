@@ -37,7 +37,7 @@
 
   input {
     @extend %common;
-    color: v(c500);
+    color: v(c600);
     background: v(c100);
   }
 }
@@ -56,7 +56,7 @@
   @extend %common;
   @include font('btn1');
   position: relative;
-  background: v(c500);
+  background: v(c600);
   color: v(background);
   margin-top: 0.4rem;
 

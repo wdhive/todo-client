@@ -22,6 +22,34 @@
   background: v(c100);
   flex: 1;
   padding: 1.25rem 2rem;
+  @include transition('background', fast);
+}
+
+.completed {
+  background: v(c400);
+
+  .main {
+    background: v(c300);
+  }
+
+  .top,
+  .middle {
+    text-decoration: line-through;
+    color: v(accent);
+  }
+
+  .context a {
+    color: var(--background);
+
+    &:hover {
+      background: v(c600);
+    }
+  }
+}
+
+.top,
+.middle {
+  @include transition('color', fast);
 }
 
 .top,
@@ -53,15 +81,16 @@
   & + div {
     background: v(background);
     border-radius: 0.5rem;
-    border: 0.15rem solid v(accent);
+    outline: 0.15rem solid v(accent);
     @include svg-size(1.5rem);
     display: grid;
     place-content: center;
+    padding: 0.85rem;
     cursor: pointer;
 
     svg {
       display: none;
-      @include svg-size(0.75rem);
+      @include svg-size(1rem);
 
       path {
         stroke: var(--c100);
@@ -80,6 +109,10 @@
   &:focus + div {
     outline: 0.1rem solid v(accent);
     outline-offset: 0.2rem;
+  }
+
+  &:disabled + div {
+    cursor: not-allowed;
   }
 }
 
@@ -128,7 +161,7 @@
   display: flex;
   flex-direction: column;
   visibility: hidden;
-  transition: width 0.25s ease-in-out;
+  @include transition('width');
 
   & > * {
     flex: 1;
@@ -141,8 +174,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.2s ease-in-out;
-    transition-property: background, color;
+    @include transition(' background, color');
 
     &:hover {
       background: v(c400);

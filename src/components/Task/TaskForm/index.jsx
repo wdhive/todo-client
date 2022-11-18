@@ -2,8 +2,11 @@ import { useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import css from './index.module.scss'
 import CloseIcon from '$assets/icons/cross.svg?component'
-import { getInputs } from '$src/utils/utils'
+import { getDiff, getInputs } from '$src/utils/utils'
 import FormBody from './FormBody'
+import useApi from '$src/api/useApi'
+import tasksSlice from '$src/store/slice/tasks'
+import { useNavigate } from 'react-router-dom'
 
 const defaulTask = {
   get startingDate() {
@@ -13,7 +16,9 @@ const defaulTask = {
 }
 
 const TaskForm = ({ close }) => {
+  const api = useApi()
   const params = useParams()
+  const navigate = useNavigate()
   const task = useSelector((state) => {
     return (
       state.tasks.tasks?.find(({ _id }) => {
@@ -22,11 +27,23 @@ const TaskForm = ({ close }) => {
     )
   })
 
-  const handleFormSubmit = (e) => {
-    const [data] = getInputs(e.currentTarget)
+  const fetchTask = (taskId, data) => {
+    if (taskId) {
+      return api.patch('/tasks/' + task._id, data)
+    }
+    return api.post('/tasks', data)
+  }
 
-    console.log(data)
+  const handleFormSubmit = async (e) => {
     e.preventDefault()
+    const [formDataRaw] = getInputs(e.currentTarget)
+    const formData = getDiff(task, formDataRaw)
+    formData.endingDate ||= null
+
+    const data = await fetchTask(task._id, formData)
+    if (!data) return
+    $store(tasksSlice.addTask(data.task))
+    task._id || navigate(`/tasks/${data.task._id}`)
   }
 
   return (

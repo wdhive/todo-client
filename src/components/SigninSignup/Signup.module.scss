@@ -45,6 +45,6 @@
   input[type='file']:focus + &__preview {
     outline-width: 1px;
     outline-style: solid;
-    outline-color: var(--c600);
+    outline-color: var(--accent);
   }
 }

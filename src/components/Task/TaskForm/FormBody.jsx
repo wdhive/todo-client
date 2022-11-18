@@ -2,6 +2,12 @@ import css from './FormBody.module.scss'
 import AddIcon from '$assets/icons/add.svg?component'
 import CollectionsDropdown from './CollectionsDropdown'
 
+const formatDateDefaultValue = (date) => {
+  if (date) {
+    return new Date(date).toLocaleDateString('fr-CA')
+  }
+}
+
 const Group = ({ children, label }) => {
   return (
     <div className={css.formGroup}>
@@ -11,15 +17,7 @@ const Group = ({ children, label }) => {
   )
 }
 
-const formatDateDefaultValue = (date) => {
-  if (date) {
-    return new Date(date).toLocaleDateString('fr-CA')
-  }
-}
-
 const FormBody = ({ task }) => {
-  console.log(task)
-
   return (
     <div className={css.TaskForm}>
       <Group label="Task Title">

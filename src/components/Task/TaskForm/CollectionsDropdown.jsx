@@ -4,16 +4,16 @@ import css from './CollectionsDropdown.module.scss'
 import Dropdown from '$src/components/UI/Dropdown'
 import Collections from './Collections'
 
-const CollectionsDropdown = ({ collection = 'none' }) => {
-  const [selectedItem, setSelectedItem] = useState(collection)
-  const collections = useTaskCollections()
+const CollectionsDropdown = ({ collection: taskCollection = 'none' }) => {
+  const availCollections = useTaskCollections()
+  const [selected, setSelected] = useState(taskCollection)
 
   const selectedItemElement = useMemo(() => {
-    const match = collections.find(({ _id }) => _id === selectedItem)
-    if (!match && collection !== 'none') return setSelectedItem('none')
+    const match = availCollections.find(({ _id }) => _id === selected)
+    if (!match && taskCollection !== 'none') return setSelected('none')
 
     return <Collections collection={match} />
-  }, [collections, selectedItem])
+  }, [availCollections, selected])
 
   return (
     <Dropdown
@@ -25,11 +25,12 @@ const CollectionsDropdown = ({ collection = 'none' }) => {
       bodyClassName={css.collectionDropdownBody}
       br={true}
     >
-      {collections.map((collection) => (
+      {availCollections.map((item) => (
         <Collections
-          key={collection._id}
-          collection={collection}
-          selectInput={setSelectedItem}
+          key={item._id}
+          collection={item}
+          selected={item._id === selected}
+          setSelected={setSelected}
         />
       ))}
     </Dropdown>

@@ -6,8 +6,7 @@
 .collectionDropdownButton {
   background: v(c100);
   padding-right: 1rem;
-  transition: 0.15s ease-in-out;
-  transition-property: outline, background;
+  @include transition('outline, background', fast);
   outline: 0.2rem solid v(c200);
   border-radius: 0.5rem;
   gap: 1rem;

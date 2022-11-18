@@ -43,10 +43,8 @@
     &:not([open]) {
       visibility: hidden;
     }
-  }
 
-  &[open] {
-    @include break-down($lg) {
+    &[open] {
       transition: none;
 
       .listContainer {
@@ -80,7 +78,7 @@
   position: fixed;
   inset: 0;
   z-index: 200;
-  background-color: v(c800);
+  background-color: v(foreground);
   background-blend-mode: multiply;
   opacity: 0;
   pointer-events: none;

@@ -26,20 +26,22 @@
   }
 
   img {
-    width: 7.5rem;
+    --img-size: 7.5rem;
+    width: var(--img-size);
+    height: var(--img-size);
     border-radius: 50%;
     margin-inline: auto;
     outline: solid 0.35rem v(accent);
     margin-bottom: 1.25rem;
+    overflow: hidden;
 
     @include NavCollapse {
-      width: 3.5rem;
+      --img-size: 3.5rem;
     }
 
     @include break-down($lg) {
       margin-bottom: 0;
-      width: 6rem;
-      height: 100%;
+      --img-size: 6rem;
     }
   }
 
@@ -111,7 +113,7 @@
 
   .toggleTheme {
     display: none;
-    
+
     @include break-down($lg) {
       display: block;
       align-self: center;

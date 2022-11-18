@@ -3,18 +3,21 @@ import LightIcon from '$assets/icons/light.svg?component'
 import DarkIcon from '$assets/icons/dark.svg?component'
 import AutoIcon from '$assets/icons/auto.svg?component'
 import AvatarIcon from '$assets/avatar.png'
+import { useSelector } from 'react-redux'
 
 const NavProfile = ({ className }) => {
+  const user = useSelector((state) => state.user.user)
+
   return (
     <div className={cn(css.NavProfile, className)}>
       <div className={css.profile}>
         <div>
-          <img src={AvatarIcon} alt="Profile Picture" />
+          <img src={user.avatar ?? AvatarIcon} alt="Profile Picture" />
         </div>
 
         <div>
           <p>Good Afternoon,</p>
-          <h6>John Doe</h6>
+          <h6>{user.name}</h6>
         </div>
       </div>
 

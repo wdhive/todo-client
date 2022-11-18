@@ -6,9 +6,9 @@
     outline-width: 2px;
     outline-color: v(c200);
     border-radius: 0.5rem;
-    transition: outline 0.15s ease-in-out;
+    @include transition('outline', fast);
     padding: 0.65rem 1rem;
-    color: v(c500);
+    color: v(c600);
     font-weight: normal;
 
     &:focus {

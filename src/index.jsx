@@ -9,12 +9,8 @@ import ErrorBoundary from '$src/ErrorBoundary'
 import ErrorHandler from '$components/ErrorHandler'
 
 import className from 'classnames'
-import useApi from '$api/useApi'
-import useApiOnce from '$api/useApiOnce'
 
 window.cn = className
-window.useApi = useApi
-window.useApiOnce = useApiOnce
 window.$store = store.dispatch
 
 const rootElement = document.getElementById('Root')

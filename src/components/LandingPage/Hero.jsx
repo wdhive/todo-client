@@ -1,6 +1,7 @@
 import css from './Hero.module.scss'
 import SignupBtn from './SignupBtn'
 import ProximityEffect from './ProximityEffect'
+import useApiOnce from '$src/api/useApiOnce'
 
 const Hero = () => {
   const api = useApiOnce('get', '/extra/users-count')

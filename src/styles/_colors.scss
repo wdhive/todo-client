@@ -14,20 +14,17 @@
 }
 
 :root {
-  --c000: hsl(var(--hue), var(--sat), var(--l1));
+  --background: hsl(var(--hue), var(--sat), var(--l1));
   --c100: hsl(var(--hue), var(--sat), var(--l2));
   --c200: hsl(var(--hue), var(--sat), var(--l3));
   --c300: hsl(var(--hue), var(--sat), var(--l4));
   --c400: hsl(var(--hue), var(--sat), var(--l5));
-  --c450: hsl(var(--hue), var(--sat), var(--l6));
-  --c500: hsl(var(--hue), var(--sat), var(--l7));
-  --c600: hsl(var(--hue), var(--sat), var(--l8));
+  --c500: hsl(var(--hue), var(--sat), var(--l6));
+  --c600: hsl(var(--hue), var(--sat), var(--l7));
+  --accent: hsl(var(--hue), var(--sat), var(--l8));
   --c700: hsl(var(--hue), var(--sat), var(--l9));
-  --c800: hsl(var(--hue), var(--sat), var(--l10));
+  --foreground: hsl(var(--hue), var(--sat), var(--l10));
 
-  --background: var(--c000);
-  --foreground: var(--c800);
-  --accent: var(--c600);
   --error: hsl(0, var(--sat), var(--l8));
 
   --logo-bg: var(--accent);

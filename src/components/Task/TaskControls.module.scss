@@ -6,7 +6,7 @@
 }
 
 .taskCount {
-  color: v(c600);
+  color: v(accent);
 }
 
 .controls {
@@ -56,7 +56,7 @@
   border-radius: 0.5rem 0.5rem 0 0;
   border-bottom: 0.1rem solid v(accent);
   background: transparent;
-  transition: background 0.1s ease-in-out;
+  @include transition('background', fast);
   color: v(c700);
 
   svg {
