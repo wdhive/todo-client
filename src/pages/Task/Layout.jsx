@@ -6,6 +6,11 @@ import Loading from '$components/Loading'
 import Task from './index'
 import TaskModal from './TaskModal'
 import useApiOnce from '$src/api/useApiOnce'
+import socketEvent from '$socket/socketEvent'
+
+socketEvent['task-update'] = (task) => {
+  console.log(task)
+}
 
 const TaskLayout = () => {
   const tasks = useSelector((state) => state.tasks.tasks)

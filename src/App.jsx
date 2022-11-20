@@ -1,6 +1,7 @@
 import react, { Suspense, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import '$socket'
 
 import Loading from '$components/Loading'
 import NotFound from '$pages/NotFound'

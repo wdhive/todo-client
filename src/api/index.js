@@ -16,7 +16,7 @@ const instance = axios.create({
 subscribe(
   (state) => state.user.jwt,
   (token) => {
-    instance.defaults.headers.common.authorization = `Bearer ${token}`
+    instance.defaults.headers.common.authorization = token
 
     if (token) {
       localStorage.setItem('jwt-token', token)

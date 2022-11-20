@@ -20,6 +20,10 @@ const guestUserData = {
   email: 'guest@example.com',
 }
 
+const getFullJwt = (token) => {
+  return `Bearer ${token}`
+}
+
 const userSlice = createSlice({
   name: 'user',
   initialState: sessionState,
@@ -27,7 +31,7 @@ const userSlice = createSlice({
     login(state, { payload }) {
       state.isLoggedIn = true
       state.isGuestUser = false
-      state.jwt = payload
+      state.jwt = getFullJwt(payload)
     },
 
     loginAsGuest(state) {
@@ -41,7 +45,7 @@ const userSlice = createSlice({
     },
 
     updateJwt(state, { payload }) {
-      state.jwt = payload
+      state.jwt = getFullJwt(payload)
     },
 
     updateSocketId(state, { payload }) {

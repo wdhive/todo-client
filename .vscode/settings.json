@@ -12,7 +12,8 @@
 		"$pages": "${folder}/src/pages",
 		"$store": "${folder}/src/store",
 		"$styles": "${folder}/src/styles",
-		"$utils": "${folder}/src/utils"
+		"$utils": "${folder}/src/utils",
+		"$socket": "${folder}/src/socket"
 	},
 	"path-intellisense.pathMappings": {
 		"$src": "${workspaceFolder}/src",
@@ -27,6 +28,7 @@
 		"$pages": "${workspaceFolder}/src/pages",
 		"$store": "${workspaceFolder}/src/store",
 		"$styles": "${workspaceFolder}/src/styles",
-		"$utils": "${workspaceFolder}/src/utils"
+		"$utils": "${workspaceFolder}/src/utils",
+		"$socket": "${workspaceFolder}/src/socket"
 	}
 }
