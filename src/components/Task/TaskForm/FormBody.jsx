@@ -35,6 +35,7 @@ const FormBody = ({ task }) => {
           <input
             type="date"
             name="startingDate"
+            required
             defaultValue={formatDateDefaultValue(task.startingDate)}
           />
         </Group>
