@@ -29,5 +29,7 @@
 }
 
 .body {
-  height: auto;
+  :global(.wrapper) {
+    padding-bottom: 4rem;
+  }
 }
