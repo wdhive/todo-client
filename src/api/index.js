@@ -5,6 +5,7 @@ import userSlice from '$slice/user'
 
 const instance = axios.create({
   baseURL: 'https://baby-todo.onrender.com',
+  // baseURL: 'http://localhost:8000',
   headers: {
     common: {
       authorization: undefined,
@@ -36,11 +37,11 @@ subscribe(
 export default async (method, ...args) => {
   try {
     const response = await instance[method](...args)
-    return [undefined, response.data.data || response.data]
+    return [undefined, response.data?.data || response.data]
   } catch (err) {
-    const errorMessage = err.response.data?.message || err.message
+    const errorMessage = err.response?.data?.message || err.message
 
-    if (err.response.status === 401) {
+    if (err.response?.status === 401) {
       $store(
         extraSlice.alert({
           action: userSlice.logout(),

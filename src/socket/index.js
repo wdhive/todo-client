@@ -12,13 +12,12 @@ const runListner = (event, data) => {
     return console.warn('No handler found for ' + event)
   }
 
-  handler(data.data ?? data)
+  handler(data?.data ?? data)
 }
 
 const connect = () => {
-  if (socket) {
-    return console.log('Socket Already Connected')
-  }
+  if (socket) return console.log('Socket Already Connected')
+  socket = true
 
   const token = store.getState().user.jwt
   const soc = io('https://baby-todo.onrender.com', {
@@ -33,25 +32,24 @@ const connect = () => {
 
   soc.on('connect', () => {
     socket = soc
-    // $store(userSlice.updateSocketId(soc.id))
+    $store(userSlice.updateSocketId(soc.id))
     runListner('connect', soc)
   })
 
   soc.on('disconnect', () => {
+    socket = null
+    $store(userSlice.updateSocketId(null))
     runListner('disconnect')
   })
 
-  soc.onAny((...args) => {
-    runListner(...args)
-  })
+  soc.onAny(runListner)
 }
 
 subscribe(
   (state) => state.user.jwt,
   (token) => {
     if (!token && socket) {
-      socket.disconnect()
-      $store(userSlice.updateSocketId(null))
+      return socket?.disconnect()
     }
 
     if (token && !socket) {

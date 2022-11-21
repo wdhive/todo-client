@@ -1,6 +1,6 @@
 export default {
-  connect: function (msg) {
-    console.log(msg.id)
+  connect: function (socket) {
+    console.log(socket.id)
   },
   disconnect: function () {
     console.log('Socket disconnect')
