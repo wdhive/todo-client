@@ -34,6 +34,7 @@ const CollectionsDropdown = ({ collection = 'none' }) => {
         section: css.collectionDropdownSection,
         ul: css.collectionDropdownBody,
         li: css.collectionDropdownLi,
+        svg: css.collectionDropdownSvg,
       }}
       live
     />

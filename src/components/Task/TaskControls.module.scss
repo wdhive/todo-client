@@ -15,50 +15,42 @@
   gap: 0.5rem;
 }
 
-.inputGroup {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-
-  &,
-  input,
-  label {
-    cursor: pointer;
-  }
+.dropdownSection {
+  box-shadow: 0 0 0.85rem -0.25rem v(c700);
+  border-radius: 0.5rem;
+  right: 0;
 }
 
 .dropdownBody {
+  background: v(c100);
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 0.85rem -0.25rem v(c700);
+}
 
-  .inputGroup {
-    padding: 0.5rem 1rem;
-    width: 100%;
+.inputGroup {
+  padding: 0.5rem 1.40rem;
+  width: 100%;
 
-    &:not(:last-child) {
-      border-bottom: 1px solid v(c200);
-    }
+  &:not(:last-child) {
+    border-bottom: 1px solid v(c200);
   }
 }
 
-.dropdown[open] {
+.dropdown[active] {
   .dropdownButton {
     background-color: v(c100);
   }
 }
 
 .dropdownButton {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
   gap: 0.7rem;
   padding: 0.25rem 0.75rem;
   border-radius: 0.5rem 0.5rem 0 0;
   border-bottom: 0.1rem solid v(accent);
   background: transparent;
-  @include transition('background', fast);
   color: v(c700);
+  @include transition('background', fast);
 
   svg {
     $size: 0.85em;
@@ -70,5 +62,26 @@
     path {
       stroke: currentColor;
     }
+  }
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.radio {
+  @include svg-size(0.5em);
+  background: transparent;
+  border-radius: 50%;
+  outline: 0.2rem solid v(c400);
+  outline-offset: 0.2rem;
+  @include transition('background', fast);
+}
+
+.inputGroup[active] {
+  .radio {
+    background: v(accent);
   }
 }

@@ -1,40 +1,33 @@
-import { useId } from 'react'
-import DropdownOld from '../UI/DropdownOld'
+import { memo } from 'react'
+import Dropdown from '../UI/Dropdown'
 import css from './TaskControls.module.scss'
 
-const Group = ({ name, label, value, selected }) => {
-  const id = useId()
-
+const Item = ({ label }) => {
   return (
-    <label htmlFor={id} className={css.inputGroup}>
-      <input
-        type="radio"
-        name={name}
-        id={id}
-        value={value}
-        defaultChecked={selected === value}
-      />
-
-      <span>{label}</span>
-    </label>
+    <div className={css.label}>
+      <div className={css.radio} />
+      <p>{label}</p>
+    </div>
   )
 }
 
 const TaskControls = ({
   collections,
-  taskCollection,
+  setSoryBy,
   setTaskCollection,
   sortBy,
-  setSoryBy,
+  taskCollection,
   taskCount,
 }) => {
-  const handleCategoryFormSubmit = ({ currentTarget }) => {
-    const value = currentTarget.elements.category.value
-    setTaskCollection(value)
-  }
-  const handleSortFormSubmit = ({ currentTarget }) => {
-    const value = currentTarget.elements.sort.value
-    setSoryBy(value)
+  const commonprops = {
+    live: false,
+    className: css.dropdown,
+    classNames: {
+      button: css.dropdownButton,
+      section: css.dropdownSection,
+      ul: css.dropdownBody,
+      li: css.inputGroup,
+    },
   }
 
   return (
@@ -51,39 +44,36 @@ const TaskControls = ({
       </p>
 
       <div className={css.controls}>
-        <DropdownOld
-          title="Collection"
-          align="right"
-          className={css.dropdown}
-          bodyClassName={css.dropdownBody}
-          buttonClassName={css.dropdownButton}
-          onChange={handleCategoryFormSubmit}
-        >
-          {collections?.map(({ _id, name }) => (
-            <Group
-              key={_id}
-              name="category"
-              label={name}
-              value={_id}
-              selected={taskCollection}
-            />
-          ))}
-        </DropdownOld>
+        <Dropdown
+          {...commonprops}
+          buttonLabel="Collection"
+          default={taskCollection}
+          onChange={(value) => setTaskCollection(value)}
+          list={collections?.map(({ _id, name }) => ({
+            value: _id,
+            label: <Item label={name} />,
+          }))}
+        />
 
-        <DropdownOld
-          title="Sort By"
-          align="right"
-          className={css.dropdown}
-          bodyClassName={css.dropdownBody}
-          buttonClassName={css.dropdownButton}
-          onChange={handleSortFormSubmit}
-        >
-          <Group name="sort" label="Accending" value="a" selected={sortBy} />
-          <Group name="sort" label="Deccending" value="d" selected={sortBy} />
-        </DropdownOld>
+        <Dropdown
+          {...commonprops}
+          buttonLabel="Sort By"
+          default={sortBy}
+          onChange={(value) => setSoryBy(value)}
+          list={[
+            {
+              label: <Item label="Accending" />,
+              value: 'a',
+            },
+            {
+              label: <Item label="Deccending" />,
+              value: 'd',
+            },
+          ]}
+        />
       </div>
     </div>
   )
 }
 
-export default TaskControls
+export default memo(TaskControls)

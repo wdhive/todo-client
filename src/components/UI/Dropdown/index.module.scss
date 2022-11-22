@@ -6,9 +6,23 @@
   &[active] .section {
     display: block;
   }
+
+  &[active] .svg {
+    transform: rotateX(60deg);
+  }
 }
 
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.svg {
+  transform: rotateX(0);
+  @include svg-size(1.25em);
+  @include transition('transform', fast);
 }
 
 .section {

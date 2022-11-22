@@ -1,8 +1,7 @@
-import { useEffect, useMemo } from 'react'
-import { useRef } from 'react'
-import { useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import css from './index.module.scss'
 import useGetItem from './useGetItem'
+import DownIcon from '$assets/icons/chev-down.svg?component'
 
 const focusTo = function (container, element) {
   const eleTop = element.offsetTop
@@ -24,6 +23,8 @@ const index = ({
   classNames = {},
   list,
   default: defaultValue,
+  buttonLabel = 'Choose...',
+  icon = true,
   live = true,
   none = false,
   onChange = () => {},
@@ -124,7 +125,9 @@ const index = ({
         onClick={handleButtonClick}
         onKeyDown={handleButtnKeyDown}
       >
-        {(live && getItem()?.label) || 'Select...'}
+        {(live && getItem()?.label) || buttonLabel}
+
+        {icon && <DownIcon className={cn(css.svg, classNames.svg)} />}
       </button>
 
       <section className={cn(css.section, classNames.section)}>

@@ -54,3 +54,11 @@
 .collectionDropdownLi:not(:last-child) .label {
   border-bottom: 0.2rem solid v(c300);
 }
+
+.collectionDropdownSvg {
+  margin-right: 1.33rem;
+
+  path {
+    stroke: v(accent);
+  }
+}
