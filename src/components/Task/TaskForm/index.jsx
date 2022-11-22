@@ -19,6 +19,7 @@ const TaskForm = ({ close }) => {
   const api = useApi()
   const params = useParams()
   const navigate = useNavigate()
+
   const task = useSelector((state) => {
     return (
       state.tasks.tasks?.find(({ _id }) => {
@@ -27,23 +28,24 @@ const TaskForm = ({ close }) => {
     )
   })
 
-  const fetchTask = (taskId, data) => {
-    if (taskId) {
-      return api.patch('/tasks/' + task._id, data)
-    }
-    return api.post('/tasks', data)
-  }
-
   const handleFormSubmit = async (e) => {
     e.preventDefault()
     const [formDataRaw] = getInputs(e.currentTarget)
     const formData = getDiff(task, formDataRaw)
-    formData.endingDate ||= null
 
-    const data = await fetchTask(task._id, formData)
-    if (!data) return
+    formData.endingDate ||= null
+    if (formData.collection === 'none') {
+      formData.collection = null
+    }
+
+    if (task._id) {
+      const data = await api.patch('/tasks/' + task._id, formData)
+      $store(tasksSlice.updateTask(data.task))
+      return navigate(`/tasks/${data.task._id}`)
+    }
+
+    const data = await api.post('/tasks', formData)
     $store(tasksSlice.addTask(data.task))
-    task._id || navigate(`/tasks/${data.task._id}`)
   }
 
   return (
