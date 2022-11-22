@@ -31,9 +31,7 @@ const TaskModal = ({ ...props }) => {
     <dialog className={css.TaskNew} ref={dialogRef} onKeyDown={handleKeyDown}>
       <div className={css.backdrop} onClick={handleClose} />
       <div className={css.content}>
-        <div className={css.contentInner}>
-          <TaskForm {...props} close={handleClose} />
-        </div>
+        <TaskForm {...props} close={handleClose} />
       </div>
     </dialog>
   )
