@@ -20,13 +20,16 @@
   .backdrop {
     animation-name: openSettingsBackdrop;
   }
+
   .content {
     animation-name: openSettingsContent;
   }
+
   &.close {
     .backdrop {
       animation-name: closeSettingsBackdrop;
     }
+
     .content {
       animation-name: closeSettingsContent;
     }
@@ -46,9 +49,8 @@
   margin: auto;
   width: 90%;
   max-width: 65rem;
-  height: 100%;
   max-height: 90%;
-  overflow: hidden;
+  overflow-y: scroll;
   border-radius: 1rem;
   background: v(background);
   box-shadow: 0 0 2rem v(c700);
@@ -70,6 +72,7 @@
     opacity: 0;
   }
 }
+
 @keyframes closeSettingsBackdrop {
   to {
     opacity: 0;
@@ -83,6 +86,7 @@
     opacity: 0.1;
   }
 }
+
 @keyframes closeSettingsContent {
   to {
     transform: scale(0);
