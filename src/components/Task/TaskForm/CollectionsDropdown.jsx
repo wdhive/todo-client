@@ -1,47 +1,42 @@
-import { useMemo, useState, memo } from 'react'
+import { memo } from 'react'
 import useTaskCollections from '$hooks/useTaskCollections'
 import css from './CollectionsDropdown.module.scss'
-// import Dropdown from '$components/UI/Dropdown'
-import Dropdown from '$components/Dropdown'
-import Collections from './Collections'
+import Dropdown from '$components/UI/Dropdown'
 
-const CollectionsDropdown = ({ collection: taskCollection = 'none' }) => {
-  const availCollections = useTaskCollections()
-  const cls = availCollections.map((col) => ({
-    label: col.name,
+const CollectionsDropdown = ({ collection = 'none' }) => {
+  const taskCollections = useTaskCollections(
+    (state) => state.settings.collections
+  )
+
+  const list = taskCollections.map((col) => ({
+    label: (
+      <div className={css.label}>
+        <div
+          className={css.color}
+          style={{
+            background: col.hue && `hsl(${col.hue}, 50%, 50%)`,
+          }}
+        />
+        <div className={css.name}>{col.name}</div>
+      </div>
+    ),
     value: col._id,
   }))
 
-  return <Dropdown list={cls} />
-
-  const [selected, setSelected] = useState(taskCollection)
-
-  const selectedItemElement = useMemo(() => {
-    const match = availCollections.find(({ _id }) => _id === selected)
-    if (!match && taskCollection !== 'none') return setSelected('none')
-
-    return <Collections collection={match} />
-  }, [availCollections, selected])
-
   return (
     <Dropdown
-      title={selectedItemElement}
-      form={false}
-      align="right"
+      name="collection"
+      default={collection}
+      list={list}
       className={css.collectionDropdown}
-      buttonClassName={css.collectionDropdownButton}
-      bodyClassName={css.collectionDropdownBody}
-      br={true}
-    >
-      {availCollections.map((item) => (
-        <Collections
-          key={item._id}
-          collection={item}
-          selected={item._id === selected}
-          setSelected={setSelected}
-        />
-      ))}
-    </Dropdown>
+      classNames={{
+        button: css.collectionDropdownButton,
+        section: css.collectionDropdownSection,
+        ul: css.collectionDropdownBody,
+        li: css.collectionDropdownLi,
+      }}
+      live
+    />
   )
 }
 

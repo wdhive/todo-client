@@ -1,0 +1,35 @@
+.Dropdown {
+  position: relative;
+  width: 100%;
+  user-select: none;
+
+  &[active] .section {
+    display: block;
+  }
+}
+
+.button {
+}
+
+.section {
+  display: none;
+  position: absolute;
+  top: 100%;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.ul {
+  max-height: 20rem;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.ul,
+.li {
+  min-width: max-content;
+}
+
+.li {
+  cursor: pointer;
+}

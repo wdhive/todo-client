@@ -1,5 +1,5 @@
 import { useId } from 'react'
-import Dropdown from '../UI/Dropdown'
+import DropdownOld from '../UI/DropdownOld'
 import css from './TaskControls.module.scss'
 
 const Group = ({ name, label, value, selected }) => {
@@ -51,7 +51,7 @@ const TaskControls = ({
       </p>
 
       <div className={css.controls}>
-        <Dropdown
+        <DropdownOld
           title="Collection"
           align="right"
           className={css.dropdown}
@@ -68,9 +68,9 @@ const TaskControls = ({
               selected={taskCollection}
             />
           ))}
-        </Dropdown>
+        </DropdownOld>
 
-        <Dropdown
+        <DropdownOld
           title="Sort By"
           align="right"
           className={css.dropdown}
@@ -80,7 +80,7 @@ const TaskControls = ({
         >
           <Group name="sort" label="Accending" value="a" selected={sortBy} />
           <Group name="sort" label="Deccending" value="d" selected={sortBy} />
-        </Dropdown>
+        </DropdownOld>
       </div>
     </div>
   )
