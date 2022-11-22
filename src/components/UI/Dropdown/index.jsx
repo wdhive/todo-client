@@ -67,6 +67,7 @@ const index = ({
     }
   }
 
+  const currentItem = useMemo(() => getItem(), [selectedValue])
   const listItems = useMemo(() => {
     return finalList.map((item) => {
       const isSelected = item.value === selectedValue
@@ -98,7 +99,7 @@ const index = ({
   }, [selectedItemRef.current])
 
   useEffect(() => {
-    onChange(selectedValue)
+    onChange(selectedValue, currentItem)
   }, [selectedValue])
 
   return (
@@ -125,7 +126,7 @@ const index = ({
         onClick={handleButtonClick}
         onKeyDown={handleButtnKeyDown}
       >
-        {(live && getItem()?.label) || buttonLabel}
+        {(live && currentItem?.label) || buttonLabel}
 
         {icon && <DownIcon className={cn(css.svg, classNames.svg)} />}
       </button>

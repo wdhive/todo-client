@@ -8,7 +8,7 @@ import useTaskCollections from '$hooks/useTaskCollections'
 
 const Task = ({ tasks }) => {
   const collections = useTaskCollections()
-  const [sortBy, setSoryBy] = useState('a')
+  const [sortBy, setSoryBy] = useState('d')
   const [taskStatus, setTaskStatus] = useState('all')
   const [taskCollection, setTaskCollection] = useState('none')
 

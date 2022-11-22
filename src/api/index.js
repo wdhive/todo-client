@@ -37,7 +37,10 @@ subscribe(
 export default async (method, ...args) => {
   try {
     const response = await instance[method](...args)
-    return [undefined, response.data?.data || response.data]
+    return [
+      undefined,
+      response.status === 204 ? true : response.data?.data || response.data,
+    ]
   } catch (err) {
     const errorMessage = err.response?.data?.message || err.message
 

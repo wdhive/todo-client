@@ -168,7 +168,8 @@
     flex: 1;
   }
 
-  a {
+  a,
+  button {
     background: none;
     padding: 1rem;
     color: v(foreground);

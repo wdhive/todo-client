@@ -30,11 +30,16 @@ const TaskCard = ({ task }) => {
     const url = `/tasks/${task._id}/${
       task.completed ? 'uncomplete' : 'complete'
     }`
-
     const data = await api.patch(url)
     if (!data) return
-
     $store(tasksSlice.updateTask(data.task))
+  }
+
+  const handleDeleteClick = async () => {
+    const url = `/tasks/${task._id}`
+    const data = await api.delete(url)
+    if (!data) return
+    $store(tasksSlice.deleteTask(task._id))
   }
 
   return (
@@ -88,9 +93,9 @@ const TaskCard = ({ task }) => {
         <Link to={`/tasks/${task._id}`}>
           <EditIcon />
         </Link>
-        <Link>
+        <button onClick={handleDeleteClick}>
           <DeleteIcon />
-        </Link>
+        </button>
       </div>
     </div>
   )
