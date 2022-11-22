@@ -1,0 +1,7 @@
+.Dropdown {
+  li {
+    &[active] {
+      color: red;
+    }
+  }
+}

@@ -57,10 +57,7 @@ const TaskForm = ({ close }) => {
         </div>
       </div>
 
-      <form
-        className={cn('scroll-inside-flex', css.body)}
-        onSubmit={handleFormSubmit}
-      >
+      <form className={css.body} onSubmit={handleFormSubmit}>
         <div className="wrapper">
           <FormBody task={task} />
         </div>

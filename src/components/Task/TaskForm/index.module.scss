@@ -29,6 +29,8 @@
 }
 
 .body {
+  overflow-y: auto;
+  
   :global(.wrapper) {
     padding-bottom: 4rem;
   }

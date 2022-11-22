@@ -1,11 +1,19 @@
 import { useMemo, useState, memo } from 'react'
 import useTaskCollections from '$hooks/useTaskCollections'
 import css from './CollectionsDropdown.module.scss'
-import Dropdown from '$src/components/UI/Dropdown'
+// import Dropdown from '$components/UI/Dropdown'
+import Dropdown from '$components/Dropdown'
 import Collections from './Collections'
 
 const CollectionsDropdown = ({ collection: taskCollection = 'none' }) => {
   const availCollections = useTaskCollections()
+  const cls = availCollections.map((col) => ({
+    label: col.name,
+    value: col._id,
+  }))
+
+  return <Dropdown list={cls} />
+
   const [selected, setSelected] = useState(taskCollection)
 
   const selectedItemElement = useMemo(() => {
