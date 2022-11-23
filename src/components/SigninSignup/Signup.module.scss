@@ -1,4 +1,5 @@
 .image {
+  display: block;
   $size: 8.4rem;
   height: $size;
   width: $size;
@@ -12,6 +13,8 @@
     cursor: pointer;
     border-radius: 50%;
     overflow: hidden;
+    outline: .2rem solid transparent;
+    @include transition('outline', fast);
   }
 
   svg {
@@ -43,8 +46,6 @@
   }
 
   input[type='file']:focus + &__preview {
-    outline-width: 1px;
-    outline-style: solid;
     outline-color: var(--accent);
   }
 }

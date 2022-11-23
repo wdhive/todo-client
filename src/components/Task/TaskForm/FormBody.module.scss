@@ -3,7 +3,7 @@
   textarea {
     width: 100%;
     background: v(c100);
-    outline-width: 2px;
+    outline-width: 0.2rem;
     outline-color: v(c200);
     border-radius: 0.5rem;
     @include transition('outline', fast);

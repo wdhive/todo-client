@@ -1,12 +1,13 @@
-import { useRef, useState } from 'react'
+import { useId, useRef, useState } from 'react'
 import css from './Signup.module.scss'
 import MainForm from './MainForm'
 import { Group } from './FormUtils'
 import CameraIcon from '$assets/icons/camera.svg?component'
 
 const Signup = (props) => {
-  const [previewImageSrc, setPreviewImageSrc] = useState(null)
+  const imageId = useId()
   const inputFileRef = useRef()
+  const [previewImageSrc, setPreviewImageSrc] = useState(null)
   const clickPickImage = () => inputFileRef.current.click()
 
   const handlePickImage = (e) => {
@@ -20,18 +21,19 @@ const Signup = (props) => {
 
   return (
     <MainForm {...props} type="signup">
-      <div className={css.image} onClick={clickPickImage}>
+      <label className={css.image} htmlFor={imageId}>
         <input
           onChange={handlePickImage}
           ref={inputFileRef}
           type="file"
           name="avatar"
+          id={imageId}
         />
 
         <div className={css.image__preview}>
           {previewImageSrc ? <img src={previewImageSrc} /> : <CameraIcon />}
         </div>
-      </div>
+      </label>
 
       <Group label="Full Name*">
         <input type="text" name="name" required />

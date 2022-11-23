@@ -7,7 +7,7 @@
 @include break-up($lg) {
   .Nav {
     background-color: v(c100);
-    padding: fluid(2rem, 3rem);
+    padding: fluid(2rem, 2.25rem) fluid(1.45rem, 2.15rem);
     display: flex;
     flex-direction: column;
 

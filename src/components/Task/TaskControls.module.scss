@@ -29,11 +29,11 @@
 }
 
 .inputGroup {
-  padding: 0.5rem 1.40rem;
+  padding: 0.5rem 1.4rem;
   width: 100%;
 
   &:not(:last-child) {
-    border-bottom: 1px solid v(c200);
+    border-bottom: 0.1rem solid v(c200);
   }
 }
 
