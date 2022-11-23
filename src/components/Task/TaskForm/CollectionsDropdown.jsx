@@ -28,13 +28,13 @@ const CollectionsDropdown = ({ collection = 'none' }) => {
       name="collection"
       default={collection}
       list={list}
-      className={css.collectionDropdown}
+      className={css.dropdown}
       classNames={{
-        button: css.collectionDropdownButton,
-        section: css.collectionDropdownSection,
-        ul: css.collectionDropdownBody,
-        li: css.collectionDropdownLi,
-        svg: css.collectionDropdownSvg,
+        button: css.button,
+        section: css.section,
+        ul: css.ul,
+        li: css.li,
+        svg: css.svg,
       }}
       live
     />

@@ -1,5 +1,9 @@
 @use '$styles/abstracts/core' as *;
 
+.Nav {
+  box-shadow: 0 0 1rem -0.5rem v(foreground);
+}
+
 @include break-up($lg) {
   .Nav {
     background-color: v(c100);

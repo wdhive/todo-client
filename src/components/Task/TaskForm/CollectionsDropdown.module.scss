@@ -1,29 +1,29 @@
-.collectionDropdown {
+.dropdown {
   width: 100%;
   max-width: 30rem;
 }
 
-.collectionDropdownButton {
+.button {
   background: v(c100);
-  @include transition('outline, background', fast);
-  outline: 0.2rem solid v(c200);
   border-radius: 0.5rem;
   gap: 1rem;
   width: 100%;
   text-align: right;
+  @include transition('outline, background', fast);
 }
 
-.collectionDropdown[active] .collectionDropdownButton {
+.dropdown[active] .button {
   background: v(c200);
-  outline-color: v(c300);
+  outline-color: v(c400);
 }
 
-.collectionDropdownSection {
+.section {
   width: 100%;
   border-radius: 0.5rem;
+  box-shadow: 0 0 1rem -0.40rem v(c600);
 }
 
-.collectionDropdownBody {
+.ul {
   padding: 0;
   background: v(c100);
 }
@@ -43,19 +43,19 @@
 .name {
 }
 
-.collectionDropdownLi:hover {
+.li:hover {
   background: v(c200);
 }
 
-.collectionDropdownLi[active] {
+.li[active] {
   background: v(c300);
 }
 
-.collectionDropdownLi:not(:last-child) .label {
+.li:not(:last-child) .label {
   border-bottom: 0.2rem solid v(c300);
 }
 
-.collectionDropdownSvg {
+.svg {
   margin-right: 1.33rem;
 
   path {

@@ -5,7 +5,7 @@ import NavFooter from './NavFooter'
 import { useState } from 'react'
 
 const index = () => {
-  const [navExpand, setNavExpand] = useState(false)
+  const [navExpand, setNavExpand] = useState(true)
 
   return (
     <nav className={css.Nav} main-nav-collapse={navExpand ? undefined : 'true'}>
