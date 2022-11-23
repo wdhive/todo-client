@@ -10,10 +10,10 @@
 		"$hooks": "${folder}/src/hooks",
 		"$layouts": "${folder}/src/layouts",
 		"$pages": "${folder}/src/pages",
+		"$socket": "${folder}/src/socket",
 		"$store": "${folder}/src/store",
 		"$styles": "${folder}/src/styles",
-		"$utils": "${folder}/src/utils",
-		"$socket": "${folder}/src/socket"
+		"$utils": "${folder}/src/utils"
 	},
 	"path-intellisense.pathMappings": {
 		"$src": "${workspaceFolder}/src",
@@ -26,9 +26,9 @@
 		"$hooks": "${workspaceFolder}/src/hooks",
 		"$layouts": "${workspaceFolder}/src/layouts",
 		"$pages": "${workspaceFolder}/src/pages",
+		"$socket": "${workspaceFolder}/src/socket",
 		"$store": "${workspaceFolder}/src/store",
 		"$styles": "${workspaceFolder}/src/styles",
-		"$utils": "${workspaceFolder}/src/utils",
-		"$socket": "${workspaceFolder}/src/socket"
+		"$utils": "${workspaceFolder}/src/utils"
 	}
 }

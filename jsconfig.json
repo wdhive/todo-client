@@ -33,6 +33,9 @@
 			"$pages/*": [
 				"./src/pages/*"
 			],
+			"$socket/*": [
+				"./src/socket/*"
+			],
 			"$store/*": [
 				"./src/store/*"
 			],
@@ -41,9 +44,6 @@
 			],
 			"$utils/*": [
 				"./src/utils/*"
-			],
-			"$socket/*": [
-				"./src/socket/*"
 			]
 		}
 	}
