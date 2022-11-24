@@ -48,8 +48,6 @@ const connect = () => {
 subscribe(
   (state) => state.user.jwt,
   (token) => {
-    console.log({ token })
-
     if (socket && !token) {
       return socket?.disconnect()
     }
