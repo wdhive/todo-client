@@ -8,9 +8,10 @@
     padding-block: 0.5rem 0.75rem;
     background: none;
     text-transform: capitalize;
+    border-radius: 0.5rem;
   }
 
-  @for $i from 1 through 10 {
+  @for $i from 1 through 3 {
     button:nth-child(#{$i}).taskActiveCategory ~ .taskActiveCategoryLine {
       --left: calc(var(--width) * #{$i - 1});
     }

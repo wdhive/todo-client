@@ -1,10 +1,7 @@
 .Task {
   background: v(c300);
-  display: flex;
-  min-width: 30rem;
-  max-width: 40rem;
-  flex: 1;
   box-shadow: 0 0 1rem -0.65rem v(accent);
+  display: flex;
 
   @include break-down(25em) {
     min-width: 100%;

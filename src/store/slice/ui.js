@@ -5,7 +5,7 @@ const uiSlice = createSlice({
   initialState: {},
   reducers: {
     setGlobalActive(state, { payload }) {
-      state.globalActive = payload
+      state.globalActive = typeof payload === 'string' ? payload : null
     },
   },
 })
@@ -17,6 +17,6 @@ const hideGlobalActive = () => {
   $store(uiSlice.actions.setGlobalActive())
 }
 
-document.addEventListener('click', hideGlobalActive)
-document.addEventListener('contextmenu', hideGlobalActive)
-document.addEventListener('visibilitychange', hideGlobalActive)
+window.addEventListener('click', hideGlobalActive)
+window.addEventListener('contextmenu', hideGlobalActive)
+window.addEventListener('blur', hideGlobalActive)

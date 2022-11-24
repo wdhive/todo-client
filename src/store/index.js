@@ -30,4 +30,5 @@ export const subscribe = (stateFn, listner) => {
   store.subscribe(() => internalListner())
 }
 
+window.$store = store.dispatch
 export default store

@@ -71,7 +71,7 @@ const FormBody = ({ task }) => {
       </div>
 
       <button className={cn('button button__primary', css.submitButton)}>
-        Save
+        {task._id ? 'Update' : 'Create'} Task
       </button>
     </div>
   )

@@ -40,12 +40,12 @@ const TaskForm = ({ close }) => {
 
     if (task._id) {
       const data = await api.patch('/tasks/' + task._id, formData)
-      $store(tasksSlice.updateTask(data.task))
-      return navigate(`/tasks/${data.task._id}`)
+      return $store(tasksSlice.updateTask(data.task))
     }
 
     const data = await api.post('/tasks', formData)
     $store(tasksSlice.addTask(data.task))
+    navigate(`/tasks/${data.task._id}`)
   }
 
   return (

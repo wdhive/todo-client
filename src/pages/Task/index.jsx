@@ -52,7 +52,7 @@ const Task = ({ tasks }) => {
         </div>
       </header>
 
-      <div className={cn('scroll-inside-flex--', css.formContainer)}>
+      <div className={cn('scroll-inside-flex', css.formContainer)}>
         <div className="wrapper">
           <TaskControls
             collections={collections}

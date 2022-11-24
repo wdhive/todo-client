@@ -9,6 +9,10 @@
 
   &[active] .svg {
     transform: rotateX(60deg);
+
+    path {
+      stroke-width: 4;
+    }
   }
 }
 
@@ -23,6 +27,10 @@
   transform: rotateX(0);
   @include svg-size(1.25em);
   @include transition('transform', fast);
+
+  path {
+    @include transition('stroke-width', fast);
+  }
 }
 
 .section {

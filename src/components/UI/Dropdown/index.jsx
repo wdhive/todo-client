@@ -1,7 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import css from './index.module.scss'
 import useGetItem from './useGetItem'
 import DownIcon from '$assets/icons/chev-down.svg?component'
+import ui from '$slice/ui'
+import { useSelector } from 'react-redux'
 
 const focusTo = function (container, element) {
   const eleTop = element.offsetTop
@@ -40,21 +42,25 @@ const index = ({
     return newList
   }, [list])
 
+  const id = useId()
   const containerRef = useRef()
   const selectedItemRef = useRef()
-  const [isOpen, setIsOpen] = useState(false)
+
+  const isOpen = useSelector((state) => state.ui.globalActive === id)
   const [selectedValue, setSelectedValue] = useState(defaultValue)
   const getItem = useGetItem(finalList, selectedValue)
 
+  const handleRootClick = (e) => {
+    e.stopPropagation()
+  }
+
   const handleButtonClick = () => {
-    setIsOpen((prev) => !prev)
+    $store(ui.setGlobalActive(isOpen || id))
   }
-  const handleButtonBlur = () => {
-    setTimeout(() => {
-      setIsOpen(false)
-    }, 175)
-  }
+
   const handleButtnKeyDown = (e) => {
+    if (!isOpen) return
+
     switch (e.key) {
       case 'ArrowUp':
         e.preventDefault()
@@ -68,30 +74,33 @@ const index = ({
   }
 
   const currentItem = useMemo(() => getItem(), [selectedValue])
-  const listItems = useMemo(() => {
-    return finalList.map((item) => {
-      const isSelected = item.value === selectedValue
+  const listItems = useMemo(
+    () =>
+      finalList.map((item) => {
+        const isSelected = item.value === selectedValue
+        const props = {}
+        if (isSelected) props.ref = selectedItemRef
 
-      const props = {}
-      if (isSelected) props.ref = selectedItemRef
+        const handleItemClick = () => {
+          setSelectedValue(item.value)
+          $store(ui.setGlobalActive())
+        }
 
-      return (
-        <li
-          {...props}
-          key={item.value}
-          value={item.value}
-          active={isSelected ? '' : undefined}
-          className={cn(css.li, classNames.li)}
-          onClick={(e) => {
-            setSelectedValue(item.value)
-            setIsOpen(false)
-          }}
-        >
-          {item.label}
-        </li>
-      )
-    })
-  }, [finalList, selectedValue])
+        return (
+          <li
+            {...props}
+            key={item.value}
+            value={item.value}
+            active={isSelected ? '' : undefined}
+            className={cn(css.li, classNames.li)}
+            onClick={handleItemClick}
+          >
+            {item.label}
+          </li>
+        )
+      }),
+    [finalList, selectedValue]
+  )
 
   useEffect(() => {
     if (!selectedItemRef.current) return
@@ -106,6 +115,7 @@ const index = ({
     <div
       className={cn(css.Dropdown, className)}
       active={isOpen ? '' : undefined}
+      onClick={handleRootClick}
     >
       {name && (
         <input
@@ -122,7 +132,6 @@ const index = ({
       <button
         className={cn(css.button, classNames.button)}
         type="button"
-        onBlur={handleButtonBlur}
         onClick={handleButtonClick}
         onKeyDown={handleButtnKeyDown}
       >

@@ -1,21 +1,21 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { createRoot } from 'react-dom/client'
-import './styles/index.scss'
-import App from './App'
-import store from '$store'
-
-import ErrorBoundary from '$src/ErrorBoundary'
-import ErrorHandler from '$components/ErrorHandler'
-
 import className from 'classnames'
+import store from '$store'
+import api from '$api'
 
 window.cn = className
-window.$store = store.dispatch
+
+import '$styles/index.scss'
+import App from './App'
+import ErrorBoundary from '$src/ErrorBoundary'
+import ErrorHandler from '$components/ErrorHandler'
 
 const rootElement = document.getElementById('Root')
 const root = createRoot(rootElement)
 
+api('get', '/ping')
 root.render(
   <ErrorBoundary element={<ErrorHandler />}>
     <Provider store={store}>

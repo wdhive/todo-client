@@ -35,7 +35,14 @@
 
 .taskList {
   display: flex;
-  gap: 2rem;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: center;
+  gap: 2rem;
+
+  & > * {
+    min-width: 30rem;
+    max-width: 37.5rem;
+    flex-grow: 1;
+    flex-basis: 30%;
+  }
 }
