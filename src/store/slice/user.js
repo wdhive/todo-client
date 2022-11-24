@@ -28,10 +28,10 @@ const userSlice = createSlice({
   name: 'user',
   initialState: sessionState,
   reducers: {
-    login(state, { payload }) {
+    jwt(state, { payload }) {
       state.isLoggedIn = true
       state.isGuestUser = false
-      state.jwt = getFullJwt(payload)
+      state.jwt = payload
     },
 
     loginAsGuest(state) {
@@ -42,10 +42,6 @@ const userSlice = createSlice({
 
     logout(state) {
       Object.assign(state, initialState)
-    },
-
-    updateJwt(state, { payload }) {
-      state.jwt = getFullJwt(payload)
     },
 
     updateSocketId(state, { payload }) {

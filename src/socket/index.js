@@ -22,7 +22,7 @@ const connect = () => {
   const token = store.getState().user.jwt
   const soc = io('https://baby-todo.onrender.com', {
     auth: {
-      token,
+      token: `Bearer ${token}`,
       reconnection: true,
       reconnectionDelay: 500,
       reconnectionDelayMax: 2500,
@@ -48,11 +48,13 @@ const connect = () => {
 subscribe(
   (state) => state.user.jwt,
   (token) => {
-    if (!token && socket) {
+    console.log({ token })
+
+    if (socket && !token) {
       return socket?.disconnect()
     }
 
-    if (token && !socket) {
+    if (!socket && token) {
       connect()
     }
   }

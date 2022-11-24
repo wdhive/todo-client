@@ -19,7 +19,7 @@ const MainLayout = () => {
   const api = useApiOnce('get', '/user?settings')
 
   useApiOnce('get', '/user/new-token').onLoad(({ token }) => {
-    $store(userSlice.updateJwt(token))
+    $store(userSlice.jwt(token))
   })
 
   api.onLoad((data) => {

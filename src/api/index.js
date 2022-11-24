@@ -14,14 +14,30 @@ const instance = axios.create({
   },
 })
 
+let prevJwt = localStorage.getItem('jwt-token')
+setInterval(() => {
+  const jwt = localStorage.getItem('jwt-token')
+  if (jwt === prevJwt) return
+
+  if (jwt) {
+    $store(userSlice.jwt(jwt))
+  } else {
+    $store(userSlice.logout())
+  }
+}, 1000)
+
 subscribe(
   (state) => state.user.jwt,
   (token) => {
     instance.defaults.headers.common.authorization = token
+      ? `Bearer ${token}`
+      : undefined
 
     if (token) {
+      prevJwt = token
       localStorage.setItem('jwt-token', token)
     } else {
+      prevJwt = null
       localStorage.removeItem('jwt-token')
     }
   }

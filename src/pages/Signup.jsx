@@ -29,7 +29,7 @@ const Signup = () => {
 
       return
     }
-    $store(user.login(data.token))
+    $store(user.jwt(data.token))
   }
 
   const handleSignupSubmit = (values) => {

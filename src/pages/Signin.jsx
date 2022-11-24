@@ -23,7 +23,7 @@ const Signin = () => {
   const handleSigninSubmit = async (values) => {
     const data = await api.post('/account/login', values)
     if (!data) return
-    $store(user.login(data.token))
+    $store(user.jwt(data.token))
   }
 
   const handleEmailSubmit = async ({ email }) => {
@@ -48,7 +48,7 @@ const Signin = () => {
       ...formData.current,
     })
     if (!data) return
-    $store(user.login(data.token))
+    $store(user.jwt(data.token))
   }
 
   useEffect(() => {
