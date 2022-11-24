@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-const jwtToken = localStorage.getItem('jwt-token') || undefined
+const jwtToken = localStorage.getItem('jwt-token')
 
 const initialState = {
   isLoggedIn: false,
@@ -18,10 +18,6 @@ const sessionState = {
 const guestUserData = {
   name: 'Guest',
   email: 'guest@example.com',
-}
-
-const getFullJwt = (token) => {
-  return `Bearer ${token}`
 }
 
 const userSlice = createSlice({
