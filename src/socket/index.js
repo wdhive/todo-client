@@ -1,6 +1,5 @@
 import { io } from 'socket.io-client'
 import store from '$store'
-import subscribe from '$store/subscribe'
 import userSlice from '$slice/user'
 import socketEvent from './socketEvent'
 
@@ -15,7 +14,7 @@ const runListner = (event, data) => {
   handler(data?.data ?? data)
 }
 
-const connect = () => {
+export const connect = () => {
   if (socket) return console.log('Socket Already Connected')
   socket = true
 
@@ -45,15 +44,7 @@ const connect = () => {
   soc.onAny(runListner)
 }
 
-subscribe(
-  (state) => state.user.jwt,
-  (token) => {
-    if (socket && !token) {
-      return socket?.disconnect()
-    }
-
-    if (!socket && token) {
-      connect()
-    }
-  }
-)
+export default (token) => {
+  if (!socket && token) connect()
+  if (socket && !token) socket?.disconnect()
+}

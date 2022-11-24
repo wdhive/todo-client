@@ -5,7 +5,16 @@ const getRandomHue = () => {
   return randomNumber(0, 360)
 }
 
-const initialState = {}
+const getAutoTheme = () => {
+  const media = matchMedia('(prefers-color-scheme: dark)')
+  return `auto-${media.matches ? 'dark' : 'light'}`
+}
+
+const loadedHue = localStorage.getItem('app-theme-hue')
+const initialState = {
+  theme: localStorage.getItem('app-theme') ?? getAutoTheme(),
+  hue: loadedHue ? +loadedHue : getRandomHue(),
+}
 
 const settingsSlice = createSlice({
   name: 'settings',
@@ -13,6 +22,10 @@ const settingsSlice = createSlice({
   reducers: {
     setRandomHue(state) {
       state.hue = getRandomHue()
+    },
+
+    setTheme(state, { payload }) {
+      state.theme = payload ?? getAutoTheme()
     },
 
     updateSettigns(state, { payload }) {

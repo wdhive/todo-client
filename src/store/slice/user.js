@@ -2,8 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 const jwtToken = localStorage.getItem('jwt-token')
 
 const initialState = {
-  isLoggedIn: false,
-  isGuestUser: false,
   user: {},
   jwt: null,
   socketId: null,
@@ -15,25 +13,12 @@ const sessionState = {
   jwt: jwtToken,
 }
 
-const guestUserData = {
-  name: 'Guest',
-  email: 'guest@example.com',
-}
-
 const userSlice = createSlice({
   name: 'user',
   initialState: sessionState,
   reducers: {
     jwt(state, { payload }) {
-      state.isLoggedIn = true
-      state.isGuestUser = false
-      state.jwt = payload
-    },
-
-    loginAsGuest(state) {
-      state.isLoggedIn = true
-      state.isGuestUser = true
-      state.user = guestUserData
+      state.jwt = payload || null
     },
 
     logout(state) {

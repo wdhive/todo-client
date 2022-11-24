@@ -21,3 +21,9 @@
   width: $size;
   height: $size;
 }
+
+@mixin theme($theme: dark) {
+  html[theme='#{$theme}'] & {
+    @content;
+  }
+}

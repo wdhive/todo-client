@@ -1,9 +1,10 @@
-import react, { Suspense, useEffect, useRef } from 'react'
+import react, { Suspense } from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import '$socket'
 
+import Effect from './Effect'
 import Loading from '$components/Loading'
+import Alert from '$components/Alert'
 import NotFound from '$pages/NotFound'
 
 const MainLayout = react.lazy(() => import('$pages/Main/Layout'))
@@ -14,20 +15,15 @@ const Signin = react.lazy(() => import('$pages/Signin'))
 const Signup = react.lazy(() => import('$pages/Signup'))
 
 const App = () => {
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
+  const jwt = useSelector((state) => state.user.jwt)
+  const isLoggedIn = Boolean(jwt)
   const themeHue = useSelector((state) => state.settings.hue)
   const extraAlert = useSelector((state) => state.extra.alert)
-  const alertDone = useRef(false)
-
-  useEffect(() => {
-    if (!extraAlert || alertDone.current) return
-    alertDone.current = true
-    alert(extraAlert.message)
-    extraAlert.action && $store(extraAlert.action)
-  }, [extraAlert])
 
   return (
     <>
+      <Effect hue={themeHue} jwt={jwt} />
+
       {themeHue && (
         <style>
           {`:root {
@@ -36,7 +32,9 @@ const App = () => {
         </style>
       )}
 
-      {/* {extraAlert && <h1>Error</h1>} */}
+      {extraAlert && (
+        <Alert message={extraAlert.message} action={extraAlert.action} />
+      )}
 
       <BrowserRouter>
         <Suspense fallback={<Loading />}>

@@ -13,8 +13,13 @@ import tasksSlice from '$src/store/slice/tasks'
 
 const TaskCard = ({ task }) => {
   const uniqueId = useId()
-  const show = useSelector((state) => state.ui.globalActive === uniqueId)
   const api = useApi()
+  const show = useSelector((state) => state.ui.globalActive === uniqueId)
+  const collection = useSelector(
+    (state) =>
+      state.settings?.collections?.find((col) => col._id === task.collection)
+        ?.name
+  )
 
   const taskStartingTime = new Date(task.startingDate).toDateString()
   const taskEndingTime =
@@ -53,22 +58,23 @@ const TaskCard = ({ task }) => {
     >
       <div className={css.main}>
         <div className={css.top}>
-          <h6>{task.title}</h6>
+          <div className={css.title}>
+            <h6>{task.title}</h6>
+            {collection && <span>({collection})</span>}
+          </div>
+
           <input
             disabled={api.loading}
             type="checkbox"
             className={css.checkBox}
             onChange={handleCheckClick}
             checked={task.completed}
+            id={uniqueId}
           />
-
-          <div
-            onClick={({ currentTarget }) =>
-              currentTarget.previousElementSibling.click()
-            }
-          >
+ 
+          <label htmlFor={uniqueId}>
             <CheckIcon />
-          </div>
+          </label>
         </div>
 
         <p className={css.middle}>{task.description?.slice(0, 100)}</p>

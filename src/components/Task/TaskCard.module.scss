@@ -68,6 +68,12 @@
   margin-bottom: 1rem;
 }
 
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
 .checkBox {
   position: absolute;
   width: 0;
@@ -76,7 +82,7 @@
   overflow: hidden;
   z-index: -999;
 
-  & + div {
+  & + label {
     background: v(background);
     border-radius: 0.5rem;
     outline: 0.15rem solid v(accent);
@@ -96,7 +102,7 @@
     }
   }
 
-  &:checked + div {
+  &:checked + label {
     background: v(accent);
 
     svg {
@@ -104,12 +110,12 @@
     }
   }
 
-  &:focus + div {
+  &:focus + label {
     outline: 0.1rem solid v(accent);
     outline-offset: 0.2rem;
   }
 
-  &:disabled + div {
+  &:disabled + label {
     cursor: not-allowed;
   }
 }
