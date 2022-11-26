@@ -1,20 +1,17 @@
 import { memo, useId } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import useActiveState from 'use-active-state'
 import css from './TaskCard.module.scss'
-import EditIcon from '$assets/icons/edit.svg?component'
-import DeleteIcon from '$assets/icons/delete.svg?component'
-import ClockIcon from '$assets/icons/clock.svg?component'
-import CheckIcon from '$assets/icons/check.svg?component'
+import { FaRegEdit, FaRegTrashAlt, FaRegClock, FaCheck } from 'react-icons/fa'
 import avatar from '$assets/avatar.png'
-import uiSlice from '$slice/ui'
 import useApi from '$src/api/useApi'
 import tasksSlice from '$src/store/slice/tasks'
 
 const TaskCard = ({ task }) => {
   const uniqueId = useId()
   const api = useApi()
-  const show = useSelector((state) => state.ui.globalActive === uniqueId)
+  const [show, toggleShow] = useActiveState()
   const collection = useSelector(
     (state) =>
       state.settings?.collections?.find((col) => col._id === task.collection)
@@ -28,7 +25,7 @@ const TaskCard = ({ task }) => {
   const handleContextMenu = (e) => {
     e.stopPropagation()
     e.preventDefault()
-    $store(uiSlice.setGlobalActive(show || uniqueId))
+    toggleShow()
   }
 
   const handleCheckClick = async () => {
@@ -71,9 +68,9 @@ const TaskCard = ({ task }) => {
             checked={task.completed}
             id={uniqueId}
           />
- 
+
           <label htmlFor={uniqueId}>
-            <CheckIcon />
+            <FaCheck />
           </label>
         </div>
 
@@ -81,7 +78,7 @@ const TaskCard = ({ task }) => {
 
         <div className={css.bottom}>
           <div className={css.time}>
-            <ClockIcon />
+            <FaRegClock />
             <p>
               {taskStartingTime} {taskEndingTime && ' - ' + taskEndingTime}
             </p>
@@ -97,10 +94,10 @@ const TaskCard = ({ task }) => {
 
       <div className={css.context}>
         <Link to={`/tasks/${task._id}`}>
-          <EditIcon />
+          <FaRegEdit />
         </Link>
         <button onClick={handleDeleteClick}>
-          <DeleteIcon />
+          <FaRegTrashAlt />
         </button>
       </div>
     </div>

@@ -2,14 +2,14 @@ import { useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import useMediaQuery from '$hooks/useMediaQuery'
 import css from './Header.module.scss'
-import HomeIcon from '$assets/icons/home.svg?component'
-import HamburgerIcon from '$assets/icons/hamburger.svg?component'
-import CrossIcon from '$assets/icons/cross.svg?component'
-import AboutIcon from '$assets/icons/about-us.svg?component'
-import HelpSupportIcon from '$assets/icons/help-&-support.svg?component'
 import Brand from '$components/Brand'
 import LoginBtn from './LoginBtn'
 import SignupBtn from './SignupBtn'
+
+import { IoHomeOutline } from 'react-icons/io5'
+import { SlPeople, SlMenu } from 'react-icons/sl'
+import { FaRegQuestionCircle } from 'react-icons/fa'
+import { TfiPlus } from 'react-icons/tfi'
 
 const LinkItem = ({ to, children }) => {
   const getClassName = (navData) =>
@@ -41,7 +41,7 @@ const Nav = () => {
           <Brand />
 
           <button className={css.showDialog} onClick={handleShowDialog}>
-            <HamburgerIcon />
+            <SlMenu />
           </button>
 
           <dialog className={css.dialog} ref={dialougeRef}>
@@ -49,20 +49,20 @@ const Nav = () => {
 
             <div className={css.listContainer}>
               <button className={css.closeDialog} onClick={handleCloseDialog}>
-                <CrossIcon />
+                <TfiPlus />
               </button>
 
               <div className={`${css.linkList} ${css.linkList__primary}`}>
                 <LinkItem to="/">
-                  <HomeIcon />
+                  <IoHomeOutline />
                   <span>Home</span>
                 </LinkItem>
                 <LinkItem to="/about">
-                  <AboutIcon />
+                  <SlPeople />
                   <span>About</span>
                 </LinkItem>
                 <LinkItem to="/help">
-                  <HelpSupportIcon />
+                  <FaRegQuestionCircle />
                   <span>Help & Support</span>
                 </LinkItem>
               </div>

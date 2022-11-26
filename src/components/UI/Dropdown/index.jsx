@@ -1,23 +1,9 @@
-import { useEffect, useId, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import css from './index.module.scss'
 import useGetItem from './useGetItem'
-import DownIcon from '$assets/icons/chev-down.svg?component'
-import ui from '$slice/ui'
-import { useSelector } from 'react-redux'
-
-const focusTo = function (container, element) {
-  const eleTop = element.offsetTop
-  const eleBottom = eleTop + element.clientHeight
-
-  const containerTop = container.scrollTop
-  const containerBottom = containerTop + container.clientHeight
-
-  if (eleTop < containerTop) {
-    element.scrollIntoView(true)
-  } else if (eleBottom > containerBottom) {
-    element.scrollIntoView(false)
-  }
-}
+import {  BsChevronDown } from 'react-icons/bs'
+import useActiveState, { stopPropagation } from 'use-active-state'
+import { focusTo } from './utils'
 
 const index = ({
   name,
@@ -28,35 +14,15 @@ const index = ({
   buttonLabel = 'Choose...',
   icon = true,
   live = true,
-  none = false,
   onChange = () => {},
 }) => {
-  const finalList = useMemo(() => {
-    const newList = [...(list ?? [])]
-    if (none) {
-      newList.unshift({
-        label: 'none',
-        value: 'none',
-      })
-    }
-    return newList
-  }, [list])
-
-  const id = useId()
   const containerRef = useRef()
   const selectedItemRef = useRef()
 
-  const isOpen = useSelector((state) => state.ui.globalActive === id)
+  const [isOpen, toggleIsOpen] = useActiveState()
   const [selectedValue, setSelectedValue] = useState(defaultValue)
-  const getItem = useGetItem(finalList, selectedValue)
 
-  const handleRootClick = (e) => {
-    e.stopPropagation()
-  }
-
-  const handleButtonClick = () => {
-    $store(ui.setGlobalActive(isOpen || id))
-  }
+  const handleButtonClick = () => toggleIsOpen()
 
   const handleButtnKeyDown = (e) => {
     if (!isOpen) return
@@ -73,17 +39,16 @@ const index = ({
     }
   }
 
-  const currentItem = useMemo(() => getItem(), [selectedValue])
   const listItems = useMemo(
     () =>
-      finalList.map((item) => {
+      list.map((item) => {
         const isSelected = item.value === selectedValue
         const props = {}
         if (isSelected) props.ref = selectedItemRef
 
         const handleItemClick = () => {
           setSelectedValue(item.value)
-          $store(ui.setGlobalActive())
+          toggleIsOpen(false)
         }
 
         return (
@@ -99,8 +64,11 @@ const index = ({
           </li>
         )
       }),
-    [finalList, selectedValue]
+    [list, selectedValue]
   )
+
+  const getItem = useGetItem(list, selectedValue)
+  const currentItem = useMemo(() => getItem(), [selectedValue])
 
   useEffect(() => {
     if (!selectedItemRef.current) return
@@ -115,7 +83,7 @@ const index = ({
     <div
       className={cn(css.Dropdown, className)}
       active={isOpen ? '' : undefined}
-      onClick={handleRootClick}
+      onClick={stopPropagation}
     >
       {name && (
         <input
@@ -137,7 +105,7 @@ const index = ({
       >
         {(live && currentItem?.label) || buttonLabel}
 
-        {icon && <DownIcon className={cn(css.svg, classNames.svg)} />}
+        {icon && <BsChevronDown className={cn(css.svg, classNames.svg)} />}
       </button>
 
       <section className={cn(css.section, classNames.section)}>

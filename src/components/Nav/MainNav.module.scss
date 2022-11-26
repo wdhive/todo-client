@@ -1,3 +1,13 @@
+.MainNav :global(.button) {
+  svg {
+    color: v(accent);
+  }
+
+  &.addBtn svg {
+    color: v(background);
+  }
+}
+
 @include break-up($lg) {
   @import './MainNav.pc.scss';
 }
@@ -6,7 +16,9 @@
   @import './MainNav.mobile.scss';
 
   .logoutBtn,
-  .addBtn span {
-    display: none !important;
+  .addBtn {
+    span {
+      display: none !important;
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import css from './SigninSignup.module.scss'
 import Brand from '$components/Brand'
-import GithubIcon from '$assets/icons/github.svg?component'
+import { FaGithub } from 'react-icons/fa'
 
 const SigninSignup = ({ children }) => {
   return (
@@ -27,7 +27,7 @@ const SigninSignup = ({ children }) => {
               target="_blank"
               href="https://github.com/BabyDevs/Todo-App"
             >
-              <GithubIcon />
+              <FaGithub />
             </a>
           </div>
         </div>

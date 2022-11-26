@@ -86,19 +86,15 @@
     background: v(background);
     border-radius: 0.5rem;
     outline: 0.15rem solid v(accent);
-    @include svg-size(1.5rem);
+    @include svg-size(1.65rem);
     display: grid;
     place-content: center;
-    padding: 0.85rem;
+    padding: 0.3rem;
     cursor: pointer;
 
     svg {
       display: none;
-      @include svg-size(1rem);
-
-      path {
-        stroke: var(--c100);
-      }
+      color: v(c100);
     }
   }
 
@@ -132,14 +128,6 @@
   align-items: center;
   gap: 0.5em;
   @include font(bd3);
-
-  svg {
-    @include svg-size(1em);
-
-    path {
-      fill: currentColor;
-    }
-  }
 
   p {
     font-size: 1em;
@@ -187,18 +175,7 @@
     }
 
     svg {
-      @include svg-size(1.85rem);
-    }
-
-    &:first-child {
-      svg path {
-        stroke: currentColor;
-      }
-    }
-    &:last-child {
-      svg path {
-        fill: currentColor;
-      }
+      font-size: 1.85rem;
     }
   }
 }

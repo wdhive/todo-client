@@ -1,12 +1,12 @@
 import { useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import css from './index.module.scss'
-import CloseIcon from '$assets/icons/cross.svg?component'
 import { getDiff, getInputs } from '$src/utils/utils'
 import FormBody from './FormBody'
 import useApi from '$src/api/useApi'
 import tasksSlice from '$src/store/slice/tasks'
 import { useNavigate } from 'react-router-dom'
+import { TfiPlus } from 'react-icons/tfi'
 
 const defaulTask = {
   get startingDate() {
@@ -54,7 +54,7 @@ const TaskForm = ({ close }) => {
         <div className="wrapper">
           <h6>{task.title ? 'Update' : 'Create'} Task</h6>
           <button onClick={close}>
-            <CloseIcon />
+            <TfiPlus />
           </button>
         </div>
       </div>

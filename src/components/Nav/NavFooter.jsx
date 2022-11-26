@@ -1,22 +1,20 @@
 import { Link } from 'react-router-dom'
 import css from './NavFooter.module.scss'
-import HelpIcon from '$assets/icons/help-&-support.svg?component'
-import GithubIcon from '$assets/icons/github.svg?component'
-import AboutIcon from '$assets/icons/about-us.svg?component'
-import BackIcon from '$assets/icons/chev-down.svg?component'
+import { FaGithub, FaRegQuestionCircle, FaChevronDown } from 'react-icons/fa'
+import { SlPeople } from 'react-icons/sl'
 
 const NavFooter = ({ setNavExpand }) => {
   return (
     <div className={css.NavFooter}>
       <div className={css.icons}>
         <Link to="/help">
-          <HelpIcon />
+          <FaRegQuestionCircle />
         </Link>
         <Link to="/about">
-          <AboutIcon />
+          <SlPeople />
         </Link>
         <a target="_blank" href="https://github.com/BabyDevs/Todo-App">
-          <GithubIcon />
+          <FaGithub />
         </a>
       </div>
 
@@ -25,7 +23,7 @@ const NavFooter = ({ setNavExpand }) => {
           onClick={() => setNavExpand((prev) => !prev)}
           className={css.toggleNav}
         >
-          <BackIcon />
+          <FaChevronDown />
         </button>
       </div>
     </div>

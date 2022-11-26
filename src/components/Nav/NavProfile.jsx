@@ -1,10 +1,9 @@
 import { useSelector } from 'react-redux'
 import css from './NavProfile.module.scss'
-import LightIcon from '$assets/icons/light.svg?component'
-import DarkIcon from '$assets/icons/dark.svg?component'
-import AutoIcon from '$assets/icons/auto.svg?component'
 import AvatarIcon from '$assets/avatar.png'
 import settings from '$slice/settings'
+import { MdBrightnessAuto, MdWbSunny } from 'react-icons/md'
+import { BsFillMoonStarsFill } from 'react-icons/bs'
 
 const NavProfile = ({ className }) => {
   const user = useSelector((state) => state.user.user)
@@ -40,7 +39,7 @@ const NavProfile = ({ className }) => {
           className={cn(theme === 'light' && css.active)}
           onClick={() => handleButtonClick('light')}
         >
-          <LightIcon />
+          <MdWbSunny />
           <span>light</span>
         </button>
 
@@ -48,7 +47,7 @@ const NavProfile = ({ className }) => {
           className={cn(theme === 'dark' && css.active)}
           onClick={() => handleButtonClick('dark')}
         >
-          <DarkIcon />
+          <BsFillMoonStarsFill />
           <span>dark</span>
         </button>
 
@@ -56,12 +55,12 @@ const NavProfile = ({ className }) => {
           className={cn(theme?.startsWith('auto') && css.active)}
           onClick={() => handleButtonClick()}
         >
-          <AutoIcon />
+          <MdBrightnessAuto />
           <span>auto</span>
         </button>
 
         <button className={css.toggleTheme} onClick={handleToggleTheme}>
-          {theme.endsWith('light') ? <DarkIcon /> : <LightIcon />}
+          {theme.endsWith('light') ? <BsFillMoonStarsFill /> : <MdWbSunny />}
         </button>
       </div>
     </div>

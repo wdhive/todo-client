@@ -2,7 +2,7 @@ import { useId, useRef, useState } from 'react'
 import css from './Signup.module.scss'
 import MainForm from './MainForm'
 import { Group } from './FormUtils'
-import CameraIcon from '$assets/icons/camera.svg?component'
+import { MdCameraAlt } from 'react-icons/md'
 
 const Signup = (props) => {
   const imageId = useId()
@@ -31,7 +31,7 @@ const Signup = (props) => {
         />
 
         <div className={css.image__preview}>
-          {previewImageSrc ? <img src={previewImageSrc} /> : <CameraIcon />}
+          {previewImageSrc ? <img src={previewImageSrc} /> : <MdCameraAlt />}
         </div>
       </label>
 

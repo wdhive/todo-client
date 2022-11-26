@@ -1,13 +1,15 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import useMediaQuery from '$hooks/useMediaQuery'
 import css from './MainNav.module.scss'
-import PlusIcon from '$assets/icons/add.svg?component'
-import HomeIcon from '$assets/icons/home.svg?component'
-import SearchIcon from '$assets/icons/search.svg?component'
-import NotiIcon from '$assets/icons/bell.svg?component'
-import ProfileIcon from '$assets/icons/account.svg?component'
-import LogoutIcon from '$assets/icons/logout.svg?component'
 import userSlice from '$slice/user'
+import {
+  IoHomeOutline,
+  IoSearchOutline,
+  IoNotificationsOutline,
+  IoExitOutline,
+} from 'react-icons/io5'
+import { CgProfile } from 'react-icons/cg'
+import { TfiPlus } from 'react-icons/tfi'
 
 const MainNav = () => {
   const navigate = useNavigate()
@@ -18,7 +20,7 @@ const MainNav = () => {
       onClick={() => navigate('/tasks/new')}
       className={cn('button', 'button__primary', css.addBtn)}
     >
-      <span>Add Task</span> <PlusIcon />
+      <span>Add Task</span> <TfiPlus />
     </button>
   )
 
@@ -31,30 +33,30 @@ const MainNav = () => {
       {mobileMode || addBtn}
 
       <NavLink to="/tasks" className={cn('button', css.homeBtn)}>
-        <HomeIcon />
+        <IoHomeOutline />
         <span>Home</span>
       </NavLink>
 
       <NavLink to="/search" className="button">
-        <SearchIcon />
+        <IoSearchOutline />
         <span>Search</span>
       </NavLink>
 
       {mobileMode && addBtn}
 
       <NavLink to="/notifications" className="button">
-        <NotiIcon />
+        <IoNotificationsOutline />
         <span>{mobileMode ? 'Notify' : 'Notifications'}</span>
       </NavLink>
 
       <NavLink to="/profile" className={cn('button', css.profileBtn)}>
-        <ProfileIcon />
+        <CgProfile />
         <span>Profile</span>
       </NavLink>
 
       {mobileMode || (
         <button className={cn('button', css.logoutBtn)} onClick={handleLogout}>
-          <LogoutIcon />
+          <IoExitOutline />
           <span>Logout</span>
         </button>
       )}

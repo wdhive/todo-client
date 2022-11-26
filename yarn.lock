@@ -1730,6 +1730,11 @@ react-dom@^18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
+react-icons@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.6.0.tgz#f83eda179af5d02c047449a20b702c858653d397"
+  integrity sha512-rR/L9m9340yO8yv1QT1QurxWQvWpbNHqVX0fzMln2HEb9TEIrQRGsqiNFQfiv9/JEUbyHmHPlNTB2LWm2Ttz0g==
+
 react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -1990,6 +1995,11 @@ update-browserslist-db@^1.0.9:
   dependencies:
     escalade "^3.1.1"
     picocolors "^1.0.0"
+
+use-active-state@latest:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/use-active-state/-/use-active-state-1.0.1.tgz#4cbd5af86b75214d127d4b42467f060565349e00"
+  integrity sha512-w/4dCqBSn+xJ7FatBkfeyEOvUcm4Bu99BKzebw6moQvjJ8VjblJVGqDLbEYnwyWh/fh+NZ7dO/aQVx2PChJ1/A==
 
 use-sync-external-store@^1.0.0:
   version "1.2.0"

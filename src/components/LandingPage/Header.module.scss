@@ -136,9 +136,6 @@
     width: 1em;
     height: 1em;
     margin-right: 0.8em;
-    path {
-      fill: currentColor;
-    }
   }
 }
 
@@ -147,20 +144,16 @@
   $size: fluid(2.8rem, 3.2rem);
   background: none;
   display: none;
-  width: $size;
-  height: $size;
+  // width: $size;
+  // height: $size;
 
   @include break-down($lg) {
     display: block;
   }
 
   svg {
-    height: 100%;
-    width: 100%;
-  }
-
-  path {
-    stroke: v(accent);
+    font-size: 185%;
+    color: v(accent);
   }
 }
 
@@ -168,4 +161,8 @@
   padding: fluid(0.4rem, 0.6rem);
   margin-right: 1rem;
   align-self: end;
+
+  svg {
+    transform: rotate(45deg);
+  }
 }

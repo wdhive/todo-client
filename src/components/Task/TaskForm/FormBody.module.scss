@@ -54,7 +54,8 @@
 
 .taskParticipants {
   .formGroup svg {
-    @include svg-size(1.1em);
+    color: v(accent);
+    font-size: 1.75rem;
   }
 }
 

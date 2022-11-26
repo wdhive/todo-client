@@ -37,22 +37,11 @@
       margin-bottom: 0.75rem;
     }
 
-    path {
-      stroke: currentColor;
-    }
-
     span {
       font-weight: 400;
 
       @include break-down($xxs) {
         display: none;
-      }
-    }
-
-    &.homeBtn,
-    &.profileBtn {
-      path {
-        fill: currentColor;
       }
     }
 
@@ -75,18 +64,14 @@
     outline: 0.65rem solid v(c100);
 
     @include break-down($xxs) {
-      --btn-size: 4.5em;
-      margin-top: -1.33rem;
+      --btn-size: 4em;
+      margin-top: -1.35rem;
       outline-width: 0.5rem;
     }
 
     svg {
       --icon-size: 2em;
       margin: 0;
-    }
-
-    path {
-      stroke: v(background);
     }
   }
 }

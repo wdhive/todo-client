@@ -1,8 +1,8 @@
 import css from './SubForm.module.scss'
 import { SubmitBtn } from './FormUtils'
 import { getInputs } from '$src/utils/utils'
-import BackIcon from '$assets/icons/back.svg?component'
 import { useRef } from 'react'
+import { MdArrowBack } from 'react-icons/md'
 
 const MainForm = ({
   children,
@@ -31,7 +31,7 @@ const MainForm = ({
     >
       <div className={css.form__header}>
         <button type="button" onClick={onBack}>
-          <BackIcon />
+          <MdArrowBack />
         </button>
         <h6>Go Back</h6>
       </div>
