@@ -13,7 +13,7 @@ const getAutoTheme = () => {
 const loadedHue = localStorage.getItem('app-theme-hue')
 const initialState = {
   theme: localStorage.getItem('app-theme') ?? getAutoTheme(),
-  hue: loadedHue ? +loadedHue : getRandomHue(),
+  hue: loadedHue && +loadedHue,
 }
 
 const settingsSlice = createSlice({

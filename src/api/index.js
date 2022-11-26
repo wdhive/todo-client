@@ -12,9 +12,6 @@ export const instance = axios.create({
   },
 })
 
-
-
-
 export default async (method, ...args) => {
   try {
     const response = await instance[method](...args)
