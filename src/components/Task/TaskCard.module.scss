@@ -152,7 +152,6 @@
   width: 0;
   display: flex;
   flex-direction: column;
-  visibility: hidden;
   @include transition('width');
 
   & > * {
@@ -168,6 +167,10 @@
     justify-content: center;
     align-items: center;
     @include transition(' background, color');
+
+    &:focus {
+      outline-offset: -0.2rem;
+    }
 
     &:hover {
       background: v(c400);

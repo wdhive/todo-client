@@ -29,11 +29,7 @@
     }
 
     svg {
-      --icon-size: 1.25em;
-      height: v(icon-size);
-      width: v(icon-size);
-      max-height: v(icon-size);
-      max-width: v(icon-size);
+      font-size: 1.25em;
       margin-bottom: 0.75rem;
     }
 
@@ -46,6 +42,10 @@
     }
 
     &:global(.active) {
+      path {
+        fill: currentColor;
+      }
+
       // TODO:
       // Do something with the active
     }
@@ -70,7 +70,7 @@
     }
 
     svg {
-      --icon-size: 2em;
+      font-size: 2em;
       margin: 0;
     }
   }

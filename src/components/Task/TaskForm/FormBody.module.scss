@@ -38,8 +38,7 @@
   }
 }
 
-.taskCollection,
-.taskParticipants {
+.taskCollection {
   .formGroup {
     display: flex;
     justify-content: space-between;
@@ -53,6 +52,13 @@
 }
 
 .taskParticipants {
+  .formGroup > p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
   .formGroup svg {
     color: v(accent);
     font-size: 1.75rem;

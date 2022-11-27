@@ -1,0 +1,77 @@
+.Participant {
+}
+
+.participantsInput {
+  position: relative;
+  margin-bottom: 0.75rem;
+  z-index: 10;
+}
+
+.usernameInput {
+}
+// somwhow hoiche.. idk how!
+.usersModal {
+  z-index: 10;
+  display: none;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 115%;
+  left: 0;
+  width: 100%;
+  background: v(c100);
+  list-style: none;
+  overflow-y: auto;
+  max-height: 25rem;
+  box-shadow: 0 0 0.5rem v(c300);
+
+  &.activeModal {
+    display: block;
+  }
+
+  li {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-bottom: 0.1rem solid v(c200);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background: transparent;
+    @include transition('background', fast);
+
+    &:hover {
+      background: v(c200);
+    }
+  }
+
+  .avatar {
+    @include svg-size(3.75rem);
+    border-radius: 50%;
+  }
+
+  .date {
+    margin-left: auto;
+    text-align: right;
+  }
+}
+.currentParticipants {
+  .user {
+    background: v(c100);
+    padding: 0.75rem 1rem;
+    padding-right: 1.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    gap: 1rem;
+
+    & > *:last-child {
+      margin-left: auto;
+    }
+  }
+
+  img {
+    @include svg-size(3rem);
+    border-radius: 50%;
+  }
+}

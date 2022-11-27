@@ -93,10 +93,10 @@ const TaskCard = ({ task }) => {
       </div>
 
       <div className={css.context}>
-        <Link to={`/tasks/${task._id}`}>
+        <Link to={`/tasks/${task._id}`} className="button">
           <FaRegEdit />
         </Link>
-        <button onClick={handleDeleteClick}>
+        <button onClick={handleDeleteClick} className="button">
           <FaRegTrashAlt />
         </button>
       </div>

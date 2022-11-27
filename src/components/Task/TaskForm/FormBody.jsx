@@ -1,6 +1,7 @@
 import css from './FormBody.module.scss'
-import CollectionsDropdown from './CollectionsDropdown'
 import { TfiPlus } from 'react-icons/tfi'
+import CollectionsDropdown from './CollectionsDropdown'
+import Participant from './Participant'
 
 const formatDateDefaultValue = (date) => {
   if (date) {
@@ -65,8 +66,15 @@ const FormBody = ({ task }) => {
       </div>
 
       <div className={css.taskParticipants} name="participants">
-        <Group label="Participants">
-          <TfiPlus />
+        <Group
+          label={
+            <>
+              <span>Participants</span>
+              <TfiPlus />
+            </>
+          }
+        >
+          <Participant taskId={task._id} />
         </Group>
       </div>
 

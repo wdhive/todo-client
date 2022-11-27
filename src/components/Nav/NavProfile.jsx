@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { useSelector } from 'react-redux'
 import css from './NavProfile.module.scss'
 import AvatarIcon from '$assets/avatar.png'
@@ -67,4 +68,4 @@ const NavProfile = ({ className }) => {
   )
 }
 
-export default NavProfile
+export default memo(NavProfile)

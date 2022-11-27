@@ -1,11 +1,11 @@
 @use './index.utils.scss' as *;
 
 .NavProfile {
+  margin-bottom: 2.25rem;
+
   @include break-down($lg) {
     display: none;
   }
-
-  margin-bottom: 2.25rem;
 
   @include NavCollapse {
     margin-bottom: 0.75rem;
@@ -87,7 +87,8 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.25rem 1rem;
-    background: none;
+    background: transparent;
+    @include transition('background', moderate);
 
     @include break-down($lg) {
       display: none;
