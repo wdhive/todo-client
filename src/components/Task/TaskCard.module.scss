@@ -36,7 +36,8 @@
     color: v(accent);
   }
 
-  .context a {
+  .context a,
+  .context button {
     color: var(--background);
 
     &:hover {

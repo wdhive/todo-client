@@ -26,12 +26,13 @@ export default async (method, ...args) => {
     const errorMessage = err.response?.data?.message || err.message
 
     if (err.response?.status === 401) {
-      $store(
-        extraSlice.alert({
-          action: userSlice.logout(),
-          message: errorMessage,
-        })
-      )
+      $store(userSlice.logout())
+      // $store(
+      //   extraSlice.alert({
+      //     action: userSlice.logout(),
+      //     message: errorMessage,
+      //   })
+      // )
     }
 
     return [errorMessage, undefined]

@@ -44,6 +44,14 @@ const TaskCard = ({ task }) => {
     $store(tasksSlice.deleteTask(task._id))
   }
 
+  const handleFocus = () => {
+    toggleShow(true)
+  }
+
+  const handleBlur = () => {
+    toggleShow(false)
+  }
+
   return (
     <div
       className={cn(
@@ -95,10 +103,20 @@ const TaskCard = ({ task }) => {
       </div>
 
       <div className={css.context}>
-        <Link to={`/tasks/${task._id}`} className="button">
+        <Link
+          to={`/tasks/${task._id}`}
+          className="button"
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        >
           <FaRegEdit />
         </Link>
-        <button onClick={handleDeleteClick} className="button">
+        <button
+          onClick={handleDeleteClick}
+          className="button"
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        >
           <FaRegTrashAlt />
         </button>
       </div>

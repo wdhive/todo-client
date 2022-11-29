@@ -16,7 +16,6 @@ const Signup = react.lazy(() => import('$pages/Signup'))
 
 const App = () => {
   const jwt = useSelector((state) => state.user.jwt)
-  const isLoggedIn = Boolean(jwt)
   const themeHue = useSelector((state) => state.settings.hue)
   const extraAlert = useSelector((state) => state.extra.alert)
 
@@ -43,7 +42,7 @@ const App = () => {
             <Route path="help" element={<HelpSupport />} />
             <Route path="support" element={<Navigate replace to="/help" />} />
 
-            {isLoggedIn ? (
+            {jwt ? (
               <Route path="/*" element={<MainLayout />} />
             ) : (
               <>
