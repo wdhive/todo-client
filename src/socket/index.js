@@ -2,10 +2,12 @@ import { io } from 'socket.io-client'
 import store from '$store'
 import userSlice from '$slice/user'
 import socketEvent from './socketEvent'
-
+import { baseURL } from '$api'
 let socket = null
 
 const runListner = (event, data) => {
+  console.log(event, data)
+
   const handler = socketEvent[event]
   if (!(handler instanceof Function)) {
     return console.warn('No handler found for ' + event)
@@ -19,7 +21,7 @@ export const connect = () => {
   socket = true
 
   const token = store.getState().user.jwt
-  const soc = io('https://baby-todo.onrender.com', {
+  const soc = io(baseURL, {
     auth: {
       token: `Bearer ${token}`,
       reconnection: true,

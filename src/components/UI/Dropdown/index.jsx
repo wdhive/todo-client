@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import useEffectExceptOnMount from 'use-effect-except-on-mount'
 import css from './index.module.scss'
 import useGetItem from './useGetItem'
 import { BsChevronDown } from 'react-icons/bs'
@@ -21,8 +22,6 @@ const index = ({
 
   const [isOpen, toggleIsOpen] = useActiveState()
   const [selectedValue, setSelectedValue] = useState(defaultValue)
-
-  const handleButtonClick = () => toggleIsOpen()
 
   const handleButtnKeyDown = (e) => {
     if (!isOpen) return
@@ -75,7 +74,7 @@ const index = ({
     focusTo(containerRef.current, selectedItemRef.current)
   }, [selectedItemRef.current])
 
-  useEffect(() => {
+  useEffectExceptOnMount(() => {
     onChange(selectedValue, currentItem)
   }, [selectedValue])
 
@@ -101,7 +100,7 @@ const index = ({
       <button
         className={cn(css.button, classNames.button)}
         type="button"
-        onClick={handleButtonClick}
+        onClick={() => toggleIsOpen()}
         onKeyDown={handleButtnKeyDown}
       >
         {(live && currentItem?.label) || buttonLabel}

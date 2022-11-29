@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { useParams } from 'react-router'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { TfiPlus } from 'react-icons/tfi'
+import useApi from '$src/api/useApi'
+import tasksSlice from '$src/store/slice/tasks'
 import css from './index.module.scss'
 import { getDiff, getInputs } from '$src/utils/utils'
 import FormBody from './FormBody'
-import useApi from '$src/api/useApi'
-import tasksSlice from '$src/store/slice/tasks'
-import { useNavigate } from 'react-router-dom'
-import { TfiPlus } from 'react-icons/tfi'
 
 const defaulTask = {
   get startingDate() {
@@ -30,8 +30,6 @@ const TaskForm = ({ close }) => {
     )
   })
 
-  console.log(task)
-
   const handleFormSubmit = async (e) => {
     e.preventDefault()
     const [formDataRaw] = getInputs(e.currentTarget)
@@ -42,22 +40,30 @@ const TaskForm = ({ close }) => {
       formData.collection = null
     }
     if (pendingParticipants.length) {
-      formData.participants = pendingParticipants.map((participant) => ({
-        user: participant.user._id,
-        role: participant.role,
-      }))
+      for (let key in formData) {
+        if (key.startsWith('participant ')) {
+          const [, user] = key.split(' ')
+          const role = formData[key]
+          delete formData[key]
+
+          formData.participants ||= []
+          formData.participants.push({ user, role })
+        }
+      }
     }
 
     if (task._id) {
       const data = await api.patch('/tasks/' + task._id, formData)
-      $store(tasksSlice.updateTask(data.task))
-    } else {
-      const data = await api.post('/tasks', formData)
-      $store(tasksSlice.addTask(data.task))
-      navigate(`/tasks/${data.task._id}`)
+      if (!data) return
+      setPendingParticipants([])
+      return $store(tasksSlice.updateTask(data.task))
     }
 
+    const data = await api.post('/tasks', formData)
+    if (!data) return
     setPendingParticipants([])
+    $store(tasksSlice.addTask(data.task))
+    navigate(`/tasks/${data.task._id}`)
   }
 
   return (

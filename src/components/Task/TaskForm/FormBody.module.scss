@@ -21,11 +21,9 @@
   }
 }
 
-.formGroup {
-  p {
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-  }
+.formGroup > p {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
 }
 
 .taskDateGroup {

@@ -1348,7 +1348,7 @@ negotiator@0.6.3:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
-node-ls-files@^0.0.3, node-ls-files@latest:
+node-ls-files@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/node-ls-files/-/node-ls-files-0.0.3.tgz#37e1158892521fadfb9cfa7570fb2976d5c9fece"
   integrity sha512-OhZBvqbaSdZmAWAHX5xPHWrGep2Q0XDy6Kt3DY0LSWwEoiImWT41zW1oXwlIbQvJHrb3qO3itZRK0zhogLKPqA==
@@ -2000,6 +2000,11 @@ use-active-state@latest:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/use-active-state/-/use-active-state-1.0.1.tgz#4cbd5af86b75214d127d4b42467f060565349e00"
   integrity sha512-w/4dCqBSn+xJ7FatBkfeyEOvUcm4Bu99BKzebw6moQvjJ8VjblJVGqDLbEYnwyWh/fh+NZ7dO/aQVx2PChJ1/A==
+
+use-effect-except-on-mount@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/use-effect-except-on-mount/-/use-effect-except-on-mount-0.0.0.tgz#1474c16ebc6cbfe227c2a1ffdee0ceaac45645da"
+  integrity sha512-Id8UVfKQ0k3AoOTZFHm6v/qDTbQn/g2YyKOWshZJWZBHBAHgzigVGCJCgfW+Q5QGTeNl/We+lX0blNqRH45ftA==
 
 use-sync-external-store@^1.0.0:
   version "1.2.0"

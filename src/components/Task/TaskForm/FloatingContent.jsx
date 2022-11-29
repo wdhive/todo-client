@@ -5,7 +5,6 @@ import { memo } from 'react'
 
 const FloatingContent = ({
   float = false,
-  role,
   taskId,
   showModify,
   onDelete,
@@ -24,7 +23,6 @@ const FloatingContent = ({
       <Dropdown
         {...props}
         className={cn(css.Dropdown, pending && css.pending)}
-        default={role}
         classNames={{
           button: css.button,
           section: css.section,

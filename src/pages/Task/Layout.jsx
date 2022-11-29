@@ -9,7 +9,7 @@ import useApiOnce from '$src/api/useApiOnce'
 import socketEvent from '$socket/socketEvent'
 
 socketEvent['task-update'] = (task) => {
-  console.log(task)
+  console.log({ task })
 }
 
 const TaskLayout = () => {
