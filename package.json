@@ -6,7 +6,7 @@
     "dev": "vite --host",
     "build": "vite build",
     "serve": "node ./serve.cjs",
-    "line": "node ./line.cjs"
+    "ci": "code-info -e png -e jpg -e jpeg -e svg"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
@@ -26,7 +26,6 @@
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
     "express": "^4.18.2",
-    "node-ls-files": "latest",
     "postcss-preset-env": "^7.8.2",
     "sass": "^1.55.0",
     "vite": "^3.1.8",

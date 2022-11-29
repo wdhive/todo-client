@@ -1,70 +1,139 @@
-import { useState, useEffect, memo } from 'react'
+import { useState, memo, useMemo } from 'react'
 import useActiveState, { stopPropagation } from 'use-active-state'
 import useApi from '$api/useApi'
 import css from './Participant.module.scss'
 import FloatingContent from './FloatingContent'
+import avatar from '$assets/avatar.png'
+let searchTimeout
 
-const Participant = ({ taskId, participants }) => {
+const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
   const api = useApi()
   const [isModalOpen, setIsModalOpen] = useActiveState(false)
-  const [foundUsers, setFoundUsers] = useState(() => [])
-  const [users, setUsers] = useState(() => [])
+  const [selectedRole, setSelectedRole] = useState(() => 'assigner')
 
-  useEffect(() => {
-    ;(async () => {
-      const data = await api.get('/user/search?username=say')
-      setFoundUsers(data.user)
-    })()
-  }, [])
+  const [searchUsers, setSearchUsers] = useState(() => [])
+  const totalUsers = useMemo(() => {
+    return [...(task.participants ?? []), ...pendingParticipants]
+  }, [task.participants, pendingParticipants])
+
+  const handleAddUser = (user, role) => {
+    setPendingParticipants((prev) => [
+      ...prev,
+      {
+        user,
+        role,
+        pending: true,
+      },
+    ])
+  }
+
+  const handleRemoveUser = (participant) => {
+    if (participant.pending) {
+      return setPendingParticipants((prev) => {
+        return prev.filter((user) => user.user._id !== participant.user._id)
+      })
+    }
+
+    console.log(participant)
+  }
+
+  const handleChangeRole = (participant, role) => {
+    if (participant.pending) return
+
+    console.log(participant, role)
+  }
+
+  const handleSearchInput = (e) => {
+    clearTimeout(searchTimeout)
+    searchTimeout = setTimeout(async () => {
+      const username = e.target.value
+      if (!username) {
+        return setSearchUsers([])
+      }
+
+      const data = await api.get('/user/search?username=' + username)
+      setSearchUsers(data.user)
+    }, 500)
+  }
+
+  const AddedUsers = useMemo(
+    () =>
+      totalUsers.map((participant) => (
+        <div key={participant.user._id} className={css.user}>
+          <img src={participant.user.avatar ?? avatar} alt="" />
+
+          <div>{participant.user.name}</div>
+
+          <FloatingContent
+            taskId={task._id}
+            role={participant.role}
+            active={participant.active}
+            pending={participant.pending}
+            showModify={true}
+            onDelete={() => handleRemoveUser(participant)}
+            onChange={(value) => handleChangeRole(participant, value)}
+          />
+        </div>
+      )),
+    [totalUsers, task._id]
+  )
+
+  const SearchUser = useMemo(() => {
+    const inIds = totalUsers.map(({ user }) => user._id)
+    const filteredUsers = searchUsers.filter((user) => {
+      return !inIds.includes(user._id)
+    })
+
+    return filteredUsers.map((user) => {
+      return (
+        <li
+          key={user._id}
+          onClick={() => {
+            handleAddUser(user, selectedRole)
+            setIsModalOpen(false)
+          }}
+        >
+          <img src={user.avatar ?? avatar} className={css.avatar} />
+
+          <div className={css.name}>
+            <div>{user.name}</div>
+            <div>@{user.username}</div>
+          </div>
+
+          <div className={css.date}>
+            <div>Joined on</div>
+            <div>{user.createdAt}</div>
+          </div>
+        </li>
+      )
+    })
+  })
 
   return (
     <div className={css.Participant}>
       <div className={css.participantsInput} onClick={stopPropagation}>
         <input
           onFocus={() => setIsModalOpen(true)}
-          onBlur={() => setTimeout(() => setIsModalOpen(false), 100)}
+          onBlur={() => setTimeout(() => setIsModalOpen(false), 200)}
+          onChange={handleSearchInput}
           className={css.usernameInput}
-          name="participants"
           autoComplete="off"
           type="text"
         />
 
-        <FloatingContent taskId={taskId} />
+        <FloatingContent
+          float={true}
+          taskId={task._id}
+          role={selectedRole}
+          onChange={setSelectedRole}
+        />
 
         <ul className={cn(css.usersModal, isModalOpen && css.activeModal)}>
-          {foundUsers.map((user) => (
-            <li
-              key={user._id}
-              onClick={() => {
-                setUsers((prev) => [...prev, user])
-                setIsModalOpen(false)
-              }}
-            >
-              <img src={user.avatar} className={css.avatar} />
-
-              <div className={css.name}>
-                <div>{user.name}</div>
-                <div>@{user.username}</div>
-              </div>
-
-              <div className={css.date}>
-                <div>Joined on</div>
-                <div>{user.createdAt}</div>
-              </div>
-            </li>
-          ))}
+          {SearchUser.length ? SearchUser : 'No user found'}
         </ul>
       </div>
 
-      <div className={css.currentParticipants}>
-        {users.map((user) => (
-          <div key={user._id} className={css.user}>
-            <img src={user.avatar} alt="" />
-            <div>{user.name}</div>
-            <FloatingContent taskId={taskId} showModify={true} float={false} />
-          </div>
-        ))}
-      </div>
+      <div className={css.currentParticipants}>{AddedUsers}</div>
     </div>
   )
 }

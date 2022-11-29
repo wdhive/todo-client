@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import css from './index.module.scss'
 import useGetItem from './useGetItem'
-import {  BsChevronDown } from 'react-icons/bs'
+import { BsChevronDown } from 'react-icons/bs'
 import useActiveState, { stopPropagation } from 'use-active-state'
 import { focusTo } from './utils'
 
@@ -84,6 +84,7 @@ const index = ({
       className={cn(css.Dropdown, className)}
       active={isOpen ? '' : undefined}
       onClick={stopPropagation}
+      data-value={selectedValue}
     >
       {name && (
         <input

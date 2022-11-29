@@ -1,19 +1,29 @@
 import { AiOutlineDelete } from 'react-icons/ai'
 import css from './FloatingContent.module.scss'
 import Dropdown from '$components/UI/Dropdown'
+import { memo } from 'react'
 
 const FloatingContent = ({
-  role = 'assigner',
-  float = true,
+  float = false,
+  role,
   taskId,
-  showModify = false,
+  showModify,
+  onDelete,
+  pending,
+  active = true,
+  ...props
 }) => {
-  console.log(taskId)
-
   return (
-    <div className={cn(css.FloatingContent, float && css.float)}>
+    <div
+      className={cn(
+        css.FloatingContent,
+        float && css.float,
+        active || css.inactive
+      )}
+    >
       <Dropdown
-        className={css.Dropdown}
+        {...props}
+        className={cn(css.Dropdown, pending && css.pending)}
         default={role}
         classNames={{
           button: css.button,
@@ -38,8 +48,8 @@ const FloatingContent = ({
         ]}
       />
 
-      {(taskId || showModify) && (
-        <button className={css.addButton} type="button">
+      {showModify && (
+        <button className={css.addButton} type="button" onClick={onDelete}>
           <AiOutlineDelete />
         </button>
       )}
@@ -47,4 +57,4 @@ const FloatingContent = ({
   )
 }
 
-export default FloatingContent
+export default memo(FloatingContent)

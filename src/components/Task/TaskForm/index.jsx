@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import css from './index.module.scss'
@@ -19,6 +20,7 @@ const TaskForm = ({ close }) => {
   const api = useApi()
   const params = useParams()
   const navigate = useNavigate()
+  const [pendingParticipants, setPendingParticipants] = useState(() => [])
 
   const task = useSelector((state) => {
     return (
@@ -27,6 +29,8 @@ const TaskForm = ({ close }) => {
       }) ?? defaulTask
     )
   })
+
+  console.log(task)
 
   const handleFormSubmit = async (e) => {
     e.preventDefault()
@@ -37,15 +41,23 @@ const TaskForm = ({ close }) => {
     if (formData.collection === 'none') {
       formData.collection = null
     }
+    if (pendingParticipants.length) {
+      formData.participants = pendingParticipants.map((participant) => ({
+        user: participant.user._id,
+        role: participant.role,
+      }))
+    }
 
     if (task._id) {
       const data = await api.patch('/tasks/' + task._id, formData)
-      return $store(tasksSlice.updateTask(data.task))
+      $store(tasksSlice.updateTask(data.task))
+    } else {
+      const data = await api.post('/tasks', formData)
+      $store(tasksSlice.addTask(data.task))
+      navigate(`/tasks/${data.task._id}`)
     }
 
-    const data = await api.post('/tasks', formData)
-    $store(tasksSlice.addTask(data.task))
-    navigate(`/tasks/${data.task._id}`)
+    setPendingParticipants([])
   }
 
   return (
@@ -61,7 +73,11 @@ const TaskForm = ({ close }) => {
 
       <form className={css.body} onSubmit={handleFormSubmit}>
         <div className="wrapper">
-          <FormBody task={task} />
+          <FormBody
+            task={task}
+            pendingParticipants={pendingParticipants}
+            setPendingParticipants={setPendingParticipants}
+          />
         </div>
       </form>
     </div>

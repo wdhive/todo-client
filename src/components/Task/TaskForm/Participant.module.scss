@@ -68,10 +68,10 @@
     & > *:last-child {
       margin-left: auto;
     }
-  }
 
-  img {
-    @include svg-size(3rem);
-    border-radius: 50%;
+    img {
+      @include svg-size(3rem);
+      border-radius: 50%;
+    }
   }
 }

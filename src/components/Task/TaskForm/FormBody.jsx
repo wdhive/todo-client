@@ -18,7 +18,7 @@ const Group = ({ children, label }) => {
   )
 }
 
-const FormBody = ({ task }) => {
+const FormBody = ({ task, pendingParticipants, setPendingParticipants }) => {
   return (
     <div className={css.TaskForm}>
       <Group label="Task Title">
@@ -74,7 +74,11 @@ const FormBody = ({ task }) => {
             </>
           }
         >
-          <Participant taskId={task._id} />
+          <Participant
+            task={task}
+            pendingParticipants={pendingParticipants}
+            setPendingParticipants={setPendingParticipants}
+          />
         </Group>
       </div>
 
