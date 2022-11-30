@@ -14,11 +14,11 @@ const Task = ({ tasks }) => {
 
   const tasksList = useMemo(() => {
     const sortedTasks = [...tasks].sort((a, b) => {
-      const c = new Date(b.startingDate).valueOf()
-      const d = new Date(a.startingDate).valueOf()
+      const createdAt1 = new Date(a.createdAt).valueOf()
+      const createdAt2 = new Date(b.createdAt).valueOf()
 
-      if (sortBy === 'd') return c - d
-      return d - c
+      if (sortBy === 'd') return createdAt2 - createdAt1
+      return createdAt1 - createdAt2
     })
 
     const finalResults = []

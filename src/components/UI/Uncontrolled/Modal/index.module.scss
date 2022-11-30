@@ -1,0 +1,77 @@
+.Dialog {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  @include svg-size(100%);
+  background: none;
+  border: 0;
+  display: grid;
+  place-content: center;
+
+  &::backdrop {
+    display: none;
+  }
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: v(foreground);
+  opacity: 0.8;
+}
+
+.content {
+  position: relative;
+  z-index: 99;
+  background: v(background);
+  padding: 2rem 2.5rem;
+  border-radius: 0.75rem;
+  min-width: min(35rem, 95vw);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  display: block;
+
+  h4 {
+    font-weight: 600;
+  }
+}
+
+.bottom {
+  display: block;
+  text-align: right;
+
+  button {
+    display: inline-block;
+  }
+}
+
+.Dialog[loading] {
+  .bottom {
+    text-align: center;
+
+    & > button {
+      display: none;
+    }
+  }
+}
+
+.Dialog:not([loading]) {
+  .loading-container {
+    display: none;
+  }
+}
+
+.loading-container {
+  display: inline-block;
+  height: 3rem;
+  transform: translateY(45%);
+  font-size: 0.5rem;
+}

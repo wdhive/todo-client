@@ -22,6 +22,17 @@ const NavProfile = ({ className }) => {
     }
   }
 
+  const getTime = () => {
+    const date = new Date()
+    const hour = date.getHours()
+
+    if (hour >= 18) return 'Evening'
+    if (hour >= 14) return 'Afternoon'
+    if (hour >= 12) return 'Noon'
+    if (hour >= 5) return 'Morning'
+    return 'Evening'
+  }
+
   return (
     <div className={cn(css.NavProfile, className)}>
       <div className={css.profile}>
@@ -30,7 +41,7 @@ const NavProfile = ({ className }) => {
         </div>
 
         <div>
-          <p>Good Afternoon,</p>
+          <p>Good {getTime()},</p>
           <h6>{user.name}</h6>
         </div>
       </div>

@@ -2001,7 +2001,12 @@ use-active-state@latest:
   resolved "https://registry.yarnpkg.com/use-active-state/-/use-active-state-1.0.1.tgz#4cbd5af86b75214d127d4b42467f060565349e00"
   integrity sha512-w/4dCqBSn+xJ7FatBkfeyEOvUcm4Bu99BKzebw6moQvjJ8VjblJVGqDLbEYnwyWh/fh+NZ7dO/aQVx2PChJ1/A==
 
-use-effect-except-on-mount@^0.0.0:
+use-css-query@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/use-css-query/-/use-css-query-1.0.0.tgz#e086fedf368cc40be720dea44fea46c8877f1c9e"
+  integrity sha512-C3wPtVMFQIsxXooKzb+zRZBHt7zS9BGAckkVn+f7Kdz70W26qekCiFvJpYamllHfvCLkCq4vs6a+aXBLAwxHkw==
+
+use-effect-except-on-mount@latest:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/use-effect-except-on-mount/-/use-effect-except-on-mount-0.0.0.tgz#1474c16ebc6cbfe227c2a1ffdee0ceaac45645da"
   integrity sha512-Id8UVfKQ0k3AoOTZFHm6v/qDTbQn/g2YyKOWshZJWZBHBAHgzigVGCJCgfW+Q5QGTeNl/We+lX0blNqRH45ftA==

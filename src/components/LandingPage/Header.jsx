@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
-import useMediaQuery from '$hooks/useMediaQuery'
+import useMediaQuery from 'use-css-query'
 import css from './Header.module.scss'
 import Brand from '$components/Brand'
 import LoginBtn from './LoginBtn'

@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import useEffectExceptOnMount from 'use-effect-except-on-mount'
 import css from './index.module.scss'
 import useGetItem from './useGetItem'
 import { BsChevronDown } from 'react-icons/bs'
@@ -23,17 +22,30 @@ const index = ({
   const [isOpen, toggleIsOpen] = useActiveState()
   const [selectedValue, setSelectedValue] = useState(defaultValue)
 
+  const handleSelectChange = async (value) => {
+    if (selectedValue === value) return
+    let defaultPrevented = false
+
+    const rv = onChange(value, () => (defaultPrevented = true))
+    if (rv instanceof Promise) await rv
+
+    if (!defaultPrevented) {
+      setSelectedValue(value)
+    }
+  }
+
   const handleButtnKeyDown = (e) => {
     if (!isOpen) return
 
     switch (e.key) {
       case 'ArrowUp':
         e.preventDefault()
-        setSelectedValue(getItem(-1).value)
+        handleSelectChange(getItem(-1).value)
         break
+
       case 'ArrowDown':
         e.preventDefault()
-        setSelectedValue(getItem(1).value)
+        handleSelectChange(getItem(1).value)
         break
     }
   }
@@ -46,7 +58,7 @@ const index = ({
         if (isSelected) props.ref = selectedItemRef
 
         const handleItemClick = () => {
-          setSelectedValue(item.value)
+          handleSelectChange(item.value)
           toggleIsOpen(false)
         }
 
@@ -73,10 +85,6 @@ const index = ({
     if (!selectedItemRef.current) return
     focusTo(containerRef.current, selectedItemRef.current)
   }, [selectedItemRef.current])
-
-  useEffectExceptOnMount(() => {
-    onChange(selectedValue, currentItem)
-  }, [selectedValue])
 
   return (
     <div

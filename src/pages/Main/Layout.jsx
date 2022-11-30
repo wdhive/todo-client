@@ -1,7 +1,7 @@
 import react, { Suspense, memo } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
+import useMediaQuery from 'use-css-query'
 import css from './Layout.module.scss'
-import useMediaQuery from '$hooks/useMediaQuery'
 import userSlice from '$slice/user'
 import settingsSlice from '$slice/settings'
 import useApiOnce from '$src/api/useApiOnce'

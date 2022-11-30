@@ -19,7 +19,8 @@
     "react-router-dom": "^6.4.2",
     "socket.io-client": "^4.5.3",
     "use-active-state": "latest",
-    "use-effect-except-on-mount": "^0.0.0"
+    "use-css-query": "^1.0.0",
+    "use-effect-except-on-mount": "latest"
   },
   "devDependencies": {
     "@honkhonk/vite-plugin-svgr": "^1.1.0",

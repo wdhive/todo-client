@@ -21,14 +21,13 @@ const TaskModal = ({ ...props }) => {
     }, 200)
   }
 
-  const handleKeyDown = (e) => {
-    if (e.key !== 'Escape') return
+  const handleCancel = (e) => {
     e.preventDefault()
     handleClose()
   }
 
   return (
-    <dialog className={css.TaskNew} ref={dialogRef} onKeyDown={handleKeyDown}>
+    <dialog className={css.TaskNew} ref={dialogRef} onCancel={handleCancel}>
       <div className={css.backdrop} onClick={handleClose} />
       <div className={css.content}>
         <TaskForm {...props} close={handleClose} />

@@ -93,9 +93,15 @@ const TaskCard = ({ task }) => {
           </div>
 
           <div className={css.users}>
-            {task.participants.map(({ user, _id }) => {
+            {task.participants.map(({ user, active }) => {
+              if (!active) return
+
               return (
-                <img key={_id} src={user.avatar ?? avatar} alt={user.name} />
+                <img
+                  key={user._id}
+                  alt={user.name}
+                  src={user.avatar ?? avatar}
+                />
               )
             })}
           </div>
