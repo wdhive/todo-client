@@ -53,7 +53,7 @@
 
   .addBtn {
     position: relative;
-    z-index: 1000;
+    z-index: 999;
     --btn-size: 5.25em;
     width: v(btn-size);
     height: v(btn-size);
