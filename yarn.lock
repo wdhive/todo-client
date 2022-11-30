@@ -2001,7 +2001,7 @@ use-active-state@latest:
   resolved "https://registry.yarnpkg.com/use-active-state/-/use-active-state-1.0.1.tgz#4cbd5af86b75214d127d4b42467f060565349e00"
   integrity sha512-w/4dCqBSn+xJ7FatBkfeyEOvUcm4Bu99BKzebw6moQvjJ8VjblJVGqDLbEYnwyWh/fh+NZ7dO/aQVx2PChJ1/A==
 
-use-css-query@^1.0.0:
+use-css-query@latest:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/use-css-query/-/use-css-query-1.0.0.tgz#e086fedf368cc40be720dea44fea46c8877f1c9e"
   integrity sha512-C3wPtVMFQIsxXooKzb+zRZBHt7zS9BGAckkVn+f7Kdz70W26qekCiFvJpYamllHfvCLkCq4vs6a+aXBLAwxHkw==
