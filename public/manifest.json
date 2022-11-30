@@ -1,6 +1,6 @@
 {
-  "name": "Web Todo",
-  "short_name": "Todo",
+  "name": "Todoi",
+  "short_name": "Todoi",
   "description": "A task management application with the ability to collaborate with others.",
   "start_url": "/",
   "orientation": "any",
