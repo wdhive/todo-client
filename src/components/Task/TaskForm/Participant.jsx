@@ -140,7 +140,7 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
 
           <div className={css.date}>
             <div>Joined on</div>
-            <div>{user.createdAt}</div>
+            <div>{new Date(user.createdAt).toLocaleDateString()}</div>
           </div>
         </li>
       )
@@ -170,7 +170,7 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
           {SearchUser.length ? (
             SearchUser
           ) : (
-            <p className={css.noUserFound}>An egg...</p>
+            <p className={css.noUserFound}>Horse egg...</p>
           )}
         </ul>
       </div>

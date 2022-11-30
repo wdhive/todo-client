@@ -52,3 +52,12 @@ button {
   background: var(--accent);
   color: var(--background);
 }
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+}
+
+::-webkit-scrollbar {
+  width: 0.75rem;
+  background: var(--background);
+}

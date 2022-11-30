@@ -19,7 +19,7 @@
     "react-router-dom": "^6.4.2",
     "socket.io-client": "^4.5.3",
     "use-active-state": "latest",
-    "use-css-query": "^1.0.0",
+    "use-css-query": "latest",
     "use-effect-except-on-mount": "latest"
   },
   "devDependencies": {

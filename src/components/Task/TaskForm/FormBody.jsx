@@ -31,24 +31,6 @@ const FormBody = ({ task, ...props }) => {
         />
       </Group>
 
-      <div className={css.taskDateGroup}>
-        <Group label="Starts">
-          <input
-            type="date"
-            name="startingDate"
-            required
-            defaultValue={formatDateDefaultValue(task.startingDate)}
-          />
-        </Group>
-        <Group label="Ends">
-          <input
-            type="date"
-            name="endingDate"
-            defaultValue={formatDateDefaultValue(task.endingDate)}
-          />
-        </Group>
-      </div>
-
       <Group label="Description">
         <textarea
           name="description"
@@ -58,6 +40,16 @@ const FormBody = ({ task, ...props }) => {
           required
         />
       </Group>
+
+      <div className={css.taskDateGroup}>
+        <Group label="Task end date">
+          <input
+            type="date"
+            name="endingDate"
+            defaultValue={formatDateDefaultValue(task.endingDate)}
+          />
+        </Group>
+      </div>
 
       <div className={css.taskCollection}>
         <Group label="Collection">

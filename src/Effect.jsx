@@ -5,7 +5,7 @@ import setSocket from '$socket'
 import userSlice from '$slice/user'
 let prevJwt
 
-const setLocalStroage = (key, data = null) => {
+export const setLocalStroage = (key, data = null) => {
   if (data === null) {
     return localStorage.removeItem(key)
   }
@@ -29,8 +29,8 @@ const Effect = ({ hue, jwt }) => {
 
   // Sync JWT With localStorage
   useEffect(() => {
-    clearInterval(window.runningIntervalForJwt)
-    window.runningIntervalForJwt = setInterval(() => {
+    clearInterval(window.__running_Interval_For_Jwt)
+    window.__running_Interval_For_Jwt = setInterval(() => {
       const jwt = localStorage.getItem('jwt-token')
       if (jwt === prevJwt) return
 

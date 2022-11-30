@@ -30,9 +30,11 @@
 
   li {
     cursor: pointer;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.25rem;
+    padding-right: 1.5rem;
     border-bottom: 0.1rem solid v(c200);
     display: flex;
+    color: v(accent);
     gap: 1rem;
     align-items: center;
     background: transparent;
@@ -51,6 +53,15 @@
   .date {
     margin-left: auto;
     text-align: right;
+    @include font(bd3);
+  }
+
+  .name,
+  .date {
+    *:last-child {
+      color: v(c600);
+      font-weight: 500;
+    }
   }
 
   .noUserFound {

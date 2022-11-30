@@ -1,14 +1,33 @@
-import { memo } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { MdBrightnessAuto, MdWbSunny } from 'react-icons/md'
+import { BsFillMoonStarsFill } from 'react-icons/bs'
 import css from './NavProfile.module.scss'
 import AvatarIcon from '$assets/avatar.png'
 import settings from '$slice/settings'
-import { MdBrightnessAuto, MdWbSunny } from 'react-icons/md'
-import { BsFillMoonStarsFill } from 'react-icons/bs'
+
+const getTime = () => {
+  const date = new Date()
+  const hour = date.getHours()
+
+  if (hour >= 18) return 'Evening'
+  if (hour >= 14) return 'Afternoon'
+  if (hour >= 12) return 'Noon'
+  if (hour >= 5) return 'Morning'
+  return 'Evening'
+}
 
 const NavProfile = ({ className }) => {
   const user = useSelector((state) => state.user.user)
   const theme = useSelector((state) => state.settings.theme)
+  const [currentTimePart, setCurrentTimePart] = useState(() => getTime())
+
+  useEffect(() => {
+    clearInterval(window.__nav_profile_hourly_interval)
+    window.__nav_profile_hourly_interval = setInterval(() => {
+      setCurrentTimePart(getTime())
+    }, 900000)
+  }, [])
 
   const handleButtonClick = (theme) => {
     $store(settings.setTheme(theme))
@@ -22,17 +41,6 @@ const NavProfile = ({ className }) => {
     }
   }
 
-  const getTime = () => {
-    const date = new Date()
-    const hour = date.getHours()
-
-    if (hour >= 18) return 'Evening'
-    if (hour >= 14) return 'Afternoon'
-    if (hour >= 12) return 'Noon'
-    if (hour >= 5) return 'Morning'
-    return 'Evening'
-  }
-
   return (
     <div className={cn(css.NavProfile, className)}>
       <div className={css.profile}>
@@ -41,7 +49,7 @@ const NavProfile = ({ className }) => {
         </div>
 
         <div>
-          <p>Good {getTime()},</p>
+          <p>Good {currentTimePart},</p>
           <h6>{user.name}</h6>
         </div>
       </div>

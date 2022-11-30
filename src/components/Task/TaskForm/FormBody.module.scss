@@ -26,17 +26,8 @@
   margin-bottom: 0.75rem;
 }
 
+.taskCollection,
 .taskDateGroup {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-
-  & > * {
-    flex: 1;
-  }
-}
-
-.taskCollection {
   .formGroup {
     display: flex;
     justify-content: space-between;
@@ -45,6 +36,15 @@
 
     p {
       margin-bottom: 0;
+    }
+  }
+}
+.taskDateGroup {
+  margin-bottom: 1.75rem !important;
+
+  .formGroup {
+    input {
+      max-width: 30rem;
     }
   }
 }
