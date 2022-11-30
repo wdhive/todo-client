@@ -8,7 +8,7 @@ import {
   IoNotificationsOutline,
   IoExitOutline,
 } from 'react-icons/io5'
-import { CgProfile } from 'react-icons/cg'
+import { HiOutlineUser } from 'react-icons/hi2'
 import { TfiPlus } from 'react-icons/tfi'
 
 const MainNav = () => {
@@ -50,7 +50,7 @@ const MainNav = () => {
       </NavLink>
 
       <NavLink to="/profile" className={cn('button', css.profileBtn)}>
-        <CgProfile />
+        <HiOutlineUser />
         <span>Profile</span>
       </NavLink>
 
