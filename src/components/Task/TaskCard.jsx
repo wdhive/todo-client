@@ -5,8 +5,8 @@ import useActiveState from 'use-active-state'
 import css from './TaskCard.module.scss'
 import { FaRegEdit, FaRegTrashAlt, FaRegClock, FaCheck } from 'react-icons/fa'
 import avatar from '$assets/avatar.png'
-import useApi from '$src/api/useApi'
-import tasksSlice from '$src/store/slice/tasks'
+import useApi from '$api/useApi'
+import tasksSlice from '$slice/tasks'
 
 const TaskCard = ({ task }) => {
   const uniqueId = useId()

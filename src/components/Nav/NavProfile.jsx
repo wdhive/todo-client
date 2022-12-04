@@ -17,7 +17,15 @@ const getTime = () => {
   return 'Evening'
 }
 
-const NavProfile = ({ className }) => {
+const NavProfile = ({
+  className,
+  hideTheme,
+  showToggleTheme,
+  hideOnMobile,
+  hideOnPc,
+  hideContent,
+  column,
+}) => {
   const user = useSelector((state) => state.user.user)
   const theme = useSelector((state) => state.settings.theme)
   const [currentTimePart, setCurrentTimePart] = useState(() => getTime())
@@ -42,47 +50,67 @@ const NavProfile = ({ className }) => {
   }
 
   return (
-    <div className={cn(css.NavProfile, className)}>
-      <div className={css.profile}>
-        <div>
+    <div
+      className={cn(
+        css.NavProfile,
+        hideOnMobile && css.hideOnMobile,
+        hideOnPc && css.hideOnPc,
+        column === true ? css.columnMode : css.noColumnMode,
+        className
+      )}
+    >
+      <div className={cn(css.profile)}>
+        <div className={css.imageContainer}>
           <img src={user.avatar ?? AvatarIcon} alt="Profile Picture" />
         </div>
 
-        <div>
-          <p>Good {currentTimePart},</p>
-          <h6>{user.name}</h6>
+        {hideContent || (
+          <div>
+            <p>Good {currentTimePart},</p>
+            <h6>{user.name}</h6>
+          </div>
+        )}
+      </div>
+
+      {(!hideTheme || showToggleTheme) && (
+        <div className={css.theme}>
+          {hideTheme || (
+            <>
+              <button
+                className={cn(theme === 'light' && css.active)}
+                onClick={() => handleButtonClick('light')}
+              >
+                <MdWbSunny />
+                <span>light</span>
+              </button>
+              <button
+                className={cn(theme === 'dark' && css.active)}
+                onClick={() => handleButtonClick('dark')}
+              >
+                <BsFillMoonStarsFill />
+                <span>dark</span>
+              </button>
+              <button
+                className={cn(theme?.startsWith('auto') && css.active)}
+                onClick={() => handleButtonClick()}
+              >
+                <MdBrightnessAuto />
+                <span>auto</span>
+              </button>
+            </>
+          )}
+
+          {showToggleTheme && (
+            <button className={css.toggleTheme} onClick={handleToggleTheme}>
+              {theme.endsWith('light') ? (
+                <BsFillMoonStarsFill />
+              ) : (
+                <MdWbSunny />
+              )}
+            </button>
+          )}
         </div>
-      </div>
-
-      <div className={css.theme}>
-        <button
-          className={cn(theme === 'light' && css.active)}
-          onClick={() => handleButtonClick('light')}
-        >
-          <MdWbSunny />
-          <span>light</span>
-        </button>
-
-        <button
-          className={cn(theme === 'dark' && css.active)}
-          onClick={() => handleButtonClick('dark')}
-        >
-          <BsFillMoonStarsFill />
-          <span>dark</span>
-        </button>
-
-        <button
-          className={cn(theme?.startsWith('auto') && css.active)}
-          onClick={() => handleButtonClick()}
-        >
-          <MdBrightnessAuto />
-          <span>auto</span>
-        </button>
-
-        <button className={css.toggleTheme} onClick={handleToggleTheme}>
-          {theme.endsWith('light') ? <BsFillMoonStarsFill /> : <MdWbSunny />}
-        </button>
-      </div>
+      )}
     </div>
   )
 }

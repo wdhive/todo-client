@@ -3,7 +3,7 @@ import css from './index.module.scss'
 import NavProfile from '$components/Nav/NavProfile'
 import TaskMainCategory from '$components/Task/MainCategory'
 import TaskControls from '$components/Task/TaskControls'
-import TaskCard from '$src/components/Task/TaskCard'
+import TaskCard from '$components/Task/TaskCard'
 import useTaskCollections from '$hooks/useTaskCollections'
 
 const Task = ({ tasks }) => {
@@ -44,7 +44,7 @@ const Task = ({ tasks }) => {
     <div className={css.Task}>
       <header className={css.header}>
         <div className="wrapper">
-          <NavProfile className={css.navProfile} />
+          <NavProfile hideTheme column hideOnPc showToggleTheme />
           <TaskMainCategory
             showTaskCategory={taskStatus}
             setShowTaskCategory={setTaskStatus}

@@ -3,10 +3,10 @@ import { useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { TfiPlus } from 'react-icons/tfi'
-import useApi from '$src/api/useApi'
-import tasksSlice from '$src/store/slice/tasks'
+import useApi from '$api/useApi'
+import tasksSlice from '$slice/tasks'
 import css from './index.module.scss'
-import { getDiff, getInputs } from '$src/utils/utils'
+import { getDiff, getInputs } from '$utils/utils'
 import FormBody from './FormBody'
 
 const defaulTask = {

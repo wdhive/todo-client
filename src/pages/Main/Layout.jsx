@@ -1,14 +1,14 @@
 import react, { Suspense, memo } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import useMediaQuery from 'use-css-query'
 import css from './Layout.module.scss'
 import userSlice from '$slice/user'
 import settingsSlice from '$slice/settings'
-import useApiOnce from '$src/api/useApiOnce'
+import useApiOnce from '$api/useApiOnce'
 
 import Nav from '$components/Nav'
 import Loading from '$components/Loading'
-import NotFound from '$src/components/Error404'
+import NotFound from '$components/Error404'
+import useMobileLayout from '$hooks/useMobileLayout'
 
 const TaskLayout = react.lazy(() => import('$pages/Task/Layout'))
 const ProfileLayout = react.lazy(() => import('$pages/Profile/Layout'))
@@ -27,7 +27,7 @@ const MainLayout = () => {
     $store(settingsSlice.updateSettigns(data.settings))
   })
 
-  const mobileMode = useMediaQuery('(max-width: 62em)')
+  const mobileMode = useMobileLayout()
 
   const mainLayout = (
     <Suspense fallback={<Loading />}>

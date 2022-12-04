@@ -4,7 +4,7 @@ import SigninSignup from '$layouts/SigninSignup'
 import SignupForm from '$components/SigninSignup/Signup'
 import EmailVerify from '$components/SigninSignup/EmailVerify'
 import { getFormData } from '$utils/utils'
-import useApi from '$src/api/useApi'
+import useApi from '$api/useApi'
 
 const Signup = () => {
   const api = useApi()

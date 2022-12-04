@@ -2,6 +2,12 @@
 
 .Nav {
   z-index: 1;
+  min-width: max-content;
+
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+    background-color: transparent;
+  }
 }
 
 @include break-up($lg) {
@@ -10,6 +16,7 @@
     padding: fluid(2rem, 2.25rem) fluid(1.45rem, 2.15rem);
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 
     &[main-nav-collapse] {
       padding: 1.65rem 1rem 2rem;

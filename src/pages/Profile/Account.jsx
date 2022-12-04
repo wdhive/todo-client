@@ -1,5 +1,5 @@
 const Account = () => {
-  return <h1>Account</h1>
+  return <div style={{ height: '900vh' }}>Hello world!</div>
 }
 
 export default Account

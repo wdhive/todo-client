@@ -1,5 +1,4 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import useMediaQuery from 'use-css-query'
 import css from './MainNav.module.scss'
 import userSlice from '$slice/user'
 import {
@@ -10,10 +9,11 @@ import {
 } from 'react-icons/io5'
 import { HiOutlineUser } from 'react-icons/hi2'
 import { TfiPlus } from 'react-icons/tfi'
+import useMobileLayout from '$hooks/useMobileLayout'
 
 const MainNav = () => {
   const navigate = useNavigate()
-  const mobileMode = useMediaQuery('(max-width: 62em)')
+  const mobileMode = useMobileLayout()
 
   const addBtn = (
     <button

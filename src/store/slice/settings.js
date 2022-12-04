@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { randomNumber } from '$src/utils/utils'
+import { randomNumber } from '$utils/utils'
 
 const getRandomHue = () => {
   return randomNumber(0, 360)

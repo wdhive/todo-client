@@ -16,7 +16,7 @@ const index = () => {
 
   return (
     <nav className={css.Nav} main-nav-collapse={navExpand ? undefined : 'true'}>
-      <NavProfile navExpand={navExpand} />
+      <NavProfile hideContent={!navExpand} column={false} hideOnMobile />
       <MainNav navExpand={navExpand} />
       <NavFooter navExpand={navExpand} setNavExpand={setNavExpand} />
     </nav>

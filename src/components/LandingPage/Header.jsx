@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
-import useMediaQuery from 'use-css-query'
 import css from './Header.module.scss'
 import Brand from '$components/Brand'
 import LoginBtn from './LoginBtn'
@@ -10,6 +9,7 @@ import { IoHomeOutline } from 'react-icons/io5'
 import { SlPeople, SlMenu } from 'react-icons/sl'
 import { FaRegQuestionCircle } from 'react-icons/fa'
 import { TfiPlus } from 'react-icons/tfi'
+import useMobileLayout from '$hooks/useMobileLayout'
 
 const LinkItem = ({ to, children }) => {
   const getClassName = (navData) =>
@@ -24,7 +24,7 @@ const LinkItem = ({ to, children }) => {
 
 const Nav = () => {
   const dialougeRef = useRef()
-  const mobileMode = useMediaQuery('(max-width: 62em)')
+  const mobileMode = useMobileLayout()
   const handleCloseDialog = () => dialougeRef.current.close()
   const handleShowDialog = () => dialougeRef.current.showModal()
 

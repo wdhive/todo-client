@@ -1,0 +1,70 @@
+.NavList {
+  padding-inline: 5vw;
+}
+
+.group {
+  margin-bottom: 3rem;
+}
+
+.groupLabel {
+  @include font('st2');
+  margin-bottom: 0.75rem;
+}
+
+.groupContent {
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+  & > *:not(:last-child) {
+    border-bottom: 0.2rem solid v(c200);
+  }
+}
+
+.button {
+  background: v(c100);
+  width: 100%;
+  border-radius: 0;
+  padding: 1.25rem 2.25rem;
+  @include font('bt1');
+  text-decoration: none;
+
+  &:hover {
+    background: v(c200);
+  }
+
+  svg {
+    color: v(c700);
+    font-size: 1.65em;
+  }
+}
+
+.button,
+.buttonContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.Tab {
+  background: v(c200);
+  padding-inline: v(padding-inline);
+}
+
+.tab {
+  display: flex;
+  padding-top: 0.75rem;
+  gap: 1.75rem;
+
+  & > * {
+    background: none;
+    width: fit-content;
+    padding-inline: 3rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 0.2rem solid transparent;
+
+    &:global(.active) {
+      border-color: v(accent);
+    }
+  }
+}

@@ -5,7 +5,7 @@ import taskSlice from '$slice/tasks'
 import Loading from '$components/Loading'
 import Task from './index'
 import TaskModal from './TaskModal'
-import useApiOnce from '$src/api/useApiOnce'
+import useApiOnce from '$api/useApiOnce'
 import socketEvent from '$socket/socketEvent'
 
 socketEvent['task-update'] = (task) => {

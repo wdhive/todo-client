@@ -23,16 +23,6 @@
   }
 }
 
-.navProfile {
-  display: none;
-
-  @include break-down($lg) {
-    display: flex;
-    justify-content: space-between;
-    align-self: center;
-  }
-}
-
 .taskList {
   display: flex;
   flex-wrap: wrap;
