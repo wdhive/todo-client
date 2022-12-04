@@ -8,7 +8,7 @@ import useApiOnce from '$src/api/useApiOnce'
 
 import Nav from '$components/Nav'
 import Loading from '$components/Loading'
-import NotFound from '$pages/NotFound'
+import NotFound from '$pages/404'
 
 const TaskLayout = react.lazy(() => import('$pages/Task/Layout'))
 const ProfileLayout = react.lazy(() => import('$pages/Profile/Layout'))

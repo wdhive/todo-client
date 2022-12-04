@@ -1,0 +1,96 @@
+.NotFound {
+  height: inherit;
+  min-height: inherit;
+
+  @include break-up($md) {
+    padding: fluid(2rem, 3rem) 10%;
+  }
+}
+
+.notFound {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 7.5vh;
+  gap: 5%;
+  max-width: 144rem;
+  margin-inline: auto;
+
+  @include break-down($md) {
+    align-items: stretch;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+  }
+}
+
+.content,
+.image404 {
+  @include break-up($md) {
+    flex: 1;
+  }
+
+  :global(.wrapper) {
+    @include break-down($md) {
+      padding: fluid(2rem, 3rem) 5%;
+    }
+  }
+}
+
+.content {
+  @include break-down($md) {
+    text-align: center;
+  }
+
+  h3 {
+    font-weight: 700;
+    margin-bottom: 0.4em;
+    margin-left: -0.5rem;
+    line-height: 1.2;
+  }
+}
+
+.topSubtitle {
+  color: v(accent);
+}
+
+.subtitle {
+}
+
+.links {
+  margin-top: 5rem;
+
+  button {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+}
+
+.image404 {
+  @include break-down($md) {
+    background: v(c100);
+  }
+
+  --svg-color: var(--foreground);
+
+  svg {
+    max-height: 13.5rem;
+    margin-left: auto;
+    width: fit-content;
+
+    @include break-down($md) {
+      margin-inline: auto;
+      max-height: 12rem;
+    }
+  }
+
+  path {
+    fill: var(--svg-color);
+  }
+  circle {
+    stroke: var(--svg-color);
+  }
+}
