@@ -1,6 +1,6 @@
 .Layout {
   display: flex;
-  min-height: 100vh;
+  height: 100%;
 
   @include break-down($lg) {
     flex-direction: column;
@@ -19,7 +19,7 @@
   overflow-y: auto;
 
   @include break-up($lg) {
-    height: 100vh;
+    height: 100%;
   }
 
   @include break-down($lg) {

@@ -1,6 +1,5 @@
 .NotFound {
   height: inherit;
-  min-height: inherit;
 
   @include break-up($md) {
     padding: fluid(2rem, 3rem) 10%;
