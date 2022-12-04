@@ -67,7 +67,7 @@ const TaskForm = ({ close }) => {
   }
 
   return (
-    <div className={css.TaskForm}>
+    <>
       <div className={css.header}>
         <div className="wrapper">
           <h6>{task.title ? 'Update' : 'Create'} Task</h6>
@@ -86,7 +86,7 @@ const TaskForm = ({ close }) => {
           />
         </div>
       </form>
-    </div>
+    </>
   )
 }
 

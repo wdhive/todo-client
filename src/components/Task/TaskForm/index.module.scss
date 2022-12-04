@@ -1,8 +1,5 @@
-.TaskForm {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-
+.header,
+.body {
   :global(.wrapper) {
     padding: 2rem 3rem;
   }
