@@ -1,4 +1,4 @@
-import css from './ErrorHandler.module.scss'
+import css from './Error.module.scss'
 
 const ErrorHandler = () => {
   const handleReload = () => {

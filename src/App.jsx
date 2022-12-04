@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Effect from './Effect'
 import Loading from '$components/Loading'
 import Alert from '$components/Alert'
-import NotFound from '$pages/404'
+import Error404 from '$src/components/Error404'
 
 const MainLayout = react.lazy(() => import('$pages/Main/Layout'))
 const LandingPage = react.lazy(() => import('$pages/LandingPage'))
@@ -75,7 +75,7 @@ const App = () => {
                   path="notifications/*"
                   element={<Navigate replace to="/login" />}
                 />
-                <Route path="*" element={<NotFound />} />
+                <Route path="*" element={<Error404 />} />
               </>
             )}
           </Routes>

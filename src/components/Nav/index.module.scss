@@ -1,7 +1,6 @@
 @use '$styles/abstracts/core' as *;
 
 .Nav {
-  box-shadow: 0 0 1rem -0.5rem v(foreground);
   z-index: 1;
 }
 

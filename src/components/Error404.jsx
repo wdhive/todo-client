@@ -1,4 +1,4 @@
-import css from './404.module.scss'
+import css from './Error404.module.scss'
 import Icon404 from '$assets/icons/404.svg?component'
 import { useNavigate } from 'react-router-dom'
 
