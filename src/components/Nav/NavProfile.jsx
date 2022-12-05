@@ -25,6 +25,7 @@ const NavProfile = ({
   hideOnPc,
   hideContent,
   column,
+  justTheme,
 }) => {
   const user = useSelector((state) => state.user.user)
   const theme = useSelector((state) => state.settings.theme)
@@ -59,18 +60,20 @@ const NavProfile = ({
         className
       )}
     >
-      <div className={cn(css.profile)}>
-        <div className={css.imageContainer}>
-          <img src={user.avatar ?? AvatarIcon} alt="Profile Picture" />
-        </div>
-
-        {hideContent || (
-          <div>
-            <p>Good {currentTimePart},</p>
-            <h6>{user.name}</h6>
+      {justTheme || (
+        <div className={cn(css.profile)}>
+          <div className={css.imageContainer}>
+            <img src={user.avatar ?? AvatarIcon} alt="Profile Picture" />
           </div>
-        )}
-      </div>
+
+          {hideContent || (
+            <div>
+              <p>Good {currentTimePart},</p>
+              <h6>{user.name}</h6>
+            </div>
+          )}
+        </div>
+      )}
 
       {(!hideTheme || showToggleTheme) && (
         <div className={css.theme}>

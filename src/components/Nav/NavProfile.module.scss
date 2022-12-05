@@ -84,10 +84,6 @@
   background: v(c200);
   padding: 0.33rem;
 
-  @include break-down($lg) {
-    background: none;
-  }
-
   @include NavCollapse {
     display: none;
   }
@@ -105,10 +101,6 @@
     padding: 0.25rem 1rem;
     background: transparent;
     @include transition('background', moderate);
-
-    @include break-down($lg) {
-      display: none;
-    }
 
     &.active {
       background: v(c300);
@@ -130,13 +122,9 @@
   }
 
   .toggleTheme {
-    display: none;
-
-    @include break-down($lg) {
-      display: block;
-      align-self: center;
-      border-radius: 50%;
-      font-size: 2rem;
-    }
+    display: block;
+    align-self: center;
+    border-radius: 50%;
+    font-size: 2rem;
   }
 }

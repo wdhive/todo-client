@@ -31,6 +31,10 @@ const settingsSlice = createSlice({
     updateSettigns(state, { payload }) {
       Object.assign(state, payload)
     },
+
+    updateHue(state, { payload }) {
+      state.hue = payload
+    },
   },
 })
 
