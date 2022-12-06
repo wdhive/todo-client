@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "module": "es6",
-    "baseUrl": "./",
     "paths": {
       "$slice/*": ["./src/store/slice/*"],
       "$api/*": ["./src/api/*"],
@@ -18,5 +16,6 @@
       "$utils/*": ["./src/utils/*"],
       "$src/*": ["./src/*"]
     }
-  }
+  },
+  "exclude": ["node_modules"]
 }

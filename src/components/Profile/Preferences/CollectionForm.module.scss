@@ -1,0 +1,52 @@
+.CollectionForm {
+  padding: 1rem 1.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 0.5rem;
+    z-index: -1;
+    inset: 0;
+    background: currentColor;
+    opacity: 0.15;
+  }
+
+  label {
+    font-weight: 700;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  input {
+    padding: 0.35rem 1rem;
+    border-radius: 0.5rem;
+    background: v(background);
+    font-weight: 400;
+  }
+
+  button {
+    align-self: stretch;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    background: v(c200);
+
+    svg {
+      width: 1.65em;
+    }
+  }
+}

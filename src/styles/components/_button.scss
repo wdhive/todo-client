@@ -4,28 +4,46 @@
   font-weight: bold;
   padding: 0.5em 1.5em;
   border-radius: 0.5em;
-
   @include transition('background-color');
+
+  &[disabled] {
+    opacity: 0.5;
+  }
 
   &__primary {
     background-color: v(accent);
     color: v(background);
 
-    &:hover {
+    &:not([disabled]):hover {
       background-color: v(c500);
     }
-    &:active {
+    &:not([disabled]):active {
       background-color: v(c600);
     }
   }
+
   &__secondary {
     background-color: v(c100);
     color: v(foreground);
 
-    &:hover {
+    &:not([disabled]):hover {
       background-color: v(c200);
     }
-    &:active {
+    &:not([disabled]):active {
+      background-color: v(c300);
+    }
+  }
+
+  &__tertiary {
+    background-color: transparent;
+    color: v(foreground);
+    border-radius: 0.25rem;
+    outline: 0.2rem solid v(accent);
+
+    &:not([disabled]):hover {
+      background-color: v(c200);
+    }
+    &:not([disabled]):active {
       background-color: v(c300);
     }
   }

@@ -1,11 +1,21 @@
 import Theme from '$components/Profile/Preferences/Theme'
-import FontSize from '$components/Profile/Preferences/FontSize'
+// import FontSize from '$components/Profile/Preferences/FontSize'
 import Collection from '$components/Profile/Preferences/Collection'
 
 const Group = ({ children, label }) => {
   return (
-    <div style={{ marginBottom: '3rem' }}>
-      <h6 style={{ marginBottom: '0.5rem', fontWeight: '600' }}>{label}</h6>
+    <div style={{ marginBottom: '4rem' }}>
+      <h6
+        style={{
+          marginBottom: '1rem',
+          fontWeight: '700',
+          // display: 'flex',
+          // alignItems: 'center',
+          // gap: '0.5rem',
+        }}
+      >
+        {label}
+      </h6>
 
       {children}
     </div>
@@ -19,9 +29,18 @@ const Preferences = () => {
         <Theme />
       </Group>
 
-      <Group label="Font Size">
+      {/* <Group
+        label={
+          <>
+            Font Size
+            <div style={{ fontSize: '1.25rem', fontWeight: '500' }}>
+              (Not recomended, update from browser settings)
+            </div>
+          </>
+        }
+      >
         <FontSize />
-      </Group>
+      </Group> */}
 
       <Group label="Collections">
         <Collection />

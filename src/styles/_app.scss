@@ -49,6 +49,45 @@ button {
   @include font(btn1);
 }
 
+input[type='range'] {
+  appearance: none;
+  border-radius: 0.5em;
+  background-color: v(c100);
+  height: 0.5em;
+  width: 100%;
+  display: block;
+  outline: none;
+  margin: 1em auto;
+
+  &::-moz-range-track {
+    appearance: none;
+    opacity: 0;
+    outline: none;
+  }
+
+  &::-ms-track {
+    outline: none;
+    appearance: none;
+    opacity: 0;
+  }
+
+  @mixin content {
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    appearance: none;
+    background: v(accent);
+  }
+
+  &::-webkit-slider-thumb {
+    @include content;
+  }
+
+  &::-moz-range-thumb {
+    @include content;
+  }
+}
+
 ::selection {
   background: var(--accent);
   color: var(--background);
