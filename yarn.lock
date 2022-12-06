@@ -2044,9 +2044,9 @@ vite-pwa@latest:
     node-ls-files "^0.0.3"
 
 vite-vscode@latest:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/vite-vscode/-/vite-vscode-0.0.4.tgz#449a0f69f0e27c03162208e84b38398d2107064b"
-  integrity sha512-2KfKCOnKlEp4BAIrzDCeU8ImMsG4du/N68M+Etq7n2FBfb0qPLDYq9y9WcCVLs/sqk6/UJG911PaZbsndGDMfw==
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/vite-vscode/-/vite-vscode-0.0.5.tgz#ee243796a939a158362ac35be90470030c6af2ec"
+  integrity sha512-XLrttN4PrQgXiCUs20BWrsDGGGTKceAeICayO6auDATsHleug1dr12S6WTg6ktPOpHeN32bcjCtbr/PhiaZN0w==
 
 vite@^3.1.8:
   version "3.2.5"

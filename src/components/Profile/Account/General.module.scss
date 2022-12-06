@@ -1,0 +1,73 @@
+.General {
+  input {
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    background: v(c100);
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+.group {
+  margin-bottom: 2rem;
+}
+
+.groupLabel {
+  @include font(st1);
+  margin-bottom: 0.75rem;
+  margin-left: 0.25rem;
+}
+
+.groupContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgLabel {
+  position: relative;
+  $size: fluid(7rem, 10rem);
+  width: $size;
+  height: $size;
+  background: v(c100);
+  border-radius: 50%;
+  cursor: pointer;
+  outline: 0.2rem solid transparent;
+  @include transition('outline', fast);
+
+  &:hover {
+    outline-color: v(c200);
+  }
+
+  &.imgLabelFocus {
+    outline-color: v(accent);
+  }
+
+  img {
+    border-radius: 50%;
+    overflow: hidden;
+    width: inherit;
+    height: inherit;
+  }
+
+  input {
+  }
+}
+
+.imgLabelEdit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 2.55rem;
+  width: 2.55rem;
+  background: v(accent);
+  border-radius: 50%;
+  transform: translate(50%, 50%);
+  color: v(background);
+  display: grid;
+  place-content: center;
+  font-size: 1.25rem;
+}

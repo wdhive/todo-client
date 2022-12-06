@@ -16,6 +16,5 @@
       "$utils/*": ["./src/utils/*"],
       "$src/*": ["./src/*"]
     }
-  },
-  "exclude": ["node_modules"]
+  }
 }
