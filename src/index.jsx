@@ -8,7 +8,6 @@ import api from '$api'
 
 window.cn = className
 
-import '../css-reset'
 import '$styles/index.scss'
 import App from './App'
 import AppError from '$components/Error'

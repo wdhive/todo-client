@@ -1,8 +1,8 @@
 import axios from 'axios'
 import userSlice from '$slice/user'
 
-// export const baseURL = 'https://baby-todo.onrender.com'
-export const baseURL = 'http://localhost:8000'
+export const baseURL = 'https://baby-todo.onrender.com'
+// export const baseURL = 'http://localhost:8000'
 
 export const instance = axios.create({
   baseURL,
