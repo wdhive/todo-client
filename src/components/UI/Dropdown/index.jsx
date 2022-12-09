@@ -84,7 +84,7 @@ const index = ({
   useEffect(() => {
     if (!selectedItemRef.current) return
     focusTo(containerRef.current, selectedItemRef.current)
-  }, [selectedItemRef.current])
+  }, [selectedValue])
 
   return (
     <div
