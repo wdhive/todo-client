@@ -51,9 +51,12 @@ const Effect = ({ hue, jwt }) => {
   useEffect(() => {
     document.documentElement.setAttribute(
       'theme',
-      theme.endsWith('dark') ? 'dark' : 'light'
+      theme ? (theme.endsWith('dark') ? 'dark' : 'light') : 'light'
     )
-    setLocalStroage('app-theme', theme.startsWith('auto') ? null : theme)
+    setLocalStroage(
+      'app-theme',
+      theme && theme.startsWith('auto') ? 'auto' : theme
+    )
   }, [theme])
 
   // Update theme

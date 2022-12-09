@@ -28,7 +28,7 @@ const NavProfile = ({
   justTheme,
 }) => {
   const user = useSelector((state) => state.user.user)
-  const theme = useSelector((state) => state.settings.theme)
+  const theme = useSelector((state) => state.settings.theme ?? 'light')
   const [currentTimePart, setCurrentTimePart] = useState(() => getTime())
 
   useEffect(() => {

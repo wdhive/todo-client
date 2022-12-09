@@ -7,9 +7,11 @@ import NavProfile from './NavProfile'
 import NavFooter from './NavFooter'
 
 const index = () => {
-  const [navExpand, setNavExpand] = useState(
-    () => localStorage.getItem('app-settings-nav-expand') === 'true'
-  )
+  const [navExpand, setNavExpand] = useState(() => {
+    const loaded = localStorage.getItem('app-settings-nav-expand')
+    if (!loaded) return true
+    return loaded === 'true'
+  })
   useEffectExceptOnMount(() => {
     setLocalStroage('app-settings-nav-expand', navExpand)
   }, [navExpand])

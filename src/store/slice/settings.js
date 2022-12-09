@@ -11,8 +11,9 @@ const getAutoTheme = () => {
 }
 
 const loadedHue = localStorage.getItem('app-theme-hue')
+const loadedTheme = localStorage.getItem('app-theme')
 const initialState = {
-  theme: localStorage.getItem('app-theme') ?? getAutoTheme(),
+  theme: loadedTheme === 'auto' ? getAutoTheme() : loadedTheme,
   hue: loadedHue && +loadedHue,
 }
 
