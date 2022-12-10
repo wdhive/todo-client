@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import user from '$slice/user'
+import user from '$slice/User'
 import SigninSignup from '$layouts/SigninSignup'
 import SigninForm from '$components/SigninSignup/Signin'
 import ResetPassword from '$components/SigninSignup/ResetPassword'

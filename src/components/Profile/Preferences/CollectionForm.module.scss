@@ -43,8 +43,12 @@
   button {
     align-self: stretch;
     border-radius: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.6rem;
     background: v(c200);
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     svg {
       width: 1.65em;

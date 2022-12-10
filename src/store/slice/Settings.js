@@ -15,6 +15,7 @@ const loadedTheme = localStorage.getItem('app-theme')
 const initialState = {
   theme: loadedTheme === 'auto' ? getAutoTheme() : loadedTheme,
   hue: loadedHue && +loadedHue,
+  collections: [],
 }
 
 const settingsSlice = createSlice({
@@ -35,6 +36,26 @@ const settingsSlice = createSlice({
 
     updateHue(state, { payload }) {
       state.hue = payload
+    },
+
+    addCollection(state, { payload }) {
+      state.collections.push(payload)
+    },
+
+    updateCollection(state, { payload }) {
+      state.collections = state.collections.map((collection) => {
+        if (collection._id === payload._id) {
+          return payload
+        }
+
+        return collection
+      })
+    },
+
+    deleteCollection(state, { payload }) {
+      state.collections = state.collections.filter((collection) => {
+        if (collection._id !== payload) return true
+      })
     },
   },
 })

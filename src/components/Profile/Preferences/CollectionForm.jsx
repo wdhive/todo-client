@@ -2,8 +2,10 @@ import css from './CollectionForm.module.scss'
 import HueRange from './HueRange'
 import { RiCheckLine } from 'react-icons/ri'
 import { useEffect, useId, useState } from 'react'
+import Button from '$ui/Button'
+import settingsSlice from '$slice/Settings'
 
-const CollectionForm = ({ collection }) => {
+const CollectionForm = ({ collection, setActiveCollection, api }) => {
   const [hue, setHue] = useState(220)
   const [name, setName] = useState('')
 
@@ -17,11 +19,21 @@ const CollectionForm = ({ collection }) => {
   const nameId = useId()
   const hueId = useId()
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault()
     if (hue === collection.hue && name === collection.name) return
+    let data = false
+    const body = { name, hue }
 
-    console.log(hue, name)
+    if (collection._id) {
+      data = await api.patch('/user/collections/' + collection._id, body)
+      $store(settingsSlice.updateCollection(data.collection))
+    } else {
+      data = await api.post('/user/collections', body)
+      $store(settingsSlice.addCollection(data.collection))
+    }
+
+    setActiveCollection(data.collection)
   }
 
   return (
@@ -40,9 +52,9 @@ const CollectionForm = ({ collection }) => {
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
-        <button>
+        <Button disabled={api.loading} loading={api.loading} blank>
           <RiCheckLine />
-        </button>
+        </Button>
       </div>
 
       <label htmlFor={hueId}>Hue</label>
@@ -50,6 +62,7 @@ const CollectionForm = ({ collection }) => {
         id={hueId}
         name="hue"
         value={hue}
+        disabled={api.loading}
         onChange={(e) => setHue(+e.target.value)}
       />
     </form>

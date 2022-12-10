@@ -4,7 +4,7 @@ import { MdBrightnessAuto, MdWbSunny } from 'react-icons/md'
 import { BsFillMoonStarsFill } from 'react-icons/bs'
 import css from './NavProfile.module.scss'
 import AvatarIcon from '$assets/avatar.png'
-import settings from '$slice/settings'
+import settings from '$slice/Settings'
 
 const getTime = () => {
   const date = new Date()

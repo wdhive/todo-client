@@ -2,7 +2,7 @@ import { memo, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { instance } from '$api'
 import setSocket from '$socket'
-import userSlice from '$slice/user'
+import userSlice from '$slice/User'
 let prevJwt
 
 export const setLocalStroage = (key, data = null) => {

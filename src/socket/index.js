@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client'
 import store from '$store'
-import userSlice from '$slice/user'
+import userSlice from '$slice/User'
 import socketEvent from './socketEvent'
 import { baseURL } from '$api'
 let socket = null

@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import taskSlice from '$slice/tasks'
+import taskSlice from '$slice/Tasks'
 import Loading from '$components/Loading'
 import Task from './index'
 import TaskModal from './TaskModal'

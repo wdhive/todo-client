@@ -1,8 +1,8 @@
 import react, { Suspense, memo } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import css from './Layout.module.scss'
-import userSlice from '$slice/user'
-import settingsSlice from '$slice/settings'
+import userSlice from '$slice/User'
+import settingsSlice from '$slice/Settings'
 import useApiOnce from '$api/useApiOnce'
 
 import Nav from '$components/Nav'

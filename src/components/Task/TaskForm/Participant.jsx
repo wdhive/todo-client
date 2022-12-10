@@ -6,7 +6,7 @@ import css from './Participant.module.scss'
 import FloatingContent from './FloatingContent'
 import avatar from '$assets/avatar.png'
 import Modal from '$components/UI/Uncontrolled/Modal'
-import taskSlice from '$slice/tasks'
+import taskSlice from '$slice/Tasks'
 let searchTimeout
 
 const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {

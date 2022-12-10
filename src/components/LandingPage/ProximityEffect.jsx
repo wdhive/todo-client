@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import css from './ProximityEffect.module.scss'
-import settingsSlice from '$slice/settings'
+import settingsSlice from '$slice/Settings'
 
 const ProximityEffect = () => {
   const dispatch = useDispatch()

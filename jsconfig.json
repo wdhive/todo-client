@@ -2,6 +2,7 @@
   "compilerOptions": {
     "paths": {
       "$slice/*": ["./src/store/slice/*"],
+      "$ui/*": ["./src/components/UI/*"],
       "$api/*": ["./src/api/*"],
       "$assets/*": ["./src/assets/*"],
       "$components/*": ["./src/components/*"],

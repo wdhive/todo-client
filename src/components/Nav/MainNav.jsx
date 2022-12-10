@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import css from './MainNav.module.scss'
-import userSlice from '$slice/user'
+import userSlice from '$slice/User'
 import {
   IoHomeOutline,
   IoSearchOutline,

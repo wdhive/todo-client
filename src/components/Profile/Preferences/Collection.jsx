@@ -4,11 +4,20 @@ import { HiPlus, HiOutlinePencil, HiOutlineTrash } from 'react-icons/hi'
 import useApi from '$api/useApi'
 import css from './Collection.module.scss'
 import CollectionForm from './CollectionForm'
+import Button from '$ui/Button'
+import settings from '$slice/Settings'
 
 const Collection = () => {
   const api = useApi()
   const [activeCollection, setActiveCollection] = useState(false)
   const collections = useSelector((state) => state.settings.collections)
+
+  const handleDelete = async (id) => {
+    const data = await api.delete('/user/collections/' + id)
+    if (!data) return
+    setActiveCollection(false)
+    $store(settings.deleteCollection(id))
+  }
 
   return (
     <div className={css.Collection}>
@@ -28,10 +37,16 @@ const Collection = () => {
               </div>
 
               <div className={css.buttons}>
-                <button onClick={() => setActiveCollection(collection)}>
+                <button
+                  disabled={api.loading}
+                  onClick={() => setActiveCollection(collection)}
+                >
                   <HiOutlinePencil />
                 </button>
-                <button>
+                <button
+                  disabled={api.loading}
+                  onClick={() => handleDelete(collection._id)}
+                >
                   <HiOutlineTrash />
                 </button>
               </div>
@@ -40,10 +55,18 @@ const Collection = () => {
         })}
       </ul>
 
-      {activeCollection && <CollectionForm collection={activeCollection} />}
+      {activeCollection && (
+        <CollectionForm
+          collection={activeCollection}
+          setActiveCollection={setActiveCollection}
+          api={api}
+        />
+      )}
 
-      <button
-        className={cn('button button__tertiary', css.addBtn)}
+      <Button
+        disabled={api.loading}
+        loading={api.loading}
+        className={cn('button__tertiary', css.addBtn)}
         onClick={() => {
           setActiveCollection(
             activeCollection ? (activeCollection._id ? {} : false) : {}
@@ -51,7 +74,7 @@ const Collection = () => {
         }}
       >
         Add Category <HiPlus />
-      </button>
+      </Button>
     </div>
   )
 }

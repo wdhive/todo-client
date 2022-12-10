@@ -6,7 +6,7 @@ import css from './TaskCard.module.scss'
 import { FaRegEdit, FaRegTrashAlt, FaRegClock, FaCheck } from 'react-icons/fa'
 import avatar from '$assets/avatar.png'
 import useApi from '$api/useApi'
-import tasksSlice from '$slice/tasks'
+import tasksSlice from '$slice/Tasks'
 
 const TaskCard = ({ task }) => {
   const uniqueId = useId()

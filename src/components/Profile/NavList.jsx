@@ -7,8 +7,9 @@ import {
 import { RxQuestionMarkCircled, RxChevronRight } from 'react-icons/rx'
 import { BiCategory } from 'react-icons/bi'
 import css from './NavList.module.scss'
+import User from '$slice/User'
 
-const Button = ({ children, arrow = true, to }) => {
+const Button = ({ children, arrow = true, to, ...props }) => {
   const content = (
     <>
       <div className={css.buttonContent}>{children}</div>
@@ -27,7 +28,11 @@ const Button = ({ children, arrow = true, to }) => {
       </NavLink>
     )
   }
-  return <button className={cn('button', css.button)}>{content}</button>
+  return (
+    <button {...props} className={cn('button', css.button)}>
+      {content}
+    </button>
+  )
 }
 
 const Group = ({ children, label }) => {
@@ -71,17 +76,17 @@ const NavList = ({ mobileMode }) => {
         </Group>
 
         <Group label="Information">
-          <Button to="about">
+          <Button to="/about">
             <MdPeopleOutline />
             About us
           </Button>
-          <Button to="help">
+          <Button to="/help">
             <RxQuestionMarkCircled /> Help & support
           </Button>
         </Group>
 
         <Group label="Danger Zone">
-          <Button arrow={false}>
+          <Button arrow={false} onClick={() => $store(User.logout())}>
             <MdOutlineExitToApp /> Logout
           </Button>
         </Group>

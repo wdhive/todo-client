@@ -1,5 +1,5 @@
 import axios from 'axios'
-import userSlice from '$slice/user'
+import userSlice from '$slice/User'
 
 export const baseURL = 'https://baby-todo.onrender.com'
 // export const baseURL = 'http://localhost:8000'

@@ -1,0 +1,12 @@
+.Button {
+}
+
+.loading {
+  $size: calc(1em * 1.5);
+  width: $size;
+  height: $size;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

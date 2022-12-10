@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import NavProfile from '$components/Nav/NavProfile'
-import settings from '$slice/settings'
+import settings from '$slice/Settings'
 import HueRange from './HueRange'
 import Dialog from '$components/UI/Dialog'
 let hueTimeout
