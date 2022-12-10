@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import useTaskCollections from '$hooks/useTaskCollections'
 import css from './CollectionsDropdown.module.scss'
-import Dropdown from '$components/UI/Dropdown'
+import Dropdown from '$ui/Dropdown'
 
 const CollectionsDropdown = ({ collection = 'none' }) => {
   const taskCollections = useTaskCollections(

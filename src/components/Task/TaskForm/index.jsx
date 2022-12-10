@@ -80,6 +80,7 @@ const TaskForm = ({ close }) => {
       <form className={css.body} onSubmit={handleFormSubmit}>
         <div className="wrapper">
           <FormBody
+            api={api}
             task={task}
             pendingParticipants={pendingParticipants}
             setPendingParticipants={setPendingParticipants}

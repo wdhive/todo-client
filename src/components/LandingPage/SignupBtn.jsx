@@ -1,16 +1,10 @@
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const SignupBtn = ({ label = 'Signup' }) => {
-  const navigate = useNavigate()
-
-  const handleClick = () => {
-    navigate('/signup')
-  }
-
+const SignupBtn = ({ label = 'Login' }) => {
   return (
-    <button className={`button button__primary`} onClick={handleClick}>
+    <Link to="/signup" className={`button button__primary`}>
       {label}
-    </button>
+    </Link>
   )
 }
 

@@ -26,7 +26,6 @@
   border-radius: 0;
   padding: 1.25rem 2.25rem;
   @include font('bt1');
-  text-decoration: none;
 
   &:hover {
     background: v(c200);

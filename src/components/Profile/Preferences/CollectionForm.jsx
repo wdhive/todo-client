@@ -52,7 +52,7 @@ const CollectionForm = ({ collection, setActiveCollection, api }) => {
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
-        <Button disabled={api.loading} loading={api.loading} blank>
+        <Button loading={api.loading} blank>
           <RiCheckLine />
         </Button>
       </div>

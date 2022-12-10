@@ -2,11 +2,11 @@
 }
 
 .loading {
-  $size: calc(1em * 1.5);
+  $size: calc(1em * 1.5); // 1.5 => Line height
   width: $size;
   height: $size;
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin-inline: auto;
 }

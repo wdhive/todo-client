@@ -2,6 +2,7 @@ import css from './Hero.module.scss'
 import SignupBtn from './SignupBtn'
 import ProximityEffect from './ProximityEffect'
 import useApiOnce from '$api/useApiOnce'
+import LoginBtn from './LoginBtn'
 
 const Hero = () => {
   const api = useApiOnce('get', '/extra/users-count')
@@ -24,9 +25,7 @@ const Hero = () => {
           <div className={css.hero__cta}>
             <div className={css.hero__buttons}>
               <SignupBtn label="Signup" />
-              <button className="button button__secondary">
-                Continue anyways
-              </button>
+              <LoginBtn label="Login" />
             </div>
 
             {!api.error && api.loaded && (

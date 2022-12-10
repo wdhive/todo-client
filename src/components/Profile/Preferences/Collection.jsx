@@ -64,7 +64,6 @@ const Collection = () => {
       )}
 
       <Button
-        disabled={api.loading}
         loading={api.loading}
         className={cn('button__tertiary', css.addBtn)}
         onClick={() => {

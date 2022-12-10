@@ -2,6 +2,7 @@ import css from './FormBody.module.scss'
 import { TfiPlus } from 'react-icons/tfi'
 import CollectionsDropdown from './CollectionsDropdown'
 import Participant from './Participant'
+import Button from '$ui/Button'
 
 const formatDateDefaultValue = (date) => {
   if (date) {
@@ -18,7 +19,7 @@ const Group = ({ children, label }) => {
   )
 }
 
-const FormBody = ({ task, ...props }) => {
+const FormBody = ({ task, api, ...props }) => {
   return (
     <div className={css.TaskForm}>
       <Group label="Task Title">
@@ -70,9 +71,12 @@ const FormBody = ({ task, ...props }) => {
         </Group>
       </div>
 
-      <button className={cn('button button__primary', css.submitButton)}>
+      <Button
+        className={cn('button__primary', css.submitButton)}
+        loading={api.loading}
+      >
         {task._id ? 'Update' : 'Create'} Task
-      </button>
+      </Button>
     </div>
   )
 }

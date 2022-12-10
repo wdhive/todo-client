@@ -1,14 +1,14 @@
 import css from './FormUtils.module.scss'
-import Loading from '$components/Loading'
+import Button from '$ui/Button'
 
 export const SubmitBtn = ({ children, loading = false, error }) => {
   return (
     <div className={css.buttonContainer}>
       {error && <p className={css.error}>{error}</p>}
 
-      <button className={css.button} disabled={loading}>
-        {loading ? <Loading scoped={true} /> : children}
-      </button>
+      <Button className={css.button} loading={loading}>
+        {children}
+      </Button>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import { AiOutlineDelete } from 'react-icons/ai'
 import css from './FloatingContent.module.scss'
-import Dropdown from '$components/UI/Dropdown'
+import Dropdown from '$ui/Dropdown'
 import { memo } from 'react'
 
 const FloatingContent = ({
