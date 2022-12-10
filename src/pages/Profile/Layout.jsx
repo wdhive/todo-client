@@ -8,7 +8,7 @@ import NavList from '$components/Profile/NavList'
 import useMobileLayout from '$hooks/useMobileLayout'
 import { HiOutlineArrowLeft } from 'react-icons/hi'
 
-const Layout = ({ children, mobileMode, title }) => {
+const ContentLayout = ({ children, mobileMode, title }) => {
   const ref = useRef()
 
   useEffect(() => {
@@ -58,18 +58,18 @@ const ProfileLayout = () => {
         <Route
           path="account"
           element={
-            <Layout mobileMode={mobileMode} title={'Account Settings'}>
+            <ContentLayout mobileMode={mobileMode} title={'Account Settings'}>
               <Account />
-            </Layout>
+            </ContentLayout>
           }
         />
 
         <Route
           path="preferences"
           element={
-            <Layout mobileMode={mobileMode} title={'Preferences'}>
+            <ContentLayout mobileMode={mobileMode} title={'Preferences'}>
               <Preferences />
-            </Layout>
+            </ContentLayout>
           }
         />
         <Route path="*" element={<Navigate to="/profile" />} />

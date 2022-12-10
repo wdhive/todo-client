@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from 'react'
+import { memo, useId, useMemo, useState } from 'react'
 import { FaPen } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import css from './General.module.scss'
@@ -22,16 +22,10 @@ const General = () => {
   const avatarId = useId()
   const user = useSelector((state) => state.user.user)
   const [imgUrl, setImgUrl] = useState()
-  console.log(imgUrl)
-
-  useEffect(() => {
-    setImgUrl(user.avatar)
-  }, [user.avatar])
 
   const handleImageChange = (e) => {
-    console.log(e)
     const file = e.target.files[0]
-    setImgUrl(file ? URL.createObjectURL(file) : user.avatar)
+    setImgUrl(file && URL.createObjectURL(file))
   }
 
   const handleFormSubmit = async (e) => {
@@ -42,12 +36,13 @@ const General = () => {
     } else {
       formData.avatar = formData.avatar[0]
     }
-    if(formData.name) delete formData.name
+    if (!formData.name) delete formData.name
     if (!formData.name && !formData.avatar) return
 
     const data = await api.patch('/user', getFormData(formData))
     if (!data) return
     $store(User.updateUser(data.user))
+    setImgUrl(false)
   }
 
   return (
@@ -66,13 +61,14 @@ const General = () => {
             accept=".png,.jpg,.jpeg,.webp"
             type="file"
             name="avatar"
+            files
             id={avatarId}
           />
 
           <div className={css.imgLabelEdit}>
             <FaPen />
           </div>
-          <img src={imgUrl} alt={imgUrl} />
+          <img src={imgUrl || user.avatar} alt={user.avatar} />
         </label>
       </Group>
       <Group label={'Fullname'}>
@@ -88,4 +84,4 @@ const General = () => {
   )
 }
 
-export default General
+export default memo(General)
