@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux'
 import css from './General.module.scss'
 import useApi from '$api/useApi'
 import Button from '$ui/Button'
-import { getInputs } from '$utils/utils'
-import userSlice from '$slice/User'
+import { getFormData, getInputs } from '$utils/utils'
+import User from '$slice/User'
 
 const Group = ({ children, label }) => {
   return (
@@ -22,12 +22,14 @@ const General = () => {
   const avatarId = useId()
   const user = useSelector((state) => state.user.user)
   const [imgUrl, setImgUrl] = useState()
+  console.log(imgUrl)
 
   useEffect(() => {
     setImgUrl(user.avatar)
   }, [user.avatar])
 
   const handleImageChange = (e) => {
+    console.log(e)
     const file = e.target.files[0]
     setImgUrl(file ? URL.createObjectURL(file) : user.avatar)
   }
@@ -37,13 +39,15 @@ const General = () => {
     const [formData] = getInputs(e.target)
     if (!formData.avatar[0]) {
       delete formData.avatar
+    } else {
+      formData.avatar = formData.avatar[0]
     }
-    formData.name ||= undefined
+    if(formData.name) delete formData.name
     if (!formData.name && !formData.avatar) return
 
-    const data = await api.patch('/user', formData)
+    const data = await api.patch('/user', getFormData(formData))
     if (!data) return
-    $store(userSlice.updateUser(data.user))
+    $store(User.updateUser(data.user))
   }
 
   return (

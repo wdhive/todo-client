@@ -30,6 +30,7 @@ const userSlice = createSlice({
     },
 
     updateUser(state, { payload }) {
+      console.log(payload)
       Object.assign(state.user, payload)
     },
   },
