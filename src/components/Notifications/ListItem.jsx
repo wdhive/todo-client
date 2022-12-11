@@ -9,10 +9,12 @@ const ListItem = ({ notification }) => {
   const api = useApi()
 
   const handleClick = async () => {
+    if (notification.type !== 'task-invitation') return
+
     const modal = await Modal(undefined, 'This will add you to the task')
     if (!modal.result) return modal.close()
 
-    const data = await api.post(`/tasks/${notification.task}/invitation-accept`)
+    const data = await api.post(`/tasks/${notification.task}/invitation`)
     if (!data) return modal.close()
 
     $store(User.removeNoti(notification._id))
@@ -24,7 +26,8 @@ const ListItem = ({ notification }) => {
       (Date.now() - new Date(notification.createdAt)) / 1000
     )
 
-    if (sDiff < 60) return `${sDiff <= 0 ? 0 : sDiff}s`
+    if (sDiff <= 0) return 'now'
+    if (sDiff < 60) return `${sDiff}s`
     if (sDiff < 60 * 60) return `${Math.floor(sDiff / 60)}m`
     if (sDiff < 60 * 60 * 24) return `${Math.floor(sDiff / (60 * 60))}h`
     return `${Math.floor(sDiff / (60 * 60 * 24))}d`
@@ -40,10 +43,7 @@ const ListItem = ({ notification }) => {
       </div>
 
       <div className={css.desc}>
-        <p>
-          {notification.createdBy.name} <strong>invited</strong> you to join a
-          task
-        </p>
+        <p>{notification.type}</p>
         <p className={css.date}>{dateDiff} ago</p>
       </div>
 

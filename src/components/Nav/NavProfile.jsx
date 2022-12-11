@@ -30,7 +30,6 @@ const NavProfile = ({
   const user = useSelector((state) => state.user.user)
   const theme = useSelector((state) => state.settings.theme ?? 'light')
   const [currentTimePart, setCurrentTimePart] = useState(() => getTime())
-
   useEffect(() => {
     clearInterval(window.__nav_profile_hourly_interval)
     window.__nav_profile_hourly_interval = setInterval(() => {

@@ -22,8 +22,16 @@ export default {
     $store(User.addNoti(notification))
   },
 
-  ['task-participant-delete']({ task }) {
-    $store(User.removeNotiByTask(task))
-    $store(Tasks.deleteTask(task))
+  ['task-invitation-accepted']({ notification }) {
+    $store(User.addNoti(notification))
+  },
+
+  ['notification-delete']({ notification }) {
+    $store(User.removeNoti(notification))
+  },
+
+  ['task-particiapnt-removed']({ notification }) {
+    $store(Tasks.addNoti(notification))
+    $store(Tasks.deleteTask(notification.task))
   },
 }

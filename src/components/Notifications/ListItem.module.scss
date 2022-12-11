@@ -13,6 +13,10 @@
   &:hover {
     background: v(c200);
   }
+
+  &:not(:last-child) {
+    margin-bottom: 1.15rem;
+  }
 }
 
 .image {
