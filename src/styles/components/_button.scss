@@ -58,4 +58,20 @@
       }
     }
   }
+
+  &__red {
+    background-color: v(error);
+    color: v(background);
+    transition-property: opacity;
+
+    &:not([disabled]) {
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:active {
+        opacity: 1;
+      }
+    }
+  }
 }

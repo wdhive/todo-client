@@ -5,6 +5,7 @@ const initialState = {
   user: {},
   jwt: null,
   socketId: null,
+  notifications: [],
 }
 
 const sessionState = {
@@ -30,8 +31,29 @@ const userSlice = createSlice({
     },
 
     updateUser(state, { payload }) {
-      console.log(payload)
       Object.assign(state.user, payload)
+    },
+
+    initNoti(state, { payload }) {
+      state.notifications = payload
+    },
+
+    addNoti(state, { payload }) {
+      state.notifications.push(payload)
+    },
+
+    removeNoti(state, { payload }) {
+      state.notifications = state.notifications.filter((n) => n._id !== payload)
+    },
+
+    removeNotiByTask(state, { payload }) {
+      state.notifications = state.notifications.filter(
+        (n) => n.task !== payload
+      )
+    },
+
+    clearNoti(state) {
+      state.notifications = []
     },
   },
 })

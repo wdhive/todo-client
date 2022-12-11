@@ -1,7 +1,7 @@
-import react, { Suspense, memo } from 'react'
+import react, { Suspense, memo, useMemo } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import css from './Layout.module.scss'
-import userSlice from '$slice/User'
+import User from '$slice/User'
 import settingsSlice from '$slice/Settings'
 import useApiOnce from '$api/useApiOnce'
 
@@ -15,18 +15,7 @@ const ProfileLayout = react.lazy(() => import('$pages/Profile/Layout'))
 const Search = react.lazy(() => import('$pages/Main/Search'))
 const Notifications = react.lazy(() => import('$pages/Main/Notifications'))
 
-const MainLayout = () => {
-  const api = useApiOnce('get', '/user?settings')
-
-  useApiOnce('get', '/user/new-token').onLoad(({ token }) => {
-    $store(userSlice.jwt(token))
-  })
-
-  api.onLoad((data) => {
-    $store(userSlice.updateUser(data.user))
-    $store(settingsSlice.updateSettigns(data.settings))
-  })
-
+const LayoutContent = memo(() => {
   const mobileMode = useMobileLayout()
 
   const mainLayout = (
@@ -49,7 +38,6 @@ const MainLayout = () => {
     </Suspense>
   )
 
-  if (!api.loaded) return <Loading />
   return (
     <div className={css.Layout}>
       {mobileMode || <Nav />}
@@ -57,6 +45,24 @@ const MainLayout = () => {
       {mobileMode && <Nav />}
     </div>
   )
+})
+
+const MainLayout = () => {
+  const api = useApiOnce('get', '/user?settings')
+  api.onLoad((data) => {
+    $store(User.updateUser(data.user))
+    $store(settingsSlice.updateSettigns(data.settings))
+  })
+
+  useApiOnce('get', '/notifications').onLoad(({ notifications }) => {
+    $store(User.initNoti(notifications))
+  })
+
+  useApiOnce('get', '/user/new-token').onLoad(({ token }) => {
+    $store(User.jwt(token))
+  })
+
+  return api.loaded ? <LayoutContent /> : <Loading />
 }
 
 export default memo(MainLayout)

@@ -8,6 +8,7 @@ let socket = null
 const runListner = (event, data) => {
   const handler = socketEvent[event]
   if (!(handler instanceof Function)) {
+    console.log(data)
     return console.warn('No handler found for ' + event)
   }
 

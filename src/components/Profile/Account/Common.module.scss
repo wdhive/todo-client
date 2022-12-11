@@ -1,0 +1,15 @@
+.group {
+  margin-bottom: 0.5rem;
+}
+
+.groupLabel {
+  @include font(btn1);
+  margin-bottom: 0.65rem;
+  margin-left: 0.25rem;
+}
+
+.groupContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

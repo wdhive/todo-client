@@ -1,0 +1,36 @@
+.Notifications {
+  :global(.wrapper) {
+    max-width: 50rem;
+    padding: 1rem 3rem;
+  }
+}
+
+.Header {
+  background: v(c200);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h6 {
+    font-weight: 600;
+  }
+
+  button {
+    background: transparent;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    @include transition('background', fast);
+    color: v(c600);
+
+    &:hover {
+      background: v(c300);
+    }
+
+    &:active {
+      background: v(c400);
+    }
+  }
+}

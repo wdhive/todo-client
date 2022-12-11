@@ -1,21 +1,13 @@
-import { memo, useId, useMemo, useState } from 'react'
+import { memo, useId, useState } from 'react'
 import { FaPen } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import css from './General.module.scss'
+import containerCss from './Container.css.js'
 import useApi from '$api/useApi'
-import Button from '$ui/Button'
 import { getFormData, getInputs } from '$utils/utils'
 import User from '$slice/User'
-
-const Group = ({ children, label }) => {
-  return (
-    <div className={css.group}>
-      {label && <p className={css.groupLabel}>{label}</p>}
-
-      <div className={css.groupContent}>{children}</div>
-    </div>
-  )
-}
+import Button from '$ui/Button'
+import { FormGroup } from './Common'
 
 const General = () => {
   const api = useApi()
@@ -46,8 +38,11 @@ const General = () => {
   }
 
   return (
-    <form className={css.General} onSubmit={handleFormSubmit}>
-      <Group>
+    <form
+      className={cn(containerCss.Container, css.General)}
+      onSubmit={handleFormSubmit}
+    >
+      <FormGroup>
         <label htmlFor={avatarId} className={css.imgLabel}>
           <input
             onChange={handleImageChange}
@@ -61,7 +56,6 @@ const General = () => {
             accept=".png,.jpg,.jpeg,.webp"
             type="file"
             name="avatar"
-            files
             id={avatarId}
           />
 
@@ -70,16 +64,16 @@ const General = () => {
           </div>
           <img src={imgUrl || user.avatar} alt={user.avatar} />
         </label>
-      </Group>
-      <Group label={'Fullname'}>
+      </FormGroup>
+      <FormGroup label={'Fullname'}>
         <input type="text" name="name" placeholder={user.name} />
-      </Group>
+      </FormGroup>
 
-      <Group>
+      <FormGroup>
         <Button className="button__primary" loading={api.loading}>
           Save
         </Button>
-      </Group>
+      </FormGroup>
     </form>
   )
 }
