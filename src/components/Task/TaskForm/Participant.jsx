@@ -16,7 +16,7 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
   const [selectedRole, setSelectedRole] = useState('assigner')
   const [searchUsers, setSearchUsers] = useState(() => [])
   const totalUsers = useMemo(() => {
-    return [...(task.participants ?? []), ...pendingParticipants]
+    return [...(task.participants ?? []), ...pendingParticipants].reverse()
   }, [task.participants, pendingParticipants])
 
   const handleAddUser = (user) => {

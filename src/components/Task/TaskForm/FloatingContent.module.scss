@@ -5,18 +5,16 @@
   gap: 0.75rem;
 }
 
-.Dropdown[active] {
-  .section {
-    z-index: 99;
-  }
+.Dropdown[active] .section {
+  z-index: 99;
 }
 
-.pending {
-  color: red;
+.active {
+  color: v(accent);
 }
 
 .inactive {
-  color: yellow;
+  color: v(error);
 }
 
 .float {

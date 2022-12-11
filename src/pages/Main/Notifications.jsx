@@ -1,9 +1,17 @@
-import { useSelector } from 'react-redux'
 import css from './Notifications.module.scss'
 import NotificationsContent from '$components/Notifications'
+import useApi from '$api/useApi'
+import User from '$slice/User'
 
 const Notifications = () => {
-  const notifications = useSelector((state) => state.user.notifications)
+  const api = useApi()
+
+  const handleClearAll = async () => {
+    const data = await api.delete('/notifications')
+    console.log(data)
+    if (!data) return
+    $store(User.clearAllNoti())
+  }
 
   return (
     <div className={css.Notifications}>
@@ -11,13 +19,13 @@ const Notifications = () => {
         <div className="wrapper">
           <div className={css.header}>
             <h6>Notifications</h6>
-            <button>Clear all</button>
+            <button onClick={handleClearAll}>Clear all</button>
           </div>
         </div>
       </header>
 
       <div className="wrapper">
-        <NotificationsContent notifications={notifications} />
+        <NotificationsContent />
       </div>
     </div>
   )

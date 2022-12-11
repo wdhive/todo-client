@@ -1,17 +1,22 @@
 import { memo, useId } from 'react'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import useActiveState from 'use-active-state'
 import css from './TaskCard.module.scss'
 import { FaRegEdit, FaRegTrashAlt, FaRegClock, FaCheck } from 'react-icons/fa'
 import avatar from '$assets/avatar.png'
 import useApi from '$api/useApi'
-import tasksSlice from '$slice/Tasks'
+import Task from '$slice/Tasks'
+import useTaskPermission from '$hooks/useTaskPermission'
+import { useNavigate } from 'react-router-dom'
+import Modal from '$ui/Uncontrolled/Modal'
 
 const TaskCard = ({ task }) => {
   const uniqueId = useId()
   const api = useApi()
   const [show, toggleShow] = useActiveState()
+  const navigate = useNavigate()
+  const taskPerm = useTaskPermission(task)
+
   const collection = useSelector(
     (state) =>
       state.settings?.collections?.find((col) => col._id === task.collection)
@@ -34,23 +39,29 @@ const TaskCard = ({ task }) => {
     }`
     const data = await api.patch(url)
     if (!data) return
-    $store(tasksSlice.updateTask(data.task))
+    $store(Task.updateTask(data.task))
   }
+
+  const handleEditClick = () => navigate(`/tasks/${task._id}`)
 
   const handleDeleteClick = async () => {
-    const url = `/tasks/${task._id}`
-    const data = await api.delete(url)
+    const modal = await Modal(undefined, 'This will remove you from the task')
+    if (!modal.result) return modal.close()
+
+    const deleteTaskUrl = `/tasks/${task._id}`
+    const leftTaskUrl = deleteTaskUrl + '/invitation'
+
+    const data = await api.delete(
+      taskPerm.isOwner ? deleteTaskUrl : leftTaskUrl
+    )
+
+    modal.close()
     if (!data) return
-    $store(tasksSlice.deleteTask(task._id))
+    $store(Task.deleteTask(task._id))
   }
 
-  const handleFocus = () => {
-    toggleShow(true)
-  }
-
-  const handleBlur = () => {
-    toggleShow(false)
-  }
+  const handleFocus = () => toggleShow(true)
+  const handleBlur = () => toggleShow(false)
 
   return (
     <div
@@ -109,14 +120,14 @@ const TaskCard = ({ task }) => {
       </div>
 
       <div className={css.context}>
-        <Link
-          to={`/tasks/${task._id}`}
+        <button
           className="button"
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onClick={handleEditClick}
         >
           <FaRegEdit />
-        </Link>
+        </button>
         <button
           onClick={handleDeleteClick}
           className="button"

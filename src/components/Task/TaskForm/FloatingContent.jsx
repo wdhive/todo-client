@@ -9,20 +9,17 @@ const FloatingContent = ({
   showModify,
   onDelete,
   pending,
-  active = true,
+  active,
   ...props
 }) => {
   return (
-    <div
-      className={cn(
-        css.FloatingContent,
-        float && css.float,
-        active || css.inactive
-      )}
-    >
+    <div className={cn(css.FloatingContent, float && css.float)}>
       <Dropdown
         {...props}
-        className={cn(css.Dropdown, pending && css.pending)}
+        className={cn(
+          css.Dropdown,
+          active === true ? css.active : active === false && css.inactive
+        )}
         classNames={{
           button: css.button,
           section: css.section,
@@ -34,10 +31,6 @@ const FloatingContent = ({
           {
             label: 'Admin',
             value: 'admin',
-          },
-          {
-            label: 'Moderator',
-            value: 'moderator',
           },
           {
             label: 'Assigner',

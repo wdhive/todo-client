@@ -6,7 +6,6 @@ import { baseURL } from '$api'
 let socket = null
 
 const runListner = (event, data) => {
-  console.log(event)
   const handler = socketEvent[event]
   if (!(handler instanceof Function)) {
     return console.warn('No handler found for ' + event)

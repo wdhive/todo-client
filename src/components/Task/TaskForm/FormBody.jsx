@@ -3,6 +3,7 @@ import { TfiPlus } from 'react-icons/tfi'
 import CollectionsDropdown from './CollectionsDropdown'
 import Participant from './Participant'
 import Button from '$ui/Button'
+import useTaskPermission from '$hooks/useTaskPermission'
 
 const formatDateDefaultValue = (date) => {
   if (date) {
@@ -20,37 +21,43 @@ const Group = ({ children, label }) => {
 }
 
 const FormBody = ({ task, api, ...props }) => {
+  const taskPerm = useTaskPermission(task)
+
   return (
     <div className={css.TaskForm}>
-      <Group label="Task Title">
-        <input
-          type="text"
-          name="title"
-          defaultValue={task.title}
-          required
-          placeholder="Great Task..."
-        />
-      </Group>
+      {taskPerm.isAdmin && (
+        <>
+          <Group label="Task Title">
+            <input
+              type="text"
+              name="title"
+              defaultValue={task.title}
+              required
+              placeholder="Great Task..."
+            />
+          </Group>
 
-      <Group label="Description">
-        <textarea
-          name="description"
-          rows="5"
-          defaultValue={task.description}
-          placeholder="I have to do this for my..."
-          required
-        />
-      </Group>
+          <Group label="Description">
+            <textarea
+              name="description"
+              rows="5"
+              defaultValue={task.description}
+              placeholder="I have to do this for my..."
+              required
+            />
+          </Group>
 
-      <div className={css.taskDateGroup}>
-        <Group label="Task end date">
-          <input
-            type="date"
-            name="endingDate"
-            defaultValue={formatDateDefaultValue(task.endingDate)}
-          />
-        </Group>
-      </div>
+          <div className={css.taskDateGroup}>
+            <Group label="Task end date">
+              <input
+                type="date"
+                name="endingDate"
+                defaultValue={formatDateDefaultValue(task.endingDate)}
+              />
+            </Group>
+          </div>
+        </>
+      )}
 
       <div className={css.taskCollection}>
         <Group label="Collection">
@@ -58,18 +65,20 @@ const FormBody = ({ task, api, ...props }) => {
         </Group>
       </div>
 
-      <div className={css.taskParticipants} name="participants">
-        <Group
-          label={
-            <>
-              <span>Participants</span>
-              <TfiPlus />
-            </>
-          }
-        >
-          <Participant {...props} task={task} />
-        </Group>
-      </div>
+      {taskPerm.isOwner && (
+        <div className={css.taskParticipants} name="participants">
+          <Group
+            label={
+              <>
+                <span>Participants</span>
+                <TfiPlus />
+              </>
+            }
+          >
+            <Participant {...props} task={task} />
+          </Group>
+        </div>
+      )}
 
       <Button
         className={cn('button__primary', css.submitButton)}

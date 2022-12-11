@@ -1,6 +1,10 @@
+import { memo } from 'react'
+import { useSelector } from 'react-redux'
 import ListItem from './ListItem'
 
-const index = ({ notifications }) => {
+const NotificationsContent = () => {
+  const notifications = useSelector((state) => state.user.notifications)
+
   return (
     <div>
       {[...notifications].reverse().map((n) => (
@@ -10,4 +14,4 @@ const index = ({ notifications }) => {
   )
 }
 
-export default index
+export default memo(NotificationsContent)

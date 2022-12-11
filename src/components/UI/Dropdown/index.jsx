@@ -4,6 +4,7 @@ import useGetItem from './useGetItem'
 import { BsChevronDown } from 'react-icons/bs'
 import useActiveState, { stopPropagation } from 'use-active-state'
 import { focusTo } from './utils'
+import useEffectExceptOnMount from 'use-effect-except-on-mount'
 
 const index = ({
   name,
@@ -80,6 +81,13 @@ const index = ({
 
   const getItem = useGetItem(list, selectedValue)
   const currentItem = useMemo(() => getItem(), [selectedValue])
+
+  useEffectExceptOnMount
+
+  useEffectExceptOnMount(() => {
+    if (!defaultValue) return
+    setSelectedValue(defaultValue)
+  }, [defaultValue])
 
   useEffect(() => {
     if (!selectedItemRef.current) return

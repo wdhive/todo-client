@@ -45,6 +45,12 @@ const userSlice = createSlice({
     removeNoti(state, { payload }) {
       state.notifications = state.notifications.filter((n) => n._id !== payload)
     },
+
+    clearAllNoti(state) {
+      state.notifications = state.notifications.filter(
+        (n) => n.type === 'task-invitation'
+      )
+    },
   },
 })
 

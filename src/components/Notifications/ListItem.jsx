@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { HiOutlineDotsVertical } from 'react-icons/hi'
+import { HiOutlineTrash } from 'react-icons/hi'
 import User from '$slice/User'
 import useApi from '$api/useApi'
 import css from './ListItem.module.scss'
@@ -21,16 +21,24 @@ const ListItem = ({ notification }) => {
     modal.close()
   }
 
+  const handleDeleteClick = async (e) => {
+    e.stopPropagation()
+    const url = `/notifications/${notification._id}`
+    const data = await api.delete(url)
+    if (!data) return
+    $store(User.removeNoti(notification._id))
+  }
+
   const dateDiff = useMemo(() => {
     const sDiff = Math.floor(
       (Date.now() - new Date(notification.createdAt)) / 1000
     )
 
     if (sDiff <= 0) return 'now'
-    if (sDiff < 60) return `${sDiff}s`
-    if (sDiff < 60 * 60) return `${Math.floor(sDiff / 60)}m`
-    if (sDiff < 60 * 60 * 24) return `${Math.floor(sDiff / (60 * 60))}h`
-    return `${Math.floor(sDiff / (60 * 60 * 24))}d`
+    if (sDiff < 60) return `${sDiff}s ago`
+    if (sDiff < 60 * 60) return `${Math.floor(sDiff / 60)}m ago`
+    if (sDiff < 60 * 60 * 24) return `${Math.floor(sDiff / (60 * 60))}h ago`
+    return `${Math.floor(sDiff / (60 * 60 * 24))}d ago`
   }, [notification.createdAt])
 
   return (
@@ -44,12 +52,12 @@ const ListItem = ({ notification }) => {
 
       <div className={css.desc}>
         <p>{notification.type}</p>
-        <p className={css.date}>{dateDiff} ago</p>
+        <p className={css.date}>{dateDiff}</p>
       </div>
 
       <div className={css.menu}>
-        <button>
-          <HiOutlineDotsVertical />
+        <button onClick={handleDeleteClick} disabled={api.loading}>
+          <HiOutlineTrash />
         </button>
       </div>
     </div>

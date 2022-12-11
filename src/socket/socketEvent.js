@@ -26,12 +26,20 @@ export default {
     $store(User.addNoti(notification))
   },
 
-  ['notification-delete']({ notification }) {
-    $store(User.removeNoti(notification))
+  ['task-invitation-denied']({ notification }) {
+    $store(User.addNoti(notification))
+  },
+
+  ['task-particiapnt-left']({ notification }) {
+    $store(User.addNoti(notification))
   },
 
   ['task-particiapnt-removed']({ notification }) {
-    $store(Tasks.addNoti(notification))
+    $store(User.addNoti(notification))
     $store(Tasks.deleteTask(notification.task))
+  },
+
+  ['notification-delete']({ notification }) {
+    $store(User.removeNoti(notification))
   },
 }
