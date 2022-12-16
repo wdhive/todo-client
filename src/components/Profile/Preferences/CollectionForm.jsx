@@ -37,11 +37,7 @@ const CollectionForm = ({ collection, setActiveCollection, api }) => {
   }
 
   return (
-    <form
-      onSubmit={handleFormSubmit}
-      className={css.CollectionForm}
-      style={{ color: `hsl(${hue}, 50%, 50%)` }}
-    >
+    <form onSubmit={handleFormSubmit} className={css.CollectionForm}>
       <label htmlFor={nameId}>Name</label>
       <div className={css.group}>
         <input

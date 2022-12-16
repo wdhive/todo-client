@@ -5,19 +5,8 @@
   align-items: center;
   column-gap: 1rem;
   margin-bottom: 2rem;
-  position: relative;
-  isolation: isolate;
-
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    border-radius: 0.5rem;
-    z-index: -1;
-    inset: 0;
-    background: currentColor;
-    opacity: 0.15;
-  }
+  background: v(c100);
+  border-radius: 0.5rem;
 
   label {
     font-weight: 700;

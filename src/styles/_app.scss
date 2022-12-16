@@ -76,7 +76,7 @@ input[type='range'] {
     width: 1em;
     border-radius: 50%;
     appearance: none;
-    background: v(accent);
+    background: var(--thumb-bg, --accent);
   }
 
   &::-webkit-slider-thumb {

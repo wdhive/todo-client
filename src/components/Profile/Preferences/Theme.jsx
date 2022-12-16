@@ -11,7 +11,7 @@ const Theme = () => {
     clearTimeout(hueTimeout)
     hueTimeout = setTimeout(
       () => $store(settings.updateHue(e.target.value)),
-      250
+      100
     )
   }
 
