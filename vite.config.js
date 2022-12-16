@@ -13,7 +13,7 @@ const config = {
   assets: 'assets',
 }
 
-const plugins = [react(), svgr.default(), /* vitePWA(), */ viteVSCode()]
+const plugins = [react(), svgr.default(), vitePWA(), viteVSCode()]
 
 const css = {
   modules: {
