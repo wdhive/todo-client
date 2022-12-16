@@ -25,7 +25,7 @@ const MainNav = () => {
   )
 
   const handleLogout = () => {
-    $store(userSlice.logout())
+    $store(userSlice.jwt())
   }
 
   return (

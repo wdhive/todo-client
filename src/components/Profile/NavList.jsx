@@ -86,7 +86,7 @@ const NavList = ({ mobileMode }) => {
         </Group>
 
         <Group label="Danger Zone">
-          <Button arrow={false} onClick={() => $store(User.logout())}>
+          <Button arrow={false} onClick={() => $store(User.jwt())}>
             <MdOutlineExitToApp /> Logout
           </Button>
         </Group>

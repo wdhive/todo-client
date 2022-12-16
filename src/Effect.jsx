@@ -1,8 +1,11 @@
 import { memo, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import useEffectExceptOnMount from 'use-effect-except-on-mount'
 import { instance } from '$api'
 import setSocket from '$socket'
-import userSlice from '$slice/User'
+import User from '$slice/User'
+import Tasks from '$slice/Tasks'
+import Settings from '$slice/Settings'
 let prevJwt
 
 export const setLocalStroage = (key, data = null) => {
@@ -27,18 +30,21 @@ const Effect = ({ hue, jwt }) => {
     setLocalStroage('jwt-token', jwt)
   }, [jwt])
 
+  // Logout
+  useEffectExceptOnMount(() => {
+    if (jwt) return
+    $store(User.initial())
+    $store(Tasks.initial())
+    $store(Settings.initial())
+  }, [jwt])
+
   // Sync JWT With localStorage
   useEffect(() => {
     clearInterval(window.__running_Interval_For_Jwt)
     window.__running_Interval_For_Jwt = setInterval(() => {
       const jwt = localStorage.getItem('jwt-token')
       if (jwt === prevJwt) return
-
-      if (jwt) {
-        $store(userSlice.jwt(jwt))
-      } else {
-        $store(userSlice.logout())
-      }
+      $store(User.jwt(jwt))
     }, 1000)
   }, [])
 

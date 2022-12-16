@@ -22,6 +22,10 @@ const settingsSlice = createSlice({
   name: 'settings',
   initialState,
   reducers: {
+    initial(state) {
+      state.collections = []
+    },
+
     setRandomHue(state) {
       state.hue = getRandomHue()
     },

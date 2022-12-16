@@ -8,9 +8,14 @@ const taskSlice = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
+    initial() {
+      return initialState
+    },
+
     addTask(state, { payload }) {
       state.tasks.push(payload)
     },
+
     updateTask(state, { payload }) {
       state.tasks.find((task) => {
         if (task._id === payload._id) {
@@ -18,11 +23,13 @@ const taskSlice = createSlice({
         }
       })
     },
+
     deleteTask(state, { payload }) {
       state.tasks = state.tasks.filter((task) => {
         return task._id !== payload
       })
     },
+
     initTasks(state, { payload }) {
       state.tasks = payload
     },
