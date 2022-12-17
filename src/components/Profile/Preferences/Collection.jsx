@@ -15,7 +15,9 @@ const Collection = () => {
   const collections = useSelector((state) => state.settings.collections)
 
   const handleDelete = async (id) => {
-    const modal = await Modal(undefined, 'This action cannot be undone!')
+    const modal = await Modal({
+      description: 'Selected collection will be deleted',
+    })
     if (!modal.result) return modal.close()
 
     const data = await api.delete('/user/collections/' + id)

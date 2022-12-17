@@ -12,7 +12,7 @@ const ListItem = ({ notification }) => {
   const handleClick = async () => {
     if (notification.type !== 'task-invitation') return
 
-    const modal = await Modal(undefined, 'This will add you to the task')
+    const modal = await Modal({ description: 'This will add you to the task' })
     if (!modal.result) return modal.close()
 
     const data = await api.post(`/tasks/${notification.task}/invitation`)

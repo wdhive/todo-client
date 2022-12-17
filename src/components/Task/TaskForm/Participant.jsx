@@ -37,10 +37,9 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
       })
     }
 
-    const modal = await Modal(
-      undefined,
-      'This will remove the user from this task.'
-    )
+    const modal = await Modal({
+      description: 'Selected user will be removed from this task',
+    })
     if (!modal.result) return modal.close()
     const data = await api.delete(
       `/tasks/${task._id}/participants/${participant.user._id}`
@@ -53,10 +52,9 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
   const handleChangeRole = async (participant, role, preventDefault) => {
     if (participant.pending) return
 
-    const modal = await Modal(
-      undefined,
-      `This will change its role to '${role}'`
-    )
+    const modal = await Modal({
+      description: `Will change its role to '${role}'`,
+    })
     if (!modal.result) {
       preventDefault()
       return modal.close()

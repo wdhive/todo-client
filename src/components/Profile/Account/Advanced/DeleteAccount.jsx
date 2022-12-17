@@ -8,7 +8,9 @@ const DeleteAccount = ({ api, goBack }) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault()
     const [formData] = getInputs(e.target)
-    const modal = await Modal(undefined, 'This will delete your all data')
+    const modal = await Modal({
+      description: 'Your account and all the data will be deleted',
+    })
     if (!modal.result) return modal.close()
 
     const data = await api.patch('/user/delete-me', formData)

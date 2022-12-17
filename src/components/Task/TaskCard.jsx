@@ -47,7 +47,11 @@ const TaskCard = ({ task }) => {
   const handleEditClick = () => navigate(`/tasks/${task._id}`)
 
   const handleDeleteClick = async () => {
-    const modal = await Modal(undefined, 'This will remove you from the task')
+    const modal = await Modal({
+      description: taskPerm.isOwner
+        ? 'This task will be deleted'
+        : 'This will remove you from this task',
+    })
     if (!modal.result) return modal.close()
 
     const deleteTaskUrl = `/tasks/${task._id}`

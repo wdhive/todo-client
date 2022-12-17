@@ -4,7 +4,7 @@ import warningIcon from '$assets/icons/warning.svg?raw'
 import PlainHTML from './index.html?raw'
 import Render from '../Render'
 
-export default (title = 'Are you sure?', description = '') => {
+export default ({ title = 'Are you sure?', description = '' }) => {
   let isLoading = false
   const dialog = Render(PlainHTML.replace('{{svg}}', warningIcon), {
     ...css,
