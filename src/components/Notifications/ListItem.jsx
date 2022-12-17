@@ -2,11 +2,12 @@ import { useMemo, useState } from 'react'
 import { HiOutlineTrash } from 'react-icons/hi'
 import User from '$slice/User'
 import useApi from '$api/useApi'
+import useInterval from '$hooks/useInterval'
+import Tasks from '$slice/Tasks'
+import { notificationMessages } from './utils'
 
 import css from './ListItem.module.scss'
 import Modal from '$ui/Uncontrolled/Modal'
-import useInterval from '$hooks/useInterval'
-import Tasks from '$slice/Tasks'
 
 const ListItem = ({ notification }) => {
   const api = useApi()
@@ -50,6 +51,22 @@ const ListItem = ({ notification }) => {
     setState({})
   }, 3000)
 
+  const notiTitle = useMemo(() => {
+    const msg = notificationMessages[notification.type]
+    if (!msg) return 'No info...'
+    const newMsg = []
+    const msgParts = msg.split('{user}')
+    const notLastPart = msgParts.slice(0, -1)
+    const lastPart = msgParts.slice(-1)
+
+    notLastPart.forEach((p) => {
+      newMsg.push(p, <strong>{notification.createdBy.name}</strong>)
+    })
+    newMsg.push(lastPart)
+
+    return newMsg
+  }, [notification.title, notification.createdBy.name])
+
   return (
     <div className={css.Item} onClick={handleClick}>
       <div className={css.image}>
@@ -60,7 +77,7 @@ const ListItem = ({ notification }) => {
       </div>
 
       <div className={css.desc}>
-        <p>{notification.type}</p>
+        <p>{notiTitle}</p>
         <p className={css.date}>{dateDiff}</p>
       </div>
 
