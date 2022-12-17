@@ -11,7 +11,16 @@ const ProximityEffect = () => {
   const [showEffect, setShowEffect] = useState(false)
 
   const handleRandomTheme = () => {
-    dispatch(settingsSlice.setRandomHue())
+    document.body.classList.add(css.documentBody)
+    document.body.addEventListener(
+      'animationend',
+      () => document.body.classList.remove(css.documentBody),
+      { once: true }
+    )
+
+    setTimeout(() => {
+      dispatch(settingsSlice.setRandomHue())
+    }, 300)
   }
 
   useEffect(() => {
