@@ -137,14 +137,17 @@
 
 .users {
   display: flex;
-  flex-direction: row-reverse;
 
   img {
     display: inline-block;
+    height: 2.25rem;
     width: 2.25rem;
-    margin-left: -0.45rem;
     border-radius: 50%;
     border: 0.2rem solid v(background);
+
+    &:not(:last-child) {
+      margin-right: -0.5rem;
+    }
   }
 }
 

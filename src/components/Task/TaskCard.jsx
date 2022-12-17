@@ -74,8 +74,12 @@ const TaskCard = ({ task }) => {
       },
     ]
 
-    return taskTotalParticipants.map(({ user, active }) => {
-      if (!active || userId === user._id) return
+    const filteredParticipants = taskTotalParticipants
+      .filter(({ user, active }) => !(!active || userId === user._id))
+      .reverse()
+      .slice(0, 5)
+
+    return filteredParticipants.map(({ user }) => {
       return <img key={user._id} alt={user.name} src={user.avatar ?? avatar} />
     })
   }, [task, userId])
