@@ -42,4 +42,8 @@ export default {
   ['notification-delete']({ notification }) {
     $store(User.removeNoti(notification))
   },
+
+  ['notification-delete-all']({ notification }) {
+    $store(User.clearAllNoti(notification))
+  },
 }
