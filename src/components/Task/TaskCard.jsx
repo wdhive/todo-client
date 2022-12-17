@@ -1,13 +1,14 @@
-import { memo, useId } from 'react'
+import { memo, useId, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import useActiveState from 'use-active-state'
-import css from './TaskCard.module.scss'
+import { useNavigate } from 'react-router-dom'
 import { FaRegEdit, FaRegTrashAlt, FaRegClock, FaCheck } from 'react-icons/fa'
 import avatar from '$assets/avatar.png'
 import useApi from '$api/useApi'
 import Task from '$slice/Tasks'
 import useTaskPermission from '$hooks/useTaskPermission'
-import { useNavigate } from 'react-router-dom'
+
+import css from './TaskCard.module.scss'
 import Modal from '$ui/Uncontrolled/Modal'
 
 const TaskCard = ({ task }) => {
@@ -16,6 +17,7 @@ const TaskCard = ({ task }) => {
   const [show, toggleShow] = useActiveState()
   const navigate = useNavigate()
   const taskPerm = useTaskPermission(task)
+  const userId = useSelector((state) => state.user?.user?._id)
 
   const collection = useSelector(
     (state) =>
@@ -63,6 +65,21 @@ const TaskCard = ({ task }) => {
   const handleFocus = () => toggleShow(true)
   const handleBlur = () => toggleShow(false)
 
+  const taskImages = useMemo(() => {
+    const taskTotalParticipants = [
+      ...task.participants,
+      {
+        active: true,
+        user: task.owner,
+      },
+    ]
+
+    return taskTotalParticipants.map(({ user, active }) => {
+      if (!active || userId === user._id) return
+      return <img key={user._id} alt={user.name} src={user.avatar ?? avatar} />
+    })
+  }, [task, userId])
+
   return (
     <div
       className={cn(
@@ -103,19 +120,7 @@ const TaskCard = ({ task }) => {
             </p>
           </div>
 
-          <div className={css.users}>
-            {task.participants.map(({ user, active }) => {
-              if (!active) return
-
-              return (
-                <img
-                  key={user._id}
-                  alt={user.name}
-                  src={user.avatar ?? avatar}
-                />
-              )
-            })}
-          </div>
+          <div className={css.users}>{taskImages}</div>
         </div>
       </div>
 

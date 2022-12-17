@@ -2,9 +2,10 @@ import { memo, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { MdBrightnessAuto, MdWbSunny } from 'react-icons/md'
 import { BsFillMoonStarsFill } from 'react-icons/bs'
-import css from './NavProfile.module.scss'
 import AvatarIcon from '$assets/avatar.png'
 import settings from '$slice/Settings'
+
+import css from './NavProfile.module.scss'
 
 const getTime = () => {
   const date = new Date()

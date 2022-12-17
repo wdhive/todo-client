@@ -4,9 +4,10 @@ import { useSelector } from 'react-redux'
 import useApi from '$api/useApi'
 import { getFormData } from '$utils/utils'
 import User from '$slice/User'
+
 import css from './General.module.scss'
-import Layout from './Layout'
 import { FormGroup } from './Common'
+import Layout from './Layout'
 import Button from '$ui/Button'
 
 const General = () => {

@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { useSelector } from 'react-redux'
+
 import ListItem from './ListItem'
 
 const NotificationsContent = () => {

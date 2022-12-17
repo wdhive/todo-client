@@ -1,13 +1,13 @@
-import react, { Suspense, memo, useMemo } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import css from './Layout.module.scss'
-import User from '$slice/User'
-import settingsSlice from '$slice/Settings'
+import react, { memo, Suspense } from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import useApiOnce from '$api/useApiOnce'
+import settingsSlice from '$slice/Settings'
+import User from '$slice/User'
 
-import Nav from '$components/Nav'
-import Loading from '$components/Loading'
+import css from './Layout.module.scss'
 import NotFound from '$components/Error404'
+import Loading from '$components/Loading'
+import Nav from '$components/Nav'
 import useMobileLayout from '$hooks/useMobileLayout'
 
 const TaskLayout = react.lazy(() => import('$pages/Task/Layout'))
@@ -58,7 +58,7 @@ const MainLayout = () => {
     $store(User.initNoti(notifications))
   })
 
-  useApiOnce('get', '/user/new-token').onLoad(({ token }) => {
+  useApiOnce('get', '/account/new-token').onLoad(({ token }) => {
     $store(User.jwt(token))
   })
 

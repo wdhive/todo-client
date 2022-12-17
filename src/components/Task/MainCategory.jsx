@@ -1,4 +1,5 @@
 import { memo } from 'react'
+
 import css from './MainCategory.module.scss'
 
 const MainTaskCategory = ({ showTaskCategory, setShowTaskCategory }) => {

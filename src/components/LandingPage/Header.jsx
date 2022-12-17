@@ -1,15 +1,15 @@
 import { useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
-import css from './Header.module.scss'
-import Brand from '$components/Brand'
-import LoginBtn from './LoginBtn'
-import SignupBtn from './SignupBtn'
-
+import useMobileLayout from '$hooks/useMobileLayout'
 import { IoHomeOutline } from 'react-icons/io5'
 import { SlPeople, SlMenu } from 'react-icons/sl'
 import { FaRegQuestionCircle } from 'react-icons/fa'
 import { TfiPlus } from 'react-icons/tfi'
-import useMobileLayout from '$hooks/useMobileLayout'
+
+import css from './Header.module.scss'
+import Brand from '$components/Brand'
+import LoginBtn from './LoginBtn'
+import SignupBtn from './SignupBtn'
 
 const LinkItem = ({ to, children }) => {
   const getClassName = (navData) =>

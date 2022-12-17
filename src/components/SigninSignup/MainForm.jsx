@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
-import css from './MainForm.module.scss'
-import { SubmitBtn } from './FormUtils'
 import { useRef } from 'react'
 import { getInputs } from '$utils/utils'
+
+import css from './MainForm.module.scss'
+import { SubmitBtn } from './FormUtils'
 
 const MainForm = ({
   type,

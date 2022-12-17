@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
+import { FaGithub } from 'react-icons/fa'
+
 import css from './SigninSignup.module.scss'
 import Brand from '$components/Brand'
-import { FaGithub } from 'react-icons/fa'
 
 const SigninSignup = ({ children }) => {
   return (

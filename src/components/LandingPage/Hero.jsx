@@ -1,7 +1,8 @@
+import useApiOnce from '$api/useApiOnce'
+
 import css from './Hero.module.scss'
 import SignupBtn from './SignupBtn'
 import ProximityEffect from './ProximityEffect'
-import useApiOnce from '$api/useApiOnce'
 import LoginBtn from './LoginBtn'
 
 const Hero = () => {

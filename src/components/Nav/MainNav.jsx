@@ -1,5 +1,4 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import css from './MainNav.module.scss'
 import userSlice from '$slice/User'
 import {
   IoHomeOutline,
@@ -10,6 +9,8 @@ import {
 import { HiOutlineUser } from 'react-icons/hi2'
 import { TfiPlus } from 'react-icons/tfi'
 import useMobileLayout from '$hooks/useMobileLayout'
+
+import css from './MainNav.module.scss'
 
 const MainNav = () => {
   const navigate = useNavigate()

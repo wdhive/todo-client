@@ -1,6 +1,7 @@
 import { memo } from 'react'
-import Dropdown from '../UI/Dropdown'
+
 import css from './TaskControls.module.scss'
+import Dropdown from '$ui/Dropdown'
 
 const Item = ({ label }) => {
   return (

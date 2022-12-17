@@ -26,12 +26,6 @@ export default async (method, ...args) => {
 
     if (err.response?.status === 401) {
       $store(userSlice.jwt())
-      // $store(
-      //   extraSlice.alert({
-      //     action: userSlice.logout(),
-      //     message: errorMessage,
-      //   })
-      // )
     }
 
     return [errorMessage, undefined]

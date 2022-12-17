@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+
 import css from './HueRange.module.scss'
 
 const HueRange = ({ className, onChange, style = {}, ...props }) => {

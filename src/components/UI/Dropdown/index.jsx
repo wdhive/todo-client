@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import css from './index.module.scss'
+import useActiveState, { stopPropagation } from 'use-active-state'
+import useEffectExceptOnMount from 'use-effect-except-on-mount'
 import useGetItem from './useGetItem'
 import { BsChevronDown } from 'react-icons/bs'
-import useActiveState, { stopPropagation } from 'use-active-state'
 import { focusTo } from './utils'
-import useEffectExceptOnMount from 'use-effect-except-on-mount'
+
+import css from './index.module.scss'
 
 const index = ({
   name,

@@ -1,8 +1,9 @@
 import { useId, useRef, useState } from 'react'
 import { MdCameraAlt } from 'react-icons/md'
-import { Group } from './FormUtils'
-import MainForm from './MainForm'
+
 import css from './Signup.module.scss'
+import MainForm from './MainForm'
+import { Group } from './FormUtils'
 
 const Signup = (props) => {
   const imageId = useId()

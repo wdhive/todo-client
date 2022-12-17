@@ -1,6 +1,7 @@
+import { useNavigate } from 'react-router-dom'
+
 import css from './Error404.module.scss'
 import Icon404 from '$assets/icons/404.svg?component'
-import { useNavigate } from 'react-router-dom'
 
 const NotFound = () => {
   const navigate = useNavigate()

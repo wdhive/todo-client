@@ -1,6 +1,7 @@
-import { AdvancedFormControls, FormGroup } from '../Common'
 import { getInputs } from '$utils/utils'
 import User from '$slice/User'
+
+import { AdvancedFormControls, FormGroup } from '../Common'
 
 const ChangePassword = ({ api, goBack }) => {
   const handleFormSubmit = async (e) => {

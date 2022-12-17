@@ -1,10 +1,11 @@
 import { useRef, useState, useEffect } from 'react'
 import user from '$slice/User'
+import useApi from '$api/useApi'
+import { getFormData } from '$utils/utils'
+
 import SigninSignup from '$layouts/SigninSignup'
 import SignupForm from '$components/SigninSignup/Signup'
 import EmailVerify from '$components/SigninSignup/EmailVerify'
-import { getFormData } from '$utils/utils'
-import useApi from '$api/useApi'
 
 const Signup = () => {
   const api = useApi()

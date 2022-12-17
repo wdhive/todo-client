@@ -1,7 +1,8 @@
-import css from './Notifications.module.scss'
-import NotificationsContent from '$components/Notifications'
 import useApi from '$api/useApi'
 import User from '$slice/User'
+
+import css from './Notifications.module.scss'
+import NotificationsContent from '$components/Notifications'
 
 const Notifications = () => {
   const api = useApi()

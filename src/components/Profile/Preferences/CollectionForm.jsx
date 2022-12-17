@@ -1,9 +1,10 @@
-import css from './CollectionForm.module.scss'
-import HueRange from './HueRange'
 import { RiCheckLine } from 'react-icons/ri'
 import { useEffect, useId, useState } from 'react'
-import Button from '$ui/Button'
 import settingsSlice from '$slice/Settings'
+
+import css from './CollectionForm.module.scss'
+import HueRange from './HueRange'
+import Button from '$ui/Button'
 
 const CollectionForm = ({ collection, setActiveCollection, api }) => {
   const [hue, setHue] = useState(220)

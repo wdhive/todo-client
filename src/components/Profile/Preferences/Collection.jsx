@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { HiPlus, HiOutlinePencil, HiOutlineTrash } from 'react-icons/hi'
 import useApi from '$api/useApi'
+import settings from '$slice/Settings'
+import { HiPlus, HiOutlinePencil, HiOutlineTrash } from 'react-icons/hi'
+
 import css from './Collection.module.scss'
 import CollectionForm from './CollectionForm'
 import Button from '$ui/Button'
-import settings from '$slice/Settings'
 import Modal from '$ui/Uncontrolled/Modal'
 
 const Collection = () => {
@@ -14,12 +15,11 @@ const Collection = () => {
   const collections = useSelector((state) => state.settings.collections)
 
   const handleDelete = async (id) => {
-    // TODO: use confimation modal....
-    // const res = await Modal(undefined, 'This action cannot be undone!')
-    // if (!res.result) return res.close()
+    const modal = await Modal(undefined, 'This action cannot be undone!')
+    if (!modal.result) return modal.close()
 
     const data = await api.delete('/user/collections/' + id)
-    // res.close()
+    modal.close()
     if (!data) return
     setActiveCollection(false)
     $store(settings.deleteCollection(id))

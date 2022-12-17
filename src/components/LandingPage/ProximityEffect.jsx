@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import css from './ProximityEffect.module.scss'
 import settingsSlice from '$slice/Settings'
+
+import css from './ProximityEffect.module.scss'
 
 const ProximityEffect = () => {
   const dispatch = useDispatch()
@@ -31,7 +32,7 @@ const ProximityEffect = () => {
       return deg
     }
 
-    const listnenMouseMove = e => {
+    const listnenMouseMove = (e) => {
       const mouseX = e.clientX
       const mouseY = e.clientY
       const deg = angle(mouseX, mouseY, anchorX, anchorY)

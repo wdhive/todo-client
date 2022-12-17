@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import User from '$slice/User'
 import {
   MdOutlineAccountCircle,
   MdPeopleOutline,
@@ -6,8 +7,8 @@ import {
 } from 'react-icons/md'
 import { RxQuestionMarkCircled, RxChevronRight } from 'react-icons/rx'
 import { BiCategory } from 'react-icons/bi'
+
 import css from './NavList.module.scss'
-import User from '$slice/User'
 
 const Button = ({ children, arrow = true, to, ...props }) => {
   const content = (

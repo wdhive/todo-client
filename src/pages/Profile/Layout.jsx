@@ -1,12 +1,13 @@
 import { Routes, Route, Navigate, Link } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
+import { HiOutlineArrowLeft } from 'react-icons/hi'
+import useMobileLayout from '$hooks/useMobileLayout'
+
 import css from './Layout.module.scss'
 import Account from './Account'
 import Preferences from './Preferences'
 import NavProfile from '$components/Nav/NavProfile'
-import { useEffect, useRef } from 'react'
 import NavList from '$components/Profile/NavList'
-import useMobileLayout from '$hooks/useMobileLayout'
-import { HiOutlineArrowLeft } from 'react-icons/hi'
 
 const ContentLayout = ({ children, mobileMode, title }) => {
   const ref = useRef()

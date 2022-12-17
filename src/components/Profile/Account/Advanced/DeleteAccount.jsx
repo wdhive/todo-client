@@ -1,7 +1,8 @@
-import { AdvancedFormControls } from '../Common'
 import { getInputs } from '$utils/utils'
-import Modal from '$ui/Uncontrolled/Modal'
 import User from '$slice/User'
+
+import Modal from '$ui/Uncontrolled/Modal'
+import { AdvancedFormControls } from '../Common'
 
 const DeleteAccount = ({ api, goBack }) => {
   const handleFormSubmit = async (e) => {

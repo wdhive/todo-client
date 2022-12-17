@@ -1,8 +1,9 @@
-import css from './SubForm.module.scss'
-import { SubmitBtn } from './FormUtils'
 import { getInputs } from '$utils/utils'
 import { useRef } from 'react'
 import { MdArrowBack } from 'react-icons/md'
+
+import css from './SubForm.module.scss'
+import { SubmitBtn } from './FormUtils'
 
 const MainForm = ({
   children,

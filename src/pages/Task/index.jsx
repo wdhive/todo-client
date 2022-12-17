@@ -1,10 +1,11 @@
 import { useMemo, memo, useState } from 'react'
+import useTaskCollections from '$hooks/useTaskCollections'
+
 import css from './index.module.scss'
 import NavProfile from '$components/Nav/NavProfile'
 import TaskMainCategory from '$components/Task/MainCategory'
 import TaskControls from '$components/Task/TaskControls'
 import TaskCard from '$components/Task/TaskCard'
-import useTaskCollections from '$hooks/useTaskCollections'
 
 const Task = ({ tasks }) => {
   const collections = useTaskCollections()

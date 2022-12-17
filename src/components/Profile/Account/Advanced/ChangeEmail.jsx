@@ -1,8 +1,9 @@
-import { AdvancedFormControls, FormGroup } from '../Common'
 import { useRef, useState } from 'react'
 import { getInputs } from '$utils/utils'
 import { useSelector } from 'react-redux'
 import User from '$slice/User'
+
+import { AdvancedFormControls, FormGroup } from '../Common'
 
 const ChangeEmail = ({ api, goBack }) => {
   const currentEmail = useSelector((state) => state.user.user?.email)

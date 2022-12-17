@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
-import css from './NavFooter.module.scss'
 import { FaGithub, FaRegQuestionCircle, FaChevronDown } from 'react-icons/fa'
 import { SlPeople } from 'react-icons/sl'
+
+import css from './NavFooter.module.scss'
 
 const NavFooter = ({ setNavExpand }) => {
   return (

@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
-import NavProfile from '$components/Nav/NavProfile'
 import settings from '$slice/Settings'
+
 import HueRange from './HueRange'
-import Dialog from '$ui/Dialog'
+import NavProfile from '$components/Nav/NavProfile'
 let hueTimeout
 
 const Theme = () => {
@@ -18,7 +18,6 @@ const Theme = () => {
   return (
     <div>
       <NavProfile justTheme />
-      <Dialog />
       <HueRange onChange={handleHueChange} defaultValue={hue} />
     </div>
   )
