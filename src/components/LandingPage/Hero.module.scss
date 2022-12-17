@@ -1,5 +1,5 @@
 .hero {
-  overflow: hidden; // apatoto
+  overflow: hidden;
   background-image: linear-gradient(90deg, v(background) 0%, v(background) 100%),
     url('$assets/bg-left.png');
   background-repeat: no-repeat;
@@ -85,7 +85,6 @@
   }
 
   .showOffContainer {
-    background: red;
   }
 
   .showOff {
@@ -108,32 +107,47 @@
 
     &__mobile,
     &__desktop {
-      --box-shadow: #000;
-      background-position: center;
+      --box-shadow: #999;
       background-size: cover;
-      background-color: var(--box-shadow);
-      box-shadow: 0 0 0.8rem v(box-shadow);
+      background-repeat: no-repeat;
+      box-shadow: 0 0 2.5rem -0.5rem var(--box-shadow);
+      background-blend-mode: hue;
+      background-image: linear-gradient(90deg, v(accent) 0%, v(accent) 100%),
+        v(bg-image);
     }
 
     &__desktop {
-      --box-shadow: #{v(c100)};
+      --bg-image: url('$assets/screenshot-pc.png');
       position: absolute;
       top: 8rem;
       aspect-ratio: 18 / 9;
       height: 36rem;
       border-radius: 1.2rem;
+      background-position: center left;
+
+      &::after {
+        content: '';
+        border: 0.2rem solid v(foreground);
+        opacity: 0.6;
+        display: block;
+        border-radius: inherit;
+        position: absolute;
+        inset: 0;
+      }
     }
 
     &__mobile {
-      --box-shadow: #{v(background)};
+      --box-shadow: #666;
+      --bg-image: url('$assets/screenshot-mobile.png');
       position: absolute;
       top: 15rem;
       left: 8rem;
       aspect-ratio: 1 / 2;
       height: 38rem;
       border-radius: 0.8rem;
-      border: fluid(0.2rem, 0.4rem) solid v(foreground);
-      border-block-width: 0.6rem;
+      border: 0.2rem solid v(foreground);
+      border-block-width: 0.5rem;
+      background-position: center top;
 
       @include break-down($md) {
         position: relative;
