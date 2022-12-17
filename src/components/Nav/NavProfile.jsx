@@ -6,6 +6,7 @@ import AvatarIcon from '$assets/avatar.png'
 import settings from '$slice/Settings'
 
 import css from './NavProfile.module.scss'
+import useInterval from '$hooks/useInterval'
 
 const getTime = () => {
   const date = new Date()
@@ -31,12 +32,6 @@ const NavProfile = ({
   const user = useSelector((state) => state.user.user)
   const theme = useSelector((state) => state.settings.theme ?? 'light')
   const [currentTimePart, setCurrentTimePart] = useState(() => getTime())
-  useEffect(() => {
-    clearInterval(window.__nav_profile_hourly_interval)
-    window.__nav_profile_hourly_interval = setInterval(() => {
-      setCurrentTimePart(getTime())
-    }, 900000)
-  }, [])
 
   const handleButtonClick = (theme) => {
     $store(settings.setTheme(theme))
@@ -49,6 +44,10 @@ const NavProfile = ({
       $store(settings.setTheme('light'))
     }
   }
+
+  useInterval(() => {
+    setCurrentTimePart(getTime())
+  }, 900000)
 
   return (
     <div

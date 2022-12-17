@@ -1,6 +1,7 @@
 import { memo, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import useEffectExceptOnMount from 'use-effect-except-on-mount'
+import useInterval from '$hooks/useInterval'
 import { instance } from '$api'
 import setSocket from '$socket'
 import User from '$slice/User'
@@ -39,14 +40,11 @@ const Effect = ({ hue, jwt }) => {
   }, [jwt])
 
   // Sync JWT With localStorage
-  useEffect(() => {
-    clearInterval(window.__running_Interval_For_Jwt)
-    window.__running_Interval_For_Jwt = setInterval(() => {
-      const jwt = localStorage.getItem('jwt-token')
-      if (jwt === prevJwt) return
-      $store(User.jwt(jwt))
-    }, 1000)
-  }, [])
+  useInterval(() => {
+    const jwt = localStorage.getItem('jwt-token')
+    if (jwt === prevJwt) return
+    $store(User.jwt(jwt))
+  }, 1000)
 
   // Update sockeid
   useEffect(() => {

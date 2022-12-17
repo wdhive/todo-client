@@ -1,13 +1,15 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { HiOutlineTrash } from 'react-icons/hi'
 import User from '$slice/User'
 import useApi from '$api/useApi'
 
 import css from './ListItem.module.scss'
 import Modal from '$ui/Uncontrolled/Modal'
+import useInterval from '$hooks/useInterval'
 
 const ListItem = ({ notification }) => {
   const api = useApi()
+  const [state, setState] = useState()
 
   const handleClick = async () => {
     if (notification.type !== 'task-invitation') return
@@ -40,7 +42,11 @@ const ListItem = ({ notification }) => {
     if (sDiff < 60 * 60) return `${Math.floor(sDiff / 60)}m ago`
     if (sDiff < 60 * 60 * 24) return `${Math.floor(sDiff / (60 * 60))}h ago`
     return `${Math.floor(sDiff / (60 * 60 * 24))}d ago`
-  }, [notification.createdAt])
+  }, [notification.createdAt, state])
+
+  useInterval(() => {
+    setState({})
+  }, 3000)
 
   return (
     <div className={css.Item} onClick={handleClick}>
