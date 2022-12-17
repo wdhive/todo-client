@@ -29,7 +29,6 @@ const taskSlice = createSlice({
         return task._id === payload._id
       })
 
-      console.log(payload)
       if (found) Object.assign(found, payload)
       else state.tasks.push(payload)
     },

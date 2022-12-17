@@ -9,7 +9,6 @@ const Notifications = () => {
 
   const handleClearAll = async () => {
     const data = await api.delete('/notifications')
-    console.log(data)
     if (!data) return
     $store(User.clearAllNoti())
   }

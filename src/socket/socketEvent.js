@@ -11,7 +11,6 @@ export default {
   },
 
   ['task-update']({ task }) {
-    console.log(task)
     $store(Tasks.updateOrAddTask(task))
   },
 
