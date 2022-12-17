@@ -59,8 +59,8 @@ const ListItem = ({ notification }) => {
     const notLastPart = msgParts.slice(0, -1)
     const lastPart = msgParts.slice(-1)
 
-    notLastPart.forEach((p) => {
-      newMsg.push(p, <strong>{notification.createdBy.name}</strong>)
+    notLastPart.forEach((p, ind) => {
+      newMsg.push(p, <strong key={ind}>{notification.createdBy.name}</strong>)
     })
     newMsg.push(lastPart)
 
