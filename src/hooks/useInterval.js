@@ -1,13 +1,9 @@
-import { useEffect, useId } from 'react'
-window._$_custom_$_interval_$_manager_$_ ??= {}
+import { useEffect } from 'react'
 
-const useInterval = (fn, timeOut) => {
-  const id = useId()
-
+const useInterval = (handler, timeOut) => {
   useEffect(() => {
-    clearInterval(window._$_custom_$_interval_$_manager_$_[id])
-    window._$_custom_$_interval_$_manager_$_[id] = setInterval(fn, timeOut)
-    return () => clearInterval(window._$_custom_$_interval_$_manager_$_[id])
+    const interval = setInterval(handler, timeOut)
+    return () => clearInterval(interval)
   }, [])
 }
 
