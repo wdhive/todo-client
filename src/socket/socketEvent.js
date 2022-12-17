@@ -11,7 +11,8 @@ export default {
   },
 
   ['task-update']({ task }) {
-    $store(Tasks.updateTask(task))
+    console.log(task)
+    $store(Tasks.updateOrAddTask(task))
   },
 
   ['task-delete']({ task }) {

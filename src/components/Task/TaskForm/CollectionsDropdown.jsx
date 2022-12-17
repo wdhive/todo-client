@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import useTaskCollections from '$hooks/useTaskCollections'
 import css from './CollectionsDropdown.module.scss'
 import Dropdown from '$ui/Dropdown'
@@ -8,7 +8,12 @@ const CollectionsDropdown = ({ collection = 'none' }) => {
     (state) => state.settings.collections
   )
 
-  const list = taskCollections.map((col) => ({
+  const matchedCollection = useMemo(() => {
+    const matched = taskCollections.find((col) => col._id === collection)
+    return matched?._id ?? 'none'
+  }, [taskCollections, collection])
+
+  const dropDownOptions = taskCollections.map((col) => ({
     label: (
       <div className={css.label}>
         <div
@@ -26,8 +31,8 @@ const CollectionsDropdown = ({ collection = 'none' }) => {
   return (
     <Dropdown
       name="collection"
-      default={collection}
-      list={list}
+      default={matchedCollection}
+      list={dropDownOptions}
       className={css.dropdown}
       classNames={{
         button: css.button,

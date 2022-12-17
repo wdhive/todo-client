@@ -22,7 +22,6 @@ const TaskForm = ({ close }) => {
   const navigate = useNavigate()
   const [pendingParticipants, setPendingParticipants] = useState(() => [])
 
-  const userId = useSelector((state) => state.user.user._id)
   const task = useSelector((state) => {
     return (
       state.tasks.tasks?.find(({ _id }) => {
@@ -44,7 +43,7 @@ const TaskForm = ({ close }) => {
     if (pendingParticipants.length) {
       for (let key in formData) {
         if (key.startsWith('participant ')) {
-          const [, user] = key.split(' ')
+          const user = key.split(' ')[1]
           const role = formData[key]
           delete formData[key]
 

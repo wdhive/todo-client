@@ -9,6 +9,7 @@ import NotFound from '$components/Error404'
 import Loading from '$components/Loading'
 import Nav from '$components/Nav'
 import useMobileLayout from '$hooks/useMobileLayout'
+import Tasks from '$slice/Tasks'
 
 const TaskLayout = react.lazy(() => import('$pages/Task/Layout'))
 const ProfileLayout = react.lazy(() => import('$pages/Profile/Layout'))
@@ -62,7 +63,12 @@ const MainLayout = () => {
     $store(User.jwt(token))
   })
 
-  return api.loaded ? <LayoutContent /> : <Loading />
+  const api2 = useApiOnce('get', '/tasks')
+  api2.onLoad((data) => {
+    $store(Tasks.initTasks(data.tasks))
+  })
+
+  return api.loaded && api2.loaded ? <LayoutContent /> : <Loading />
 }
 
 export default memo(MainLayout)

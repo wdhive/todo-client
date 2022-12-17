@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { HiOutlineTrash } from 'react-icons/hi'
 import User from '$slice/User'
 import useApi from '$api/useApi'
@@ -6,6 +6,7 @@ import useApi from '$api/useApi'
 import css from './ListItem.module.scss'
 import Modal from '$ui/Uncontrolled/Modal'
 import useInterval from '$hooks/useInterval'
+import Tasks from '$slice/Tasks'
 
 const ListItem = ({ notification }) => {
   const api = useApi()
@@ -20,6 +21,7 @@ const ListItem = ({ notification }) => {
     const data = await api.post(`/tasks/${notification.task}/invitation`)
     if (!data) return modal.close()
 
+    $store(Tasks.addTask(data.task))
     $store(User.removeNoti(notification._id))
     modal.close()
   }

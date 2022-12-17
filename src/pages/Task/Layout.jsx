@@ -1,22 +1,12 @@
 import React, { memo } from 'react'
 import { useSelector } from 'react-redux'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import taskSlice from '$slice/Tasks'
-import useApiOnce from '$api/useApiOnce'
 
 import Task from './index'
 import TaskModal from './TaskModal'
-import Loading from '$components/Loading'
 
 const TaskLayout = () => {
   const tasks = useSelector((state) => state.tasks.tasks)
-
-  const api = useApiOnce('get', '/tasks')
-  api.onLoad((data) => {
-    $store(taskSlice.initTasks(data.tasks))
-  })
-
-  if (!api.loaded) return <Loading />
 
   return (
     <>
