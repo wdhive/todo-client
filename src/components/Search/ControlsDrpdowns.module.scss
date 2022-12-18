@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  gap: 1rem;
+  width: fit-content;
+  margin: auto;
+}
+
+.li {
+  padding: 0.33rem 0.85rem;
+  padding-right: 1.25rem;
+}
+
+.button {
+  background: v(c100);
+  border: 0.2rem solid v(c200);
+  border-radius: 100vmax;
+  padding: 0.25rem 1rem;
+  color: v(accent);
+}
+
+.section {
+  background: v(c100);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.8rem -0.4rem v(c700);
+}

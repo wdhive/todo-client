@@ -1,0 +1,54 @@
+.Search {
+  display: flex;
+  height: 100%;
+  gap: 2rem;
+}
+
+$padding-block: 2rem;
+$padding-inline: 4rem;
+
+.sidebar {
+  width: fluid(16rem, 40rem);
+  padding-left: $padding-inline;
+  padding-block: $padding-block;
+
+  @include break-down($lg) {
+    display: none;
+  }
+}
+
+.content,
+.main {
+  flex: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  overflow-y: auto;
+}
+
+.controls,
+.main {
+  padding-right: $padding-inline;
+}
+
+.controls {
+  padding-top: $padding-block;
+}
+
+.main {
+  padding-bottom: $padding-block;
+}
+
+// DEV:
+.sidebar,
+.controls,
+.main {
+  * {
+    // background: red;
+  }
+}

@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import useActiveState, { stopPropagation } from 'use-active-state'
 import useEffectExceptOnMount from 'use-effect-except-on-mount'
-import useGetItem from './useGetItem'
 import { BsChevronDown } from 'react-icons/bs'
-import { focusTo } from './utils'
+import useGetItem from './useGetItem'
 
 import css from './index.module.scss'
 
@@ -13,12 +12,15 @@ const index = ({
   classNames = {},
   list,
   default: defaultValue,
-  buttonLabel = 'Choose...',
+  label: buttonLabel = 'Choose...',
   icon = true,
   live = true,
+  autoClose = true,
+  disableKeyboardNavigation,
   onChange = () => {},
 }) => {
   const containerRef = useRef()
+  const buttonRef = useRef()
   const selectedItemRef = useRef()
 
   const [isOpen, toggleIsOpen] = useActiveState()
@@ -36,22 +38,6 @@ const index = ({
     }
   }
 
-  const handleButtnKeyDown = (e) => {
-    if (!isOpen) return
-
-    switch (e.key) {
-      case 'ArrowUp':
-        e.preventDefault()
-        handleSelectChange(getItem(-1).value)
-        break
-
-      case 'ArrowDown':
-        e.preventDefault()
-        handleSelectChange(getItem(1).value)
-        break
-    }
-  }
-
   const listItems = useMemo(
     () =>
       list.map((item) => {
@@ -61,17 +47,28 @@ const index = ({
 
         const handleItemClick = () => {
           handleSelectChange(item.value)
-          toggleIsOpen(false)
+          autoClose && toggleIsOpen(false)
+        }
+
+        const handleKeyDown = (e) => {
+          if (disableKeyboardNavigation) return
+
+          if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault()
+            e.currentTarget.click()
+          }
         }
 
         return (
           <li
+            tabIndex={disableKeyboardNavigation ? '-1' : '0'}
             {...props}
             key={item.value}
             value={item.value}
             active={isSelected ? '' : undefined}
             className={cn(css.li, classNames.li)}
             onClick={handleItemClick}
+            onKeyDown={handleKeyDown}
           >
             {item.label}
           </li>
@@ -83,17 +80,19 @@ const index = ({
   const getItem = useGetItem(list, selectedValue)
   const currentItem = useMemo(() => getItem(), [selectedValue])
 
-  useEffectExceptOnMount
+  useEffect(() => {
+    if (disableKeyboardNavigation) return
+    if (isOpen) selectedItemRef?.current?.focus()
+  }, [isOpen, disableKeyboardNavigation])
+
+  useEffectExceptOnMount(() => {
+    if (!isOpen) buttonRef?.current?.focus()
+  }, [isOpen])
 
   useEffectExceptOnMount(() => {
     if (!defaultValue) return
     setSelectedValue(defaultValue)
   }, [defaultValue])
-
-  useEffect(() => {
-    if (!selectedItemRef.current) return
-    focusTo(containerRef.current, selectedItemRef.current)
-  }, [selectedValue])
 
   return (
     <div
@@ -115,10 +114,10 @@ const index = ({
       )}
 
       <button
+        ref={buttonRef}
         className={cn(css.button, classNames.button)}
         type="button"
         onClick={() => toggleIsOpen()}
-        onKeyDown={handleButtnKeyDown}
       >
         {(live && currentItem?.label) || buttonLabel}
 

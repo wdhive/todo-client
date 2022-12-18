@@ -1,0 +1,26 @@
+.labelContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  outline-color: v(accent);
+  outline-offset: -0.15rem;
+}
+
+.checkbox {
+  background-color: v(background);
+  width: 1em;
+  height: 1em;
+  border-radius: 0.5rem;
+  border: 0.2rem solid v(accent);
+  color: v(background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25em;
+}
+
+.labelContainer[active] {
+  .checkbox {
+    background-color: v(accent);
+  }
+}

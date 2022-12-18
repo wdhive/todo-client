@@ -31,6 +31,10 @@
   top: 100%;
   margin-top: 0.5rem;
   overflow: hidden;
+  
+  ::-webkit-scrollbar{
+    background: transparent;
+  }
 }
 
 .ul {
@@ -46,4 +50,6 @@
 
 .li {
   cursor: pointer;
+  outline-color: v(accent);
+  outline-offset: -0.15rem;
 }

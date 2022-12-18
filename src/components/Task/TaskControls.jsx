@@ -47,7 +47,7 @@ const TaskControls = ({
       <div className={css.controls}>
         <Dropdown
           {...commonprops}
-          buttonLabel="Collection"
+          label="Collection"
           default={taskCollection}
           onChange={(value) => setTaskCollection(value)}
           list={collections?.map(({ _id, name }) => ({
@@ -58,7 +58,7 @@ const TaskControls = ({
 
         <Dropdown
           {...commonprops}
-          buttonLabel="Sort By"
+          label="Sort By"
           default={sortBy}
           onChange={(value) => setSoryBy(value)}
           list={[
