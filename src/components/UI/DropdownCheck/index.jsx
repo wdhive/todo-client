@@ -61,16 +61,13 @@ const DropdownCheck = ({
   useEffectExceptOnMount(() => setListState(list), [list])
 
   return (
-    <div className={css.DropdownCheck}>
-      <Dropdown
-        {...props}
-        live={false}
-        autoClose={false}
-        list={newList}
-        classNames={classNames}
-        disableKeyboardNavigation
-      />
-    </div>
+    <Dropdown
+      {...props}
+      live={false}
+      list={newList}
+      classNames={classNames}
+      disableKeyboardNavigation
+    />
   )
 }
 

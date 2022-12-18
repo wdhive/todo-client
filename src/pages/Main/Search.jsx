@@ -1,30 +1,71 @@
 import { useSelector } from 'react-redux'
+import { useMemo, useState } from 'react'
+import useMobileLayout from '$hooks/useMobileLayout'
 
 import css from './Search.module.scss'
 import SearchSidebar from '$components/Search/Sidebar'
 import SearchMain from '$components/Search/Main'
-import SearchControls from '$components/Search/Controls'
-import { useMemo } from 'react'
+import Header from '$components/Search/Header'
 
 const Search = () => {
-  const collections = useTaskCollections()
-  const participants = useTaskParticipants()
+  const mobileMode = useMobileLayout()
 
-  const commonProps = { collections, participants }
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedFilter, setSelectedFilter] = useState({})
+  const [selectedCollections, setSelectedCollections] = useState({})
+  const [selectedParticipants, setSelectedParticipants] = useState({})
+
+  const collections = useTaskCollections(selectedCollections)
+  const participants = useTaskParticipants(selectedParticipants)
+
+  const commonProps = useMemo(
+    () => ({
+      collections,
+      participants,
+      selectedFilter,
+      setSelectedFilter,
+      setSelectedCollections,
+      setSelectedParticipants,
+    }),
+    [
+      collections,
+      participants,
+      selectedFilter,
+      setSelectedFilter,
+      setSelectedCollections,
+      setSelectedParticipants,
+    ]
+  )
 
   return (
     <div className={css.Search}>
-      <div className={css.sidebar}>
-        <SearchSidebar {...commonProps} />
-      </div>
+      {mobileMode || (
+        <div className={css.sidebar}>
+          <SearchSidebar {...commonProps} />
+        </div>
+      )}
 
       <div className={css.content}>
         <div className={css.controls}>
-          <SearchControls {...commonProps} />
+          <div className="wrapper">
+            <Header
+              {...commonProps}
+              mobileMode={mobileMode}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
+          </div>
         </div>
 
         <div className={css.main}>
-          <SearchMain />
+          <div className="wrapper">
+            <SearchMain
+              searchQuery={searchQuery}
+              selectedFilter={selectedFilter}
+              selectedCollections={selectedCollections}
+              selectedParticipants={selectedParticipants}
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -33,7 +74,7 @@ const Search = () => {
 
 export default Search
 
-const useTaskParticipants = () => {
+const useTaskParticipants = (selectedParticipants) => {
   const tasks = useSelector((state) => state.tasks.tasks)
   const userId = useSelector((state) => state.user.user._id)
 
@@ -52,6 +93,7 @@ const useTaskParticipants = () => {
       return {
         value: parsed._id,
         label: parsed.name,
+        selected: selectedParticipants[parsed._id],
       }
     })
 
@@ -59,7 +101,7 @@ const useTaskParticipants = () => {
   }, [tasks, userId])
 }
 
-const useTaskCollections = () => {
+const useTaskCollections = (selectedCollections) => {
   const taskCollections = useSelector((state) => state.settings.collections)
 
   return useMemo(
@@ -68,6 +110,7 @@ const useTaskCollections = () => {
         return {
           label: col.name,
           value: col._id,
+          selected: selectedCollections[col._id],
         }
       }),
 

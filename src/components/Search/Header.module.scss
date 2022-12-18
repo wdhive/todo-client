@@ -1,0 +1,30 @@
+.search {
+  position: relative;
+  --icon-size: 3rem;
+
+  input {
+    display: block;
+    width: 100%;
+    background: v(c100);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    padding-right: calc(var(--icon-size));
+    font-weight: normal;
+
+    &:not(:focus) {
+      outline-width: 0.2rem;
+      outline-color: v(c300);
+    }
+  }
+}
+
+.searchIcon {
+  width: var(--icon-size);
+  position: absolute;
+  inset: 0;
+  left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}

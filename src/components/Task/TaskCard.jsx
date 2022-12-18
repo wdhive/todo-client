@@ -44,7 +44,7 @@ const TaskCard = ({ task }) => {
     $store(Task.updateTask(data.task))
   }
 
-  const handleEditClick = () => navigate(`/tasks/${task._id}`)
+  const handleEditClick = () => navigate(`${task._id}`)
 
   const handleDeleteClick = async () => {
     const modal = await Modal({

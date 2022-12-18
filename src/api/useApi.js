@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 import api from './index'
 import useStatus from '$hooks/useStatus'
 
-const useApi = (initialStatus) => {
+const useApi = ( ) => {
   const {
     hasError,
     isLoading,
@@ -10,7 +10,7 @@ const useApi = (initialStatus) => {
     loadingSymbol,
     loadedSymbol,
     setStatus,
-  } = useStatus(initialStatus)
+  } = useStatus( )
 
   const reset = () => setStatus()
   const fetch = useCallback(async (method, ...args) => {

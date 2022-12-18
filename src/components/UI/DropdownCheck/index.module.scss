@@ -3,7 +3,12 @@
   align-items: center;
   gap: 0.65rem;
   outline-color: v(accent);
-  outline-offset: -0.15rem;
+  outline-offset: -0.2rem;
+
+  &:focus-visible {
+    outline-style: dashed;
+    outline-width: 0.2rem;
+  }
 }
 
 .checkbox {
@@ -16,7 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25em;
+  font-size: 1.15em;
 }
 
 .labelContainer[active] {

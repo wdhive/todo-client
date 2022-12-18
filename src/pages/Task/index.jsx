@@ -6,6 +6,7 @@ import NavProfile from '$components/Nav/NavProfile'
 import TaskMainCategory from '$components/Task/MainCategory'
 import TaskControls from '$components/Task/TaskControls'
 import TaskCard from '$components/Task/TaskCard'
+import TaskList from '$components/Task/TaskList'
 
 const Task = ({ tasks }) => {
   const collections = useTaskCollections()
@@ -34,8 +35,7 @@ const Task = ({ tasks }) => {
         (taskStatus === 'incomplete' && !task.completed)
 
       if (!(passCollection && passStatus)) return
-      const item = <TaskCard key={task._id} task={task} />
-      finalResults.push(item)
+      finalResults.push(task)
     })
 
     return finalResults
@@ -64,7 +64,7 @@ const Task = ({ tasks }) => {
             taskCount={tasksList.length}
           />
 
-          <div className={css.taskList}>{tasksList}</div>
+          <TaskList tasks={tasksList} />
         </div>
       </div>
     </div>

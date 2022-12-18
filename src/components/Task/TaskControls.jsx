@@ -14,10 +14,12 @@ const Item = ({ label }) => {
 
 const TaskControls = ({
   collections,
-  setSoryBy,
   setTaskCollection,
-  sortBy,
   taskCollection,
+
+  sortBy,
+  setSoryBy,
+
   taskCount,
 }) => {
   const commonprops = {
@@ -45,16 +47,18 @@ const TaskControls = ({
       </p>
 
       <div className={css.controls}>
-        <Dropdown
-          {...commonprops}
-          label="Collection"
-          default={taskCollection}
-          onChange={(value) => setTaskCollection(value)}
-          list={collections?.map(({ _id, name }) => ({
-            value: _id,
-            label: <Item label={name} />,
-          }))}
-        />
+        {collections && (
+          <Dropdown
+            {...commonprops}
+            label="Collection"
+            default={taskCollection}
+            onChange={(value) => setTaskCollection(value)}
+            list={collections.map(({ _id, name }) => ({
+              value: _id,
+              label: <Item label={name} />,
+            }))}
+          />
+        )}
 
         <Dropdown
           {...commonprops}

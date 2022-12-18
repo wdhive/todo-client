@@ -22,17 +22,3 @@
     padding-bottom: 0;
   }
 }
-
-.taskList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-
-  & > * {
-    min-width: 30rem;
-    max-width: 37.5rem;
-    flex-grow: 1;
-    flex-basis: 30%;
-  }
-}

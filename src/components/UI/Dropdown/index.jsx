@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import useActiveState, { stopPropagation } from 'use-active-state'
 import useEffectExceptOnMount from 'use-effect-except-on-mount'
 import { BsChevronDown } from 'react-icons/bs'
@@ -15,13 +15,13 @@ const index = ({
   label: buttonLabel = 'Choose...',
   icon = true,
   live = true,
-  autoClose = true,
   disableKeyboardNavigation,
   onChange = () => {},
 }) => {
   const containerRef = useRef()
   const buttonRef = useRef()
   const selectedItemRef = useRef()
+  const uniqueId = '@Dropdown' + useId()
 
   const [isOpen, toggleIsOpen] = useActiveState()
   const [selectedValue, setSelectedValue] = useState(defaultValue)
@@ -47,7 +47,7 @@ const index = ({
 
         const handleItemClick = () => {
           handleSelectChange(item.value)
-          autoClose && toggleIsOpen(false)
+          toggleIsOpen(false)
         }
 
         const handleKeyDown = (e) => {
@@ -86,7 +86,11 @@ const index = ({
   }, [isOpen, disableKeyboardNavigation])
 
   useEffectExceptOnMount(() => {
-    if (!isOpen) buttonRef?.current?.focus()
+    if (isOpen) return
+    const closest = document.activeElement?.closest(
+      `.${css.Dropdown}[data-id="${uniqueId}"]`
+    )
+    closest && buttonRef?.current?.focus()
   }, [isOpen])
 
   useEffectExceptOnMount(() => {
@@ -96,6 +100,7 @@ const index = ({
 
   return (
     <div
+      data-id={uniqueId}
       className={cn(css.Dropdown, className)}
       active={isOpen ? '' : undefined}
       onClick={stopPropagation}

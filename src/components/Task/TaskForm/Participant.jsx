@@ -150,7 +150,6 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
       <div className={css.participantsInput} onClick={stopPropagation}>
         <input
           onFocus={() => setIsModalOpen(true)}
-          onBlur={() => setTimeout(() => setIsModalOpen(false), 200)}
           onChange={handleSearchInput}
           className={css.usernameInput}
           autoComplete="off"

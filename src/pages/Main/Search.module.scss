@@ -34,21 +34,25 @@ $padding-inline: 4rem;
 .controls,
 .main {
   padding-right: $padding-inline;
+
+  @include break-down($lg) {
+    $min-padding: calc($padding-inline / 2);
+    $max-padding: calc($padding-inline * 5);
+    padding-inline: fluid($min-padding, $max-padding);
+
+    :global(.wrapper) {
+      max-width: 70rem;
+    }
+  }
 }
 
 .controls {
-  padding-top: $padding-block;
-}
+  padding-block: $padding-block calc($padding-block / 1.25);
 
-.main {
-  padding-bottom: $padding-block;
-}
-
-// DEV:
-.sidebar,
-.controls,
-.main {
-  * {
-    // background: red;
+  @include break-down($lg) {
+    background: v(c200);
   }
+}
+.main {
+  padding-block: calc($padding-block / 1.25) $padding-block;
 }

@@ -1,9 +1,9 @@
 .Dropdown {
   position: relative;
-  width: 100%;
   user-select: none;
 
   &[active] .section {
+    z-index: 9999;
     display: block;
   }
 
@@ -31,8 +31,8 @@
   top: 100%;
   margin-top: 0.5rem;
   overflow: hidden;
-  
-  ::-webkit-scrollbar{
+
+  ::-webkit-scrollbar {
     background: transparent;
   }
 }
@@ -51,5 +51,10 @@
 .li {
   cursor: pointer;
   outline-color: v(accent);
-  outline-offset: -0.15rem;
+  outline-offset: -0.2rem;
+
+  &:focus-visible {
+    outline-style: dashed;
+    outline-width: 0.2rem;
+  }
 }

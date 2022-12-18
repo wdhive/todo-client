@@ -1,6 +1,6 @@
 import { useState } from 'react'
-const loadingSymbol = Symbol('Loading')
-const loadedSymbol = Symbol('loaded')
+export const loadingSymbol = Symbol('Loading')
+export const loadedSymbol = Symbol('Loaded')
 
 const useStatus = () => {
   const [status, setStatus] = useState()
