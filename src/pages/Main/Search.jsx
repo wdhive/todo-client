@@ -17,12 +17,27 @@ const Search = () => {
 
   const collections = useTaskCollections(selectedCollections)
   const participants = useTaskParticipants(selectedParticipants)
+  const filterList = useMemo(
+    () => [
+      {
+        label: 'Name',
+        value: 'name',
+        selected: selectedFilter['name'],
+      },
+      {
+        label: 'Description',
+        value: 'description',
+        selected: selectedFilter['description'],
+      },
+    ],
+    []
+  )
 
   const commonProps = useMemo(
     () => ({
       collections,
       participants,
-      selectedFilter,
+      filterList,
       setSelectedFilter,
       setSelectedCollections,
       setSelectedParticipants,
@@ -30,7 +45,7 @@ const Search = () => {
     [
       collections,
       participants,
-      selectedFilter,
+      filterList,
       setSelectedFilter,
       setSelectedCollections,
       setSelectedParticipants,

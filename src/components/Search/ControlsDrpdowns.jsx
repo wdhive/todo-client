@@ -1,11 +1,12 @@
+import { memo } from 'react'
+
 import css from './ControlsDrpdowns.module.scss'
 import DropdownCheck from '$ui/DropdownCheck'
-import { memo, useMemo } from 'react'
 
 const ControlsDrpdowns = ({
   collections,
   participants,
-  selectedFilter,
+  filterList,
   setSelectedFilter,
   setSelectedCollections,
   setSelectedParticipants,
@@ -16,22 +17,6 @@ const ControlsDrpdowns = ({
       .map((i) => [i.value, true])
     setState(Object.fromEntries(selected))
   }
-
-  const filterList = useMemo(
-    () => [
-      {
-        label: 'Name',
-        value: 'name',
-        selected: selectedFilter['name'],
-      },
-      {
-        label: 'Description',
-        value: 'description',
-        selected: selectedFilter['description'],
-      },
-    ],
-    []
-  )
 
   return (
     <div className={css.container}>

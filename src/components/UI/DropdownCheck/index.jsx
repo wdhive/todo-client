@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { RiCheckLine } from 'react-icons/ri'
 import useEffectExceptOnMount from 'use-effect-except-on-mount'
 
 import Dropdown from '$ui/Dropdown'
 import css from './index.module.scss'
+import Checkbox from '$ui/Checkbox'
 
 const DropdownCheck = ({
   list,
@@ -45,9 +45,7 @@ const DropdownCheck = ({
         onClick={handleClick}
         onKeyDown={handleKeyDown}
       >
-        <div className={css.checkbox}>
-          <RiCheckLine />
-        </div>
+        <Checkbox selected={selected} />
         <div>{label}</div>
       </div>
     )

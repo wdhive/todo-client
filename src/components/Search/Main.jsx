@@ -24,7 +24,11 @@ const SearchMain = ({
 
   return (
     <div>
-      <TaskControls sortBy={sortBy} setSoryBy={setSortBy} />
+      <TaskControls
+        sortBy={sortBy}
+        setSoryBy={setSortBy}
+        taskCount={tasks.length}
+      />
 
       <div>
         <TaskList tasks={tasks} />

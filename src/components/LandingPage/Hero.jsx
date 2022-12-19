@@ -29,7 +29,7 @@ const Hero = () => {
               <LoginBtn label="Login" />
             </div>
 
-            {!api.error && api.loaded && (
+            {!api.error && !api.loading && (
               <p className={css.hero__status}>
                 <strong>{api.data.count}</strong> people{' '}
                 {api.data.count > 1 ? 'are' : 'is'} already enjoying our app

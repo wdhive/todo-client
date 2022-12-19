@@ -49,26 +49,24 @@ const LayoutContent = memo(() => {
 })
 
 const MainLayout = () => {
-  const api = useApiOnce('get', '/user?settings')
-  api.onLoad((data) => {
+  const api = useApiOnce('get', '/user?settings', (data) => {
     $store(User.updateUser(data.user))
     $store(settingsSlice.updateSettigns(data.settings))
   })
 
-  useApiOnce('get', '/notifications').onLoad(({ notifications }) => {
+  useApiOnce('get', '/notifications', ({ notifications }) => {
     $store(User.initNoti(notifications))
   })
 
-  useApiOnce('get', '/account/new-token').onLoad(({ token }) => {
+  useApiOnce('get', '/account/new-token', ({ token }) => {
     $store(User.jwt(token))
   })
 
-  const api2 = useApiOnce('get', '/tasks')
-  api2.onLoad((data) => {
+  const api2 = useApiOnce('get', '/tasks', (data) => {
     $store(Tasks.initTasks(data.tasks))
   })
 
-  return api.loaded && api2.loaded ? <LayoutContent /> : <Loading />
+  return api.loading || api2.loading ? <Loading /> : <LayoutContent />
 }
 
 export default memo(MainLayout)

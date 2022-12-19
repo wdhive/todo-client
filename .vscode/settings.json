@@ -14,7 +14,8 @@
 		"$store": "${folder}/src/store",
 		"$styles": "${folder}/src/styles",
 		"$utils": "${folder}/src/utils",
-		"$ui": "${folder}/src/components/UI"
+		"$ui": "${folder}/src/components/UI",
+		"$use-react-api": "${folder}/src/use-react-api"
 	},
 	"path-intellisense.pathMappings": {
 		"$src": "${workspaceFolder}/src",
@@ -31,6 +32,7 @@
 		"$store": "${workspaceFolder}/src/store",
 		"$styles": "${workspaceFolder}/src/styles",
 		"$utils": "${workspaceFolder}/src/utils",
-		"$ui": "${workspaceFolder}/src/components/UI"
+		"$ui": "${workspaceFolder}/src/components/UI",
+		"$use-react-api": "${workspaceFolder}/src/use-react-api"
 	}
 }
