@@ -14,11 +14,11 @@ const Signin = () => {
   const [emailSent, setEmailSent] = useState(false)
   const handleBack = () => {
     setStep((prev) => --prev)
-    api.reset()
+    api.setStatus.reset()
   }
   const handleForgetPass = () => {
     setStep(1)
-    api.reset()
+    api.setStatus.reset()
   }
 
   const handleSigninSubmit = async (values) => {
@@ -39,7 +39,7 @@ const Signin = () => {
 
   const handleCodeSubmit = async ({ code }) => {
     formData.current.code = code
-    api.reset()
+    api.setStatus.reset()
     setStep(2)
   }
 

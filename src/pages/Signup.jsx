@@ -13,7 +13,7 @@ const Signup = () => {
   const [step, setStep] = useState(0)
   const [emailSent, setEmailSent] = useState(false)
   const handleBack = () => {
-    api.reset()
+    api.setStatus.reset()
     setStep(0)
   }
 
@@ -57,7 +57,7 @@ const Signup = () => {
     }
 
     formData.current = values
-    api.reset()
+    api.setStatus.reset()
     setStep(1)
   }
 

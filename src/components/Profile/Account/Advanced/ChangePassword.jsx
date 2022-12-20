@@ -9,7 +9,7 @@ const ChangePassword = ({ api, goBack }) => {
     const [formData] = getInputs(e.target)
 
     if (formData.confirm_new_password !== formData.new_password) {
-      return api.setStatus("Both password didn't matched")
+      return api.setStatus.error("Both password didn't matched")
     }
     delete formData.confirm_new_password
 

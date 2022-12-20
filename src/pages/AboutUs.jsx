@@ -1,5 +1,22 @@
+import useApi from '$api/useApi'
+import useApiOnce from '$api/useApiOnce'
+
 const AboutUs = () => {
-  return <h1>AboutUs</h1>
+  const a = useApiOnce('get', '/ping')
+
+  console.log(a.status)
+
+  return (
+    <h1
+      onClick={async () => {
+        a.retry()
+        // const data = await a.get('/piddng')
+        // console.log(data)
+      }}
+    >
+      AboutUs
+    </h1>
+  )
 }
 
 export default AboutUs
