@@ -10,6 +10,7 @@ import Header from '$components/Search/Header'
 const Search = () => {
   const mobileMode = useMobileLayout()
 
+  const [sortBy, setSortBy] = useState('a')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedFilter, setSelectedFilter] = useState({})
   const [selectedCollections, setSelectedCollections] = useState({})
@@ -35,17 +36,21 @@ const Search = () => {
 
   const commonProps = useMemo(
     () => ({
+      sortBy,
+      filterList,
       collections,
       participants,
-      filterList,
+      setSortBy,
       setSelectedFilter,
       setSelectedCollections,
       setSelectedParticipants,
     }),
     [
+      sortBy,
+      filterList,
       collections,
       participants,
-      filterList,
+      setSortBy,
       setSelectedFilter,
       setSelectedCollections,
       setSelectedParticipants,
@@ -75,6 +80,8 @@ const Search = () => {
         <div className={css.main}>
           <div className="wrapper">
             <SearchMain
+              sortBy={sortBy}
+              setSortBy={setSortBy}
               searchQuery={searchQuery}
               selectedFilter={selectedFilter}
               selectedCollections={selectedCollections}

@@ -1,37 +1,28 @@
-import { memo, useState } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
+import { useSelector } from 'react-redux'
+import filterTask from './filterTask'
 
-import css from './Main.module.scss'
 import TaskControls from '$components/Task/TaskControls'
 import TaskList from '$components/Task/TaskList'
-import { useSelector } from 'react-redux'
 
-const SearchMain = ({
-  searchQuery,
-  selectedFilter,
-  selectedCollections,
-  selectedParticipants,
-}) => {
+const SearchMain = ({ setSortBy, ...props }) => {
   const tasks = useSelector((state) => state.tasks.tasks)
-  const [sortBy, setSortBy] = useState('a')
 
-  console.log(
-    searchQuery,
-    sortBy,
-    selectedFilter,
-    selectedCollections,
-    selectedParticipants
+  const filteredTask = useMemo(
+    () => filterTask([...tasks], props) || [],
+    [tasks, JSON.stringify(props)]
   )
 
   return (
     <div>
       <TaskControls
-        sortBy={sortBy}
-        setSoryBy={setSortBy}
-        taskCount={tasks.length}
+        sortBy={props.sortBy}
+        setSortBy={setSortBy}
+        taskCount={filteredTask.length}
       />
 
       <div>
-        <TaskList tasks={tasks} />
+        <TaskList tasks={filteredTask} />
       </div>
     </div>
   )

@@ -60,7 +60,7 @@ const Task = ({ tasks }) => {
             taskCollection={taskCollection}
             setTaskCollection={setTaskCollection}
             sortBy={sortBy}
-            setSoryBy={setSoryBy}
+            setSortBy={setSoryBy}
             taskCount={tasksList.length}
           />
 

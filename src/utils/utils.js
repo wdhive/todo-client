@@ -48,3 +48,7 @@ export const getDiff = (base, data) => {
 
   return result
 }
+
+export const isNotEmptyObject = (o) => {
+  return Object.keys(o).length !== 0
+}

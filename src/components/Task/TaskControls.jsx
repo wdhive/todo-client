@@ -18,7 +18,7 @@ const TaskControls = ({
   taskCollection,
 
   sortBy,
-  setSoryBy,
+  setSortBy,
 
   taskCount,
 }) => {
@@ -64,7 +64,7 @@ const TaskControls = ({
           {...commonprops}
           label="Sort By"
           default={sortBy}
-          onChange={(value) => setSoryBy(value)}
+          onChange={(value) => setSortBy(value)}
           list={[
             {
               label: <Item label="Accending" />,

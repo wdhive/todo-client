@@ -1,4 +1,4 @@
-import react, { memo, Suspense } from 'react'
+import react, { memo, Suspense, useRef } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import useApiOnce from '$api/useApiOnce'
 import settingsSlice from '$slice/Settings'
