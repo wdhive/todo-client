@@ -15,7 +15,7 @@ const reactApi = ReactApi(
     },
   },
   {
-    failMiddleware: (err) => {
+    _getFail: (err) => {
       if (err.response?.status === 401) {
         $store(userSlice.jwt())
       }
