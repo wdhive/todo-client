@@ -52,6 +52,7 @@ const MainLayout = () => {
   const api = useApiOnce('get', '/user?settings', (data) => {
     $store(User.updateUser(data.user))
     $store(settingsSlice.updateSettigns(data.settings))
+    console.log(data.settings)
   })
 
   useApiOnce('get', '/notifications', ({ notifications }) => {

@@ -2016,10 +2016,10 @@ use-effect-except-on-mount@latest:
   resolved "https://registry.yarnpkg.com/use-effect-except-on-mount/-/use-effect-except-on-mount-0.0.0.tgz#1474c16ebc6cbfe227c2a1ffdee0ceaac45645da"
   integrity sha512-Id8UVfKQ0k3AoOTZFHm6v/qDTbQn/g2YyKOWshZJWZBHBAHgzigVGCJCgfW+Q5QGTeNl/We+lX0blNqRH45ftA==
 
-use-react-api@latest:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/use-react-api/-/use-react-api-1.0.1.tgz#ac0d21ba9443950bc9d82870ad3260a79c1eb92d"
-  integrity sha512-DeyJCafVKd/QFN3qhZVlUrSxjUFiXoREzjbILFA0//N2xQwyW2T+RoFCdUaPQUmdJe6CFLHO3V9CM9OE5lO2iQ==
+use-react-api@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/use-react-api/-/use-react-api-1.0.2.tgz#2e68d44956a83da71ccd56700cf13c146d3c3449"
+  integrity sha512-K27hOdPUC/yWVVU52nFXHh3qskaAVoNkoCWpWDcG436M0uasq83vcrfySemkeI/ODCvQYNPPDS/PoIqUNg7QIw==
 
 use-sync-external-store@^1.0.0:
   version "1.2.0"

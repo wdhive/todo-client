@@ -7,6 +7,7 @@ import setSocket from '$socket'
 import User from '$slice/User'
 import Tasks from '$slice/Tasks'
 import Settings from '$slice/Settings'
+import useApi from '$api/useApi'
 let prevJwt
 
 export const setLocalStroage = (key, data = null) => {
@@ -17,6 +18,7 @@ export const setLocalStroage = (key, data = null) => {
 }
 
 const Effect = ({ hue, jwt }) => {
+  const api = useApi()
   const theme = useSelector((state) => state.settings.theme)
   const socketId = useSelector((state) => state.user.socketId)
 
@@ -66,6 +68,14 @@ const Effect = ({ hue, jwt }) => {
   // Update theme
   useEffect(() => {
     setLocalStroage('app-theme-hue', hue)
+  }, [hue])
+
+  // Update theme
+  useEffectExceptOnMount(() => {
+    const timeout = setTimeout(async () => {
+      await api.patch('/user/settings', { hue })
+    }, 1000)
+    return () => clearTimeout(timeout)
   }, [hue])
 
   return <></>
