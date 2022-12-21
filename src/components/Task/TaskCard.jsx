@@ -113,11 +113,7 @@ const TaskCard = ({ task }) => {
           />
         </div>
 
-        <p className={css.middle}>
-          {task.description?.length > 75
-            ? task.description?.slice(0, 75) + '...'
-            : task.description}
-        </p>
+        <p className={css.middle}>{task.description}</p>
 
         <div className={css.bottom}>
           <div className={css.time}>
