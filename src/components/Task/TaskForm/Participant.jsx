@@ -76,7 +76,7 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
       abortController.signal.aborted || abortController.abort()
     }
 
-    const username = e.target.value
+    const username = e.target.value.trim()
     if (!username) return setSearchUsers([])
     abortController = new AbortController()
 
