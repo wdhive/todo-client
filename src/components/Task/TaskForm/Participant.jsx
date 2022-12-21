@@ -92,7 +92,7 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
           if (!data) return
           setSearchUsers(data.user)
         })
-    }, 75)
+    }, 150)
   }
 
   const AddedUsers = useMemo(() => {
