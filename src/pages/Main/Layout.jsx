@@ -1,8 +1,9 @@
-import react, { memo, Suspense, useRef } from 'react'
+import react, { memo, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import useApiOnce from '$api/useApiOnce'
 import settingsSlice from '$slice/Settings'
 import User from '$slice/User'
+import pwaManager from '$utils/pwa'
 
 import css from './Layout.module.scss'
 import NotFound from '$components/Error404'
@@ -15,6 +16,8 @@ const TaskLayout = react.lazy(() => import('$pages/Task/Layout'))
 const ProfileLayout = react.lazy(() => import('$pages/Profile/Layout'))
 const Search = react.lazy(() => import('$pages/Main/Search'))
 const Notifications = react.lazy(() => import('$pages/Main/Notifications'))
+
+pwaManager()
 
 const LayoutContent = memo(() => {
   const mobileMode = useMobileLayout()

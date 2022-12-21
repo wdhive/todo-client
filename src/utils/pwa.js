@@ -5,8 +5,8 @@ const cacheName = 'runtime-cache'
 const getNotCachedFiles = async () => {
   const { data } = await axios.get(mappingsFile)
   const files = data.map((file) => {
-    if (file === 'index.html') return '/'
-    return `/${file}`
+    if (file === 'index.html') return location.origin
+    return location.origin + file
   })
 
   const notCachedFiles = []
@@ -24,6 +24,10 @@ const getNotCachedRes = async (responses) => {
     notCachedRes.push(res)
   }
   return notCachedRes
+}
+
+export const isActivated = () => {
+  return navigator.serviceWorker.controller?.state === 'activated'
 }
 
 export const isInstalled = async () => {
@@ -48,5 +52,12 @@ export const install = async () => {
   }
 }
 
-install.isInstalled = isInstalled
-export default install
+export const auto = async () => {
+  if (!isActivated()) return
+  ;(await isInstalled()) || (await install())
+}
+
+export default () => {
+  auto()
+  navigator.serviceWorker.oncontrollerchange = auto
+}

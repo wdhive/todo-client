@@ -13,7 +13,16 @@ const config = {
   assets: 'assets',
 }
 
-const plugins = [react(), svgr.default(), /* vitePWA(), */ viteVSCode()]
+const plugins = [
+  react(),
+  svgr.default(),
+  vitePWA({
+    map: true,
+    spa: true,
+    preCacheFiles: ['/', '/sw.js', '/swRegister.js', '/manifest.json'],
+  }),
+  viteVSCode(),
+]
 
 const css = {
   modules: {
