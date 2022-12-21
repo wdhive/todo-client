@@ -54,11 +54,11 @@
   .addBtn {
     position: relative;
     z-index: 999;
-    --btn-size: 6.5em;
+    --btn-size: 6.15em;
     width: v(btn-size);
     height: v(btn-size);
     border-radius: 50%;
-    margin-top: -2.75rem;
+    margin-top: -2.25rem;
     display: grid;
     place-content: center;
     border: 0.65rem solid v(c100);
