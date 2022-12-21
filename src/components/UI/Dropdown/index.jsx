@@ -27,8 +27,6 @@ const index = ({
   const [isOpen, toggleIsOpen, contentRef] = useActiveState()
   const [selectedValue, setSelectedValue] = useState(defaultValue)
 
-  console.log('Hello')
-
   const handleSelectChange = async (value) => {
     if (selectedValue === value) return
     let defaultPrevented = false
