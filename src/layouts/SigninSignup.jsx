@@ -5,6 +5,14 @@ import css from './SigninSignup.module.scss'
 import Brand from '$components/Brand'
 
 const SigninSignup = ({ children }) => {
+  const links = (
+    <div className={css.hero__links}>
+      <Link to="/">Home</Link>
+      <Link to="/about">About us</Link>
+      <Link to="/help">Help & Support</Link>
+    </div>
+  )
+
   return (
     <main className={css.main}>
       <div className="wrapper">
@@ -19,21 +27,14 @@ const SigninSignup = ({ children }) => {
             </h2>
           </div>
 
-          <div className={css.hero__links}>
-            <Link to="/">Home</Link>
-            <Link to="/about">About us</Link>
-            <Link to="/help">Help & Support</Link>
-            <a
-              className={css.githubLink}
-              target="_blank"
-              href="https://github.com/BabyDevs/Todo-App"
-            >
-              <FaGithub />
-            </a>
-          </div>
+          {links}
         </div>
 
-        <div className={css.form}>{children}</div>
+        <div className={css.form}>
+          {children}
+
+          {links}
+        </div>
       </div>
     </main>
   )

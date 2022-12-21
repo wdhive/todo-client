@@ -95,8 +95,6 @@
   }
 
   @include break-down($lg) {
-    align-items: flex-start;
-
     &__cta {
       flex-direction: column;
     }
@@ -141,11 +139,8 @@
 
 .showDialog,
 .closeDialog {
-  $size: fluid(2.8rem, 3.2rem);
   background: none;
   display: none;
-  // width: $size;
-  // height: $size;
 
   @include break-down($lg) {
     display: block;

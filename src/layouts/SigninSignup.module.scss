@@ -26,6 +26,7 @@
   }
 
   @include break-down($xxs) {
+    animation: none;
     padding: 0;
     display: block;
   }
@@ -47,6 +48,7 @@
     }
 
     @include break-down($xxs) {
+      animation: none;
       border-radius: 0;
       height: inherit;
       max-height: inherit;
@@ -136,4 +138,22 @@
 
 .form {
   overflow-y: auto;
+
+  .hero__links {
+    @include break-up($md) {
+      display: none;
+    }
+
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.25rem;
+    gap: 1.5rem;
+
+    a {
+      text-decoration: underline;
+      font-size: 1.3rem;
+      font-weight: normal;
+      color: v(c700);
+    }
+  }
 }
