@@ -27,13 +27,13 @@ export default (
 ) => {
   searchQuery = searchQuery.trim()
   if (
-    !searchQuery &&
-    !isNotEmptyObject(selectedFilter) &&
-    !isNotEmptyObject(selectedCollections) &&
-    !isNotEmptyObject(selectedParticipants)
-  ) {
+    (!searchQuery && isNotEmptyObject(selectedFilter)) ||
+    (!searchQuery &&
+      !isNotEmptyObject(selectedFilter) &&
+      !isNotEmptyObject(selectedCollections) &&
+      !isNotEmptyObject(selectedParticipants))
+  )
     return
-  }
 
   const result = tasks.filter((task) => {
     // Task collection
@@ -49,13 +49,15 @@ export default (
       let found = false
       const allUsers = [
         task.owner._id,
-        task.completedBy?._id,
         ...task.participants.map((p) => p.user._id),
       ]
 
-      allUsers.forEach((userId) => {
-        found = selectedParticipants[userId]
-      })
+      for (let userId of allUsers) {
+        if (selectedParticipants[userId]) {
+          found = true
+          break
+        }
+      }
 
       if (!found) return
     }

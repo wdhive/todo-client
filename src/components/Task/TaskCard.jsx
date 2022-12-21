@@ -1,18 +1,17 @@
-import { memo, useId, useMemo } from 'react'
+import { memo, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import useActiveState from 'use-active-state'
 import { useNavigate } from 'react-router-dom'
-import { FaRegEdit, FaRegTrashAlt, FaRegClock, FaCheck } from 'react-icons/fa'
-import avatar from '$assets/avatar.png'
+import { FaRegEdit, FaRegTrashAlt, FaRegClock } from 'react-icons/fa'
 import useApi from '$api/useApi'
 import Task from '$slice/Tasks'
 import useTaskPermission from '$hooks/useTaskPermission'
 
+import Checkbox from '$ui/Checkbox'
 import css from './TaskCard.module.scss'
 import Modal from '$ui/Uncontrolled/Modal'
 
 const TaskCard = ({ task }) => {
-  const uniqueId = useId()
   const api = useApi()
   const [show, toggleShow] = useActiveState()
   const navigate = useNavigate()
@@ -79,12 +78,14 @@ const TaskCard = ({ task }) => {
     ]
 
     const filteredParticipants = taskTotalParticipants
-      .filter(({ user, active }) => !(!active || userId === user._id))
+      .filter(
+        ({ user, active }) => !(!active || userId === user._id) && user.avatar
+      )
       .reverse()
       .slice(0, 5)
 
     return filteredParticipants.map(({ user }) => {
-      return <img key={user._id} alt={user.name} src={user.avatar ?? avatar} />
+      return <img key={user._id} alt={user.name} src={user.avatar} />
     })
   }, [task, userId])
 
@@ -104,18 +105,13 @@ const TaskCard = ({ task }) => {
             {collection && <span>({collection})</span>}
           </div>
 
-          <input
-            disabled={api.loading}
-            type="checkbox"
+          <Checkbox
             className={css.checkBox}
-            onChange={handleCheckClick}
             checked={task.completed}
-            id={uniqueId}
+            loading={api.loading}
+            disabled={api.loading}
+            onClick={handleCheckClick}
           />
-
-          <label htmlFor={uniqueId}>
-            <FaCheck />
-          </label>
         </div>
 
         <p className={css.middle}>{task.description?.slice(0, 100)}</p>
@@ -131,6 +127,8 @@ const TaskCard = ({ task }) => {
           <div className={css.users}>{taskImages}</div>
         </div>
       </div>
+
+      <div className={css.backdrop} />
 
       <div className={css.context}>
         <button

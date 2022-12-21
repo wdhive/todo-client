@@ -1,7 +1,7 @@
 .Task {
-  background: v(c300);
+  background: v(c100);
   box-shadow: 0 0 1rem -0.65rem v(accent);
-  display: flex;
+  position: relative;
 
   @include break-down(25em) {
     min-width: 100%;
@@ -17,32 +17,24 @@
 .main {
   --separator-line-color: var(--c300);
 
-  background: v(c100);
-  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   padding: 1.25rem 2rem;
   @include transition('background', fast);
 }
 
 .completed {
-  background: v(c400);
+  background: v(c300);
 
   .main {
-    background: v(c300);
+    --separator-line-color: var(--c400);
   }
 
   .top,
   .middle {
     text-decoration: line-through;
     color: v(accent);
-  }
-
-  .context a,
-  .context button {
-    color: var(--background);
-
-    &:hover {
-      background: v(c600);
-    }
   }
 }
 
@@ -55,71 +47,37 @@
 .bottom {
   display: flex;
   align-items: center;
-
-  & > *:first-child {
-    flex: 1;
-  }
-
-  h6 {
-    font-weight: 700;
-  }
+  justify-content: space-between;
 }
 
 .top {
   margin-bottom: 1rem;
+  gap: 1.75rem;
+}
+
+.middle {
+  margin-bottom: 1rem;
 }
 
 .title {
+  flex: 1;
   display: flex;
   align-items: center;
   gap: 0.5em;
+
+  h6 {
+    font-weight: 700;
+    letter-spacing: 0;
+  }
 }
 
 .checkBox {
-  position: absolute;
-  width: 0;
-  height: 0;
-  font-size: 0;
-  overflow: hidden;
-  z-index: -999;
-
-  & + label {
-    background: v(background);
-    border-radius: 0.5rem;
-    outline: 0.15rem solid v(accent);
-    @include svg-size(1.65rem);
-    display: grid;
-    place-content: center;
-    padding: 0.3rem;
-    cursor: pointer;
-
-    svg {
-      display: none;
-      color: v(c100);
-    }
-  }
-
-  &:checked + label {
-    background: v(accent);
-
-    svg {
-      display: block;
-    }
-  }
-
-  &:focus + label {
-    outline: 0.1rem solid v(accent);
-    outline-offset: 0.2rem;
-  }
-
-  &:disabled + label {
-    cursor: not-allowed;
-  }
+  border-width: 0.1rem;
 }
 
 .bottom {
+  margin-top: auto;
   padding-top: 1rem;
-  margin-top: 1rem;
   border-top: 0.1rem solid v(separator-line-color);
   color: v(c700);
 }
@@ -151,8 +109,25 @@
   }
 }
 
+.backdrop {
+  position: absolute;
+  inset: 0;
+  right: 100%;
+  background: v(c600);
+  opacity: 0;
+  backdrop-filter: blur(20px);
+
+  --transision-duration: 0.3s;
+  --default-transition: opacity var(--transision-duration) ease-in-out;
+  transition: var(--default-transition), right 0s var(--transision-duration);
+}
+
 .context {
-  overflow: hidden;
+  box-shadow: 0 0 1rem v(c600);
+  position: absolute;
+  inset: 0;
+  background: v(accent);
+  left: auto;
   width: 0;
   display: flex;
   flex-direction: column;
@@ -160,25 +135,22 @@
 
   & > * {
     flex: 1;
-  }
-
-  a,
-  button {
+    border-radius: 0;
     background: none;
     padding: 1rem;
-    color: v(foreground);
+    color: v(background);
     display: flex;
     justify-content: center;
     align-items: center;
-    @include transition(' background, color');
-
-    &:focus {
-      outline-offset: -0.2rem;
-    }
+    @include transition('background, color');
 
     &:hover {
-      background: v(c400);
-      color: v(background);
+      background: v(c600);
+    }
+
+    &:focus,
+    &:active {
+      background: v(c700);
     }
 
     svg {
@@ -188,6 +160,11 @@
 }
 
 .contextActive .context {
-  visibility: visible;
   width: 3.85rem;
+}
+
+.contextActive .backdrop {
+  transition: var(--default-transition);
+  right: 0;
+  opacity: 0.5;
 }

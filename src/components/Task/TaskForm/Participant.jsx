@@ -7,7 +7,7 @@ import FloatingContent from './FloatingContent'
 import avatar from '$assets/avatar.png'
 import Modal from '$ui/Uncontrolled/Modal'
 import taskSlice from '$slice/Tasks'
-let searchTimeout
+let abortController
 
 const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
   const api = useApi()
@@ -72,16 +72,22 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
   }
 
   const handleSearchInput = (e) => {
-    clearTimeout(searchTimeout)
-    searchTimeout = setTimeout(async () => {
-      const username = e.target.value
-      if (!username) {
-        return setSearchUsers([])
-      }
+    if (abortController) {
+      abortController.signal.aborted || abortController.abort()
+    }
 
-      const data = await api.get('/user/search?username=' + username)
-      setSearchUsers(data.user)
-    }, 300)
+    const username = e.target.value
+    if (!username) return setSearchUsers([])
+    abortController = new AbortController()
+
+    api
+      .get('/user/search?username=' + username, {
+        signal: abortController.signal,
+      })
+      .then((data) => {
+        if (!data) return
+        setSearchUsers(data.user)
+      })
   }
 
   const AddedUsers = useMemo(() => {
@@ -101,9 +107,7 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
           showModify={true}
           default={participant.role}
           onDelete={() => handleRemoveUser(participant)}
-          onChange={async (...args) =>
-            await handleChangeRole(participant, ...args)
-          }
+          onChange={(...args) => handleChangeRole(participant, ...args)}
           name={
             participant.pending
               ? 'participant ' + participant.user._id

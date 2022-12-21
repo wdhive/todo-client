@@ -5,6 +5,7 @@ import useApi from '$api/useApi'
 import useInterval from '$hooks/useInterval'
 import Tasks from '$slice/Tasks'
 import { notificationMessages } from './utils'
+import avatar from '$assets/avatar.png'
 
 import css from './ListItem.module.scss'
 import Modal from '$ui/Uncontrolled/Modal'
@@ -71,7 +72,7 @@ const ListItem = ({ notification }) => {
     <div className={css.Item} onClick={handleClick}>
       <div className={css.image}>
         <img
-          src={notification.createdBy.avatar}
+          src={notification.createdBy.avatar || avatar}
           alt={notification.createdBy.username}
         />
       </div>

@@ -55,13 +55,12 @@ const DropdownCheck = ({
 
     const labelContainer = (
       <div
-        tabIndex="0"
         active={selected ? '' : undefined}
         className={cn(css.labelContainer, liClassName)}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
       >
-        <Checkbox selected={selected} />
+        <Checkbox checked={selected} />
         <div>{label}</div>
       </div>
     )

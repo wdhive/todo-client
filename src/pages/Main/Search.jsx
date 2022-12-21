@@ -102,24 +102,24 @@ const useTaskParticipants = (selectedParticipants) => {
 
   return useMemo(() => {
     const participants = []
+    const pushParticipants = (user) => {
+      if (user._id === userId) return
+
+      participants.push(
+        JSON.stringify({
+          value: user._id,
+          label: user.name,
+          selected: selectedParticipants[user._id],
+        })
+      )
+    }
+
     tasks.forEach((task) => {
-      participants.push(JSON.stringify(task.owner))
-
-      task.participants.forEach((p) => {
-        participants.push(JSON.stringify(p.user))
-      })
+      pushParticipants(task.owner)
+      task.participants.forEach((p) => pushParticipants(p.user))
     })
 
-    const parsedUsers = [...new Set(participants)].map((user) => {
-      const parsed = JSON.parse(user)
-      return {
-        value: parsed._id,
-        label: parsed.name,
-        selected: selectedParticipants[parsed._id],
-      }
-    })
-
-    return parsedUsers.filter(({ value }) => value !== userId)
+    return [...new Set(participants)].map(JSON.parse)
   }, [tasks, userId])
 }
 
