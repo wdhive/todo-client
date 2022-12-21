@@ -7,6 +7,7 @@ import FloatingContent from './FloatingContent'
 import avatar from '$assets/avatar.png'
 import Modal from '$ui/Uncontrolled/Modal'
 import taskSlice from '$slice/Tasks'
+let timeoutController
 let abortController
 
 const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
@@ -72,22 +73,26 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
   }
 
   const handleSearchInput = (e) => {
+    clearTimeout(timeoutController)
     if (abortController) {
       abortController.signal.aborted || abortController.abort()
     }
 
     const username = e.target.value.trim()
     if (!username) return setSearchUsers([])
-    abortController = new AbortController()
 
-    api
-      .get('/user/search?username=' + username, {
-        signal: abortController.signal,
-      })
-      .then((data) => {
-        if (!data) return
-        setSearchUsers(data.user)
-      })
+    timeoutController = setTimeout(() => {
+      abortController = new AbortController()
+
+      api
+        .get('/user/search?username=' + username, {
+          signal: abortController.signal,
+        })
+        .then((data) => {
+          if (!data) return
+          setSearchUsers(data.user)
+        })
+    }, 150)
   }
 
   const AddedUsers = useMemo(() => {
