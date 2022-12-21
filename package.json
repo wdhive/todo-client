@@ -13,6 +13,7 @@
     "axios": "^1.1.3",
     "classnames": "^2.3.2",
     "error-boundary-react": "latest",
+    "fuse.js": "^6.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",

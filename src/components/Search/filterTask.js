@@ -1,4 +1,19 @@
 import { isNotEmptyObject } from '$utils/utils'
+import Fuse from 'fuse.js'
+
+const fuseSearch = (list, filter, query) => {
+  if (!query) return list
+
+  const fuse = new Fuse(list, {
+    keys: isNotEmptyObject(filter)
+      ? Object.keys(filter)
+      : ['title', 'description'],
+
+    threshold: 0.5,
+  })
+
+  return fuse.search(query.toLowerCase()).map(({ item }) => item)
+}
 
 export default (
   tasks,
@@ -10,7 +25,7 @@ export default (
     selectedParticipants,
   }
 ) => {
-  searchQuery = searchQuery.toLowerCase().trim()
+  searchQuery = searchQuery.trim()
   if (
     !searchQuery &&
     !isNotEmptyObject(selectedFilter) &&
@@ -45,28 +60,12 @@ export default (
       if (!found) return
     }
 
-    // Search
-
-    if (searchQuery) {
-      if (isNotEmptyObject(selectedFilter))
-        return (
-          (selectedFilter.name &&
-            task.title.toLowerCase().includes(searchQuery)) ||
-          (selectedFilter.description &&
-            task.description.toLowerCase().includes(searchQuery))
-        )
-      else {
-        return (
-          task.title.toLowerCase().includes(searchQuery) ||
-          task.description.toLowerCase().includes(searchQuery)
-        )
-      }
-    } else if (isNotEmptyObject(selectedFilter)) return
-
     return true
   })
 
-  return result.sort((a, b) => {
+  const searched = fuseSearch(result, selectedFilter, searchQuery)
+
+  return searched.sort((a, b) => {
     const dateA = new Date(a.createdAt).valueOf()
     const dateB = new Date(b.createdAt).valueOf()
 

@@ -22,8 +22,8 @@ const Search = () => {
     () => [
       {
         label: 'Name',
-        value: 'name',
-        selected: selectedFilter['name'],
+        value: 'title',
+        selected: selectedFilter['title'],
       },
       {
         label: 'Description',
