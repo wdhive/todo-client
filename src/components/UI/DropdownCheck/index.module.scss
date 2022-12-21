@@ -10,3 +10,37 @@
     outline-width: 0.2rem;
   }
 }
+
+.Dropdown {
+}
+
+.header {
+  background: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  font-size: 1.75rem;
+  transform: rotate(90deg);
+  @include transition(transform, fast);
+}
+
+.Dropdown[list-expand] .arrow {
+  transform: rotate(0deg);
+}
+
+.list {
+  list-style: none;
+}
+
+.section {
+  overflow: hidden;
+  @include transition(height, fast);
+}
+
+.Dropdown:not([list-expand]) .section {
+  height: 0 !important;
+}

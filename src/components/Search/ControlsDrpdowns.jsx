@@ -11,13 +11,6 @@ const ControlsDrpdowns = ({
   setSelectedCollections,
   setSelectedParticipants,
 }) => {
-  const handleChange = (setState, newList) => {
-    const selected = newList
-      .filter((i) => i.selected)
-      .map((i) => [i.value, true])
-    setState(Object.fromEntries(selected))
-  }
-
   return (
     <div className={css.container}>
       <DropdownCheck
@@ -25,7 +18,7 @@ const ControlsDrpdowns = ({
         classNames={css}
         list={filterList}
         onChange={(f) => {
-          handleChange(setSelectedFilter, f)
+          setSelectedFilter(f)
         }}
       />
 
@@ -34,7 +27,7 @@ const ControlsDrpdowns = ({
         classNames={css}
         list={collections}
         onChange={(c) => {
-          handleChange(setSelectedCollections, c)
+          setSelectedCollections(c)
         }}
       />
 
@@ -43,7 +36,7 @@ const ControlsDrpdowns = ({
         classNames={css}
         list={participants}
         onChange={(p) => {
-          handleChange(setSelectedParticipants, p)
+          setSelectedParticipants(p)
         }}
       />
     </div>
