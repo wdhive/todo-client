@@ -13,8 +13,10 @@ const useTaskPermission = (task) => {
       }
     }
 
-    const participants = task.participants.find((p) => p.user._id === userId)
-    switch (participants.role) {
+    const participant = task.participants.find((p) => p.user._id === userId)
+    if (!participant) return {}
+
+    switch (participant.role) {
       case 'admin':
         return {
           isAdmin: true,

@@ -18,7 +18,7 @@ export const setLocalStroage = (key, data = null) => {
 }
 
 const Effect = ({ hue, jwt }) => {
-  // const api = useApi()
+  const api = useApi()
   const theme = useSelector((state) => state.settings.theme)
   const socketId = useSelector((state) => state.user.socketId)
 
