@@ -1,5 +1,5 @@
 import { useState, memo, useMemo } from 'react'
-import useActiveState, { stopPropagation } from 'use-active-state'
+import useActiveState from 'use-active-state'
 import { useSelector } from 'react-redux'
 import useApi from '$api/useApi'
 import css from './Participant.module.scss'
@@ -7,13 +7,14 @@ import FloatingContent from './FloatingContent'
 import avatar from '$assets/avatar.png'
 import Modal from '$ui/Uncontrolled/Modal'
 import taskSlice from '$slice/Tasks'
+import Loading from '$components/Loading'
 let timeoutController
 let abortController
 
 const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
   const api = useApi()
   const userId = useSelector((state) => state.user.user?._id)
-  const [isModalOpen, setIsModalOpen] = useActiveState(false)
+  const [isModalOpen, setIsModalOpen, contentRef] = useActiveState()
   const [selectedRole, setSelectedRole] = useState('assigner')
   const [searchUsers, setSearchUsers] = useState(() => [])
   const totalUsers = useMemo(() => {
@@ -131,7 +132,8 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
 
     return filteredUsers.map((user) => {
       return (
-        <li
+        <button
+          className={css.listItem}
           key={user._id}
           onClick={() => {
             handleAddUser(user)
@@ -149,14 +151,14 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
             <div>Joined on</div>
             <div>{new Date(user.createdAt).toLocaleDateString()}</div>
           </div>
-        </li>
+        </button>
       )
     })
   }, [userId, totalUsers, searchUsers])
 
   return (
     <div className={css.Participant}>
-      <div className={css.participantsInput} onClick={stopPropagation}>
+      <div className={css.participantsInput} ref={contentRef}>
         <input
           onFocus={() => setIsModalOpen(true)}
           onChange={handleSearchInput}
@@ -176,7 +178,9 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
           {SearchUser.length ? (
             SearchUser
           ) : (
-            <p className={css.noUserFound}>Horse egg...</p>
+            <div className={css.noUserFound}>
+              {api.loading ? <Loading scoped /> : 'Horse egg...'}
+            </div>
           )}
         </ul>
       </div>

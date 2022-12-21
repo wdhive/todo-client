@@ -27,8 +27,9 @@
     display: block;
   }
 
-  li {
-    cursor: pointer;
+  .listItem {
+    text-align: left;
+    width: 100%;
     padding: 0.5rem 1.25rem;
     padding-right: 1.5rem;
     border-bottom: 0.1rem solid v(c200);
@@ -38,6 +39,7 @@
     align-items: center;
     background: transparent;
     @include transition('background', fast);
+    outline-offset: -0.2rem;
 
     &:hover {
       background: v(c200);
@@ -64,8 +66,9 @@
   }
 
   .noUserFound {
-    text-align: center;
-    padding: 0.75rem 1.5rem;
+    display: grid;
+    place-content: center;
+    min-height: 4rem;
   }
 }
 

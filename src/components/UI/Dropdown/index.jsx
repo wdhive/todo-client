@@ -1,5 +1,5 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
-import useActiveState, { stopPropagation } from 'use-active-state'
+import useActiveState from 'use-active-state'
 import useEffectExceptOnMount from 'use-effect-except-on-mount'
 import { BsChevronDown } from 'react-icons/bs'
 import useGetItem from './useGetItem'
@@ -22,9 +22,12 @@ const index = ({
   const buttonRef = useRef()
   const selectedItemRef = useRef()
   const uniqueId = '@Dropdown' + useId()
+  let selector = `.${css.Dropdown}[data-id="${uniqueId}"]`
 
-  const [isOpen, toggleIsOpen] = useActiveState()
+  const [isOpen, toggleIsOpen, contentRef] = useActiveState()
   const [selectedValue, setSelectedValue] = useState(defaultValue)
+
+  console.log('Hello')
 
   const handleSelectChange = async (value) => {
     if (selectedValue === value) return
@@ -87,9 +90,7 @@ const index = ({
 
   useEffectExceptOnMount(() => {
     if (isOpen) return
-    const closest = document.activeElement?.closest(
-      `.${css.Dropdown}[data-id="${uniqueId}"]`
-    )
+    const closest = document.activeElement?.closest(selector)
     closest && buttonRef?.current?.focus()
   }, [isOpen])
 
@@ -103,8 +104,8 @@ const index = ({
       data-id={uniqueId}
       className={cn(css.Dropdown, className)}
       active={isOpen ? '' : undefined}
-      onClick={stopPropagation}
       data-value={selectedValue}
+      ref={contentRef}
     >
       {name && (
         <input

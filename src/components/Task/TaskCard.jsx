@@ -13,7 +13,7 @@ import Modal from '$ui/Uncontrolled/Modal'
 
 const TaskCard = ({ task }) => {
   const api = useApi()
-  const [show, toggleShow] = useActiveState()
+  const [show, toggleShow, contentRef] = useActiveState()
   const navigate = useNavigate()
   const taskPerm = useTaskPermission(task)
   const userId = useSelector((state) => state.user?.user?._id)
@@ -66,7 +66,6 @@ const TaskCard = ({ task }) => {
   }
 
   const handleFocus = () => toggleShow(true)
-  const handleBlur = () => toggleShow(false)
 
   const taskImages = useMemo(() => {
     const taskTotalParticipants = [
@@ -130,11 +129,10 @@ const TaskCard = ({ task }) => {
 
       <div className={css.backdrop} />
 
-      <div className={css.context}>
+      <div className={css.context} ref={contentRef}>
         <button
           className="button"
           onFocus={handleFocus}
-          onBlur={handleBlur}
           onClick={handleEditClick}
         >
           <FaRegEdit />
@@ -143,7 +141,6 @@ const TaskCard = ({ task }) => {
           onClick={handleDeleteClick}
           className="button"
           onFocus={handleFocus}
-          onBlur={handleBlur}
         >
           <FaRegTrashAlt />
         </button>
