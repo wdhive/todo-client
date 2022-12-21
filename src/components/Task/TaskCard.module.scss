@@ -56,18 +56,19 @@
 }
 
 .middle {
+  $lineCount: 2;
+  $lineHeight: 1.5;
   @include font(bd2);
-  line-height: 1.5;
-  word-break: break-all;
+  line-height: $lineHeight;
   margin-bottom: 1rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-break: break-all;
   word-wrap: break-word;
-  max-height: 3em;
-
-  -webkit-line-clamp: 2;
+  max-height: $lineHeight * $lineCount + 0em;
+  -webkit-line-clamp: $lineCount;
   -webkit-box-orient: vertical;
   display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .title {
