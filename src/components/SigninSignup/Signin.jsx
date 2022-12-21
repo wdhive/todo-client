@@ -1,5 +1,6 @@
 import MainForm from './MainForm'
 import { Group } from './FormUtils'
+import InputPassword from '$ui/InputPassword'
 
 const Signin = ({ onForgetPass = () => {}, ...props }) => {
   return (
@@ -14,7 +15,7 @@ const Signin = ({ onForgetPass = () => {}, ...props }) => {
       </Group>
 
       <Group label="Password">
-        <input type="password" name="password" required />
+        <InputPassword type="password" name="password" required />
       </Group>
 
       <button

@@ -2,6 +2,7 @@ import { getInputs } from '$utils/utils'
 import User from '$slice/User'
 
 import { AdvancedFormControls, FormGroup } from '../Common'
+import InputPassword from '$ui/InputPassword'
 
 const ChangePassword = ({ api, goBack }) => {
   const handleFormSubmit = async (e) => {
@@ -22,11 +23,11 @@ const ChangePassword = ({ api, goBack }) => {
   return (
     <form onSubmit={handleFormSubmit}>
       <FormGroup label="New Password">
-        <input required type="password" name="new_password" />
+        <InputPassword required type="password" name="new_password" />
       </FormGroup>
 
       <FormGroup label="Confirm New Password">
-        <input required type="password" name="confirm_new_password" />
+        <InputPassword required type="password" name="confirm_new_password" />
       </FormGroup>
 
       <AdvancedFormControls api={api} final goBack={goBack} />

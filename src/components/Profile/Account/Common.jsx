@@ -1,5 +1,6 @@
 import css from './Common.module.scss'
 import Button from '$ui/Button'
+import InputPassword from '$ui/InputPassword'
 
 export const FormGroup = ({ children, label }) => {
   return (
@@ -16,7 +17,7 @@ export const AdvancedFormControls = ({ api, goBack, final, onNext }) => {
     <>
       {final && (
         <FormGroup label="Current password">
-          <input required type="password" name="password" />
+          <InputPassword required type="password" name="password" />
         </FormGroup>
       )}
 

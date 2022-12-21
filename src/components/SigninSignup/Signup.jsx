@@ -4,6 +4,7 @@ import { MdCameraAlt } from 'react-icons/md'
 import css from './Signup.module.scss'
 import MainForm from './MainForm'
 import { Group } from './FormUtils'
+import InputPassword from '$ui/InputPassword'
 
 const Signup = (props) => {
   const imageId = useId()
@@ -44,11 +45,11 @@ const Signup = (props) => {
       </Group>
 
       <Group label="Password*">
-        <input type="password" name="password" required />
+        <InputPassword type="password" name="password" required />
       </Group>
 
       <Group label="Confirm Password*">
-        <input type="password" name="confirmPassword" required />
+        <InputPassword type="password" name="confirmPassword" required />
       </Group>
     </MainForm>
   )
