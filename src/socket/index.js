@@ -3,7 +3,7 @@ import store from '$store'
 import userSlice from '$slice/User'
 import socketEvent from './socketEvent'
 import { baseURL } from '$api'
-let socket = null
+let socket = undefined
 
 const runListner = (event, data) => {
   const handler = socketEvent[event]
@@ -36,7 +36,7 @@ export const connect = () => {
   })
 
   soc.on('disconnect', () => {
-    socket = null
+    socket = undefined
     $store(userSlice.updateSocketId(null))
     runListner('disconnect')
   })
@@ -45,6 +45,10 @@ export const connect = () => {
 }
 
 export default (token) => {
-  if (!socket && token) connect()
-  if (socket && !token) socket?.disconnect()
+  try {
+    if (!socket && token) connect()
+    if (socket && !token) socket?.disconnect()
+  } catch {
+    console.error('Something went wrong in setSocket')
+  }
 }
