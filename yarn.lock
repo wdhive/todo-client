@@ -869,10 +869,10 @@ engine.io-parser@~5.0.3:
   resolved "https://registry.yarnpkg.com/engine.io-parser/-/engine.io-parser-5.0.4.tgz#0b13f704fa9271b3ec4f33112410d8f3f41d0fc0"
   integrity sha512-+nVFp+5z1E3HcToEnO7ZIj3g+3k9389DvWtvJZz0T6/eOCPIyyxehFcedoYrZQrp0LgQbD9pPXhpMBKMd5QURg==
 
-error-boundary-react@latest:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/error-boundary-react/-/error-boundary-react-1.0.0.tgz#f874c9f312f83e2b4f819569793660f4e2faa882"
-  integrity sha512-QsMHO0eK0H6rtCYHEgtMuT3CnDQJvH259UhFTj2zdEnIGgQYcs1RMumXoKZt1LHRvZU88gR0IS1+oeiIalt+Ug==
+error-boundary-react@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/error-boundary-react/-/error-boundary-react-1.0.1.tgz#541c47bb81ca466de59e78b8f729771f9f1e7ac9"
+  integrity sha512-fWzhmuqqzZu7iiceROppl5CFsL3IKuasPLwurBglHqtoKRrpXJsw0pUBu+9zGeefr4OuYvY7NszPtgvEJgTooA==
 
 error-ex@^1.3.1:
   version "1.3.2"

@@ -17,7 +17,7 @@ const root = createRoot(rootElement)
 
 methods.get('/ping')
 root.render(
-  <ErrorBoundary element={<AppError />}>
+  <ErrorBoundary element={AppError}>
     <Provider store={store}>
       <React.StrictMode>
         <App />
