@@ -2006,10 +2006,10 @@ update-browserslist-db@^1.0.9:
     escalade "^3.1.1"
     picocolors "^1.0.0"
 
-use-active-state@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/use-active-state/-/use-active-state-1.0.3.tgz#ed5b2469466d5c50c57c0a9a71b356c081852e39"
-  integrity sha512-LaWtY7xqLe8WrldFngQ8VhcHwmHey7DOUu0cvtw1YcKZRe6fj/pRYZTrnI+/0TGqhZUBj3IseIcZvLz4Uq47oA==
+use-active-state@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/use-active-state/-/use-active-state-1.0.4.tgz#b151ea03f6d022e0c1a00e9365ff6946895c9162"
+  integrity sha512-UjoH6HMvZHPKdEX0WJ6WZ3WaMy4txhITdKf85/aIeXxvCTfQO1w6FumEZaqwM7RpSX7t8AT2MgHn2yheMECinA==
 
 use-css-query@latest:
   version "1.0.1"
