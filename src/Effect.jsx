@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react'
+import { memo, useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import useEffectExceptOnMount from 'use-effect-except-on-mount'
 import useInterval from '$hooks/useInterval'
@@ -7,14 +7,8 @@ import User from '$slice/User'
 import Tasks from '$slice/Tasks'
 import Settings from '$slice/Settings'
 import reactApi, { useApi } from '$api/react'
+import { setLocalStroage } from '$utils/utils'
 let prevJwt
-
-export const setLocalStroage = (key, data = null) => {
-  if (data === null) {
-    return localStorage.removeItem(key)
-  }
-  localStorage.setItem(key, data)
-}
 
 const Effect = ({ hue, jwt }) => {
   const api = useApi()
@@ -22,7 +16,7 @@ const Effect = ({ hue, jwt }) => {
   const socketId = useSelector((state) => state.user.socketId)
 
   // JWT change
-  useEffect(() => {
+  useMemo(() => {
     reactApi.instance.defaults.headers.common.authorization = jwt
       ? `Bearer ${jwt}`
       : undefined

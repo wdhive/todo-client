@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import useEffectExceptOnMount from 'use-effect-except-on-mount'
-import { setLocalStroage } from '$src/Effect'
+import { setLocalStroage } from '$utils/utils'
 
 import css from './index.module.scss'
 import MainNav from './MainNav'

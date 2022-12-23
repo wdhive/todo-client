@@ -14,21 +14,11 @@ export default () => {
     ['get', '/user?settings'],
     ['get', '/tasks'],
     ['get', '/notifications'],
-    ([
-      {
-        data: { user, settings },
-      },
-      {
-        data: { tasks },
-      },
-      {
-        data: { notifications },
-      },
-    ]) => {
-      user && $store(User.updateUser(user))
-      settings && $store(settingsSlice.updateSettigns(settings))
-      tasks && $store(Tasks.initTasks(tasks))
-      notifications && $store(User.initNoti(notifications))
+    ([{ data: userData }, { data: taskData }, { data: notiData }]) => {
+      userData && $store(User.updateUser(userData.user))
+      userData && $store(settingsSlice.updateSettigns(userData.settings))
+      taskData && $store(Tasks.initTasks(taskData.tasks))
+      notiData && $store(User.initNoti(notiData.notifications))
     }
   )
 
