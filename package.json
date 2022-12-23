@@ -23,7 +23,7 @@
     "use-active-state": "^1.0.4",
     "use-css-query": "latest",
     "use-effect-except-on-mount": "latest",
-    "use-react-api": "^1.0.9"
+    "use-react-api": "^1.0.10"
   },
   "devDependencies": {
     "@honkhonk/vite-plugin-svgr": "^1.1.0",

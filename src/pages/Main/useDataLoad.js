@@ -1,6 +1,5 @@
-import { useApiOnce, useSuspenseApiOnce } from '$api/react'
-import { createAnchor } from 'use-react-api'
-import settingsSlice from '$slice/Settings'
+import { useApiOnce, useSuspenseApiOnce, createAnchor } from '$api/react'
+import Settings from '$slice/Settings'
 import User from '$slice/User'
 import Tasks from '$slice/Tasks'
 import pwaManager from '$utils/pwa'
@@ -16,7 +15,7 @@ export default () => {
     ['get', '/notifications'],
     ([{ data: userData }, { data: taskData }, { data: notiData }]) => {
       userData && $store(User.updateUser(userData.user))
-      userData && $store(settingsSlice.updateSettigns(userData.settings))
+      userData && $store(Settings.updateSettigns(userData.settings))
       taskData && $store(Tasks.initTasks(taskData.tasks))
       notiData && $store(User.initNoti(notiData.notifications))
     }

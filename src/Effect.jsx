@@ -2,7 +2,7 @@ import { memo, useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import useEffectExceptOnMount from 'use-effect-except-on-mount'
 import useInterval from '$hooks/useInterval'
-import setSocket from '$socket'
+import updateSocket from '$socket'
 import User from '$slice/User'
 import Tasks from '$slice/Tasks'
 import Settings from '$slice/Settings'
@@ -20,7 +20,7 @@ const Effect = ({ hue, jwt }) => {
     reactApi.instance.defaults.headers.common.authorization = jwt
       ? `Bearer ${jwt}`
       : undefined
-    setSocket(jwt)
+    updateSocket(jwt)
 
     prevJwt = jwt
     setLocalStroage('jwt-token', jwt)
