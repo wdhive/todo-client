@@ -25,6 +25,7 @@
   width: 100%;
   border-radius: 0;
   padding: 1.25rem 2.25rem;
+  outline-offset: -0.2rem !important;
   @include font('bt1');
 
   &:hover {
