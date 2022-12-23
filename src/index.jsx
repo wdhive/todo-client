@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 import ErrorBoundary from 'error-boundary-react'
 import className from 'classnames'
 import store from '$store'
-import { methods } from '$api/index'
+import reactApi from '$api/react'
 
 window.cn = className
 
@@ -15,7 +15,7 @@ import AppError from '$components/Error'
 const rootElement = document.getElementById('Root')
 const root = createRoot(rootElement)
 
-methods.get('/ping')
+reactApi.methods.get('/ping')
 root.render(
   <ErrorBoundary element={AppError}>
     <Provider store={store}>

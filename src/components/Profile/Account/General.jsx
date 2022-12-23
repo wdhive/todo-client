@@ -1,7 +1,7 @@
 import { memo, useId, useMemo, useState } from 'react'
 import { FaPen } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
-import useApi from '$api/useApi'
+import { useApi } from '$api/react'
 import { getFormData } from '$utils/utils'
 import User from '$slice/User'
 

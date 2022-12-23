@@ -1,4 +1,4 @@
-import useApi from '$api/useApi'
+import { useApi } from '$api/react'
 import User from '$slice/User'
 
 import css from './Notifications.module.scss'

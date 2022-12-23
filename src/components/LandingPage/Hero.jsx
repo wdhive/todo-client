@@ -1,4 +1,4 @@
-import useApiOnce from '$api/useApiOnce'
+import { useApiOnce } from '$api/react'
 
 import css from './Hero.module.scss'
 import SignupBtn from './SignupBtn'

@@ -24,5 +24,5 @@ const reactApi = ReactApi(
   }
 )
 
-export const { instance, methods } = reactApi
+export const { useSuspenseApiOnce, useApi, useApiOnce } = reactApi
 export default reactApi

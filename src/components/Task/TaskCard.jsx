@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import useActiveState from 'use-active-state'
 import { useNavigate } from 'react-router-dom'
 import { FaRegEdit, FaRegTrashAlt, FaRegClock } from 'react-icons/fa'
-import useApi from '$api/useApi'
+import { useApi } from '$api/react'
 import Task from '$slice/Tasks'
 import useTaskPermission from '$hooks/useTaskPermission'
 

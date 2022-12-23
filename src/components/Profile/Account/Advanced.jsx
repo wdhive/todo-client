@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import useApi from '$api/useApi'
+import { useApi } from '$api/react'
 
 import Layout from './Layout'
 import ChangeEmail from './Advanced/ChangeEmail'

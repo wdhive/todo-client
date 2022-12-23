@@ -2,12 +2,11 @@ import { memo, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import useEffectExceptOnMount from 'use-effect-except-on-mount'
 import useInterval from '$hooks/useInterval'
-import { instance } from '$api'
 import setSocket from '$socket'
 import User from '$slice/User'
 import Tasks from '$slice/Tasks'
 import Settings from '$slice/Settings'
-import useApi from '$api/useApi'
+import reactApi, { useApi } from '$api/react'
 let prevJwt
 
 export const setLocalStroage = (key, data = null) => {
@@ -24,7 +23,7 @@ const Effect = ({ hue, jwt }) => {
 
   // JWT change
   useEffect(() => {
-    instance.defaults.headers.common.authorization = jwt
+    reactApi.instance.defaults.headers.common.authorization = jwt
       ? `Bearer ${jwt}`
       : undefined
     setSocket(jwt)
@@ -50,7 +49,7 @@ const Effect = ({ hue, jwt }) => {
 
   // Update sockeid
   useEffect(() => {
-    instance.defaults.headers.common['exclude-socket'] = socketId
+    reactApi.instance.defaults.headers.common['exclude-socket'] = socketId
   }, [socketId])
 
   // Update theme

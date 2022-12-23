@@ -2,7 +2,7 @@ import { io } from 'socket.io-client'
 import store from '$store'
 import userSlice from '$slice/User'
 import socketEvent from './socketEvent'
-import { baseURL } from '$api'
+import { baseURL } from '$api/react'
 let socket = undefined
 
 const runListner = (event, data) => {

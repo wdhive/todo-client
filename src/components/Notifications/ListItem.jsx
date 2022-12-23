@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { HiOutlineTrash } from 'react-icons/hi'
 import User from '$slice/User'
-import useApi from '$api/useApi'
+import { useApi } from '$api/react'
 import useInterval from '$hooks/useInterval'
 import Tasks from '$slice/Tasks'
 import { notificationMessages } from './utils'

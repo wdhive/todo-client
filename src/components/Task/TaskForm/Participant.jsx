@@ -1,7 +1,7 @@
 import { useState, memo, useMemo } from 'react'
 import useActiveState from 'use-active-state'
 import { useSelector } from 'react-redux'
-import useApi from '$api/useApi'
+import { useApi } from '$api/react'
 import css from './Participant.module.scss'
 import FloatingContent from './FloatingContent'
 import avatar from '$assets/avatar.png'

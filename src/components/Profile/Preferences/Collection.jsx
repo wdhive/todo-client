@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import useApi from '$api/useApi'
+import { useApi } from '$api/react'
 import settings from '$slice/Settings'
 import { HiPlus, HiOutlinePencil, HiOutlineTrash } from 'react-icons/hi'
 

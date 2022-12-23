@@ -1,23 +1,17 @@
 import react, { memo, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import useApiOnce from '$api/useApiOnce'
-import settingsSlice from '$slice/Settings'
-import User from '$slice/User'
-import pwaManager from '$utils/pwa'
 
 import css from './Layout.module.scss'
 import NotFound from '$components/Error404'
 import Loading from '$components/Loading'
 import Nav from '$components/Nav'
 import useMobileLayout from '$hooks/useMobileLayout'
-import Tasks from '$slice/Tasks'
+import useDataLoad from './useDataLoad'
 
 const TaskLayout = react.lazy(() => import('$pages/Task/Layout'))
 const ProfileLayout = react.lazy(() => import('$pages/Profile/Layout'))
 const Search = react.lazy(() => import('$pages/Main/Search'))
 const Notifications = react.lazy(() => import('$pages/Main/Notifications'))
-
-pwaManager()
 
 const LayoutContent = memo(() => {
   const mobileMode = useMobileLayout()
@@ -52,24 +46,8 @@ const LayoutContent = memo(() => {
 })
 
 const MainLayout = () => {
-  const api = useApiOnce('get', '/user?settings', (data) => {
-    $store(User.updateUser(data.user))
-    $store(settingsSlice.updateSettigns(data.settings))
-  })
-
-  useApiOnce('get', '/notifications', ({ notifications }) => {
-    $store(User.initNoti(notifications))
-  })
-
-  useApiOnce('get', '/account/new-token', ({ token }) => {
-    $store(User.jwt(token))
-  })
-
-  const api2 = useApiOnce('get', '/tasks', (data) => {
-    $store(Tasks.initTasks(data.tasks))
-  })
-
-  return api.loading || api2.loading ? <Loading /> : <LayoutContent />
+  useDataLoad()
+  return <LayoutContent />
 }
 
 export default memo(MainLayout)
