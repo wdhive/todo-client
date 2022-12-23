@@ -1089,11 +1089,6 @@ express@^4.18.2:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
-fast-deep-equal@3.1.3:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
-  integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
-
 fill-range@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-7.0.1.tgz#1919a6a7c75fe38b2c7c77e5198535da9acdda40"
@@ -2123,20 +2118,12 @@ use-effect-except-on-mount@latest:
   resolved "https://registry.yarnpkg.com/use-effect-except-on-mount/-/use-effect-except-on-mount-0.0.0.tgz#1474c16ebc6cbfe227c2a1ffdee0ceaac45645da"
   integrity sha512-Id8UVfKQ0k3AoOTZFHm6v/qDTbQn/g2YyKOWshZJWZBHBAHgzigVGCJCgfW+Q5QGTeNl/We+lX0blNqRH45ftA==
 
-use-react-api@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/use-react-api/-/use-react-api-1.0.8.tgz#d738d06dec3983489da8d73a8c55ffb4c258b655"
-  integrity sha512-aOYDlcMFsvcg/ug9k6mKU4SpJPKxCS+lhzCrAU7PLvCJwAIjPZLWiRTs+RDO8E9mSZ0CCX0fVZpMccG+HJmp8w==
+use-react-api@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/use-react-api/-/use-react-api-1.0.9.tgz#91aa856e59230b5374e536e827cde3cba74a31f6"
+  integrity sha512-I5NAyA7qtlXCmiw245BEK71VeL49RloKATSobYdpHZeNuOmRErcGgLMjZZUytMtLkHFACrjnXcTtc0Nm8ZkStg==
   dependencies:
-    use-suspender "^1.1.0"
     use-suspense-react latest
-
-use-suspender@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/use-suspender/-/use-suspender-1.1.0.tgz#9f2aa99cdc48925aca852a480837b3bf3af2cdac"
-  integrity sha512-e/7MBIaOVU18lj2gtw1amu3WI67bDdc1u4AGcLaVn/+KgC0aGvCYoWTneXuiGU8hE8iLzrUAdwIAcx19kLjL/w==
-  dependencies:
-    fast-deep-equal "3.1.3"
 
 use-suspense-react@latest:
   version "1.0.1"
