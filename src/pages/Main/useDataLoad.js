@@ -1,15 +1,14 @@
-import { useApiOnce, useSuspenseApiOnce, createAnchor } from '$api/react'
+import { useApiOnce, createSuspenseApi } from '$api/react'
 import Settings from '$slice/Settings'
 import User from '$slice/User'
 import Tasks from '$slice/Tasks'
 import pwaManager from '$utils/pwa'
 
 pwaManager()
-const apiAnchor = createAnchor()
+const useSuspenseApi = createSuspenseApi()
 
 export default () => {
-  useSuspenseApiOnce(
-    apiAnchor,
+  const response = useSuspenseApi(
     ['get', '/user?settings'],
     ['get', '/tasks'],
     ['get', '/notifications'],
@@ -21,7 +20,9 @@ export default () => {
     }
   )
 
-  useApiOnce('get', '/account/new-token', ({ token }) => {
-    $store(User.jwt(token))
+  useApiOnce('get', '/account/new-token', (data) => {
+    data?.token && $store(User.jwt(data.token))
   })
+
+  return response
 }

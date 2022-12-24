@@ -1,5 +1,5 @@
 import userSlice from '$slice/User'
-import ReactApi, { createAnchor } from 'use-react-api'
+import ReactApi from 'use-react-api'
 // import ReactApi, { createAnchor } from '../../use-react-api/dist-mjs'
 
 export const baseURL = 'https://baby-todo.onrender.com'
@@ -24,6 +24,5 @@ const reactApi = ReactApi(
   }
 )
 
-export { createAnchor }
-export const { useSuspenseApiOnce, useApi, useApiOnce } = reactApi
+export const { createSuspenseApi, useApi, useApiOnce } = reactApi
 export default reactApi

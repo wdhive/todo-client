@@ -46,7 +46,13 @@ const LayoutContent = memo(() => {
 })
 
 const MainLayout = () => {
-  useDataLoad()
+  const response = useDataLoad()
+
+  response.forEach(({ ok }) => {
+    if (ok) return
+    throw new Error([...new Set(response.map(({ error }) => error))])
+  })
+
   return <LayoutContent />
 }
 
