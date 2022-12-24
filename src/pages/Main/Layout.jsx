@@ -1,4 +1,4 @@
-import react, { memo, Suspense } from 'react'
+import react, { memo, Suspense, useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import css from './Layout.module.scss'
@@ -48,10 +48,12 @@ const LayoutContent = memo(() => {
 const MainLayout = () => {
   const response = useDataLoad()
 
-  response.forEach(({ ok }) => {
-    if (ok) return
-    throw new Error([...new Set(response.map(({ error }) => error))])
-  })
+  useEffect(() => {
+    response.forEach(({ ok }) => {
+      if (ok) return
+      throw new Error([...new Set(response.map(({ error }) => error))])
+    })
+  }, [response])
 
   return <LayoutContent />
 }
