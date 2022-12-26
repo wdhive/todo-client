@@ -18,8 +18,13 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
   const [selectedRole, setSelectedRole] = useState('assigner')
   const [searchUsers, setSearchUsers] = useState(() => [])
   const totalUsers = useMemo(() => {
-    return [...(task.participants ?? []), ...pendingParticipants].reverse()
+    return [
+      ...(task.participants.filter((p) => p.user) ?? []),
+      ...pendingParticipants,
+    ].reverse()
   }, [task.participants, pendingParticipants])
+  
+  console.log(totalUsers)
 
   const handleAddUser = (user) => {
     setPendingParticipants((prev) => [
@@ -97,31 +102,35 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
   }
 
   const AddedUsers = useMemo(() => {
-    return totalUsers.map((participant) => (
-      <div
-        key={participant.user._id + (participant.pending ? '-pending' : '')}
-        className={css.user}
-      >
-        <img src={participant.user.avatar ?? avatar} alt="" />
+    return totalUsers.map((participant) => {
+      if (!participant.user) return
 
-        <div>{participant.user.name}</div>
+      return (
+        <div
+          key={participant.user._id + (participant.pending ? '-pending' : '')}
+          className={css.user}
+        >
+          <img src={participant.user.avatar ?? avatar} alt="" />
 
-        <FloatingContent
-          taskId={task._id}
-          active={participant.active}
-          pending={participant.pending}
-          showModify={true}
-          default={participant.role}
-          onDelete={() => handleRemoveUser(participant)}
-          onChange={(...args) => handleChangeRole(participant, ...args)}
-          name={
-            participant.pending
-              ? 'participant ' + participant.user._id
-              : undefined
-          }
-        />
-      </div>
-    ))
+          <div>{participant.user.name}</div>
+
+          <FloatingContent
+            taskId={task._id}
+            active={participant.active}
+            pending={participant.pending}
+            showModify={true}
+            default={participant.role}
+            onDelete={() => handleRemoveUser(participant)}
+            onChange={(...args) => handleChangeRole(participant, ...args)}
+            name={
+              participant.pending
+                ? 'participant ' + participant.user._id
+                : undefined
+            }
+          />
+        </div>
+      )
+    })
   }, [totalUsers, task._id])
 
   const SearchUser = useMemo(() => {
@@ -131,6 +140,8 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
     })
 
     return filteredUsers.map((user) => {
+      console.log(user)
+
       return (
         <button
           className={css.listItem}
