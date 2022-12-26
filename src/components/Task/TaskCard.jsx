@@ -78,7 +78,7 @@ const TaskCard = ({ task }) => {
 
     const filteredParticipants = taskTotalParticipants
       .filter(
-        ({ user, active }) => !(!active || userId === user._id) && user.avatar
+        ({ user, active }) => user && user._id !== userId && active && user.avatar
       )
       .reverse()
       .slice(0, 5)
