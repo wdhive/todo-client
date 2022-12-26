@@ -11,7 +11,7 @@ export const setLocalStroage = (key, data = null) => {
 
 export const getFormData = (object) => {
   const formData = new FormData()
-  Object.keys(object).forEach((key) => formData.append(key, object[key]))
+  for (key in object) formData.append(key, object[key])
   return formData
 }
 
