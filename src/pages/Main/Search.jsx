@@ -116,7 +116,9 @@ const useTaskParticipants = (selectedParticipants) => {
 
     tasks.forEach((task) => {
       pushParticipants(task.owner)
-      task.participants.forEach((p) => pushParticipants(p.user))
+      task.participants.forEach((p) => {
+        p.user && pushParticipants(p.user)
+      })
     })
 
     return [...new Set(participants)].map(JSON.parse)

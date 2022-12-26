@@ -49,7 +49,7 @@ export default (
       let found = false
       const allUsers = [
         task.owner._id,
-        ...task.participants.map((p) => p.user._id),
+        ...task.participants.map((p) => p.user?._id),
       ]
 
       for (let userId of allUsers) {
