@@ -19,12 +19,10 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
   const [searchUsers, setSearchUsers] = useState(() => [])
   const totalUsers = useMemo(() => {
     return [
-      ...(task.participants.filter((p) => p.user) ?? []),
+      ...(task.participants?.filter((p) => p.user) ?? []),
       ...pendingParticipants,
     ].reverse()
   }, [task.participants, pendingParticipants])
-  
-  console.log(totalUsers)
 
   const handleAddUser = (user) => {
     setPendingParticipants((prev) => [
