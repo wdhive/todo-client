@@ -7,7 +7,6 @@ export default (notification) => {
     body: getNotificationMsg(notification.type, notification.createdBy.name),
     badge: '/logo/png/moderate-1_256x256.png',
     icon: notification.createdBy.avatar ?? avatar,
-    icon: avatar,
   })
 
   n.onclick = () => window.focus()
