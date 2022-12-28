@@ -10,5 +10,5 @@ export default (notification) => {
   })
 
   n.onclick = () => window.focus()
-  setTimeout(() => n.close(), 5000)
+  setTimeout(() => n.close(), 8500)
 }
