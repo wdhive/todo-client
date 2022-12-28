@@ -1,3 +1,4 @@
+import createNotification from '$utils/createNotification'
 import { createSlice } from '@reduxjs/toolkit'
 const jwtToken = localStorage.getItem('jwt-token')
 
@@ -40,6 +41,7 @@ const userSlice = createSlice({
 
     addNoti(state, { payload }) {
       state.notifications.push(payload)
+      createNotification(payload)
     },
 
     removeNoti(state, { payload }) {

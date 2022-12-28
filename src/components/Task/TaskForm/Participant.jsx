@@ -38,7 +38,9 @@ const Participant = ({ task, pendingParticipants, setPendingParticipants }) => {
   const handleRemoveUser = async (participant) => {
     if (participant.pending) {
       return setPendingParticipants((prev) => {
-        return prev.filter((user) => user.user._id !== participant.user._id)
+        return prev.filter(
+          (user) => user.user && user.user._id !== participant.user._id
+        )
       })
     }
 

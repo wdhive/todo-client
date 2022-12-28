@@ -1,4 +1,4 @@
-import { memo, useEffect, useMemo } from 'react'
+import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import useEffectExceptOnMount from 'use-effect-except-on-mount'
 import useInterval from '$hooks/useInterval'
@@ -12,6 +12,7 @@ let prevJwt
 
 const Effect = ({ hue, jwt }) => {
   const api = useApi()
+  useNotificationPermission()
   const theme = useSelector((state) => state.settings.theme)
   const socketId = useSelector((state) => state.user.socketId)
 
@@ -72,6 +73,29 @@ const Effect = ({ hue, jwt }) => {
   }, [hue])
 
   return <></>
+}
+
+const useNotificationPermission = () => {
+  const [permission, setPermission] = useState(
+    () => window.Notification && Notification.permission
+  )
+
+  const handleEvent = useCallback(() => {
+    if (!window.Notification) return
+    Notification.requestPermission((data) => setPermission(data))
+  }, [])
+
+  useEffect(() => {
+    if (permission === undefined || permission === 'granted') return
+
+    document.addEventListener('pointerdown', handleEvent)
+    document.addEventListener('keydown', handleEvent)
+
+    return () => {
+      document.removeEventListener('pointerdown', handleEvent)
+      document.removeEventListener('keydown', handleEvent)
+    }
+  }, [permission])
 }
 
 export default memo(Effect)

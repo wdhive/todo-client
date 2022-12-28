@@ -4,7 +4,7 @@ import User from '$slice/User'
 import { useApi } from '$api/react'
 import useInterval from '$hooks/useInterval'
 import Tasks from '$slice/Tasks'
-import { notificationMessages } from './utils'
+import getNotificationMsg, { notificationMessages } from './utils'
 import avatar from '$assets/avatar.png'
 
 import css from './ListItem.module.scss'
@@ -66,7 +66,7 @@ const ListItem = ({ notification }) => {
     newMsg.push(lastPart)
 
     return newMsg
-  }, [notification.title, notification.createdBy.name])
+  }, [notification.type, notification.createdBy.name])
 
   return (
     <div className={css.Item} onClick={handleClick}>

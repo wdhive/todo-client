@@ -13,7 +13,7 @@ const useTaskPermission = (task) => {
       }
     }
 
-    const participant = task.participants.find((p) => p.user._id === userId)
+    const participant = task.participants.find((p) => p.user?._id === userId)
     if (!participant) return {}
 
     switch (participant.role) {
