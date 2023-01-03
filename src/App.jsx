@@ -23,7 +23,7 @@ const App = () => {
     <>
       <Effect hue={themeHue} jwt={jwt} />
 
-      {themeHue && (
+      {themeHue != null && (
         <style>
           {`:root {
               --hue: ${themeHue};
