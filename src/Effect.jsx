@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useMemo, useState } from 'react'
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import useEffectExceptOnMount from 'use-effect-except-on-mount'
 import useInterval from '$hooks/useInterval'
@@ -12,9 +12,11 @@ let prevJwt
 
 const Effect = ({ hue, jwt }) => {
   const api = useApi()
-  useNotificationPermission()
-  const theme = useSelector((state) => state.settings.theme)
+  const isJwt = useRef()
+  isJwt.current = Boolean(jwt)
   const socketId = useSelector((state) => state.user.socketId)
+  const theme = useSelector((state) => state.settings.theme)
+  useNotificationPermission()
 
   // JWT change
   useMemo(() => {
@@ -40,7 +42,7 @@ const Effect = ({ hue, jwt }) => {
     const jwt = localStorage.getItem('jwt-token')
     if (jwt === prevJwt) return
     $store(User.jwt(jwt))
-  }, 1000)
+  }, 666)
 
   // Update sockeid
   useEffect(() => {
@@ -66,6 +68,8 @@ const Effect = ({ hue, jwt }) => {
 
   // Update theme
   useEffectExceptOnMount(() => {
+    if (!isJwt.current) return
+
     const timeout = setTimeout(async () => {
       await api.patch('/user/settings', { hue })
     }, 1000)
