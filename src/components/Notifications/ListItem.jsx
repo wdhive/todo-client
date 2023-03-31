@@ -61,19 +61,19 @@ const ListItem = ({ notification }) => {
     const lastPart = msgParts.slice(-1)
 
     notLastPart.forEach((p, ind) => {
-      newMsg.push(p, <strong key={ind}>{notification.createdBy.name}</strong>)
+      newMsg.push(p, <strong key={ind}>{notification.createdBy?.name}</strong>)
     })
     newMsg.push(lastPart)
 
     return newMsg
-  }, [notification.type, notification.createdBy.name])
+  }, [notification.type, notification.createdBy?.name])
 
   return (
     <div className={css.Item} onClick={handleClick}>
       <div className={css.image}>
         <img
-          src={notification.createdBy.avatar || avatar}
-          alt={notification.createdBy.username}
+          src={notification.createdBy?.avatar || avatar}
+          alt={notification.createdBy?.username}
         />
       </div>
 
