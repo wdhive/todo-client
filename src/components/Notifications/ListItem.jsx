@@ -61,7 +61,7 @@ const ListItem = ({ notification }) => {
     const lastPart = msgParts.slice(-1)
 
     notLastPart.forEach((p, ind) => {
-      newMsg.push(p, <strong key={ind}>{notification.createdBy?.name}</strong>)
+      newMsg.push(p, <strong key={ind}>{notification.createdBy?.name ?? "Deleted user"}</strong>)
     })
     newMsg.push(lastPart)
 
