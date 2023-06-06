@@ -2058,10 +2058,10 @@ vite-vscode@latest:
   resolved "https://registry.yarnpkg.com/vite-vscode/-/vite-vscode-0.0.5.tgz#ee243796a939a158362ac35be90470030c6af2ec"
   integrity sha512-XLrttN4PrQgXiCUs20BWrsDGGGTKceAeICayO6auDATsHleug1dr12S6WTg6ktPOpHeN32bcjCtbr/PhiaZN0w==
 
-vite@^3.1.8:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-3.2.5.tgz#dee5678172a8a0ab3e547ad4148c3d547f90e86a"
-  integrity sha512-4mVEpXpSOgrssFZAOmGIr85wPHKvaDAcXqxVxVRZhljkJOMZi1ibLibzjLHzJvcok8BMguLc7g1W6W/GqZbLdQ==
+vite@^3.2.7:
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-3.2.7.tgz#35a62826bd4d6b778ae5db8766d023bcd4e7bef3"
+  integrity sha512-29pdXjk49xAP0QBr0xXqu2s5jiQIXNvE/xwd0vUizYT2Hzqe4BksNNoWllFVXJf4eLZ+UlVQmXfB4lWrc+t18g==
   dependencies:
     esbuild "^0.15.9"
     postcss "^8.4.18"
